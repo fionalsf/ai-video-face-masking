@@ -1,0 +1,1007 @@
+{
+  "schema_version": "benchmark_gt_v1",
+  "video": "D:\\work\\制造业视频数据\\new_da_ma\\DJI_20260511100755_0008_D.MP4",
+  "duration_sec": 634.601,
+  "provenance": {
+    "type": "silver_bootstrap",
+    "source_file": "D:\\work\\制造业视频数据\\new_da_ma\\output\\detection\\DJI_20260511100755_0008_D\\final_events.json",
+    "warning": "Not human verified — for benchmark plumbing only"
+  },
+  "events": [
+    {
+      "gt_event_id": "evt_0001",
+      "start_time": 0.0,
+      "end_time": 1.502,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0002",
+      "start_time": 2.169,
+      "end_time": 3.67,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0003",
+      "start_time": 7.841,
+      "end_time": 9.343,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0004",
+      "start_time": 17.851,
+      "end_time": 18.519,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0005",
+      "start_time": 19.353,
+      "end_time": 22.189,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0006",
+      "start_time": 22.523,
+      "end_time": 23.69,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0007",
+      "start_time": 31.532,
+      "end_time": 32.199,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0008",
+      "start_time": 47.214,
+      "end_time": 47.881,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0009",
+      "start_time": 52.553,
+      "end_time": 53.22,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0010",
+      "start_time": 42.209,
+      "end_time": 43.21,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0011",
+      "start_time": 43.21,
+      "end_time": 44.211,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0012",
+      "start_time": 48.549,
+      "end_time": 49.383,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0013",
+      "start_time": 49.716,
+      "end_time": 51.385,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0014",
+      "start_time": 50.217,
+      "end_time": 51.051,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0015",
+      "start_time": 52.052,
+      "end_time": 53.053,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0016",
+      "start_time": 53.053,
+      "end_time": 58.058,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0017",
+      "start_time": 58.559,
+      "end_time": 59.56,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0018",
+      "start_time": 69.403,
+      "end_time": 70.404,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0019",
+      "start_time": 74.908,
+      "end_time": 79.079,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0020",
+      "start_time": 85.419,
+      "end_time": 94.595,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0021",
+      "start_time": 98.932,
+      "end_time": 99.6,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0022",
+      "start_time": 92.926,
+      "end_time": 94.428,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0023",
+      "start_time": 94.094,
+      "end_time": 94.761,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0024",
+      "start_time": 94.261,
+      "end_time": 98.765,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0025",
+      "start_time": 94.595,
+      "end_time": 98.599,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0026",
+      "start_time": 99.933,
+      "end_time": 104.104,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0027",
+      "start_time": 101.268,
+      "end_time": 103.103,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0028",
+      "start_time": 103.937,
+      "end_time": 110.444,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0029",
+      "start_time": 104.104,
+      "end_time": 106.607,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0030",
+      "start_time": 126.793,
+      "end_time": 127.628,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0031",
+      "start_time": 138.639,
+      "end_time": 139.806,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0032",
+      "start_time": 150.651,
+      "end_time": 151.318,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0033",
+      "start_time": 156.156,
+      "end_time": 156.823,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0034",
+      "start_time": 158.158,
+      "end_time": 159.159,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0035",
+      "start_time": 160.994,
+      "end_time": 162.996,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0036",
+      "start_time": 171.338,
+      "end_time": 172.005,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0037",
+      "start_time": 182.349,
+      "end_time": 183.183,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0038",
+      "start_time": 214.381,
+      "end_time": 215.048,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0039",
+      "start_time": 204.538,
+      "end_time": 206.206,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0040",
+      "start_time": 215.215,
+      "end_time": 218.719,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0041",
+      "start_time": 231.565,
+      "end_time": 232.232,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0042",
+      "start_time": 235.736,
+      "end_time": 236.403,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0043",
+      "start_time": 233.4,
+      "end_time": 235.068,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0044",
+      "start_time": 237.905,
+      "end_time": 238.572,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0045",
+      "start_time": 240.073,
+      "end_time": 241.408,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0046",
+      "start_time": 241.742,
+      "end_time": 242.91,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0047",
+      "start_time": 244.578,
+      "end_time": 247.915,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0048",
+      "start_time": 248.582,
+      "end_time": 251.585,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0049",
+      "start_time": 254.755,
+      "end_time": 259.76,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0050",
+      "start_time": 257.591,
+      "end_time": 260.594,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0051",
+      "start_time": 257.591,
+      "end_time": 258.258,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0052",
+      "start_time": 262.93,
+      "end_time": 265.098,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0053",
+      "start_time": 265.432,
+      "end_time": 269.77,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0054",
+      "start_time": 266.433,
+      "end_time": 269.603,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0055",
+      "start_time": 271.605,
+      "end_time": 274.608,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0056",
+      "start_time": 276.109,
+      "end_time": 279.112,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0057",
+      "start_time": 280.948,
+      "end_time": 283.116,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0058",
+      "start_time": 284.785,
+      "end_time": 287.454,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0059",
+      "start_time": 285.118,
+      "end_time": 287.287,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0060",
+      "start_time": 288.789,
+      "end_time": 291.291,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0061",
+      "start_time": 291.959,
+      "end_time": 294.461,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0062",
+      "start_time": 295.629,
+      "end_time": 297.297,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0063",
+      "start_time": 296.964,
+      "end_time": 298.465,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0064",
+      "start_time": 299.633,
+      "end_time": 302.135,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0065",
+      "start_time": 303.136,
+      "end_time": 304.972,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0066",
+      "start_time": 304.638,
+      "end_time": 305.806,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0067",
+      "start_time": 311.645,
+      "end_time": 313.146,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0068",
+      "start_time": 313.981,
+      "end_time": 314.648,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0069",
+      "start_time": 315.148,
+      "end_time": 317.651,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0070",
+      "start_time": 318.986,
+      "end_time": 320.654,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0071",
+      "start_time": 319.152,
+      "end_time": 320.821,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0072",
+      "start_time": 319.987,
+      "end_time": 320.654,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0073",
+      "start_time": 330.831,
+      "end_time": 331.498,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0074",
+      "start_time": 348.348,
+      "end_time": 349.683,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0075",
+      "start_time": 355.355,
+      "end_time": 356.523,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0076",
+      "start_time": 363.197,
+      "end_time": 364.198,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0077",
+      "start_time": 323.156,
+      "end_time": 328.829,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0078",
+      "start_time": 331.498,
+      "end_time": 332.666,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0079",
+      "start_time": 332.499,
+      "end_time": 333.333,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0080",
+      "start_time": 358.192,
+      "end_time": 358.859,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0081",
+      "start_time": 362.196,
+      "end_time": 363.197,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0082",
+      "start_time": 377.878,
+      "end_time": 378.712,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0083",
+      "start_time": 370.037,
+      "end_time": 371.038,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0084",
+      "start_time": 378.378,
+      "end_time": 379.046,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0085",
+      "start_time": 385.552,
+      "end_time": 386.22,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0086",
+      "start_time": 379.046,
+      "end_time": 381.048,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0087",
+      "start_time": 387.721,
+      "end_time": 388.388,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0088",
+      "start_time": 389.056,
+      "end_time": 390.891,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0089",
+      "start_time": 393.56,
+      "end_time": 394.561,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0090",
+      "start_time": 394.728,
+      "end_time": 396.063,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0091",
+      "start_time": 396.563,
+      "end_time": 403.403,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0092",
+      "start_time": 397.564,
+      "end_time": 398.899,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0093",
+      "start_time": 404.404,
+      "end_time": 415.916,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0094",
+      "start_time": 423.257,
+      "end_time": 423.924,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0095",
+      "start_time": 406.907,
+      "end_time": 412.746,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0096",
+      "start_time": 413.413,
+      "end_time": 420.921,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0097",
+      "start_time": 414.248,
+      "end_time": 423.09,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0098",
+      "start_time": 424.758,
+      "end_time": 425.425,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0099",
+      "start_time": 431.598,
+      "end_time": 432.266,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0100",
+      "start_time": 434.434,
+      "end_time": 435.269,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0101",
+      "start_time": 435.936,
+      "end_time": 437.938,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0102",
+      "start_time": 437.437,
+      "end_time": 439.94,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0103",
+      "start_time": 445.946,
+      "end_time": 446.613,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0104",
+      "start_time": 443.443,
+      "end_time": 444.111,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0105",
+      "start_time": 451.785,
+      "end_time": 452.452,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0106",
+      "start_time": 444.444,
+      "end_time": 446.28,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0107",
+      "start_time": 444.778,
+      "end_time": 445.946,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0108",
+      "start_time": 450.117,
+      "end_time": 451.952,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0109",
+      "start_time": 450.45,
+      "end_time": 452.619,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0110",
+      "start_time": 457.124,
+      "end_time": 458.292,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0111",
+      "start_time": 461.962,
+      "end_time": 462.629,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0112",
+      "start_time": 470.971,
+      "end_time": 471.638,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0113",
+      "start_time": 466.633,
+      "end_time": 467.301,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0114",
+      "start_time": 474.641,
+      "end_time": 475.309,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0115",
+      "start_time": 469.803,
+      "end_time": 471.138,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0116",
+      "start_time": 469.803,
+      "end_time": 470.47,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0117",
+      "start_time": 470.137,
+      "end_time": 471.638,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0118",
+      "start_time": 483.15,
+      "end_time": 483.817,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0119",
+      "start_time": 484.651,
+      "end_time": 485.319,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0120",
+      "start_time": 484.651,
+      "end_time": 485.319,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0121",
+      "start_time": 492.659,
+      "end_time": 493.327,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0122",
+      "start_time": 493.66,
+      "end_time": 495.162,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0123",
+      "start_time": 495.495,
+      "end_time": 496.33,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0124",
+      "start_time": 503.003,
+      "end_time": 504.505,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0125",
+      "start_time": 503.17,
+      "end_time": 504.505,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0126",
+      "start_time": 504.171,
+      "end_time": 505.005,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0127",
+      "start_time": 512.179,
+      "end_time": 513.013,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0128",
+      "start_time": 513.013,
+      "end_time": 514.348,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0129",
+      "start_time": 521.021,
+      "end_time": 523.69,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0130",
+      "start_time": 524.858,
+      "end_time": 526.026,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0131",
+      "start_time": 525.692,
+      "end_time": 527.528,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0132",
+      "start_time": 526.693,
+      "end_time": 527.361,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0133",
+      "start_time": 527.361,
+      "end_time": 528.362,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0134",
+      "start_time": 529.863,
+      "end_time": 531.698,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0135",
+      "start_time": 532.366,
+      "end_time": 535.536,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0136",
+      "start_time": 538.539,
+      "end_time": 539.206,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0137",
+      "start_time": 557.057,
+      "end_time": 558.225,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0138",
+      "start_time": 561.395,
+      "end_time": 562.396,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0139",
+      "start_time": 607.274,
+      "end_time": 609.443,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0140",
+      "start_time": 612.779,
+      "end_time": 613.447,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0141",
+      "start_time": 614.781,
+      "end_time": 615.449,
+      "should_mask": true,
+      "label": "face_presence"
+    },
+    {
+      "gt_event_id": "evt_0142",
+      "start_time": 633.467,
+      "end_time": 634.601,
+      "should_mask": true,
+      "label": "face_presence"
+    }
+  ],
+  "clips": []
+}

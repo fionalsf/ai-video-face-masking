@@ -1,0 +1,36 @@
+"""Event-level rule hints (force downgrade to Review)."""
+
+from __future__ import annotations
+
+
+def box_cy_ratio(bbox: list[float], frame_h: int) -> float:
+    y1, y2 = bbox[1], bbox[3]
+    return ((y1 + y2) / 2.0) / max(1.0, frame_h)
+
+
+def box_touches_edge(bbox: list[float], frame_w: int, frame_h: int, margin: float = 5.0) -> bool:
+    x1, y1, x2, y2 = bbox
+    return x1 <= margin or y1 <= margin or x2 >= frame_w - margin or y2 >= frame_h - margin
+
+
+def suggest_rule_hints(
+    chunk: list[dict],
+    frame_h: int,
+    frame_w: int,
+    peak_conf: float,
+    workzone_cy_ratio: float = 0.60,
+) -> list[str]:
+    hints = []
+    peak_det = max(chunk, key=lambda d: d["conf"])
+    bbox = peak_det["bbox"]
+
+    if box_cy_ratio(bbox, frame_h) > workzone_cy_ratio:
+        hints.append("workzone_low")
+    if box_touches_edge(bbox, frame_w, frame_h) and peak_conf < 0.85:
+        hints.append("edge_clip")
+    w = max(1.0, bbox[2] - bbox[0])
+    h = max(1.0, bbox[3] - bbox[1])
+    ar = w / h
+    if ar < 0.45 or ar > 2.0:
+        hints.append("aspect_ratio")
+    return hints
