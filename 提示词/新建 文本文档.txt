@@ -1,0 +1,19 @@
+以后每次开新 Agent。
+
+第一句话就是：
+
+当前任务属于哪一种模式？
+
+例如：
+
+Run Only
+
+或者
+
+Recovery Analysis
+
+或者
+
+Development
+
+千万不要混着来。

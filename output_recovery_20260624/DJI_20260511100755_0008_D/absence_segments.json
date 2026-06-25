@@ -1,0 +1,2775 @@
+{
+  "generated_at": "2026-06-24 15:48:06",
+  "hard_split_gap_sec": 3.0,
+  "fps": 29.97002997002997,
+  "track_count": 116,
+  "absence_segment_count": 27,
+  "presence_segment_count": 143,
+  "tracks": [
+    {
+      "track_id": 1,
+      "detection_count": 7,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0001_00",
+          "track_id": 1,
+          "segment_index": 0,
+          "detection_count": 7,
+          "start_time": 0.0,
+          "end_time": 1.001,
+          "start_frame": 0,
+          "end_frame": 30
+        }
+      ]
+    },
+    {
+      "track_id": 4,
+      "detection_count": 5,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0004_00",
+          "track_id": 4,
+          "segment_index": 0,
+          "detection_count": 5,
+          "start_time": 2.502,
+          "end_time": 3.17,
+          "start_frame": 75,
+          "end_frame": 95
+        }
+      ]
+    },
+    {
+      "track_id": 11,
+      "detection_count": 4,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0011_00",
+          "track_id": 11,
+          "segment_index": 0,
+          "detection_count": 4,
+          "start_time": 8.008,
+          "end_time": 8.675,
+          "start_frame": 240,
+          "end_frame": 260
+        }
+      ]
+    },
+    {
+      "track_id": 21,
+      "detection_count": 13,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0021_00",
+          "track_id": 21,
+          "segment_index": 0,
+          "detection_count": 13,
+          "start_time": 19.52,
+          "end_time": 21.855,
+          "start_frame": 585,
+          "end_frame": 655
+        }
+      ]
+    },
+    {
+      "track_id": 24,
+      "detection_count": 1,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0024_00",
+          "track_id": 24,
+          "segment_index": 0,
+          "detection_count": 1,
+          "start_time": 23.19,
+          "end_time": 23.19,
+          "start_frame": 695,
+          "end_frame": 695
+        }
+      ]
+    },
+    {
+      "track_id": 27,
+      "detection_count": 1,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0027_00",
+          "track_id": 27,
+          "segment_index": 0,
+          "detection_count": 1,
+          "start_time": 31.698,
+          "end_time": 31.698,
+          "start_frame": 950,
+          "end_frame": 950
+        }
+      ]
+    },
+    {
+      "track_id": 39,
+      "detection_count": 3,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0039_00",
+          "track_id": 39,
+          "segment_index": 0,
+          "detection_count": 3,
+          "start_time": 42.543,
+          "end_time": 43.544,
+          "start_frame": 1275,
+          "end_frame": 1305
+        }
+      ]
+    },
+    {
+      "track_id": 40,
+      "detection_count": 1,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0040_00",
+          "track_id": 40,
+          "segment_index": 0,
+          "detection_count": 1,
+          "start_time": 42.876,
+          "end_time": 42.876,
+          "start_frame": 1285,
+          "end_frame": 1285
+        }
+      ]
+    },
+    {
+      "track_id": 50,
+      "detection_count": 2,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0050_00",
+          "track_id": 50,
+          "segment_index": 0,
+          "detection_count": 2,
+          "start_time": 48.715,
+          "end_time": 48.882,
+          "start_frame": 1460,
+          "end_frame": 1465
+        }
+      ]
+    },
+    {
+      "track_id": 54,
+      "detection_count": 4,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0054_00",
+          "track_id": 54,
+          "segment_index": 0,
+          "detection_count": 4,
+          "start_time": 50.05,
+          "end_time": 50.884,
+          "start_frame": 1500,
+          "end_frame": 1525
+        }
+      ]
+    },
+    {
+      "track_id": 55,
+      "detection_count": 2,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0055_00",
+          "track_id": 55,
+          "segment_index": 0,
+          "detection_count": 2,
+          "start_time": 50.55,
+          "end_time": 52.886,
+          "start_frame": 1515,
+          "end_frame": 1585
+        }
+      ]
+    },
+    {
+      "track_id": 63,
+      "detection_count": 2,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0063_00",
+          "track_id": 63,
+          "segment_index": 0,
+          "detection_count": 2,
+          "start_time": 52.219,
+          "end_time": 52.553,
+          "start_frame": 1565,
+          "end_frame": 1575
+        }
+      ]
+    },
+    {
+      "track_id": 66,
+      "detection_count": 28,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0066_00",
+          "track_id": 66,
+          "segment_index": 0,
+          "detection_count": 28,
+          "start_time": 53.22,
+          "end_time": 57.724,
+          "start_frame": 1595,
+          "end_frame": 1730
+        }
+      ]
+    },
+    {
+      "track_id": 68,
+      "detection_count": 3,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0068_00",
+          "track_id": 68,
+          "segment_index": 0,
+          "detection_count": 3,
+          "start_time": 58.725,
+          "end_time": 59.059,
+          "start_frame": 1760,
+          "end_frame": 1770
+        }
+      ]
+    },
+    {
+      "track_id": 72,
+      "detection_count": 4,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0072_00",
+          "track_id": 72,
+          "segment_index": 0,
+          "detection_count": 4,
+          "start_time": 69.57,
+          "end_time": 70.07,
+          "start_frame": 2085,
+          "end_frame": 2100
+        }
+      ]
+    },
+    {
+      "track_id": 75,
+      "detection_count": 22,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0075_00",
+          "track_id": 75,
+          "segment_index": 0,
+          "detection_count": 22,
+          "start_time": 75.075,
+          "end_time": 78.579,
+          "start_frame": 2250,
+          "end_frame": 2355
+        }
+      ]
+    },
+    {
+      "track_id": 78,
+      "detection_count": 53,
+      "presence_segment_count": 2,
+      "absence_segment_count": 1,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0078_00",
+          "track_id": 78,
+          "segment_index": 0,
+          "detection_count": 52,
+          "start_time": 85.585,
+          "end_time": 94.094,
+          "start_frame": 2565,
+          "end_frame": 2820
+        },
+        {
+          "presence_segment_id": "pres_0078_01",
+          "track_id": 78,
+          "segment_index": 1,
+          "detection_count": 1,
+          "start_time": 99.099,
+          "end_time": 99.099,
+          "start_frame": 2970,
+          "end_frame": 2970
+        }
+      ]
+    },
+    {
+      "track_id": 79,
+      "detection_count": 6,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0079_00",
+          "track_id": 79,
+          "segment_index": 0,
+          "detection_count": 6,
+          "start_time": 93.093,
+          "end_time": 93.927,
+          "start_frame": 2790,
+          "end_frame": 2815
+        }
+      ]
+    },
+    {
+      "track_id": 81,
+      "detection_count": 24,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0081_00",
+          "track_id": 81,
+          "segment_index": 0,
+          "detection_count": 24,
+          "start_time": 94.428,
+          "end_time": 98.265,
+          "start_frame": 2830,
+          "end_frame": 2945
+        }
+      ]
+    },
+    {
+      "track_id": 85,
+      "detection_count": 15,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0085_00",
+          "track_id": 85,
+          "segment_index": 0,
+          "detection_count": 15,
+          "start_time": 94.761,
+          "end_time": 97.097,
+          "start_frame": 2840,
+          "end_frame": 2910
+        }
+      ]
+    },
+    {
+      "track_id": 90,
+      "detection_count": 4,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0090_00",
+          "track_id": 90,
+          "segment_index": 0,
+          "detection_count": 4,
+          "start_time": 97.597,
+          "end_time": 98.098,
+          "start_frame": 2925,
+          "end_frame": 2940
+        }
+      ]
+    },
+    {
+      "track_id": 104,
+      "detection_count": 2,
+      "presence_segment_count": 2,
+      "absence_segment_count": 1,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0104_00",
+          "track_id": 104,
+          "segment_index": 0,
+          "detection_count": 1,
+          "start_time": 100.1,
+          "end_time": 100.1,
+          "start_frame": 3000,
+          "end_frame": 3000
+        },
+        {
+          "presence_segment_id": "pres_0104_01",
+          "track_id": 104,
+          "segment_index": 1,
+          "detection_count": 1,
+          "start_time": 103.603,
+          "end_time": 103.603,
+          "start_frame": 3105,
+          "end_frame": 3105
+        }
+      ]
+    },
+    {
+      "track_id": 114,
+      "detection_count": 8,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0114_00",
+          "track_id": 114,
+          "segment_index": 0,
+          "detection_count": 8,
+          "start_time": 101.435,
+          "end_time": 102.603,
+          "start_frame": 3040,
+          "end_frame": 3075
+        }
+      ]
+    },
+    {
+      "track_id": 129,
+      "detection_count": 36,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0129_00",
+          "track_id": 129,
+          "segment_index": 0,
+          "detection_count": 36,
+          "start_time": 104.104,
+          "end_time": 109.943,
+          "start_frame": 3120,
+          "end_frame": 3295
+        }
+      ]
+    },
+    {
+      "track_id": 131,
+      "detection_count": 11,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0131_00",
+          "track_id": 131,
+          "segment_index": 0,
+          "detection_count": 11,
+          "start_time": 104.271,
+          "end_time": 105.939,
+          "start_frame": 3125,
+          "end_frame": 3175
+        }
+      ]
+    },
+    {
+      "track_id": 134,
+      "detection_count": 2,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0134_00",
+          "track_id": 134,
+          "segment_index": 0,
+          "detection_count": 2,
+          "start_time": 107.441,
+          "end_time": 107.774,
+          "start_frame": 3220,
+          "end_frame": 3230
+        }
+      ]
+    },
+    {
+      "track_id": 151,
+      "detection_count": 1,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0151_00",
+          "track_id": 151,
+          "segment_index": 0,
+          "detection_count": 1,
+          "start_time": 127.127,
+          "end_time": 127.127,
+          "start_frame": 3810,
+          "end_frame": 3810
+        }
+      ]
+    },
+    {
+      "track_id": 167,
+      "detection_count": 3,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0167_00",
+          "track_id": 167,
+          "segment_index": 0,
+          "detection_count": 3,
+          "start_time": 158.325,
+          "end_time": 158.659,
+          "start_frame": 4745,
+          "end_frame": 4755
+        }
+      ]
+    },
+    {
+      "track_id": 175,
+      "detection_count": 8,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0175_00",
+          "track_id": 175,
+          "segment_index": 0,
+          "detection_count": 8,
+          "start_time": 161.328,
+          "end_time": 162.496,
+          "start_frame": 4835,
+          "end_frame": 4870
+        }
+      ]
+    },
+    {
+      "track_id": 185,
+      "detection_count": 2,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0185_00",
+          "track_id": 185,
+          "segment_index": 0,
+          "detection_count": 2,
+          "start_time": 181.014,
+          "end_time": 183.35,
+          "start_frame": 5425,
+          "end_frame": 5495
+        }
+      ]
+    },
+    {
+      "track_id": 194,
+      "detection_count": 3,
+      "presence_segment_count": 2,
+      "absence_segment_count": 1,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0194_00",
+          "track_id": 194,
+          "segment_index": 0,
+          "detection_count": 2,
+          "start_time": 182.516,
+          "end_time": 182.683,
+          "start_frame": 5470,
+          "end_frame": 5475
+        },
+        {
+          "presence_segment_id": "pres_0194_01",
+          "track_id": 194,
+          "segment_index": 1,
+          "detection_count": 1,
+          "start_time": 214.548,
+          "end_time": 214.548,
+          "start_frame": 6430,
+          "end_frame": 6430
+        }
+      ]
+    },
+    {
+      "track_id": 204,
+      "detection_count": 7,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0204_00",
+          "track_id": 204,
+          "segment_index": 0,
+          "detection_count": 7,
+          "start_time": 204.704,
+          "end_time": 205.706,
+          "start_frame": 6135,
+          "end_frame": 6165
+        }
+      ]
+    },
+    {
+      "track_id": 213,
+      "detection_count": 17,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0213_00",
+          "track_id": 213,
+          "segment_index": 0,
+          "detection_count": 17,
+          "start_time": 215.382,
+          "end_time": 218.719,
+          "start_frame": 6455,
+          "end_frame": 6555
+        }
+      ]
+    },
+    {
+      "track_id": 221,
+      "detection_count": 4,
+      "presence_segment_count": 2,
+      "absence_segment_count": 1,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0221_00",
+          "track_id": 221,
+          "segment_index": 0,
+          "detection_count": 2,
+          "start_time": 231.565,
+          "end_time": 231.732,
+          "start_frame": 6940,
+          "end_frame": 6945
+        },
+        {
+          "presence_segment_id": "pres_0221_01",
+          "track_id": 221,
+          "segment_index": 1,
+          "detection_count": 2,
+          "start_time": 236.069,
+          "end_time": 236.236,
+          "start_frame": 7075,
+          "end_frame": 7080
+        }
+      ]
+    },
+    {
+      "track_id": 229,
+      "detection_count": 5,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0229_00",
+          "track_id": 229,
+          "segment_index": 0,
+          "detection_count": 5,
+          "start_time": 233.4,
+          "end_time": 234.234,
+          "start_frame": 6995,
+          "end_frame": 7020
+        }
+      ]
+    },
+    {
+      "track_id": 231,
+      "detection_count": 1,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0231_00",
+          "track_id": 231,
+          "segment_index": 0,
+          "detection_count": 1,
+          "start_time": 236.903,
+          "end_time": 236.903,
+          "start_frame": 7100,
+          "end_frame": 7100
+        }
+      ]
+    },
+    {
+      "track_id": 234,
+      "detection_count": 3,
+      "presence_segment_count": 2,
+      "absence_segment_count": 1,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0234_00",
+          "track_id": 234,
+          "segment_index": 0,
+          "detection_count": 1,
+          "start_time": 238.405,
+          "end_time": 238.405,
+          "start_frame": 7145,
+          "end_frame": 7145
+        },
+        {
+          "presence_segment_id": "pres_0234_01",
+          "track_id": 234,
+          "segment_index": 1,
+          "detection_count": 2,
+          "start_time": 241.908,
+          "end_time": 242.242,
+          "start_frame": 7250,
+          "end_frame": 7260
+        }
+      ]
+    },
+    {
+      "track_id": 236,
+      "detection_count": 6,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0236_00",
+          "track_id": 236,
+          "segment_index": 0,
+          "detection_count": 6,
+          "start_time": 239.573,
+          "end_time": 240.907,
+          "start_frame": 7180,
+          "end_frame": 7220
+        }
+      ]
+    },
+    {
+      "track_id": 240,
+      "detection_count": 15,
+      "presence_segment_count": 2,
+      "absence_segment_count": 1,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0240_00",
+          "track_id": 240,
+          "segment_index": 0,
+          "detection_count": 1,
+          "start_time": 241.241,
+          "end_time": 241.241,
+          "start_frame": 7230,
+          "end_frame": 7230
+        },
+        {
+          "presence_segment_id": "pres_0240_01",
+          "track_id": 240,
+          "segment_index": 1,
+          "detection_count": 14,
+          "start_time": 249.416,
+          "end_time": 251.918,
+          "start_frame": 7475,
+          "end_frame": 7550
+        }
+      ]
+    },
+    {
+      "track_id": 242,
+      "detection_count": 4,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0242_00",
+          "track_id": 242,
+          "segment_index": 0,
+          "detection_count": 4,
+          "start_time": 241.908,
+          "end_time": 242.576,
+          "start_frame": 7250,
+          "end_frame": 7270
+        }
+      ]
+    },
+    {
+      "track_id": 245,
+      "detection_count": 13,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0245_00",
+          "track_id": 245,
+          "segment_index": 0,
+          "detection_count": 13,
+          "start_time": 244.745,
+          "end_time": 247.581,
+          "start_frame": 7335,
+          "end_frame": 7420
+        }
+      ]
+    },
+    {
+      "track_id": 254,
+      "detection_count": 12,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0254_00",
+          "track_id": 254,
+          "segment_index": 0,
+          "detection_count": 12,
+          "start_time": 254.921,
+          "end_time": 256.923,
+          "start_frame": 7640,
+          "end_frame": 7700
+        }
+      ]
+    },
+    {
+      "track_id": 255,
+      "detection_count": 9,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0255_00",
+          "track_id": 255,
+          "segment_index": 0,
+          "detection_count": 9,
+          "start_time": 257.424,
+          "end_time": 258.759,
+          "start_frame": 7715,
+          "end_frame": 7755
+        }
+      ]
+    },
+    {
+      "track_id": 257,
+      "detection_count": 12,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0257_00",
+          "track_id": 257,
+          "segment_index": 0,
+          "detection_count": 12,
+          "start_time": 257.757,
+          "end_time": 259.593,
+          "start_frame": 7725,
+          "end_frame": 7780
+        }
+      ]
+    },
+    {
+      "track_id": 266,
+      "detection_count": 11,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0266_00",
+          "track_id": 266,
+          "segment_index": 0,
+          "detection_count": 11,
+          "start_time": 262.929,
+          "end_time": 264.598,
+          "start_frame": 7880,
+          "end_frame": 7930
+        }
+      ]
+    },
+    {
+      "track_id": 268,
+      "detection_count": 16,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0268_00",
+          "track_id": 268,
+          "segment_index": 0,
+          "detection_count": 16,
+          "start_time": 266.6,
+          "end_time": 269.269,
+          "start_frame": 7990,
+          "end_frame": 8070
+        }
+      ]
+    },
+    {
+      "track_id": 272,
+      "detection_count": 1,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0272_00",
+          "track_id": 272,
+          "segment_index": 0,
+          "detection_count": 1,
+          "start_time": 270.604,
+          "end_time": 270.604,
+          "start_frame": 8110,
+          "end_frame": 8110
+        }
+      ]
+    },
+    {
+      "track_id": 273,
+      "detection_count": 15,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0273_00",
+          "track_id": 273,
+          "segment_index": 0,
+          "detection_count": 15,
+          "start_time": 271.772,
+          "end_time": 274.107,
+          "start_frame": 8145,
+          "end_frame": 8215
+        }
+      ]
+    },
+    {
+      "track_id": 276,
+      "detection_count": 16,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0276_00",
+          "track_id": 276,
+          "segment_index": 0,
+          "detection_count": 16,
+          "start_time": 276.276,
+          "end_time": 278.779,
+          "start_frame": 8280,
+          "end_frame": 8355
+        }
+      ]
+    },
+    {
+      "track_id": 278,
+      "detection_count": 10,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0278_00",
+          "track_id": 278,
+          "segment_index": 0,
+          "detection_count": 10,
+          "start_time": 281.114,
+          "end_time": 282.783,
+          "start_frame": 8425,
+          "end_frame": 8475
+        }
+      ]
+    },
+    {
+      "track_id": 279,
+      "detection_count": 12,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0279_00",
+          "track_id": 279,
+          "segment_index": 0,
+          "detection_count": 12,
+          "start_time": 284.951,
+          "end_time": 286.786,
+          "start_frame": 8540,
+          "end_frame": 8595
+        }
+      ]
+    },
+    {
+      "track_id": 280,
+      "detection_count": 7,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0280_00",
+          "track_id": 280,
+          "segment_index": 0,
+          "detection_count": 7,
+          "start_time": 285.285,
+          "end_time": 286.453,
+          "start_frame": 8550,
+          "end_frame": 8585
+        }
+      ]
+    },
+    {
+      "track_id": 281,
+      "detection_count": 12,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0281_00",
+          "track_id": 281,
+          "segment_index": 0,
+          "detection_count": 12,
+          "start_time": 288.788,
+          "end_time": 290.791,
+          "start_frame": 8655,
+          "end_frame": 8715
+        }
+      ]
+    },
+    {
+      "track_id": 282,
+      "detection_count": 12,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0282_00",
+          "track_id": 282,
+          "segment_index": 0,
+          "detection_count": 12,
+          "start_time": 292.292,
+          "end_time": 294.127,
+          "start_frame": 8760,
+          "end_frame": 8815
+        }
+      ]
+    },
+    {
+      "track_id": 283,
+      "detection_count": 17,
+      "presence_segment_count": 2,
+      "absence_segment_count": 1,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0283_00",
+          "track_id": 283,
+          "segment_index": 0,
+          "detection_count": 6,
+          "start_time": 295.962,
+          "end_time": 296.796,
+          "start_frame": 8870,
+          "end_frame": 8895
+        },
+        {
+          "presence_segment_id": "pres_0283_01",
+          "track_id": 283,
+          "segment_index": 1,
+          "detection_count": 11,
+          "start_time": 299.8,
+          "end_time": 301.468,
+          "start_frame": 8985,
+          "end_frame": 9035
+        }
+      ]
+    },
+    {
+      "track_id": 285,
+      "detection_count": 4,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0285_00",
+          "track_id": 285,
+          "segment_index": 0,
+          "detection_count": 4,
+          "start_time": 297.297,
+          "end_time": 297.964,
+          "start_frame": 8910,
+          "end_frame": 8930
+        }
+      ]
+    },
+    {
+      "track_id": 287,
+      "detection_count": 6,
+      "presence_segment_count": 4,
+      "absence_segment_count": 3,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0287_00",
+          "track_id": 287,
+          "segment_index": 0,
+          "detection_count": 1,
+          "start_time": 298.131,
+          "end_time": 298.131,
+          "start_frame": 8935,
+          "end_frame": 8935
+        },
+        {
+          "presence_segment_id": "pres_0287_01",
+          "track_id": 287,
+          "segment_index": 1,
+          "detection_count": 1,
+          "start_time": 301.468,
+          "end_time": 301.468,
+          "start_frame": 9035,
+          "end_frame": 9035
+        },
+        {
+          "presence_segment_id": "pres_0287_02",
+          "track_id": 287,
+          "segment_index": 2,
+          "detection_count": 3,
+          "start_time": 304.971,
+          "end_time": 305.305,
+          "start_frame": 9140,
+          "end_frame": 9150
+        },
+        {
+          "presence_segment_id": "pres_0287_03",
+          "track_id": 287,
+          "segment_index": 3,
+          "detection_count": 1,
+          "start_time": 316.149,
+          "end_time": 316.149,
+          "start_frame": 9475,
+          "end_frame": 9475
+        }
+      ]
+    },
+    {
+      "track_id": 290,
+      "detection_count": 7,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0290_00",
+          "track_id": 290,
+          "segment_index": 0,
+          "detection_count": 7,
+          "start_time": 303.136,
+          "end_time": 304.471,
+          "start_frame": 9085,
+          "end_frame": 9125
+        }
+      ]
+    },
+    {
+      "track_id": 297,
+      "detection_count": 1,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0297_00",
+          "track_id": 297,
+          "segment_index": 0,
+          "detection_count": 1,
+          "start_time": 310.977,
+          "end_time": 310.977,
+          "start_frame": 9320,
+          "end_frame": 9320
+        }
+      ]
+    },
+    {
+      "track_id": 299,
+      "detection_count": 5,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0299_00",
+          "track_id": 299,
+          "segment_index": 0,
+          "detection_count": 5,
+          "start_time": 311.978,
+          "end_time": 312.646,
+          "start_frame": 9350,
+          "end_frame": 9370
+        }
+      ]
+    },
+    {
+      "track_id": 306,
+      "detection_count": 7,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0306_00",
+          "track_id": 306,
+          "segment_index": 0,
+          "detection_count": 7,
+          "start_time": 315.649,
+          "end_time": 316.817,
+          "start_frame": 9460,
+          "end_frame": 9495
+        }
+      ]
+    },
+    {
+      "track_id": 312,
+      "detection_count": 8,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0312_00",
+          "track_id": 312,
+          "segment_index": 0,
+          "detection_count": 8,
+          "start_time": 318.985,
+          "end_time": 320.153,
+          "start_frame": 9560,
+          "end_frame": 9595
+        }
+      ]
+    },
+    {
+      "track_id": 315,
+      "detection_count": 6,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0315_00",
+          "track_id": 315,
+          "segment_index": 0,
+          "detection_count": 6,
+          "start_time": 319.986,
+          "end_time": 320.987,
+          "start_frame": 9590,
+          "end_frame": 9620
+        }
+      ]
+    },
+    {
+      "track_id": 317,
+      "detection_count": 2,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0317_00",
+          "track_id": 317,
+          "segment_index": 0,
+          "detection_count": 2,
+          "start_time": 320.487,
+          "end_time": 320.654,
+          "start_frame": 9605,
+          "end_frame": 9610
+        }
+      ]
+    },
+    {
+      "track_id": 319,
+      "detection_count": 10,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0319_00",
+          "track_id": 319,
+          "segment_index": 0,
+          "detection_count": 10,
+          "start_time": 323.323,
+          "end_time": 325.325,
+          "start_frame": 9690,
+          "end_frame": 9750
+        }
+      ]
+    },
+    {
+      "track_id": 322,
+      "detection_count": 1,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0322_00",
+          "track_id": 322,
+          "segment_index": 0,
+          "detection_count": 1,
+          "start_time": 327.16,
+          "end_time": 327.16,
+          "start_frame": 9805,
+          "end_frame": 9805
+        }
+      ]
+    },
+    {
+      "track_id": 330,
+      "detection_count": 5,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0330_00",
+          "track_id": 330,
+          "segment_index": 0,
+          "detection_count": 5,
+          "start_time": 332.666,
+          "end_time": 333.333,
+          "start_frame": 9970,
+          "end_frame": 9990
+        }
+      ]
+    },
+    {
+      "track_id": 333,
+      "detection_count": 7,
+      "presence_segment_count": 3,
+      "absence_segment_count": 2,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0333_00",
+          "track_id": 333,
+          "segment_index": 0,
+          "detection_count": 1,
+          "start_time": 335.168,
+          "end_time": 335.168,
+          "start_frame": 10045,
+          "end_frame": 10045
+        },
+        {
+          "presence_segment_id": "pres_0333_01",
+          "track_id": 333,
+          "segment_index": 1,
+          "detection_count": 2,
+          "start_time": 362.529,
+          "end_time": 362.696,
+          "start_frame": 10865,
+          "end_frame": 10870
+        },
+        {
+          "presence_segment_id": "pres_0333_02",
+          "track_id": 333,
+          "segment_index": 2,
+          "detection_count": 4,
+          "start_time": 380.547,
+          "end_time": 381.381,
+          "start_frame": 11405,
+          "end_frame": 11430
+        }
+      ]
+    },
+    {
+      "track_id": 349,
+      "detection_count": 3,
+      "presence_segment_count": 2,
+      "absence_segment_count": 1,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0349_00",
+          "track_id": 349,
+          "segment_index": 0,
+          "detection_count": 2,
+          "start_time": 346.846,
+          "end_time": 347.18,
+          "start_frame": 10395,
+          "end_frame": 10405
+        },
+        {
+          "presence_segment_id": "pres_0349_01",
+          "track_id": 349,
+          "segment_index": 1,
+          "detection_count": 1,
+          "start_time": 351.017,
+          "end_time": 351.017,
+          "start_frame": 10520,
+          "end_frame": 10520
+        }
+      ]
+    },
+    {
+      "track_id": 355,
+      "detection_count": 3,
+      "presence_segment_count": 2,
+      "absence_segment_count": 1,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0355_00",
+          "track_id": 355,
+          "segment_index": 0,
+          "detection_count": 2,
+          "start_time": 349.182,
+          "end_time": 349.516,
+          "start_frame": 10465,
+          "end_frame": 10475
+        },
+        {
+          "presence_segment_id": "pres_0355_01",
+          "track_id": 355,
+          "segment_index": 1,
+          "detection_count": 1,
+          "start_time": 356.022,
+          "end_time": 356.022,
+          "start_frame": 10670,
+          "end_frame": 10670
+        }
+      ]
+    },
+    {
+      "track_id": 363,
+      "detection_count": 3,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0363_00",
+          "track_id": 363,
+          "segment_index": 0,
+          "detection_count": 3,
+          "start_time": 363.363,
+          "end_time": 363.863,
+          "start_frame": 10890,
+          "end_frame": 10905
+        }
+      ]
+    },
+    {
+      "track_id": 367,
+      "detection_count": 3,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0367_00",
+          "track_id": 367,
+          "segment_index": 0,
+          "detection_count": 3,
+          "start_time": 370.203,
+          "end_time": 370.537,
+          "start_frame": 11095,
+          "end_frame": 11105
+        }
+      ]
+    },
+    {
+      "track_id": 378,
+      "detection_count": 2,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0378_00",
+          "track_id": 378,
+          "segment_index": 0,
+          "detection_count": 2,
+          "start_time": 385.051,
+          "end_time": 387.721,
+          "start_frame": 11540,
+          "end_frame": 11620
+        }
+      ]
+    },
+    {
+      "track_id": 384,
+      "detection_count": 4,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0384_00",
+          "track_id": 384,
+          "segment_index": 0,
+          "detection_count": 4,
+          "start_time": 389.723,
+          "end_time": 390.223,
+          "start_frame": 11680,
+          "end_frame": 11695
+        }
+      ]
+    },
+    {
+      "track_id": 387,
+      "detection_count": 4,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0387_00",
+          "track_id": 387,
+          "segment_index": 0,
+          "detection_count": 4,
+          "start_time": 393.393,
+          "end_time": 394.06,
+          "start_frame": 11790,
+          "end_frame": 11810
+        }
+      ]
+    },
+    {
+      "track_id": 389,
+      "detection_count": 1,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0389_00",
+          "track_id": 389,
+          "segment_index": 0,
+          "detection_count": 1,
+          "start_time": 395.896,
+          "end_time": 395.896,
+          "start_frame": 11865,
+          "end_frame": 11865
+        }
+      ]
+    },
+    {
+      "track_id": 391,
+      "detection_count": 17,
+      "presence_segment_count": 2,
+      "absence_segment_count": 1,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0391_00",
+          "track_id": 391,
+          "segment_index": 0,
+          "detection_count": 1,
+          "start_time": 396.73,
+          "end_time": 396.73,
+          "start_frame": 11890,
+          "end_frame": 11890
+        },
+        {
+          "presence_segment_id": "pres_0391_01",
+          "track_id": 391,
+          "segment_index": 1,
+          "detection_count": 16,
+          "start_time": 400.066,
+          "end_time": 402.736,
+          "start_frame": 11990,
+          "end_frame": 12070
+        }
+      ]
+    },
+    {
+      "track_id": 395,
+      "detection_count": 1,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0395_00",
+          "track_id": 395,
+          "segment_index": 0,
+          "detection_count": 1,
+          "start_time": 398.398,
+          "end_time": 398.398,
+          "start_frame": 11940,
+          "end_frame": 11940
+        }
+      ]
+    },
+    {
+      "track_id": 400,
+      "detection_count": 18,
+      "presence_segment_count": 4,
+      "absence_segment_count": 3,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0400_00",
+          "track_id": 400,
+          "segment_index": 0,
+          "detection_count": 2,
+          "start_time": 404.571,
+          "end_time": 404.738,
+          "start_frame": 12125,
+          "end_frame": 12130
+        },
+        {
+          "presence_segment_id": "pres_0400_01",
+          "track_id": 400,
+          "segment_index": 1,
+          "detection_count": 8,
+          "start_time": 408.074,
+          "end_time": 411.244,
+          "start_frame": 12230,
+          "end_frame": 12325
+        },
+        {
+          "presence_segment_id": "pres_0400_02",
+          "track_id": 400,
+          "segment_index": 2,
+          "detection_count": 7,
+          "start_time": 414.414,
+          "end_time": 415.415,
+          "start_frame": 12420,
+          "end_frame": 12450
+        },
+        {
+          "presence_segment_id": "pres_0400_03",
+          "track_id": 400,
+          "segment_index": 3,
+          "detection_count": 1,
+          "start_time": 423.423,
+          "end_time": 423.423,
+          "start_frame": 12690,
+          "end_frame": 12690
+        }
+      ]
+    },
+    {
+      "track_id": 411,
+      "detection_count": 10,
+      "presence_segment_count": 2,
+      "absence_segment_count": 1,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0411_00",
+          "track_id": 411,
+          "segment_index": 0,
+          "detection_count": 1,
+          "start_time": 414.414,
+          "end_time": 414.414,
+          "start_frame": 12420,
+          "end_frame": 12420
+        },
+        {
+          "presence_segment_id": "pres_0411_01",
+          "track_id": 411,
+          "segment_index": 1,
+          "detection_count": 9,
+          "start_time": 417.751,
+          "end_time": 421.588,
+          "start_frame": 12520,
+          "end_frame": 12635
+        }
+      ]
+    },
+    {
+      "track_id": 414,
+      "detection_count": 4,
+      "presence_segment_count": 2,
+      "absence_segment_count": 1,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0414_00",
+          "track_id": 414,
+          "segment_index": 0,
+          "detection_count": 1,
+          "start_time": 416.249,
+          "end_time": 416.249,
+          "start_frame": 12475,
+          "end_frame": 12475
+        },
+        {
+          "presence_segment_id": "pres_0414_01",
+          "track_id": 414,
+          "segment_index": 1,
+          "detection_count": 3,
+          "start_time": 434.267,
+          "end_time": 434.601,
+          "start_frame": 13015,
+          "end_frame": 13025
+        }
+      ]
+    },
+    {
+      "track_id": 420,
+      "detection_count": 4,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0420_00",
+          "track_id": 420,
+          "segment_index": 0,
+          "detection_count": 4,
+          "start_time": 422.255,
+          "end_time": 423.089,
+          "start_frame": 12655,
+          "end_frame": 12680
+        }
+      ]
+    },
+    {
+      "track_id": 423,
+      "detection_count": 2,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0423_00",
+          "track_id": 423,
+          "segment_index": 0,
+          "detection_count": 2,
+          "start_time": 424.925,
+          "end_time": 425.091,
+          "start_frame": 12735,
+          "end_frame": 12740
+        }
+      ]
+    },
+    {
+      "track_id": 430,
+      "detection_count": 2,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0430_00",
+          "track_id": 430,
+          "segment_index": 0,
+          "detection_count": 2,
+          "start_time": 434.601,
+          "end_time": 434.768,
+          "start_frame": 13025,
+          "end_frame": 13030
+        }
+      ]
+    },
+    {
+      "track_id": 437,
+      "detection_count": 19,
+      "presence_segment_count": 2,
+      "absence_segment_count": 1,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0437_00",
+          "track_id": 437,
+          "segment_index": 0,
+          "detection_count": 18,
+          "start_time": 436.269,
+          "end_time": 439.439,
+          "start_frame": 13075,
+          "end_frame": 13170
+        },
+        {
+          "presence_segment_id": "pres_0437_01",
+          "track_id": 437,
+          "segment_index": 1,
+          "detection_count": 1,
+          "start_time": 446.112,
+          "end_time": 446.112,
+          "start_frame": 13370,
+          "end_frame": 13370
+        }
+      ]
+    },
+    {
+      "track_id": 438,
+      "detection_count": 6,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0438_00",
+          "track_id": 438,
+          "segment_index": 0,
+          "detection_count": 6,
+          "start_time": 436.269,
+          "end_time": 438.772,
+          "start_frame": 13075,
+          "end_frame": 13150
+        }
+      ]
+    },
+    {
+      "track_id": 442,
+      "detection_count": 2,
+      "presence_segment_count": 2,
+      "absence_segment_count": 1,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0442_00",
+          "track_id": 442,
+          "segment_index": 0,
+          "detection_count": 1,
+          "start_time": 443.61,
+          "end_time": 443.61,
+          "start_frame": 13295,
+          "end_frame": 13295
+        },
+        {
+          "presence_segment_id": "pres_0442_01",
+          "track_id": 442,
+          "segment_index": 1,
+          "detection_count": 1,
+          "start_time": 452.285,
+          "end_time": 452.285,
+          "start_frame": 13555,
+          "end_frame": 13555
+        }
+      ]
+    },
+    {
+      "track_id": 445,
+      "detection_count": 5,
+      "presence_segment_count": 2,
+      "absence_segment_count": 1,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0445_00",
+          "track_id": 445,
+          "segment_index": 0,
+          "detection_count": 3,
+          "start_time": 444.945,
+          "end_time": 445.445,
+          "start_frame": 13335,
+          "end_frame": 13350
+        },
+        {
+          "presence_segment_id": "pres_0445_01",
+          "track_id": 445,
+          "segment_index": 1,
+          "detection_count": 2,
+          "start_time": 450.283,
+          "end_time": 450.784,
+          "start_frame": 13495,
+          "end_frame": 13510
+        }
+      ]
+    },
+    {
+      "track_id": 450,
+      "detection_count": 6,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0450_00",
+          "track_id": 450,
+          "segment_index": 0,
+          "detection_count": 6,
+          "start_time": 450.283,
+          "end_time": 452.452,
+          "start_frame": 13495,
+          "end_frame": 13560
+        }
+      ]
+    },
+    {
+      "track_id": 452,
+      "detection_count": 1,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0452_00",
+          "track_id": 452,
+          "segment_index": 0,
+          "detection_count": 1,
+          "start_time": 454.12,
+          "end_time": 454.12,
+          "start_frame": 13610,
+          "end_frame": 13610
+        }
+      ]
+    },
+    {
+      "track_id": 459,
+      "detection_count": 2,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0459_00",
+          "track_id": 459,
+          "segment_index": 0,
+          "detection_count": 2,
+          "start_time": 457.457,
+          "end_time": 457.624,
+          "start_frame": 13710,
+          "end_frame": 13715
+        }
+      ]
+    },
+    {
+      "track_id": 475,
+      "detection_count": 5,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0475_00",
+          "track_id": 475,
+          "segment_index": 0,
+          "detection_count": 5,
+          "start_time": 469.803,
+          "end_time": 470.971,
+          "start_frame": 14080,
+          "end_frame": 14115
+        }
+      ]
+    },
+    {
+      "track_id": 477,
+      "detection_count": 5,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0477_00",
+          "track_id": 477,
+          "segment_index": 0,
+          "detection_count": 5,
+          "start_time": 470.136,
+          "end_time": 470.971,
+          "start_frame": 14090,
+          "end_frame": 14115
+        }
+      ]
+    },
+    {
+      "track_id": 483,
+      "detection_count": 1,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0483_00",
+          "track_id": 483,
+          "segment_index": 0,
+          "detection_count": 1,
+          "start_time": 473.807,
+          "end_time": 473.807,
+          "start_frame": 14200,
+          "end_frame": 14200
+        }
+      ]
+    },
+    {
+      "track_id": 490,
+      "detection_count": 2,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0490_00",
+          "track_id": 490,
+          "segment_index": 0,
+          "detection_count": 2,
+          "start_time": 484.818,
+          "end_time": 484.985,
+          "start_frame": 14530,
+          "end_frame": 14535
+        }
+      ]
+    },
+    {
+      "track_id": 491,
+      "detection_count": 1,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0491_00",
+          "track_id": 491,
+          "segment_index": 0,
+          "detection_count": 1,
+          "start_time": 484.818,
+          "end_time": 484.818,
+          "start_frame": 14530,
+          "end_frame": 14530
+        }
+      ]
+    },
+    {
+      "track_id": 503,
+      "detection_count": 14,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0503_00",
+          "track_id": 503,
+          "segment_index": 0,
+          "detection_count": 14,
+          "start_time": 491.658,
+          "end_time": 496.83,
+          "start_frame": 14735,
+          "end_frame": 14890
+        }
+      ]
+    },
+    {
+      "track_id": 535,
+      "detection_count": 5,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0535_00",
+          "track_id": 535,
+          "segment_index": 0,
+          "detection_count": 5,
+          "start_time": 503.336,
+          "end_time": 504.004,
+          "start_frame": 15085,
+          "end_frame": 15105
+        }
+      ]
+    },
+    {
+      "track_id": 536,
+      "detection_count": 5,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0536_00",
+          "track_id": 536,
+          "segment_index": 0,
+          "detection_count": 5,
+          "start_time": 503.336,
+          "end_time": 504.004,
+          "start_frame": 15085,
+          "end_frame": 15105
+        }
+      ]
+    },
+    {
+      "track_id": 538,
+      "detection_count": 1,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0538_00",
+          "track_id": 538,
+          "segment_index": 0,
+          "detection_count": 1,
+          "start_time": 504.504,
+          "end_time": 504.504,
+          "start_frame": 15120,
+          "end_frame": 15120
+        }
+      ]
+    },
+    {
+      "track_id": 542,
+      "detection_count": 1,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0542_00",
+          "track_id": 542,
+          "segment_index": 0,
+          "detection_count": 1,
+          "start_time": 505.505,
+          "end_time": 505.505,
+          "start_frame": 15150,
+          "end_frame": 15150
+        }
+      ]
+    },
+    {
+      "track_id": 555,
+      "detection_count": 2,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0555_00",
+          "track_id": 555,
+          "segment_index": 0,
+          "detection_count": 2,
+          "start_time": 512.345,
+          "end_time": 512.512,
+          "start_frame": 15355,
+          "end_frame": 15360
+        }
+      ]
+    },
+    {
+      "track_id": 565,
+      "detection_count": 6,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0565_00",
+          "track_id": 565,
+          "segment_index": 0,
+          "detection_count": 6,
+          "start_time": 513.179,
+          "end_time": 514.014,
+          "start_frame": 15380,
+          "end_frame": 15405
+        }
+      ]
+    },
+    {
+      "track_id": 574,
+      "detection_count": 14,
+      "presence_segment_count": 2,
+      "absence_segment_count": 1,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0574_00",
+          "track_id": 574,
+          "segment_index": 0,
+          "detection_count": 10,
+          "start_time": 521.187,
+          "end_time": 523.189,
+          "start_frame": 15620,
+          "end_frame": 15680
+        },
+        {
+          "presence_segment_id": "pres_0574_01",
+          "track_id": 574,
+          "segment_index": 1,
+          "detection_count": 4,
+          "start_time": 527.36,
+          "end_time": 527.861,
+          "start_frame": 15805,
+          "end_frame": 15820
+        }
+      ]
+    },
+    {
+      "track_id": 582,
+      "detection_count": 3,
+      "presence_segment_count": 2,
+      "absence_segment_count": 1,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0582_00",
+          "track_id": 582,
+          "segment_index": 0,
+          "detection_count": 2,
+          "start_time": 525.024,
+          "end_time": 525.191,
+          "start_frame": 15735,
+          "end_frame": 15740
+        },
+        {
+          "presence_segment_id": "pres_0582_01",
+          "track_id": 582,
+          "segment_index": 1,
+          "detection_count": 1,
+          "start_time": 528.194,
+          "end_time": 528.194,
+          "start_frame": 15830,
+          "end_frame": 15830
+        }
+      ]
+    },
+    {
+      "track_id": 585,
+      "detection_count": 6,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0585_00",
+          "track_id": 585,
+          "segment_index": 0,
+          "detection_count": 6,
+          "start_time": 525.859,
+          "end_time": 527.027,
+          "start_frame": 15760,
+          "end_frame": 15795
+        }
+      ]
+    },
+    {
+      "track_id": 587,
+      "detection_count": 1,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0587_00",
+          "track_id": 587,
+          "segment_index": 0,
+          "detection_count": 1,
+          "start_time": 526.86,
+          "end_time": 526.86,
+          "start_frame": 15790,
+          "end_frame": 15790
+        }
+      ]
+    },
+    {
+      "track_id": 592,
+      "detection_count": 8,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0592_00",
+          "track_id": 592,
+          "segment_index": 0,
+          "detection_count": 8,
+          "start_time": 530.029,
+          "end_time": 531.197,
+          "start_frame": 15885,
+          "end_frame": 15920
+        }
+      ]
+    },
+    {
+      "track_id": 594,
+      "detection_count": 16,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0594_00",
+          "track_id": 594,
+          "segment_index": 0,
+          "detection_count": 16,
+          "start_time": 532.532,
+          "end_time": 535.034,
+          "start_frame": 15960,
+          "end_frame": 16035
+        }
+      ]
+    },
+    {
+      "track_id": 600,
+      "detection_count": 2,
+      "presence_segment_count": 2,
+      "absence_segment_count": 1,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0600_00",
+          "track_id": 600,
+          "segment_index": 0,
+          "detection_count": 1,
+          "start_time": 538.705,
+          "end_time": 538.705,
+          "start_frame": 16145,
+          "end_frame": 16145
+        },
+        {
+          "presence_segment_id": "pres_0600_01",
+          "track_id": 600,
+          "segment_index": 1,
+          "detection_count": 1,
+          "start_time": 541.708,
+          "end_time": 541.708,
+          "start_frame": 16235,
+          "end_frame": 16235
+        }
+      ]
+    },
+    {
+      "track_id": 621,
+      "detection_count": 5,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0621_00",
+          "track_id": 621,
+          "segment_index": 0,
+          "detection_count": 5,
+          "start_time": 557.223,
+          "end_time": 557.891,
+          "start_frame": 16700,
+          "end_frame": 16720
+        }
+      ]
+    },
+    {
+      "track_id": 627,
+      "detection_count": 3,
+      "presence_segment_count": 2,
+      "absence_segment_count": 1,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0627_00",
+          "track_id": 627,
+          "segment_index": 0,
+          "detection_count": 2,
+          "start_time": 561.728,
+          "end_time": 561.895,
+          "start_frame": 16835,
+          "end_frame": 16840
+        },
+        {
+          "presence_segment_id": "pres_0627_01",
+          "track_id": 627,
+          "segment_index": 1,
+          "detection_count": 1,
+          "start_time": 597.263,
+          "end_time": 597.263,
+          "start_frame": 17900,
+          "end_frame": 17900
+        }
+      ]
+    },
+    {
+      "track_id": 652,
+      "detection_count": 3,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0652_00",
+          "track_id": 652,
+          "segment_index": 0,
+          "detection_count": 3,
+          "start_time": 606.272,
+          "end_time": 606.773,
+          "start_frame": 18170,
+          "end_frame": 18185
+        }
+      ]
+    },
+    {
+      "track_id": 653,
+      "detection_count": 5,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0653_00",
+          "track_id": 653,
+          "segment_index": 0,
+          "detection_count": 5,
+          "start_time": 607.774,
+          "end_time": 608.775,
+          "start_frame": 18215,
+          "end_frame": 18245
+        }
+      ]
+    },
+    {
+      "track_id": 657,
+      "detection_count": 1,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0657_00",
+          "track_id": 657,
+          "segment_index": 0,
+          "detection_count": 1,
+          "start_time": 613.446,
+          "end_time": 613.446,
+          "start_frame": 18385,
+          "end_frame": 18385
+        }
+      ]
+    },
+    {
+      "track_id": 675,
+      "detection_count": 5,
+      "presence_segment_count": 1,
+      "absence_segment_count": 0,
+      "presence_segments": [
+        {
+          "presence_segment_id": "pres_0675_00",
+          "track_id": 675,
+          "segment_index": 0,
+          "detection_count": 5,
+          "start_time": 633.633,
+          "end_time": 634.467,
+          "start_frame": 18990,
+          "end_frame": 19015
+        }
+      ]
+    }
+  ],
+  "absences": [
+    {
+      "absence_id": "abs_0078_00",
+      "track_id": 78,
+      "segment_index": 0,
+      "gap_sec": 5.005,
+      "duration_sec": 5.005,
+      "start_time": 94.094,
+      "end_time": 99.099,
+      "start_frame": 2820,
+      "end_frame": 2970,
+      "after_detection_frame": 2820,
+      "before_detection_frame": 2970,
+      "after_detection_time": 94.094,
+      "before_detection_time": 99.099
+    },
+    {
+      "absence_id": "abs_0104_00",
+      "track_id": 104,
+      "segment_index": 0,
+      "gap_sec": 3.503,
+      "duration_sec": 3.503,
+      "start_time": 100.1,
+      "end_time": 103.603,
+      "start_frame": 3000,
+      "end_frame": 3105,
+      "after_detection_frame": 3000,
+      "before_detection_frame": 3105,
+      "after_detection_time": 100.1,
+      "before_detection_time": 103.603
+    },
+    {
+      "absence_id": "abs_0194_00",
+      "track_id": 194,
+      "segment_index": 0,
+      "gap_sec": 31.865,
+      "duration_sec": 31.865,
+      "start_time": 182.683,
+      "end_time": 214.548,
+      "start_frame": 5475,
+      "end_frame": 6430,
+      "after_detection_frame": 5475,
+      "before_detection_frame": 6430,
+      "after_detection_time": 182.683,
+      "before_detection_time": 214.548
+    },
+    {
+      "absence_id": "abs_0221_00",
+      "track_id": 221,
+      "segment_index": 0,
+      "gap_sec": 4.337,
+      "duration_sec": 4.337,
+      "start_time": 231.732,
+      "end_time": 236.069,
+      "start_frame": 6945,
+      "end_frame": 7075,
+      "after_detection_frame": 6945,
+      "before_detection_frame": 7075,
+      "after_detection_time": 231.732,
+      "before_detection_time": 236.069
+    },
+    {
+      "absence_id": "abs_0234_00",
+      "track_id": 234,
+      "segment_index": 0,
+      "gap_sec": 3.503,
+      "duration_sec": 3.503,
+      "start_time": 238.405,
+      "end_time": 241.908,
+      "start_frame": 7145,
+      "end_frame": 7250,
+      "after_detection_frame": 7145,
+      "before_detection_frame": 7250,
+      "after_detection_time": 238.405,
+      "before_detection_time": 241.908
+    },
+    {
+      "absence_id": "abs_0240_00",
+      "track_id": 240,
+      "segment_index": 0,
+      "gap_sec": 8.175,
+      "duration_sec": 8.175,
+      "start_time": 241.241,
+      "end_time": 249.416,
+      "start_frame": 7230,
+      "end_frame": 7475,
+      "after_detection_frame": 7230,
+      "before_detection_frame": 7475,
+      "after_detection_time": 241.241,
+      "before_detection_time": 249.416
+    },
+    {
+      "absence_id": "abs_0283_00",
+      "track_id": 283,
+      "segment_index": 0,
+      "gap_sec": 3.004,
+      "duration_sec": 3.004,
+      "start_time": 296.796,
+      "end_time": 299.8,
+      "start_frame": 8895,
+      "end_frame": 8985,
+      "after_detection_frame": 8895,
+      "before_detection_frame": 8985,
+      "after_detection_time": 296.796,
+      "before_detection_time": 299.8
+    },
+    {
+      "absence_id": "abs_0287_00",
+      "track_id": 287,
+      "segment_index": 0,
+      "gap_sec": 3.337,
+      "duration_sec": 3.337,
+      "start_time": 298.131,
+      "end_time": 301.468,
+      "start_frame": 8935,
+      "end_frame": 9035,
+      "after_detection_frame": 8935,
+      "before_detection_frame": 9035,
+      "after_detection_time": 298.131,
+      "before_detection_time": 301.468
+    },
+    {
+      "absence_id": "abs_0287_01",
+      "track_id": 287,
+      "segment_index": 1,
+      "gap_sec": 3.503,
+      "duration_sec": 3.503,
+      "start_time": 301.468,
+      "end_time": 304.971,
+      "start_frame": 9035,
+      "end_frame": 9140,
+      "after_detection_frame": 9035,
+      "before_detection_frame": 9140,
+      "after_detection_time": 301.468,
+      "before_detection_time": 304.971
+    },
+    {
+      "absence_id": "abs_0287_02",
+      "track_id": 287,
+      "segment_index": 2,
+      "gap_sec": 10.844,
+      "duration_sec": 10.844,
+      "start_time": 305.305,
+      "end_time": 316.149,
+      "start_frame": 9150,
+      "end_frame": 9475,
+      "after_detection_frame": 9150,
+      "before_detection_frame": 9475,
+      "after_detection_time": 305.305,
+      "before_detection_time": 316.149
+    },
+    {
+      "absence_id": "abs_0333_00",
+      "track_id": 333,
+      "segment_index": 0,
+      "gap_sec": 27.361,
+      "duration_sec": 27.361,
+      "start_time": 335.168,
+      "end_time": 362.529,
+      "start_frame": 10045,
+      "end_frame": 10865,
+      "after_detection_frame": 10045,
+      "before_detection_frame": 10865,
+      "after_detection_time": 335.168,
+      "before_detection_time": 362.529
+    },
+    {
+      "absence_id": "abs_0333_01",
+      "track_id": 333,
+      "segment_index": 1,
+      "gap_sec": 17.851,
+      "duration_sec": 17.851,
+      "start_time": 362.696,
+      "end_time": 380.547,
+      "start_frame": 10870,
+      "end_frame": 11405,
+      "after_detection_frame": 10870,
+      "before_detection_frame": 11405,
+      "after_detection_time": 362.696,
+      "before_detection_time": 380.547
+    },
+    {
+      "absence_id": "abs_0349_00",
+      "track_id": 349,
+      "segment_index": 0,
+      "gap_sec": 3.837,
+      "duration_sec": 3.837,
+      "start_time": 347.18,
+      "end_time": 351.017,
+      "start_frame": 10405,
+      "end_frame": 10520,
+      "after_detection_frame": 10405,
+      "before_detection_frame": 10520,
+      "after_detection_time": 347.18,
+      "before_detection_time": 351.017
+    },
+    {
+      "absence_id": "abs_0355_00",
+      "track_id": 355,
+      "segment_index": 0,
+      "gap_sec": 6.506,
+      "duration_sec": 6.506,
+      "start_time": 349.516,
+      "end_time": 356.022,
+      "start_frame": 10475,
+      "end_frame": 10670,
+      "after_detection_frame": 10475,
+      "before_detection_frame": 10670,
+      "after_detection_time": 349.516,
+      "before_detection_time": 356.022
+    },
+    {
+      "absence_id": "abs_0391_00",
+      "track_id": 391,
+      "segment_index": 0,
+      "gap_sec": 3.336,
+      "duration_sec": 3.336,
+      "start_time": 396.73,
+      "end_time": 400.066,
+      "start_frame": 11890,
+      "end_frame": 11990,
+      "after_detection_frame": 11890,
+      "before_detection_frame": 11990,
+      "after_detection_time": 396.73,
+      "before_detection_time": 400.066
+    },
+    {
+      "absence_id": "abs_0400_00",
+      "track_id": 400,
+      "segment_index": 0,
+      "gap_sec": 3.336,
+      "duration_sec": 3.336,
+      "start_time": 404.738,
+      "end_time": 408.074,
+      "start_frame": 12130,
+      "end_frame": 12230,
+      "after_detection_frame": 12130,
+      "before_detection_frame": 12230,
+      "after_detection_time": 404.738,
+      "before_detection_time": 408.074
+    },
+    {
+      "absence_id": "abs_0400_01",
+      "track_id": 400,
+      "segment_index": 1,
+      "gap_sec": 3.17,
+      "duration_sec": 3.17,
+      "start_time": 411.244,
+      "end_time": 414.414,
+      "start_frame": 12325,
+      "end_frame": 12420,
+      "after_detection_frame": 12325,
+      "before_detection_frame": 12420,
+      "after_detection_time": 411.244,
+      "before_detection_time": 414.414
+    },
+    {
+      "absence_id": "abs_0400_02",
+      "track_id": 400,
+      "segment_index": 2,
+      "gap_sec": 8.008,
+      "duration_sec": 8.008,
+      "start_time": 415.415,
+      "end_time": 423.423,
+      "start_frame": 12450,
+      "end_frame": 12690,
+      "after_detection_frame": 12450,
+      "before_detection_frame": 12690,
+      "after_detection_time": 415.415,
+      "before_detection_time": 423.423
+    },
+    {
+      "absence_id": "abs_0411_00",
+      "track_id": 411,
+      "segment_index": 0,
+      "gap_sec": 3.337,
+      "duration_sec": 3.337,
+      "start_time": 414.414,
+      "end_time": 417.751,
+      "start_frame": 12420,
+      "end_frame": 12520,
+      "after_detection_frame": 12420,
+      "before_detection_frame": 12520,
+      "after_detection_time": 414.414,
+      "before_detection_time": 417.751
+    },
+    {
+      "absence_id": "abs_0414_00",
+      "track_id": 414,
+      "segment_index": 0,
+      "gap_sec": 18.018,
+      "duration_sec": 18.018,
+      "start_time": 416.249,
+      "end_time": 434.267,
+      "start_frame": 12475,
+      "end_frame": 13015,
+      "after_detection_frame": 12475,
+      "before_detection_frame": 13015,
+      "after_detection_time": 416.249,
+      "before_detection_time": 434.267
+    },
+    {
+      "absence_id": "abs_0437_00",
+      "track_id": 437,
+      "segment_index": 0,
+      "gap_sec": 6.673,
+      "duration_sec": 6.673,
+      "start_time": 439.439,
+      "end_time": 446.112,
+      "start_frame": 13170,
+      "end_frame": 13370,
+      "after_detection_frame": 13170,
+      "before_detection_frame": 13370,
+      "after_detection_time": 439.439,
+      "before_detection_time": 446.112
+    },
+    {
+      "absence_id": "abs_0442_00",
+      "track_id": 442,
+      "segment_index": 0,
+      "gap_sec": 8.675,
+      "duration_sec": 8.675,
+      "start_time": 443.61,
+      "end_time": 452.285,
+      "start_frame": 13295,
+      "end_frame": 13555,
+      "after_detection_frame": 13295,
+      "before_detection_frame": 13555,
+      "after_detection_time": 443.61,
+      "before_detection_time": 452.285
+    },
+    {
+      "absence_id": "abs_0445_00",
+      "track_id": 445,
+      "segment_index": 0,
+      "gap_sec": 4.838,
+      "duration_sec": 4.838,
+      "start_time": 445.445,
+      "end_time": 450.283,
+      "start_frame": 13350,
+      "end_frame": 13495,
+      "after_detection_frame": 13350,
+      "before_detection_frame": 13495,
+      "after_detection_time": 445.445,
+      "before_detection_time": 450.283
+    },
+    {
+      "absence_id": "abs_0574_00",
+      "track_id": 574,
+      "segment_index": 0,
+      "gap_sec": 4.171,
+      "duration_sec": 4.171,
+      "start_time": 523.189,
+      "end_time": 527.36,
+      "start_frame": 15680,
+      "end_frame": 15805,
+      "after_detection_frame": 15680,
+      "before_detection_frame": 15805,
+      "after_detection_time": 523.189,
+      "before_detection_time": 527.36
+    },
+    {
+      "absence_id": "abs_0582_00",
+      "track_id": 582,
+      "segment_index": 0,
+      "gap_sec": 3.003,
+      "duration_sec": 3.003,
+      "start_time": 525.191,
+      "end_time": 528.194,
+      "start_frame": 15740,
+      "end_frame": 15830,
+      "after_detection_frame": 15740,
+      "before_detection_frame": 15830,
+      "after_detection_time": 525.191,
+      "before_detection_time": 528.194
+    },
+    {
+      "absence_id": "abs_0600_00",
+      "track_id": 600,
+      "segment_index": 0,
+      "gap_sec": 3.003,
+      "duration_sec": 3.003,
+      "start_time": 538.705,
+      "end_time": 541.708,
+      "start_frame": 16145,
+      "end_frame": 16235,
+      "after_detection_frame": 16145,
+      "before_detection_frame": 16235,
+      "after_detection_time": 538.705,
+      "before_detection_time": 541.708
+    },
+    {
+      "absence_id": "abs_0627_00",
+      "track_id": 627,
+      "segment_index": 0,
+      "gap_sec": 35.368,
+      "duration_sec": 35.368,
+      "start_time": 561.895,
+      "end_time": 597.263,
+      "start_frame": 16840,
+      "end_frame": 17900,
+      "after_detection_frame": 16840,
+      "before_detection_frame": 17900,
+      "after_detection_time": 561.895,
+      "before_detection_time": 597.263
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "video": "D:\\work\\制造业视频数据\\20260514上午汽车门锁装搭\\20250509汽配滤清器厂\\DJI_20260510153703_0003_D.MP4",
+  "review_dir": "D:\\work\\制造业视频数据\\new_da_ma\\output_production_DJI_20260510153703_0003_D\\DJI_20260510153703_0003_D\\review",
+  "started_at": null,
+  "updated_at": null,
+  "total_review_events": 0,
+  "decided_count": 0,
+  "summary": {
+    "confirmed_face": 0,
+    "rejected_fp": 0,
+    "skipped": 0
+  },
+  "events": []
+}

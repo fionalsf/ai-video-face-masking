@@ -1,0 +1,34 @@
+RUN REPORT
+
+Video:
+DJI_20260510153703_0003_D
+
+Pipeline:
+Production
+
+Detection:
+327 faces
+
+Tracks:
+41
+
+Identities:
+18
+
+Behavior Events:
+36
+
+Review Events:
+36
+
+Auto Render:
+Success
+
+Final Render:
+Success
+
+Output:
+output/...
+
+Warnings:
+None

@@ -1,0 +1,16 @@
+{
+  "detection_count": 0,
+  "average_confidence": 0,
+  "face_frames": 0,
+  "track_count": 0,
+  "average_track_length": 0,
+  "lost_tracks": 0,
+  "event_count": 93,
+  "accepted_count": 52,
+  "rejected_count": 0,
+  "timeline_frame_count": 6622,
+  "covered_frames": 6622,
+  "uncovered_frames": 12398,
+  "masked_frames": 6622,
+  "output_video": "D:\\work\\制造业视频数据\\new_da_ma\\output_recovery_20260624\\DJI_20260511100755_0008_D\\render.mp4"
+}

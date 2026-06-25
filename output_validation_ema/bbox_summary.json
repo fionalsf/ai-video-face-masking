@@ -1,0 +1,104 @@
+{
+  "video": "d:\\work\\制造业视频数据\\new_da_ma\\DJI_20260510153703_0003_D.MP4",
+  "mask_events": 129,
+  "total_frames": 22646,
+  "smoothing_alpha": 0.7,
+  "csv_rows": 22223,
+  "focus_events": [
+    "bevt_0140",
+    "bevt_0171"
+  ],
+  "focus_csv_rows": 357,
+  "per_event_stats_top_jitter": [
+    {
+      "event_id": "bevt_0168",
+      "frames": 137,
+      "avg_delta_px_vs_before": 5.3647,
+      "max_delta_px_vs_before": 10.7283,
+      "avg_frame_step_px_before": 12.7153,
+      "avg_frame_step_px_after": 12.6097,
+      "step_reduction_pct": 0.83
+    },
+    {
+      "event_id": "bevt_0068",
+      "frames": 32,
+      "avg_delta_px_vs_before": 4.8637,
+      "max_delta_px_vs_before": 9.4315,
+      "avg_frame_step_px_before": 11.7327,
+      "avg_frame_step_px_after": 11.7148,
+      "step_reduction_pct": 0.15
+    },
+    {
+      "event_id": "bevt_0047",
+      "frames": 17,
+      "avg_delta_px_vs_before": 3.9389,
+      "max_delta_px_vs_before": 8.1745,
+      "avg_frame_step_px_before": 9.7792,
+      "avg_frame_step_px_after": 9.7653,
+      "step_reduction_pct": 0.14
+    },
+    {
+      "event_id": "bevt_0072",
+      "frames": 132,
+      "avg_delta_px_vs_before": 3.9706,
+      "max_delta_px_vs_before": 8.0208,
+      "avg_frame_step_px_before": 9.4199,
+      "avg_frame_step_px_after": 9.3355,
+      "step_reduction_pct": 0.9
+    },
+    {
+      "event_id": "bevt_0101",
+      "frames": 42,
+      "avg_delta_px_vs_before": 3.8398,
+      "max_delta_px_vs_before": 6.5739,
+      "avg_frame_step_px_before": 9.183,
+      "avg_frame_step_px_after": 9.178,
+      "step_reduction_pct": 0.05
+    },
+    {
+      "event_id": "bevt_0036",
+      "frames": 37,
+      "avg_delta_px_vs_before": 3.391,
+      "max_delta_px_vs_before": 6.7765,
+      "avg_frame_step_px_before": 8.1377,
+      "avg_frame_step_px_after": 8.1322,
+      "step_reduction_pct": 0.07
+    },
+    {
+      "event_id": "bevt_0162",
+      "frames": 22,
+      "avg_delta_px_vs_before": 3.185,
+      "max_delta_px_vs_before": 5.2219,
+      "avg_frame_step_px_before": 8.0525,
+      "avg_frame_step_px_after": 7.7854,
+      "step_reduction_pct": 3.32
+    },
+    {
+      "event_id": "bevt_0156",
+      "frames": 117,
+      "avg_delta_px_vs_before": 3.2142,
+      "max_delta_px_vs_before": 5.9916,
+      "avg_frame_step_px_before": 7.6466,
+      "avg_frame_step_px_after": 7.5645,
+      "step_reduction_pct": 1.07
+    },
+    {
+      "event_id": "bevt_0070",
+      "frames": 52,
+      "avg_delta_px_vs_before": 3.0988,
+      "max_delta_px_vs_before": 5.8717,
+      "avg_frame_step_px_before": 7.3869,
+      "avg_frame_step_px_after": 7.3722,
+      "step_reduction_pct": 0.2
+    },
+    {
+      "event_id": "bevt_0160",
+      "frames": 77,
+      "avg_delta_px_vs_before": 2.7682,
+      "max_delta_px_vs_before": 5.0133,
+      "avg_frame_step_px_before": 6.5779,
+      "avg_frame_step_px_after": 6.544,
+      "step_reduction_pct": 0.51
+    }
+  ]
+}

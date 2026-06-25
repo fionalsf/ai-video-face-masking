@@ -1,0 +1,492 @@
+{
+  "video": "D:\\work\\制造业视频数据\\new_da_ma\\DJI_20260511100755_0008_D.MP4",
+  "exported_at": "2026-06-24T15:49:42",
+  "threshold": "< 0.75 peak_confidence",
+  "count": 41,
+  "events": [
+    {
+      "event_id": "bevt_0004",
+      "track_id": 27,
+      "start_time": 31.365,
+      "end_time": 32.032,
+      "peak_confidence": 0.7422,
+      "avg_confidence": 0.7422,
+      "detection_count": 1,
+      "rule_hints": [
+        "edge_clip",
+        "aspect_ratio"
+      ]
+    },
+    {
+      "event_id": "bevt_0005",
+      "track_id": 39,
+      "start_time": 42.209,
+      "end_time": 43.877,
+      "peak_confidence": 0.7285,
+      "avg_confidence": 0.7066,
+      "detection_count": 3,
+      "rule_hints": []
+    },
+    {
+      "event_id": "bevt_0006",
+      "track_id": 40,
+      "start_time": 42.543,
+      "end_time": 43.21,
+      "peak_confidence": 0.4746,
+      "avg_confidence": 0.4746,
+      "detection_count": 1,
+      "rule_hints": []
+    },
+    {
+      "event_id": "bevt_0007",
+      "track_id": 50,
+      "start_time": 48.382,
+      "end_time": 49.216,
+      "peak_confidence": 0.5508,
+      "avg_confidence": 0.543,
+      "detection_count": 2,
+      "rule_hints": []
+    },
+    {
+      "event_id": "bevt_0011",
+      "track_id": 72,
+      "start_time": 69.236,
+      "end_time": 70.404,
+      "peak_confidence": 0.6426,
+      "avg_confidence": 0.5546,
+      "detection_count": 4,
+      "rule_hints": [
+        "edge_clip",
+        "aspect_ratio"
+      ]
+    },
+    {
+      "event_id": "bevt_0018",
+      "track_id": 131,
+      "start_time": 103.937,
+      "end_time": 106.273,
+      "peak_confidence": 0.7178,
+      "avg_confidence": 0.6429,
+      "detection_count": 11,
+      "rule_hints": []
+    },
+    {
+      "event_id": "bevt_0019",
+      "track_id": 134,
+      "start_time": 107.107,
+      "end_time": 108.108,
+      "peak_confidence": 0.6841,
+      "avg_confidence": 0.6189,
+      "detection_count": 2,
+      "rule_hints": []
+    },
+    {
+      "event_id": "bevt_0020",
+      "track_id": 151,
+      "start_time": 126.793,
+      "end_time": 127.461,
+      "peak_confidence": 0.6968,
+      "avg_confidence": 0.6968,
+      "detection_count": 1,
+      "rule_hints": [
+        "edge_clip",
+        "aspect_ratio"
+      ]
+    },
+    {
+      "event_id": "bevt_0024",
+      "track_id": 194,
+      "start_time": 182.182,
+      "end_time": 183.016,
+      "peak_confidence": 0.7178,
+      "avg_confidence": 0.6963,
+      "detection_count": 2,
+      "rule_hints": []
+    },
+    {
+      "event_id": "bevt_0025",
+      "track_id": 194,
+      "start_time": 214.214,
+      "end_time": 214.881,
+      "peak_confidence": 0.7432,
+      "avg_confidence": 0.7432,
+      "detection_count": 1,
+      "rule_hints": [
+        "edge_clip"
+      ]
+    },
+    {
+      "event_id": "bevt_0028",
+      "track_id": 221,
+      "start_time": 231.231,
+      "end_time": 242.576,
+      "peak_confidence": 0.564,
+      "avg_confidence": 0.4524,
+      "detection_count": 7,
+      "rule_hints": [
+        "identity_stitch:2",
+        "cross_presence_span"
+      ]
+    },
+    {
+      "event_id": "bevt_0030",
+      "track_id": 231,
+      "start_time": 236.57,
+      "end_time": 241.241,
+      "peak_confidence": 0.728,
+      "avg_confidence": 0.5787,
+      "detection_count": 7,
+      "rule_hints": [
+        "identity_stitch:2",
+        "cross_presence_span"
+      ]
+    },
+    {
+      "event_id": "bevt_0031",
+      "track_id": 240,
+      "start_time": 240.907,
+      "end_time": 241.575,
+      "peak_confidence": 0.6113,
+      "avg_confidence": 0.6113,
+      "detection_count": 1,
+      "rule_hints": []
+    },
+    {
+      "event_id": "bevt_0038",
+      "track_id": 280,
+      "start_time": 284.951,
+      "end_time": 286.786,
+      "peak_confidence": 0.6919,
+      "avg_confidence": 0.5583,
+      "detection_count": 7,
+      "rule_hints": [
+        "identity_stitch:2"
+      ]
+    },
+    {
+      "event_id": "bevt_0039",
+      "track_id": 272,
+      "start_time": 270.27,
+      "end_time": 270.937,
+      "peak_confidence": 0.4524,
+      "avg_confidence": 0.4524,
+      "detection_count": 1,
+      "rule_hints": [
+        "identity_stitch:3"
+      ]
+    },
+    {
+      "event_id": "bevt_0041",
+      "track_id": 330,
+      "start_time": 332.332,
+      "end_time": 333.667,
+      "peak_confidence": 0.6636,
+      "avg_confidence": 0.5916,
+      "detection_count": 5,
+      "rule_hints": [
+        "identity_stitch:3"
+      ]
+    },
+    {
+      "event_id": "bevt_0045",
+      "track_id": 349,
+      "start_time": 346.513,
+      "end_time": 351.351,
+      "peak_confidence": 0.5786,
+      "avg_confidence": 0.5417,
+      "detection_count": 3,
+      "rule_hints": [
+        "identity_stitch:4",
+        "cross_presence_span"
+      ]
+    },
+    {
+      "event_id": "bevt_0046",
+      "track_id": 287,
+      "start_time": 297.798,
+      "end_time": 305.639,
+      "peak_confidence": 0.6655,
+      "avg_confidence": 0.5667,
+      "detection_count": 5,
+      "rule_hints": [
+        "cross_presence_span"
+      ]
+    },
+    {
+      "event_id": "bevt_0047",
+      "track_id": 287,
+      "start_time": 315.815,
+      "end_time": 316.483,
+      "peak_confidence": 0.5991,
+      "avg_confidence": 0.5991,
+      "detection_count": 1,
+      "rule_hints": []
+    },
+    {
+      "event_id": "bevt_0048",
+      "track_id": 299,
+      "start_time": 311.645,
+      "end_time": 320.987,
+      "peak_confidence": 0.7432,
+      "avg_confidence": 0.6637,
+      "detection_count": 14,
+      "rule_hints": [
+        "identity_stitch:4",
+        "cross_presence_span"
+      ]
+    },
+    {
+      "event_id": "bevt_0054",
+      "track_id": 378,
+      "start_time": 384.718,
+      "end_time": 388.054,
+      "peak_confidence": 0.6953,
+      "avg_confidence": 0.5344,
+      "detection_count": 2,
+      "rule_hints": [
+        "identity_stitch:3"
+      ]
+    },
+    {
+      "event_id": "bevt_0055",
+      "track_id": 355,
+      "start_time": 348.849,
+      "end_time": 356.356,
+      "peak_confidence": 0.582,
+      "avg_confidence": 0.5529,
+      "detection_count": 3,
+      "rule_hints": [
+        "identity_stitch:3",
+        "cross_presence_span"
+      ]
+    },
+    {
+      "event_id": "bevt_0057",
+      "track_id": 363,
+      "start_time": 363.029,
+      "end_time": 364.197,
+      "peak_confidence": 0.5479,
+      "avg_confidence": 0.4603,
+      "detection_count": 3,
+      "rule_hints": []
+    },
+    {
+      "event_id": "bevt_0058",
+      "track_id": 367,
+      "start_time": 369.87,
+      "end_time": 370.87,
+      "peak_confidence": 0.6958,
+      "avg_confidence": 0.609,
+      "detection_count": 3,
+      "rule_hints": [
+        "identity_stitch:4"
+      ]
+    },
+    {
+      "event_id": "bevt_0060",
+      "track_id": 389,
+      "start_time": 395.562,
+      "end_time": 396.229,
+      "peak_confidence": 0.4312,
+      "avg_confidence": 0.4312,
+      "detection_count": 1,
+      "rule_hints": [
+        "edge_clip"
+      ]
+    },
+    {
+      "event_id": "bevt_0063",
+      "track_id": 395,
+      "start_time": 398.064,
+      "end_time": 398.732,
+      "peak_confidence": 0.5698,
+      "avg_confidence": 0.5698,
+      "detection_count": 1,
+      "rule_hints": []
+    },
+    {
+      "event_id": "bevt_0064",
+      "track_id": 414,
+      "start_time": 415.916,
+      "end_time": 416.583,
+      "peak_confidence": 0.3989,
+      "avg_confidence": 0.3989,
+      "detection_count": 1,
+      "rule_hints": [
+        "workzone_low"
+      ]
+    },
+    {
+      "event_id": "bevt_0065",
+      "track_id": 414,
+      "start_time": 433.933,
+      "end_time": 434.935,
+      "peak_confidence": 0.499,
+      "avg_confidence": 0.4844,
+      "detection_count": 3,
+      "rule_hints": [
+        "workzone_low"
+      ]
+    },
+    {
+      "event_id": "bevt_0066",
+      "track_id": 430,
+      "start_time": 434.267,
+      "end_time": 451.117,
+      "peak_confidence": 0.7334,
+      "avg_confidence": 0.559,
+      "detection_count": 13,
+      "rule_hints": [
+        "edge_clip",
+        "aspect_ratio",
+        "identity_stitch:3",
+        "cross_presence_span"
+      ]
+    },
+    {
+      "event_id": "bevt_0068",
+      "track_id": 442,
+      "start_time": 443.276,
+      "end_time": 443.944,
+      "peak_confidence": 0.4717,
+      "avg_confidence": 0.4717,
+      "detection_count": 1,
+      "rule_hints": [
+        "identity_stitch:2"
+      ]
+    },
+    {
+      "event_id": "bevt_0069",
+      "track_id": 442,
+      "start_time": 451.952,
+      "end_time": 452.619,
+      "peak_confidence": 0.3621,
+      "avg_confidence": 0.3621,
+      "detection_count": 1,
+      "rule_hints": [
+        "identity_stitch:2"
+      ]
+    },
+    {
+      "event_id": "bevt_0071",
+      "track_id": 450,
+      "start_time": 449.95,
+      "end_time": 452.786,
+      "peak_confidence": 0.7051,
+      "avg_confidence": 0.5897,
+      "detection_count": 6,
+      "rule_hints": []
+    },
+    {
+      "event_id": "bevt_0072",
+      "track_id": 452,
+      "start_time": 453.787,
+      "end_time": 457.957,
+      "peak_confidence": 0.6333,
+      "avg_confidence": 0.5604,
+      "detection_count": 3,
+      "rule_hints": [
+        "workzone_low",
+        "identity_stitch:2",
+        "cross_presence_span"
+      ]
+    },
+    {
+      "event_id": "bevt_0073",
+      "track_id": 475,
+      "start_time": 469.469,
+      "end_time": 471.304,
+      "peak_confidence": 0.7471,
+      "avg_confidence": 0.6996,
+      "detection_count": 5,
+      "rule_hints": []
+    },
+    {
+      "event_id": "bevt_0075",
+      "track_id": 483,
+      "start_time": 473.473,
+      "end_time": 474.14,
+      "peak_confidence": 0.6841,
+      "avg_confidence": 0.6841,
+      "detection_count": 1,
+      "rule_hints": [
+        "identity_stitch:2"
+      ]
+    },
+    {
+      "event_id": "bevt_0078",
+      "track_id": 491,
+      "start_time": 484.484,
+      "end_time": 485.151,
+      "peak_confidence": 0.6768,
+      "avg_confidence": 0.6768,
+      "detection_count": 1,
+      "rule_hints": []
+    },
+    {
+      "event_id": "bevt_0081",
+      "track_id": 542,
+      "start_time": 505.171,
+      "end_time": 505.839,
+      "peak_confidence": 0.6875,
+      "avg_confidence": 0.6875,
+      "detection_count": 1,
+      "rule_hints": [
+        "identity_stitch:2"
+      ]
+    },
+    {
+      "event_id": "bevt_0085",
+      "track_id": 582,
+      "start_time": 524.691,
+      "end_time": 528.528,
+      "peak_confidence": 0.731,
+      "avg_confidence": 0.7096,
+      "detection_count": 3,
+      "rule_hints": [
+        "edge_clip",
+        "cross_presence_span"
+      ]
+    },
+    {
+      "event_id": "bevt_0090",
+      "track_id": 627,
+      "start_time": 596.93,
+      "end_time": 597.597,
+      "peak_confidence": 0.5146,
+      "avg_confidence": 0.5146,
+      "detection_count": 1,
+      "rule_hints": [
+        "workzone_low",
+        "edge_clip",
+        "identity_stitch:4"
+      ]
+    },
+    {
+      "event_id": "bevt_0092",
+      "track_id": 657,
+      "start_time": 613.112,
+      "end_time": 613.78,
+      "peak_confidence": 0.5718,
+      "avg_confidence": 0.5718,
+      "detection_count": 1,
+      "rule_hints": [
+        "identity_stitch:2"
+      ]
+    },
+    {
+      "event_id": "bevt_0093",
+      "track_id": 675,
+      "start_time": 633.299,
+      "end_time": 634.601,
+      "peak_confidence": 0.6548,
+      "avg_confidence": 0.4782,
+      "detection_count": 5,
+      "rule_hints": [
+        "workzone_low",
+        "edge_clip",
+        "identity_stitch:2"
+      ]
+    }
+  ]
+}

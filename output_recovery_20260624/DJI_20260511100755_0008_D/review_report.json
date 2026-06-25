@@ -1,0 +1,614 @@
+{
+  "video": "D:\\work\\制造业视频数据\\new_da_ma\\DJI_20260511100755_0008_D.MP4",
+  "processed_at": "2026-06-24T16:00:32",
+  "events_total": 93,
+  "auto_masked": 6,
+  "pending_review": 46,
+  "low_conf_logged": 41,
+  "builder_stats": {
+    "original_event_count": 151,
+    "merged_event_count": 143,
+    "single_frame_event_count_before": 40,
+    "single_frame_event_count_after": 40,
+    "merge_ratio": 1.056,
+    "merge_strategy": "scheme_c_gap_semantic_layer",
+    "gap_semantic_layer": true,
+    "event_gap_sec": 1.0,
+    "hard_split_gap_sec": 3.0,
+    "confidence_merge_enabled": false,
+    "presence_segment_total": 143,
+    "absence_segment_total": 27,
+    "pre_padding_sec": 0.33366666666666667,
+    "post_padding_sec": 0.33366666666666667,
+    "detect_interval": 5,
+    "padding_frames_auto": 10,
+    "excluded_singleton_fragments": 40,
+    "singleton_fragment_events": 40,
+    "low_conf_fragments": [
+      {
+        "track_id": 24,
+        "presence_segment_id": "pres_0024_00",
+        "time": 23.19,
+        "frame": 695,
+        "confidence": 0.5859,
+        "bbox": [
+          1154.7,
+          14.3,
+          1222.8,
+          85.1
+        ],
+        "reason": "singleton_fragment"
+      },
+      {
+        "track_id": 27,
+        "presence_segment_id": "pres_0027_00",
+        "time": 31.698,
+        "frame": 950,
+        "confidence": 0.7422,
+        "bbox": [
+          717.2,
+          1.9,
+          849.1,
+          49.9
+        ],
+        "reason": "singleton_fragment"
+      },
+      {
+        "track_id": 40,
+        "presence_segment_id": "pres_0040_00",
+        "time": 42.876,
+        "frame": 1285,
+        "confidence": 0.4746,
+        "bbox": [
+          645.9,
+          501.3,
+          738.6,
+          597.0
+        ],
+        "reason": "singleton_fragment"
+      },
+      {
+        "track_id": 78,
+        "presence_segment_id": "pres_0078_01",
+        "time": 99.099,
+        "frame": 2970,
+        "confidence": 0.7671,
+        "bbox": [
+          781.6,
+          107.1,
+          880.3,
+          213.2
+        ],
+        "reason": "singleton_fragment"
+      },
+      {
+        "track_id": 104,
+        "presence_segment_id": "pres_0104_00",
+        "time": 100.1,
+        "frame": 3000,
+        "confidence": 0.7002,
+        "bbox": [
+          331.6,
+          207.1,
+          431.3,
+          296.5
+        ],
+        "reason": "singleton_fragment"
+      },
+      {
+        "track_id": 104,
+        "presence_segment_id": "pres_0104_01",
+        "time": 103.603,
+        "frame": 3105,
+        "confidence": 0.771,
+        "bbox": [
+          327.5,
+          186.8,
+          501.8,
+          345.7
+        ],
+        "reason": "singleton_fragment"
+      },
+      {
+        "track_id": 151,
+        "presence_segment_id": "pres_0151_00",
+        "time": 127.127,
+        "frame": 3810,
+        "confidence": 0.6968,
+        "bbox": [
+          1063.1,
+          1.3,
+          1171.3,
+          53.2
+        ],
+        "reason": "singleton_fragment"
+      },
+      {
+        "track_id": 194,
+        "presence_segment_id": "pres_0194_01",
+        "time": 214.548,
+        "frame": 6430,
+        "confidence": 0.7432,
+        "bbox": [
+          726.6,
+          2.1,
+          830.0,
+          76.0
+        ],
+        "reason": "singleton_fragment"
+      },
+      {
+        "track_id": 231,
+        "presence_segment_id": "pres_0231_00",
+        "time": 236.903,
+        "frame": 7100,
+        "confidence": 0.5972,
+        "bbox": [
+          1257.0,
+          22.3,
+          1385.4,
+          154.9
+        ],
+        "reason": "singleton_fragment"
+      },
+      {
+        "track_id": 234,
+        "presence_segment_id": "pres_0234_00",
+        "time": 238.405,
+        "frame": 7145,
+        "confidence": 0.46,
+        "bbox": [
+          1167.1,
+          738.9,
+          1363.1,
+          962.1
+        ],
+        "reason": "singleton_fragment"
+      },
+      {
+        "track_id": 240,
+        "presence_segment_id": "pres_0240_00",
+        "time": 241.241,
+        "frame": 7230,
+        "confidence": 0.6113,
+        "bbox": [
+          957.2,
+          210.4,
+          1069.6,
+          331.2
+        ],
+        "reason": "singleton_fragment"
+      },
+      {
+        "track_id": 272,
+        "presence_segment_id": "pres_0272_00",
+        "time": 270.604,
+        "frame": 8110,
+        "confidence": 0.4524,
+        "bbox": [
+          1156.9,
+          368.6,
+          1271.9,
+          476.5
+        ],
+        "reason": "singleton_fragment"
+      },
+      {
+        "track_id": 287,
+        "presence_segment_id": "pres_0287_00",
+        "time": 298.131,
+        "frame": 8935,
+        "confidence": 0.562,
+        "bbox": [
+          1215.3,
+          103.7,
+          1321.8,
+          222.2
+        ],
+        "reason": "singleton_fragment"
+      },
+      {
+        "track_id": 287,
+        "presence_segment_id": "pres_0287_01",
+        "time": 301.468,
+        "frame": 9035,
+        "confidence": 0.627,
+        "bbox": [
+          1214.9,
+          114.0,
+          1341.1,
+          255.6
+        ],
+        "reason": "singleton_fragment"
+      },
+      {
+        "track_id": 287,
+        "presence_segment_id": "pres_0287_03",
+        "time": 316.149,
+        "frame": 9475,
+        "confidence": 0.5991,
+        "bbox": [
+          1296.6,
+          25.5,
+          1400.3,
+          135.3
+        ],
+        "reason": "singleton_fragment"
+      },
+      {
+        "track_id": 297,
+        "presence_segment_id": "pres_0297_00",
+        "time": 310.977,
+        "frame": 9320,
+        "confidence": 0.5312,
+        "bbox": [
+          1052.2,
+          36.0,
+          1187.0,
+          171.2
+        ],
+        "reason": "singleton_fragment"
+      },
+      {
+        "track_id": 322,
+        "presence_segment_id": "pres_0322_00",
+        "time": 327.16,
+        "frame": 9805,
+        "confidence": 0.8862,
+        "bbox": [
+          -33.9,
+          456.3,
+          451.1,
+          936.6
+        ],
+        "reason": "singleton_fragment"
+      },
+      {
+        "track_id": 333,
+        "presence_segment_id": "pres_0333_00",
+        "time": 335.168,
+        "frame": 10045,
+        "confidence": 0.8101,
+        "bbox": [
+          842.7,
+          168.2,
+          964.5,
+          316.1
+        ],
+        "reason": "singleton_fragment"
+      },
+      {
+        "track_id": 349,
+        "presence_segment_id": "pres_0349_01",
+        "time": 351.017,
+        "frame": 10520,
+        "confidence": 0.5718,
+        "bbox": [
+          1042.1,
+          2.6,
+          1172.1,
+          145.2
+        ],
+        "reason": "singleton_fragment"
+      },
+      {
+        "track_id": 355,
+        "presence_segment_id": "pres_0355_01",
+        "time": 356.022,
+        "frame": 10670,
+        "confidence": 0.582,
+        "bbox": [
+          978.2,
+          95.1,
+          1134.6,
+          248.1
+        ],
+        "reason": "singleton_fragment"
+      },
+      {
+        "track_id": 389,
+        "presence_segment_id": "pres_0389_00",
+        "time": 395.896,
+        "frame": 11865,
+        "confidence": 0.4312,
+        "bbox": [
+          1772.0,
+          257.5,
+          1922.8,
+          556.3
+        ],
+        "reason": "singleton_fragment"
+      },
+      {
+        "track_id": 391,
+        "presence_segment_id": "pres_0391_00",
+        "time": 396.73,
+        "frame": 11890,
+        "confidence": 0.7822,
+        "bbox": [
+          869.1,
+          71.6,
+          1011.3,
+          220.9
+        ],
+        "reason": "singleton_fragment"
+      },
+      {
+        "track_id": 395,
+        "presence_segment_id": "pres_0395_00",
+        "time": 398.398,
+        "frame": 11940,
+        "confidence": 0.5698,
+        "bbox": [
+          988.0,
+          12.7,
+          1106.6,
+          138.0
+        ],
+        "reason": "singleton_fragment"
+      },
+      {
+        "track_id": 400,
+        "presence_segment_id": "pres_0400_03",
+        "time": 423.423,
+        "frame": 12690,
+        "confidence": 0.7559,
+        "bbox": [
+          920.8,
+          11.1,
+          1044.3,
+          143.6
+        ],
+        "reason": "singleton_fragment"
+      },
+      {
+        "track_id": 411,
+        "presence_segment_id": "pres_0411_00",
+        "time": 414.414,
+        "frame": 12420,
+        "confidence": 0.5547,
+        "bbox": [
+          760.8,
+          49.3,
+          894.9,
+          205.0
+        ],
+        "reason": "singleton_fragment"
+      },
+      {
+        "track_id": 414,
+        "presence_segment_id": "pres_0414_00",
+        "time": 416.249,
+        "frame": 12475,
+        "confidence": 0.3989,
+        "bbox": [
+          748.8,
+          667.0,
+          1148.7,
+          1047.2
+        ],
+        "reason": "singleton_fragment"
+      },
+      {
+        "track_id": 437,
+        "presence_segment_id": "pres_0437_01",
+        "time": 446.112,
+        "frame": 13370,
+        "confidence": 0.6372,
+        "bbox": [
+          380.9,
+          166.7,
+          553.7,
+          353.3
+        ],
+        "reason": "singleton_fragment"
+      },
+      {
+        "track_id": 442,
+        "presence_segment_id": "pres_0442_00",
+        "time": 443.61,
+        "frame": 13295,
+        "confidence": 0.4717,
+        "bbox": [
+          569.9,
+          29.5,
+          716.2,
+          250.7
+        ],
+        "reason": "singleton_fragment"
+      },
+      {
+        "track_id": 442,
+        "presence_segment_id": "pres_0442_01",
+        "time": 452.285,
+        "frame": 13555,
+        "confidence": 0.3621,
+        "bbox": [
+          587.9,
+          27.0,
+          742.5,
+          263.6
+        ],
+        "reason": "singleton_fragment"
+      },
+      {
+        "track_id": 452,
+        "presence_segment_id": "pres_0452_00",
+        "time": 454.12,
+        "frame": 13610,
+        "confidence": 0.5107,
+        "bbox": [
+          914.5,
+          342.1,
+          1331.6,
+          718.3
+        ],
+        "reason": "singleton_fragment"
+      },
+      {
+        "track_id": 483,
+        "presence_segment_id": "pres_0483_00",
+        "time": 473.807,
+        "frame": 14200,
+        "confidence": 0.6841,
+        "bbox": [
+          1152.9,
+          118.0,
+          1283.1,
+          264.5
+        ],
+        "reason": "singleton_fragment"
+      },
+      {
+        "track_id": 491,
+        "presence_segment_id": "pres_0491_00",
+        "time": 484.818,
+        "frame": 14530,
+        "confidence": 0.6768,
+        "bbox": [
+          890.7,
+          14.2,
+          948.0,
+          61.6
+        ],
+        "reason": "singleton_fragment"
+      },
+      {
+        "track_id": 538,
+        "presence_segment_id": "pres_0538_00",
+        "time": 504.504,
+        "frame": 15120,
+        "confidence": 0.8037,
+        "bbox": [
+          193.8,
+          253.6,
+          411.2,
+          406.7
+        ],
+        "reason": "singleton_fragment"
+      },
+      {
+        "track_id": 542,
+        "presence_segment_id": "pres_0542_00",
+        "time": 505.505,
+        "frame": 15150,
+        "confidence": 0.6875,
+        "bbox": [
+          440.0,
+          6.7,
+          604.3,
+          130.9
+        ],
+        "reason": "singleton_fragment"
+      },
+      {
+        "track_id": 582,
+        "presence_segment_id": "pres_0582_01",
+        "time": 528.194,
+        "frame": 15830,
+        "confidence": 0.731,
+        "bbox": [
+          259.4,
+          4.2,
+          423.4,
+          110.1
+        ],
+        "reason": "singleton_fragment"
+      },
+      {
+        "track_id": 587,
+        "presence_segment_id": "pres_0587_00",
+        "time": 526.86,
+        "frame": 15790,
+        "confidence": 0.8618,
+        "bbox": [
+          631.4,
+          5.2,
+          784.3,
+          135.9
+        ],
+        "reason": "singleton_fragment"
+      },
+      {
+        "track_id": 600,
+        "presence_segment_id": "pres_0600_00",
+        "time": 538.705,
+        "frame": 16145,
+        "confidence": 0.7788,
+        "bbox": [
+          249.9,
+          97.0,
+          442.4,
+          244.1
+        ],
+        "reason": "singleton_fragment"
+      },
+      {
+        "track_id": 600,
+        "presence_segment_id": "pres_0600_01",
+        "time": 541.708,
+        "frame": 16235,
+        "confidence": 0.6826,
+        "bbox": [
+          171.8,
+          71.6,
+          403.2,
+          251.6
+        ],
+        "reason": "singleton_fragment"
+      },
+      {
+        "track_id": 627,
+        "presence_segment_id": "pres_0627_01",
+        "time": 597.263,
+        "frame": 17900,
+        "confidence": 0.5146,
+        "bbox": [
+          550.0,
+          899.6,
+          722.3,
+          1077.0
+        ],
+        "reason": "singleton_fragment"
+      },
+      {
+        "track_id": 657,
+        "presence_segment_id": "pres_0657_00",
+        "time": 613.446,
+        "frame": 18385,
+        "confidence": 0.5718,
+        "bbox": [
+          709.5,
+          477.8,
+          754.2,
+          508.0
+        ],
+        "reason": "singleton_fragment"
+      }
+    ]
+  },
+  "stitch_stats": {
+    "track_count": 116,
+    "identity_cluster_count": 70,
+    "appearance_method": "hsv_histogram"
+  },
+  "behavior_stats": {
+    "behavior_event_count": 93,
+    "target_in_range": false
+  },
+  "pipeline": "detection -> tracking -> presence -> identity_stitching -> identity_behavior_builder",
+  "production_events": "behavior_events.json",
+  "output_dir": "D:\\work\\制造业视频数据\\new_da_ma\\output_recovery_20260624\\DJI_20260511100755_0008_D",
+  "masked_draft": "D:\\work\\制造业视频数据\\new_da_ma\\output_recovery_20260624\\DJI_20260511100755_0008_D\\masked_draft.mp4",
+  "review_dir": "D:\\work\\制造业视频数据\\new_da_ma\\output_recovery_20260624\\DJI_20260511100755_0008_D\\review",
+  "delivery_ready": true,
+  "morning_action": "streamlit run review_ui.py -- --review-dir D:\\work\\制造业视频数据\\new_da_ma\\output_recovery_20260624\\DJI_20260511100755_0008_D\\review",
+  "morning_confirmed_at": "2026-06-24T16:10:47",
+  "final_video": "d:\\work\\制造业视频数据\\new_da_ma\\output_recovery_20260624\\DJI_20260511100755_0008_D\\final.mp4",
+  "review_confirmed_count": 46,
+  "review_summary": {
+    "confirmed_face": 0,
+    "rejected_fp": 0,
+    "skipped": 0
+  }
+}
