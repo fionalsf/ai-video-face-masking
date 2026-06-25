@@ -1,21 +1,23 @@
 {
   "video": "D:\\work\\制造业视频数据\\20260514上午汽车门锁装搭\\20250509汽配滤清器厂\\DJI_20260510153703_0003_D.MP4",
-  "fps": 29.97002997002997,
-  "processed_at": "2026-06-24T16:56:28",
-  "pipeline": "detection -> tracking -> presence -> identity_stitching -> identity_behavior_builder",
+  "fps": 30.0,
+  "processed_at": "2026-06-25T15:15:36",
+  "pipeline": "detection -> tracking -> presence -> identity_stitching -> identity_behavior_builder_v1.2",
   "event_unit": "identity_id",
+  "source": "behavior_events.json",
+  "behavior_event_count": 234,
   "events": [
     {
       "event_id": "bevt_0001",
       "track_id": 1,
       "tier": "review",
-      "start_time": 0.334,
-      "end_time": 2.002,
-      "start_timecode": "00:00:00.334",
-      "end_timecode": "00:00:02.001",
-      "start_frame": 10,
-      "end_frame": 60,
-      "duration_sec": 1.668,
+      "start_time": 0.433,
+      "end_time": 2.067,
+      "start_timecode": "00:00:00.433",
+      "end_timecode": "00:00:02.067",
+      "start_frame": 13,
+      "end_frame": 62,
+      "duration_sec": 1.634,
       "avg_confidence": 0.6968,
       "peak_confidence": 0.8164,
       "detection_count": 7,
@@ -107,17 +109,17 @@
     {
       "event_id": "bevt_0002",
       "track_id": 2,
-      "tier": "auto",
-      "start_time": 0.334,
-      "end_time": 6.84,
-      "start_timecode": "00:00:00.334",
-      "end_timecode": "00:00:06.839",
-      "start_frame": 10,
-      "end_frame": 205,
-      "duration_sec": 6.506,
-      "avg_confidence": 0.7594,
-      "peak_confidence": 0.8726,
-      "detection_count": 33,
+      "tier": "low_conf",
+      "start_time": 0.433,
+      "end_time": 1.067,
+      "start_timecode": "00:00:00.433",
+      "end_timecode": "00:00:01.066",
+      "start_frame": 13,
+      "end_frame": 32,
+      "duration_sec": 0.634,
+      "avg_confidence": 0.4282,
+      "peak_confidence": 0.4282,
+      "detection_count": 1,
       "trajectory": [
         {
           "t": 0.667,
@@ -129,7 +131,30 @@
             14.6
           ],
           "conf": 0.4282
-        },
+        }
+      ],
+      "rule_hints": [
+        "edge_clip",
+        "aspect_ratio",
+        "identity_stitch:4"
+      ],
+      "review_status": "logged_only"
+    },
+    {
+      "event_id": "bevt_0003",
+      "track_id": 3,
+      "tier": "review",
+      "start_time": 0.767,
+      "end_time": 2.067,
+      "start_timecode": "00:00:00.767",
+      "end_timecode": "00:00:02.067",
+      "start_frame": 23,
+      "end_frame": 62,
+      "duration_sec": 1.3,
+      "avg_confidence": 0.7454,
+      "peak_confidence": 0.8125,
+      "detection_count": 5,
+      "trajectory": [
         {
           "t": 1.001,
           "frame": 30,
@@ -184,7 +209,30 @@
             76.7
           ],
           "conf": 0.8037
-        },
+        }
+      ],
+      "rule_hints": [
+        "edge_clip",
+        "aspect_ratio",
+        "identity_stitch:4"
+      ],
+      "review_status": "pending"
+    },
+    {
+      "event_id": "bevt_0004",
+      "track_id": 4,
+      "tier": "review",
+      "start_time": 1.767,
+      "end_time": 4.9,
+      "start_timecode": "00:00:01.766",
+      "end_timecode": "00:00:04.900",
+      "start_frame": 53,
+      "end_frame": 147,
+      "duration_sec": 3.133,
+      "avg_confidence": 0.7834,
+      "peak_confidence": 0.8105,
+      "detection_count": 16,
+      "trajectory": [
         {
           "t": 2.002,
           "frame": 60,
@@ -360,7 +408,28 @@
             52.8
           ],
           "conf": 0.772
-        },
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:4"
+      ],
+      "review_status": "pending"
+    },
+    {
+      "event_id": "bevt_0005",
+      "track_id": 7,
+      "tier": "auto",
+      "start_time": 4.6,
+      "end_time": 6.9,
+      "start_timecode": "00:00:04.599",
+      "end_timecode": "00:00:06.900",
+      "start_frame": 138,
+      "end_frame": 207,
+      "duration_sec": 2.3,
+      "avg_confidence": 0.7609,
+      "peak_confidence": 0.8726,
+      "detection_count": 11,
+      "trajectory": [
         {
           "t": 4.838,
           "frame": 145,
@@ -484,22 +553,21 @@
         }
       ],
       "rule_hints": [
-        "identity_stitch:4",
-        "cross_presence_span"
+        "identity_stitch:4"
       ],
       "review_status": "confirmed_face"
     },
     {
-      "event_id": "bevt_0003",
+      "event_id": "bevt_0006",
       "track_id": 5,
       "tier": "review",
-      "start_time": 3.67,
-      "end_time": 4.838,
-      "start_timecode": "00:00:03.669",
-      "end_timecode": "00:00:04.838",
-      "start_frame": 110,
-      "end_frame": 145,
-      "duration_sec": 1.168,
+      "start_time": 3.767,
+      "end_time": 4.9,
+      "start_timecode": "00:00:03.766",
+      "end_timecode": "00:00:04.900",
+      "start_frame": 113,
+      "end_frame": 147,
+      "duration_sec": 1.133,
       "avg_confidence": 0.6022,
       "peak_confidence": 0.7612,
       "detection_count": 4,
@@ -553,16 +621,16 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0004",
+      "event_id": "bevt_0007",
       "track_id": 16,
       "tier": "low_conf",
-      "start_time": 7.174,
-      "end_time": 8.008,
-      "start_timecode": "00:00:07.174",
-      "end_timecode": "00:00:08.007",
-      "start_frame": 215,
-      "end_frame": 240,
-      "duration_sec": 0.834,
+      "start_time": 7.267,
+      "end_time": 8.067,
+      "start_timecode": "00:00:07.267",
+      "end_timecode": "00:00:08.067",
+      "start_frame": 218,
+      "end_frame": 242,
+      "duration_sec": 0.8,
       "avg_confidence": 0.5774,
       "peak_confidence": 0.645,
       "detection_count": 2,
@@ -594,16 +662,16 @@
       "review_status": "logged_only"
     },
     {
-      "event_id": "bevt_0005",
+      "event_id": "bevt_0008",
       "track_id": 20,
       "tier": "review",
-      "start_time": 8.175,
-      "end_time": 11.011,
-      "start_timecode": "00:00:08.175",
-      "end_timecode": "00:00:11.010",
-      "start_frame": 245,
-      "end_frame": 330,
-      "duration_sec": 2.836,
+      "start_time": 8.267,
+      "end_time": 11.067,
+      "start_timecode": "00:00:08.266",
+      "end_timecode": "00:00:11.067",
+      "start_frame": 248,
+      "end_frame": 332,
+      "duration_sec": 2.8,
       "avg_confidence": 0.8424,
       "peak_confidence": 0.873,
       "detection_count": 5,
@@ -670,16 +738,16 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0006",
+      "event_id": "bevt_0009",
       "track_id": 27,
       "tier": "auto",
-      "start_time": 9.676,
-      "end_time": 10.677,
-      "start_timecode": "00:00:09.676",
-      "end_timecode": "00:00:10.676",
-      "start_frame": 290,
-      "end_frame": 320,
-      "duration_sec": 1.001,
+      "start_time": 9.767,
+      "end_time": 10.733,
+      "start_timecode": "00:00:09.766",
+      "end_timecode": "00:00:10.733",
+      "start_frame": 293,
+      "end_frame": 322,
+      "duration_sec": 0.966,
       "avg_confidence": 0.8381,
       "peak_confidence": 0.855,
       "detection_count": 3,
@@ -722,16 +790,16 @@
       "review_status": "confirmed_face"
     },
     {
-      "event_id": "bevt_0007",
+      "event_id": "bevt_0010",
       "track_id": 37,
       "tier": "review",
-      "start_time": 11.345,
-      "end_time": 13.18,
-      "start_timecode": "00:00:11.345",
-      "end_timecode": "00:00:13.179",
-      "start_frame": 340,
-      "end_frame": 395,
-      "duration_sec": 1.835,
+      "start_time": 11.433,
+      "end_time": 13.233,
+      "start_timecode": "00:00:11.432",
+      "end_timecode": "00:00:13.233",
+      "start_frame": 343,
+      "end_frame": 397,
+      "duration_sec": 1.8,
       "avg_confidence": 0.8119,
       "peak_confidence": 0.8252,
       "detection_count": 4,
@@ -787,16 +855,16 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0008",
+      "event_id": "bevt_0011",
       "track_id": 39,
       "tier": "review",
-      "start_time": 11.678,
-      "end_time": 12.679,
-      "start_timecode": "00:00:11.678",
-      "end_timecode": "00:00:12.679",
-      "start_frame": 350,
-      "end_frame": 380,
-      "duration_sec": 1.001,
+      "start_time": 11.767,
+      "end_time": 12.733,
+      "start_timecode": "00:00:11.766",
+      "end_timecode": "00:00:12.733",
+      "start_frame": 353,
+      "end_frame": 382,
+      "duration_sec": 0.966,
       "avg_confidence": 0.63,
       "peak_confidence": 0.8218,
       "detection_count": 3,
@@ -841,19 +909,19 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0009",
+      "event_id": "bevt_0012",
       "track_id": 49,
       "tier": "auto",
-      "start_time": 13.347,
-      "end_time": 15.682,
-      "start_timecode": "00:00:13.346",
-      "end_timecode": "00:00:15.682",
-      "start_frame": 400,
-      "end_frame": 470,
-      "duration_sec": 2.335,
-      "avg_confidence": 0.8383,
-      "peak_confidence": 0.8726,
-      "detection_count": 9,
+      "start_time": 13.433,
+      "end_time": 14.733,
+      "start_timecode": "00:00:13.432",
+      "end_timecode": "00:00:14.733",
+      "start_frame": 403,
+      "end_frame": 442,
+      "duration_sec": 1.3,
+      "avg_confidence": 0.8455,
+      "peak_confidence": 0.8535,
+      "detection_count": 5,
       "trajectory": [
         {
           "t": 13.68,
@@ -909,7 +977,28 @@
             131.3
           ],
           "conf": 0.835
-        },
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:3"
+      ],
+      "review_status": "confirmed_face"
+    },
+    {
+      "event_id": "bevt_0013",
+      "track_id": 53,
+      "tier": "auto",
+      "start_time": 14.6,
+      "end_time": 15.733,
+      "start_timecode": "00:00:14.599",
+      "end_timecode": "00:00:15.733",
+      "start_frame": 438,
+      "end_frame": 472,
+      "duration_sec": 1.133,
+      "avg_confidence": 0.8293,
+      "peak_confidence": 0.8726,
+      "detection_count": 4,
+      "trajectory": [
         {
           "t": 14.848,
           "frame": 445,
@@ -956,22 +1045,21 @@
         }
       ],
       "rule_hints": [
-        "identity_stitch:3",
-        "cross_presence_span"
+        "identity_stitch:3"
       ],
       "review_status": "confirmed_face"
     },
     {
-      "event_id": "bevt_0010",
+      "event_id": "bevt_0014",
       "track_id": 56,
       "tier": "auto",
-      "start_time": 15.682,
-      "end_time": 20.187,
-      "start_timecode": "00:00:15.682",
-      "end_timecode": "00:00:20.187",
-      "start_frame": 470,
-      "end_frame": 605,
-      "duration_sec": 4.505,
+      "start_time": 15.767,
+      "end_time": 20.267,
+      "start_timecode": "00:00:15.766",
+      "end_timecode": "00:00:20.266",
+      "start_frame": 473,
+      "end_frame": 608,
+      "duration_sec": 4.5,
       "avg_confidence": 0.8241,
       "peak_confidence": 0.8682,
       "detection_count": 24,
@@ -1247,16 +1335,16 @@
       "review_status": "confirmed_face"
     },
     {
-      "event_id": "bevt_0011",
+      "event_id": "bevt_0015",
       "track_id": 57,
       "tier": "low_conf",
-      "start_time": 16.183,
-      "end_time": 16.85,
-      "start_timecode": "00:00:16.182",
-      "end_timecode": "00:00:16.850",
-      "start_frame": 485,
-      "end_frame": 505,
-      "duration_sec": 0.667,
+      "start_time": 16.267,
+      "end_time": 16.933,
+      "start_timecode": "00:00:16.266",
+      "end_timecode": "00:00:16.932",
+      "start_frame": 488,
+      "end_frame": 508,
+      "duration_sec": 0.666,
       "avg_confidence": 0.5571,
       "peak_confidence": 0.5571,
       "detection_count": 1,
@@ -1280,16 +1368,16 @@
       "review_status": "logged_only"
     },
     {
-      "event_id": "bevt_0012",
+      "event_id": "bevt_0016",
       "track_id": 81,
       "tier": "review",
-      "start_time": 39.206,
-      "end_time": 40.541,
-      "start_timecode": "00:00:39.206",
-      "end_timecode": "00:00:40.540",
-      "start_frame": 1175,
-      "end_frame": 1215,
-      "duration_sec": 1.335,
+      "start_time": 39.3,
+      "end_time": 40.6,
+      "start_timecode": "00:00:39.299",
+      "end_timecode": "00:00:40.600",
+      "start_frame": 1179,
+      "end_frame": 1218,
+      "duration_sec": 1.3,
       "avg_confidence": 0.7805,
       "peak_confidence": 0.8467,
       "detection_count": 5,
@@ -1357,16 +1445,16 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0013",
+      "event_id": "bevt_0017",
       "track_id": 66,
       "tier": "review",
-      "start_time": 20.854,
-      "end_time": 34.868,
-      "start_timecode": "00:00:20.853",
-      "end_timecode": "00:00:34.868",
-      "start_frame": 625,
-      "end_frame": 1045,
-      "duration_sec": 14.014,
+      "start_time": 20.933,
+      "end_time": 34.933,
+      "start_timecode": "00:00:20.932",
+      "end_timecode": "00:00:34.932",
+      "start_frame": 628,
+      "end_frame": 1048,
+      "duration_sec": 14.0,
       "avg_confidence": 0.7873,
       "peak_confidence": 0.8369,
       "detection_count": 31,
@@ -1720,16 +1808,16 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0014",
+      "event_id": "bevt_0018",
       "track_id": 152,
       "tier": "review",
-      "start_time": 52.719,
-      "end_time": 54.555,
-      "start_timecode": "00:00:52.719",
-      "end_timecode": "00:00:54.554",
-      "start_frame": 1580,
-      "end_frame": 1635,
-      "duration_sec": 1.836,
+      "start_time": 52.8,
+      "end_time": 54.633,
+      "start_timecode": "00:00:52.799",
+      "end_timecode": "00:00:54.633",
+      "start_frame": 1584,
+      "end_frame": 1639,
+      "duration_sec": 1.833,
       "avg_confidence": 0.8068,
       "peak_confidence": 0.8438,
       "detection_count": 8,
@@ -1829,15 +1917,15 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0015",
+      "event_id": "bevt_0019",
       "track_id": 69,
       "tier": "low_conf",
-      "start_time": 31.532,
-      "end_time": 32.199,
-      "start_timecode": "00:00:31.532",
-      "end_timecode": "00:00:32.198",
-      "start_frame": 945,
-      "end_frame": 965,
+      "start_time": 31.6,
+      "end_time": 32.267,
+      "start_timecode": "00:00:31.600",
+      "end_timecode": "00:00:32.267",
+      "start_frame": 948,
+      "end_frame": 968,
       "duration_sec": 0.667,
       "avg_confidence": 0.4263,
       "peak_confidence": 0.4263,
@@ -1863,16 +1951,16 @@
       "review_status": "logged_only"
     },
     {
-      "event_id": "bevt_0016",
+      "event_id": "bevt_0020",
       "track_id": 101,
       "tier": "low_conf",
-      "start_time": 42.376,
-      "end_time": 43.043,
-      "start_timecode": "00:00:42.375",
-      "end_timecode": "00:00:43.042",
-      "start_frame": 1270,
-      "end_frame": 1290,
-      "duration_sec": 0.667,
+      "start_time": 42.467,
+      "end_time": 43.1,
+      "start_timecode": "00:00:42.466",
+      "end_timecode": "00:00:43.100",
+      "start_frame": 1274,
+      "end_frame": 1293,
+      "duration_sec": 0.633,
       "avg_confidence": 0.5649,
       "peak_confidence": 0.5649,
       "detection_count": 1,
@@ -1895,16 +1983,16 @@
       "review_status": "logged_only"
     },
     {
-      "event_id": "bevt_0017",
+      "event_id": "bevt_0021",
       "track_id": 75,
       "tier": "review",
-      "start_time": 36.203,
-      "end_time": 39.373,
-      "start_timecode": "00:00:36.203",
-      "end_timecode": "00:00:39.372",
-      "start_frame": 1085,
-      "end_frame": 1180,
-      "duration_sec": 3.17,
+      "start_time": 36.3,
+      "end_time": 39.433,
+      "start_timecode": "00:00:36.299",
+      "end_timecode": "00:00:39.432",
+      "start_frame": 1089,
+      "end_frame": 1183,
+      "duration_sec": 3.133,
       "avg_confidence": 0.7593,
       "peak_confidence": 0.8301,
       "detection_count": 9,
@@ -2016,16 +2104,16 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0018",
+      "event_id": "bevt_0022",
       "track_id": 83,
       "tier": "review",
-      "start_time": 39.54,
-      "end_time": 40.874,
-      "start_timecode": "00:00:39.539",
-      "end_timecode": "00:00:40.874",
-      "start_frame": 1185,
-      "end_frame": 1225,
-      "duration_sec": 1.334,
+      "start_time": 39.633,
+      "end_time": 40.933,
+      "start_timecode": "00:00:39.633",
+      "end_timecode": "00:00:40.932",
+      "start_frame": 1189,
+      "end_frame": 1228,
+      "duration_sec": 1.3,
       "avg_confidence": 0.8079,
       "peak_confidence": 0.8115,
       "detection_count": 5,
@@ -2092,16 +2180,16 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0019",
+      "event_id": "bevt_0023",
       "track_id": 141,
       "tier": "review",
-      "start_time": 49.383,
-      "end_time": 50.217,
-      "start_timecode": "00:00:49.383",
-      "end_timecode": "00:00:50.216",
-      "start_frame": 1480,
-      "end_frame": 1505,
-      "duration_sec": 0.834,
+      "start_time": 49.467,
+      "end_time": 50.267,
+      "start_timecode": "00:00:49.466",
+      "end_timecode": "00:00:50.267",
+      "start_frame": 1484,
+      "end_frame": 1508,
+      "duration_sec": 0.8,
       "avg_confidence": 0.7471,
       "peak_confidence": 0.7637,
       "detection_count": 2,
@@ -2135,16 +2223,16 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0020",
+      "event_id": "bevt_0024",
       "track_id": 96,
       "tier": "low_conf",
-      "start_time": 41.875,
-      "end_time": 43.21,
-      "start_timecode": "00:00:41.875",
-      "end_timecode": "00:00:43.210",
-      "start_frame": 1255,
-      "end_frame": 1295,
-      "duration_sec": 1.335,
+      "start_time": 41.967,
+      "end_time": 43.267,
+      "start_timecode": "00:00:41.966",
+      "end_timecode": "00:00:43.267",
+      "start_frame": 1259,
+      "end_frame": 1298,
+      "duration_sec": 1.3,
       "avg_confidence": 0.6582,
       "peak_confidence": 0.7026,
       "detection_count": 5,
@@ -2209,16 +2297,16 @@
       "review_status": "logged_only"
     },
     {
-      "event_id": "bevt_0021",
+      "event_id": "bevt_0025",
       "track_id": 111,
       "tier": "low_conf",
-      "start_time": 43.877,
-      "end_time": 44.711,
-      "start_timecode": "00:00:43.877",
-      "end_timecode": "00:00:44.710",
-      "start_frame": 1315,
-      "end_frame": 1340,
-      "duration_sec": 0.834,
+      "start_time": 43.967,
+      "end_time": 44.767,
+      "start_timecode": "00:00:43.966",
+      "end_timecode": "00:00:44.767",
+      "start_frame": 1319,
+      "end_frame": 1343,
+      "duration_sec": 0.8,
       "avg_confidence": 0.5652,
       "peak_confidence": 0.5815,
       "detection_count": 2,
@@ -2252,19 +2340,19 @@
       "review_status": "logged_only"
     },
     {
-      "event_id": "bevt_0022",
+      "event_id": "bevt_0026",
       "track_id": 132,
-      "tier": "auto",
-      "start_time": 48.382,
-      "end_time": 59.393,
-      "start_timecode": "00:00:48.381",
-      "end_timecode": "00:00:59.393",
-      "start_frame": 1450,
-      "end_frame": 1780,
-      "duration_sec": 11.011,
-      "avg_confidence": 0.6812,
-      "peak_confidence": 0.8584,
-      "detection_count": 27,
+      "tier": "low_conf",
+      "start_time": 48.467,
+      "end_time": 52.3,
+      "start_timecode": "00:00:48.466",
+      "end_timecode": "00:00:52.299",
+      "start_frame": 1454,
+      "end_frame": 1569,
+      "duration_sec": 3.833,
+      "avg_confidence": 0.5803,
+      "peak_confidence": 0.7231,
+      "detection_count": 17,
       "trajectory": [
         {
           "t": 48.715,
@@ -2452,7 +2540,28 @@
             71.4
           ],
           "conf": 0.6602
-        },
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:2"
+      ],
+      "review_status": "logged_only"
+    },
+    {
+      "event_id": "bevt_0027",
+      "track_id": 175,
+      "tier": "auto",
+      "start_time": 57.3,
+      "end_time": 59.467,
+      "start_timecode": "00:00:57.299",
+      "end_timecode": "00:00:59.466",
+      "start_frame": 1719,
+      "end_frame": 1784,
+      "duration_sec": 2.167,
+      "avg_confidence": 0.8525,
+      "peak_confidence": 0.8584,
+      "detection_count": 10,
+      "trajectory": [
         {
           "t": 57.558,
           "frame": 1725,
@@ -2565,22 +2674,21 @@
         }
       ],
       "rule_hints": [
-        "identity_stitch:2",
-        "cross_presence_span"
+        "identity_stitch:2"
       ],
       "review_status": "confirmed_face"
     },
     {
-      "event_id": "bevt_0023",
+      "event_id": "bevt_0028",
       "track_id": 168,
       "tier": "auto",
-      "start_time": 55.055,
-      "end_time": 59.726,
-      "start_timecode": "00:00:55.054",
-      "end_timecode": "00:00:59.725",
-      "start_frame": 1650,
-      "end_frame": 1790,
-      "duration_sec": 4.671,
+      "start_time": 55.133,
+      "end_time": 59.8,
+      "start_timecode": "00:00:55.133",
+      "end_timecode": "00:00:59.799",
+      "start_frame": 1654,
+      "end_frame": 1794,
+      "duration_sec": 4.667,
       "avg_confidence": 0.8469,
       "peak_confidence": 0.8828,
       "detection_count": 7,
@@ -2669,16 +2777,16 @@
       "review_status": "confirmed_face"
     },
     {
-      "event_id": "bevt_0024",
+      "event_id": "bevt_0029",
       "track_id": 182,
       "tier": "review",
-      "start_time": 59.726,
-      "end_time": 61.395,
-      "start_timecode": "00:00:59.725",
-      "end_timecode": "00:01:01.395",
-      "start_frame": 1790,
-      "end_frame": 1840,
-      "duration_sec": 1.669,
+      "start_time": 59.8,
+      "end_time": 61.467,
+      "start_timecode": "00:00:59.799",
+      "end_timecode": "00:01:01.466",
+      "start_frame": 1794,
+      "end_frame": 1844,
+      "duration_sec": 1.667,
       "avg_confidence": 0.8233,
       "peak_confidence": 0.8433,
       "detection_count": 2,
@@ -2710,16 +2818,16 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0025",
+      "event_id": "bevt_0030",
       "track_id": 185,
       "tier": "review",
-      "start_time": 60.227,
-      "end_time": 61.061,
-      "start_timecode": "00:01:00.226",
-      "end_timecode": "00:01:01.060",
-      "start_frame": 1805,
-      "end_frame": 1830,
-      "duration_sec": 0.834,
+      "start_time": 60.3,
+      "end_time": 61.133,
+      "start_timecode": "00:01:00.299",
+      "end_timecode": "00:01:01.133",
+      "start_frame": 1809,
+      "end_frame": 1834,
+      "duration_sec": 0.833,
       "avg_confidence": 0.7981,
       "peak_confidence": 0.8101,
       "detection_count": 2,
@@ -2751,16 +2859,16 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0026",
+      "event_id": "bevt_0031",
       "track_id": 190,
       "tier": "auto",
-      "start_time": 61.228,
-      "end_time": 64.398,
-      "start_timecode": "00:01:01.228",
-      "end_timecode": "00:01:04.397",
-      "start_frame": 1835,
-      "end_frame": 1930,
-      "duration_sec": 3.17,
+      "start_time": 61.3,
+      "end_time": 64.467,
+      "start_timecode": "00:01:01.299",
+      "end_timecode": "00:01:04.466",
+      "start_frame": 1839,
+      "end_frame": 1934,
+      "duration_sec": 3.167,
       "avg_confidence": 0.8052,
       "peak_confidence": 0.8652,
       "detection_count": 16,
@@ -2946,16 +3054,16 @@
       "review_status": "confirmed_face"
     },
     {
-      "event_id": "bevt_0027",
+      "event_id": "bevt_0032",
       "track_id": 192,
       "tier": "low_conf",
-      "start_time": 67.401,
-      "end_time": 69.236,
-      "start_timecode": "00:01:07.400",
-      "end_timecode": "00:01:09.236",
-      "start_frame": 2020,
-      "end_frame": 2075,
-      "duration_sec": 1.835,
+      "start_time": 67.5,
+      "end_time": 69.3,
+      "start_timecode": "00:01:07.500",
+      "end_timecode": "00:01:09.299",
+      "start_frame": 2025,
+      "end_frame": 2079,
+      "duration_sec": 1.8,
       "avg_confidence": 0.5216,
       "peak_confidence": 0.5688,
       "detection_count": 8,
@@ -3057,19 +3165,19 @@
       "review_status": "logged_only"
     },
     {
-      "event_id": "bevt_0028",
+      "event_id": "bevt_0033",
       "track_id": 192,
-      "tier": "auto",
-      "start_time": 78.912,
-      "end_time": 91.925,
-      "start_timecode": "00:01:18.912",
-      "end_timecode": "00:01:31.924",
-      "start_frame": 2365,
-      "end_frame": 2755,
-      "duration_sec": 13.013,
-      "avg_confidence": 0.7928,
-      "peak_confidence": 0.8789,
-      "detection_count": 40,
+      "tier": "review",
+      "start_time": 79.0,
+      "end_time": 80.467,
+      "start_timecode": "00:01:19.000",
+      "end_timecode": "00:01:20.466",
+      "start_frame": 2370,
+      "end_frame": 2414,
+      "duration_sec": 1.467,
+      "avg_confidence": 0.6745,
+      "peak_confidence": 0.8477,
+      "detection_count": 6,
       "trajectory": [
         {
           "t": 79.246,
@@ -3136,7 +3244,30 @@
             31.4
           ],
           "conf": 0.5459
-        },
+        }
+      ],
+      "rule_hints": [
+        "edge_clip",
+        "aspect_ratio",
+        "identity_stitch:6"
+      ],
+      "review_status": "pending"
+    },
+    {
+      "event_id": "bevt_0034",
+      "track_id": 208,
+      "tier": "auto",
+      "start_time": 82.667,
+      "end_time": 89.0,
+      "start_timecode": "00:01:22.667",
+      "end_timecode": "00:01:29.000",
+      "start_frame": 2480,
+      "end_frame": 2670,
+      "duration_sec": 6.333,
+      "avg_confidence": 0.8296,
+      "peak_confidence": 0.8789,
+      "detection_count": 28,
+      "trajectory": [
         {
           "t": 82.916,
           "frame": 2485,
@@ -3444,7 +3575,28 @@
             43.8
           ],
           "conf": 0.7754
-        },
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:6"
+      ],
+      "review_status": "confirmed_face"
+    },
+    {
+      "event_id": "bevt_0035",
+      "track_id": 226,
+      "tier": "review",
+      "start_time": 90.5,
+      "end_time": 92.0,
+      "start_timecode": "00:01:30.500",
+      "end_timecode": "00:01:32.000",
+      "start_frame": 2715,
+      "end_frame": 2760,
+      "duration_sec": 1.5,
+      "avg_confidence": 0.7389,
+      "peak_confidence": 0.8433,
+      "detection_count": 6,
+      "trajectory": [
         {
           "t": 90.757,
           "frame": 2720,
@@ -3513,22 +3665,23 @@
         }
       ],
       "rule_hints": [
-        "identity_stitch:6",
-        "cross_presence_span"
+        "edge_clip",
+        "aspect_ratio",
+        "identity_stitch:6"
       ],
-      "review_status": "confirmed_face"
+      "review_status": "pending"
     },
     {
-      "event_id": "bevt_0029",
+      "event_id": "bevt_0036",
       "track_id": 270,
       "tier": "auto",
-      "start_time": 105.272,
-      "end_time": 109.609,
-      "start_timecode": "00:01:45.272",
-      "end_timecode": "00:01:49.608",
-      "start_frame": 3155,
-      "end_frame": 3285,
-      "duration_sec": 4.337,
+      "start_time": 105.367,
+      "end_time": 109.667,
+      "start_timecode": "00:01:45.367",
+      "end_timecode": "00:01:49.667",
+      "start_frame": 3161,
+      "end_frame": 3290,
+      "duration_sec": 4.3,
       "avg_confidence": 0.8548,
       "peak_confidence": 0.8682,
       "detection_count": 15,
@@ -3705,19 +3858,19 @@
       "review_status": "confirmed_face"
     },
     {
-      "event_id": "bevt_0030",
+      "event_id": "bevt_0037",
       "track_id": 281,
       "tier": "auto",
-      "start_time": 109.609,
-      "end_time": 152.152,
-      "start_timecode": "00:01:49.608",
-      "end_timecode": "00:02:32.151",
-      "start_frame": 3285,
-      "end_frame": 4560,
-      "duration_sec": 42.543,
-      "avg_confidence": 0.8499,
-      "peak_confidence": 0.8857,
-      "detection_count": 249,
+      "start_time": 109.7,
+      "end_time": 116.167,
+      "start_timecode": "00:01:49.700",
+      "end_timecode": "00:01:56.167",
+      "start_frame": 3291,
+      "end_frame": 3485,
+      "duration_sec": 6.467,
+      "avg_confidence": 0.8457,
+      "peak_confidence": 0.8726,
+      "detection_count": 36,
       "trajectory": [
         {
           "t": 109.943,
@@ -4114,7 +4267,28 @@
             123.6
           ],
           "conf": 0.8442
-        },
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:6"
+      ],
+      "review_status": "confirmed_face"
+    },
+    {
+      "event_id": "bevt_0038",
+      "track_id": 286,
+      "tier": "auto",
+      "start_time": 116.2,
+      "end_time": 152.233,
+      "start_timecode": "00:01:56.200",
+      "end_timecode": "00:02:32.233",
+      "start_frame": 3486,
+      "end_frame": 4567,
+      "duration_sec": 36.033,
+      "avg_confidence": 0.8506,
+      "peak_confidence": 0.8857,
+      "detection_count": 213,
+      "trajectory": [
         {
           "t": 116.45,
           "frame": 3490,
@@ -6460,25 +6634,24 @@
         }
       ],
       "rule_hints": [
-        "identity_stitch:6",
-        "cross_presence_span"
+        "identity_stitch:6"
       ],
       "review_status": "confirmed_face"
     },
     {
-      "event_id": "bevt_0031",
+      "event_id": "bevt_0039",
       "track_id": 197,
-      "tier": "review",
-      "start_time": 72.573,
-      "end_time": 83.75,
-      "start_timecode": "00:01:12.572",
-      "end_timecode": "00:01:23.750",
-      "start_frame": 2175,
-      "end_frame": 2510,
-      "duration_sec": 11.177,
-      "avg_confidence": 0.7205,
-      "peak_confidence": 0.8633,
-      "detection_count": 35,
+      "tier": "low_conf",
+      "start_time": 72.667,
+      "end_time": 75.467,
+      "start_timecode": "00:01:12.667",
+      "end_timecode": "00:01:15.466",
+      "start_frame": 2180,
+      "end_frame": 2264,
+      "duration_sec": 2.8,
+      "avg_confidence": 0.5752,
+      "peak_confidence": 0.6958,
+      "detection_count": 14,
       "trajectory": [
         {
           "t": 72.906,
@@ -6633,7 +6806,30 @@
             31.4
           ],
           "conf": 0.5078
-        },
+        }
+      ],
+      "rule_hints": [
+        "edge_clip",
+        "aspect_ratio",
+        "identity_stitch:2"
+      ],
+      "review_status": "logged_only"
+    },
+    {
+      "event_id": "bevt_0040",
+      "track_id": 202,
+      "tier": "review",
+      "start_time": 77.333,
+      "end_time": 83.833,
+      "start_timecode": "00:01:17.332",
+      "end_timecode": "00:01:23.832",
+      "start_frame": 2320,
+      "end_frame": 2515,
+      "duration_sec": 6.5,
+      "avg_confidence": 0.8174,
+      "peak_confidence": 0.8633,
+      "detection_count": 21,
+      "trajectory": [
         {
           "t": 77.578,
           "frame": 2325,
@@ -6868,22 +7064,21 @@
       ],
       "rule_hints": [
         "aspect_ratio",
-        "identity_stitch:2",
-        "cross_presence_span"
+        "identity_stitch:2"
       ],
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0032",
+      "event_id": "bevt_0041",
       "track_id": 203,
       "tier": "review",
-      "start_time": 78.745,
-      "end_time": 79.413,
-      "start_timecode": "00:01:18.745",
-      "end_timecode": "00:01:19.412",
-      "start_frame": 2360,
-      "end_frame": 2380,
-      "duration_sec": 0.668,
+      "start_time": 78.833,
+      "end_time": 79.467,
+      "start_timecode": "00:01:18.832",
+      "end_timecode": "00:01:19.466",
+      "start_frame": 2365,
+      "end_frame": 2384,
+      "duration_sec": 0.634,
       "avg_confidence": 0.7568,
       "peak_confidence": 0.7568,
       "detection_count": 1,
@@ -6906,16 +7101,16 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0033",
+      "event_id": "bevt_0042",
       "track_id": 233,
       "tier": "review",
-      "start_time": 94.761,
-      "end_time": 96.263,
-      "start_timecode": "00:01:34.760",
-      "end_timecode": "00:01:36.263",
-      "start_frame": 2840,
-      "end_frame": 2885,
-      "duration_sec": 1.502,
+      "start_time": 94.833,
+      "end_time": 96.333,
+      "start_timecode": "00:01:34.832",
+      "end_timecode": "00:01:36.332",
+      "start_frame": 2845,
+      "end_frame": 2890,
+      "duration_sec": 1.5,
       "avg_confidence": 0.8964,
       "peak_confidence": 0.915,
       "detection_count": 6,
@@ -6994,15 +7189,15 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0034",
+      "event_id": "bevt_0043",
       "track_id": 218,
       "tier": "low_conf",
-      "start_time": 87.921,
-      "end_time": 88.588,
-      "start_timecode": "00:01:27.921",
-      "end_timecode": "00:01:28.587",
-      "start_frame": 2635,
-      "end_frame": 2655,
+      "start_time": 88.0,
+      "end_time": 88.667,
+      "start_timecode": "00:01:28.000",
+      "end_timecode": "00:01:28.667",
+      "start_frame": 2640,
+      "end_frame": 2660,
       "duration_sec": 0.667,
       "avg_confidence": 0.5049,
       "peak_confidence": 0.5049,
@@ -7027,16 +7222,16 @@
       "review_status": "logged_only"
     },
     {
-      "event_id": "bevt_0035",
+      "event_id": "bevt_0044",
       "track_id": 293,
       "tier": "review",
-      "start_time": 121.788,
-      "end_time": 128.629,
-      "start_timecode": "00:02:01.787",
-      "end_timecode": "00:02:08.628",
-      "start_frame": 3650,
-      "end_frame": 3855,
-      "duration_sec": 6.841,
+      "start_time": 121.867,
+      "end_time": 128.7,
+      "start_timecode": "00:02:01.867",
+      "end_timecode": "00:02:08.699",
+      "start_frame": 3656,
+      "end_frame": 3861,
+      "duration_sec": 6.833,
       "avg_confidence": 0.6671,
       "peak_confidence": 0.7842,
       "detection_count": 7,
@@ -7126,16 +7321,16 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0036",
+      "event_id": "bevt_0045",
       "track_id": 231,
       "tier": "review",
-      "start_time": 93.26,
-      "end_time": 94.928,
-      "start_timecode": "00:01:33.260",
-      "end_timecode": "00:01:34.927",
-      "start_frame": 2795,
-      "end_frame": 2845,
-      "duration_sec": 1.668,
+      "start_time": 93.333,
+      "end_time": 95.0,
+      "start_timecode": "00:01:33.332",
+      "end_timecode": "00:01:35.000",
+      "start_frame": 2800,
+      "end_frame": 2850,
+      "duration_sec": 1.667,
       "avg_confidence": 0.8122,
       "peak_confidence": 0.877,
       "detection_count": 7,
@@ -7224,16 +7419,16 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0037",
+      "event_id": "bevt_0046",
       "track_id": 244,
       "tier": "review",
-      "start_time": 97.431,
-      "end_time": 99.266,
-      "start_timecode": "00:01:37.430",
-      "end_timecode": "00:01:39.266",
-      "start_frame": 2920,
-      "end_frame": 2975,
-      "duration_sec": 1.835,
+      "start_time": 97.5,
+      "end_time": 99.333,
+      "start_timecode": "00:01:37.500",
+      "end_timecode": "00:01:39.332",
+      "start_frame": 2925,
+      "end_frame": 2980,
+      "duration_sec": 1.833,
       "avg_confidence": 0.6899,
       "peak_confidence": 0.7852,
       "detection_count": 7,
@@ -7320,19 +7515,19 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0038",
+      "event_id": "bevt_0047",
       "track_id": 253,
       "tier": "auto",
-      "start_time": 101.101,
-      "end_time": 116.45,
-      "start_timecode": "00:01:41.100",
-      "end_timecode": "00:01:56.450",
-      "start_frame": 3030,
-      "end_frame": 3490,
-      "duration_sec": 15.349,
-      "avg_confidence": 0.843,
+      "start_time": 101.2,
+      "end_time": 105.0,
+      "start_timecode": "00:01:41.200",
+      "end_timecode": "00:01:45.000",
+      "start_frame": 3036,
+      "end_frame": 3150,
+      "duration_sec": 3.8,
+      "avg_confidence": 0.8585,
       "peak_confidence": 0.8823,
-      "detection_count": 39,
+      "detection_count": 20,
       "trajectory": [
         {
           "t": 101.435,
@@ -7553,7 +7748,28 @@
             270.8
           ],
           "conf": 0.7676
-        },
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:4"
+      ],
+      "review_status": "confirmed_face"
+    },
+    {
+      "event_id": "bevt_0048",
+      "track_id": 276,
+      "tier": "auto",
+      "start_time": 109.033,
+      "end_time": 116.5,
+      "start_timecode": "00:01:49.033",
+      "end_timecode": "00:01:56.500",
+      "start_frame": 3271,
+      "end_frame": 3495,
+      "duration_sec": 7.467,
+      "avg_confidence": 0.8268,
+      "peak_confidence": 0.8623,
+      "detection_count": 19,
+      "trajectory": [
         {
           "t": 109.276,
           "frame": 3275,
@@ -7771,19 +7987,19 @@
       "review_status": "confirmed_face"
     },
     {
-      "event_id": "bevt_0039",
+      "event_id": "bevt_0049",
       "track_id": 301,
-      "tier": "auto",
-      "start_time": 126.293,
-      "end_time": 141.475,
-      "start_timecode": "00:02:06.293",
-      "end_timecode": "00:02:21.474",
-      "start_frame": 3785,
-      "end_frame": 4240,
-      "duration_sec": 15.182,
-      "avg_confidence": 0.8323,
-      "peak_confidence": 0.8853,
-      "detection_count": 56,
+      "tier": "review",
+      "start_time": 126.367,
+      "end_time": 127.2,
+      "start_timecode": "00:02:06.367",
+      "end_timecode": "00:02:07.200",
+      "start_frame": 3791,
+      "end_frame": 3816,
+      "duration_sec": 0.833,
+      "avg_confidence": 0.6465,
+      "peak_confidence": 0.7725,
+      "detection_count": 2,
       "trajectory": [
         {
           "t": 126.627,
@@ -7806,7 +8022,29 @@
             209.0
           ],
           "conf": 0.5205
-        },
+        }
+      ],
+      "rule_hints": [
+        "aspect_ratio",
+        "identity_stitch:4"
+      ],
+      "review_status": "pending"
+    },
+    {
+      "event_id": "bevt_0050",
+      "track_id": 312,
+      "tier": "auto",
+      "start_time": 132.033,
+      "end_time": 141.533,
+      "start_timecode": "00:02:12.032",
+      "end_timecode": "00:02:21.532",
+      "start_frame": 3961,
+      "end_frame": 4246,
+      "duration_sec": 9.5,
+      "avg_confidence": 0.8392,
+      "peak_confidence": 0.8853,
+      "detection_count": 54,
+      "trajectory": [
         {
           "t": 132.299,
           "frame": 3965,
@@ -8403,22 +8641,21 @@
         }
       ],
       "rule_hints": [
-        "identity_stitch:4",
-        "cross_presence_span"
+        "identity_stitch:4"
       ],
       "review_status": "confirmed_face"
     },
     {
-      "event_id": "bevt_0040",
+      "event_id": "bevt_0051",
       "track_id": 273,
       "tier": "review",
-      "start_time": 108.442,
-      "end_time": 109.109,
-      "start_timecode": "00:01:48.441",
-      "end_timecode": "00:01:49.108",
-      "start_frame": 3250,
-      "end_frame": 3270,
-      "duration_sec": 0.667,
+      "start_time": 108.533,
+      "end_time": 109.167,
+      "start_timecode": "00:01:48.533",
+      "end_timecode": "00:01:49.167",
+      "start_frame": 3256,
+      "end_frame": 3275,
+      "duration_sec": 0.634,
       "avg_confidence": 0.8369,
       "peak_confidence": 0.8369,
       "detection_count": 1,
@@ -8441,15 +8678,15 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0041",
+      "event_id": "bevt_0052",
       "track_id": 326,
       "tier": "review",
-      "start_time": 153.153,
-      "end_time": 153.987,
-      "start_timecode": "00:02:33.152",
-      "end_timecode": "00:02:33.986",
-      "start_frame": 4590,
-      "end_frame": 4615,
+      "start_time": 153.233,
+      "end_time": 154.067,
+      "start_timecode": "00:02:33.233",
+      "end_timecode": "00:02:34.067",
+      "start_frame": 4597,
+      "end_frame": 4622,
       "duration_sec": 0.834,
       "avg_confidence": 0.7649,
       "peak_confidence": 0.7949,
@@ -8485,16 +8722,16 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0042",
+      "event_id": "bevt_0053",
       "track_id": 282,
       "tier": "review",
-      "start_time": 112.112,
-      "end_time": 113.447,
-      "start_timecode": "00:01:52.111",
-      "end_timecode": "00:01:53.447",
-      "start_frame": 3360,
-      "end_frame": 3400,
-      "duration_sec": 1.335,
+      "start_time": 112.2,
+      "end_time": 113.5,
+      "start_timecode": "00:01:52.200",
+      "end_timecode": "00:01:53.500",
+      "start_frame": 3366,
+      "end_frame": 3405,
+      "duration_sec": 1.3,
       "avg_confidence": 0.8302,
       "peak_confidence": 0.8696,
       "detection_count": 5,
@@ -8561,16 +8798,16 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0043",
+      "event_id": "bevt_0054",
       "track_id": 282,
       "tier": "auto",
-      "start_time": 115.782,
-      "end_time": 116.45,
-      "start_timecode": "00:01:55.781",
-      "end_timecode": "00:01:56.450",
-      "start_frame": 3470,
-      "end_frame": 3490,
-      "duration_sec": 0.668,
+      "start_time": 115.867,
+      "end_time": 116.5,
+      "start_timecode": "00:01:55.867",
+      "end_timecode": "00:01:56.500",
+      "start_frame": 3476,
+      "end_frame": 3495,
+      "duration_sec": 0.633,
       "avg_confidence": 0.855,
       "peak_confidence": 0.855,
       "detection_count": 1,
@@ -8591,16 +8828,16 @@
       "review_status": "confirmed_face"
     },
     {
-      "event_id": "bevt_0044",
+      "event_id": "bevt_0055",
       "track_id": 309,
       "tier": "review",
-      "start_time": 130.797,
-      "end_time": 132.299,
-      "start_timecode": "00:02:10.796",
-      "end_timecode": "00:02:12.299",
-      "start_frame": 3920,
-      "end_frame": 3965,
-      "duration_sec": 1.502,
+      "start_time": 130.867,
+      "end_time": 132.367,
+      "start_timecode": "00:02:10.866",
+      "end_timecode": "00:02:12.366",
+      "start_frame": 3926,
+      "end_frame": 3971,
+      "duration_sec": 1.5,
       "avg_confidence": 0.6748,
       "peak_confidence": 0.7827,
       "detection_count": 3,
@@ -8645,16 +8882,16 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0045",
+      "event_id": "bevt_0056",
       "track_id": 314,
       "tier": "review",
-      "start_time": 141.141,
-      "end_time": 150.15,
-      "start_timecode": "00:02:21.140",
-      "end_timecode": "00:02:30.150",
-      "start_frame": 4230,
-      "end_frame": 4500,
-      "duration_sec": 9.009,
+      "start_time": 141.233,
+      "end_time": 150.2,
+      "start_timecode": "00:02:21.233",
+      "end_timecode": "00:02:30.199",
+      "start_frame": 4237,
+      "end_frame": 4506,
+      "duration_sec": 8.967,
       "avg_confidence": 0.7191,
       "peak_confidence": 0.79,
       "detection_count": 6,
@@ -8734,16 +8971,16 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0046",
+      "event_id": "bevt_0057",
       "track_id": 343,
       "tier": "review",
-      "start_time": 163.997,
-      "end_time": 165.332,
-      "start_timecode": "00:02:43.997",
-      "end_timecode": "00:02:45.331",
-      "start_frame": 4915,
-      "end_frame": 4955,
-      "duration_sec": 1.335,
+      "start_time": 164.067,
+      "end_time": 165.4,
+      "start_timecode": "00:02:44.067",
+      "end_timecode": "00:02:45.400",
+      "start_frame": 4922,
+      "end_frame": 4962,
+      "duration_sec": 1.333,
       "avg_confidence": 0.708,
       "peak_confidence": 0.7881,
       "detection_count": 5,
@@ -8811,16 +9048,16 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0047",
+      "event_id": "bevt_0058",
       "track_id": 319,
       "tier": "review",
-      "start_time": 144.978,
-      "end_time": 145.979,
-      "start_timecode": "00:02:24.978",
-      "end_timecode": "00:02:25.979",
-      "start_frame": 4345,
-      "end_frame": 4375,
-      "duration_sec": 1.001,
+      "start_time": 145.067,
+      "end_time": 146.033,
+      "start_timecode": "00:02:25.067",
+      "end_timecode": "00:02:26.032",
+      "start_frame": 4352,
+      "end_frame": 4381,
+      "duration_sec": 0.966,
       "avg_confidence": 0.735,
       "peak_confidence": 0.8003,
       "detection_count": 3,
@@ -8865,16 +9102,16 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0048",
+      "event_id": "bevt_0059",
       "track_id": 320,
       "tier": "low_conf",
-      "start_time": 148.982,
-      "end_time": 149.649,
-      "start_timecode": "00:02:28.981",
-      "end_timecode": "00:02:29.649",
-      "start_frame": 4465,
-      "end_frame": 4485,
-      "duration_sec": 0.667,
+      "start_time": 149.067,
+      "end_time": 149.7,
+      "start_timecode": "00:02:29.067",
+      "end_timecode": "00:02:29.699",
+      "start_frame": 4472,
+      "end_frame": 4491,
+      "duration_sec": 0.633,
       "avg_confidence": 0.644,
       "peak_confidence": 0.644,
       "detection_count": 1,
@@ -8897,16 +9134,16 @@
       "review_status": "logged_only"
     },
     {
-      "event_id": "bevt_0049",
+      "event_id": "bevt_0060",
       "track_id": 348,
       "tier": "low_conf",
-      "start_time": 174.674,
-      "end_time": 178.011,
-      "start_timecode": "00:02:54.674",
-      "end_timecode": "00:02:58.010",
-      "start_frame": 5235,
-      "end_frame": 5335,
-      "duration_sec": 3.337,
+      "start_time": 174.767,
+      "end_time": 178.067,
+      "start_timecode": "00:02:54.766",
+      "end_timecode": "00:02:58.067",
+      "start_frame": 5243,
+      "end_frame": 5342,
+      "duration_sec": 3.3,
       "avg_confidence": 0.6397,
       "peak_confidence": 0.6523,
       "detection_count": 2,
@@ -8940,19 +9177,19 @@
       "review_status": "logged_only"
     },
     {
-      "event_id": "bevt_0050",
+      "event_id": "bevt_0061",
       "track_id": 339,
       "tier": "auto",
-      "start_time": 158.325,
-      "end_time": 180.013,
-      "start_timecode": "00:02:38.324",
-      "end_timecode": "00:03:00.013",
-      "start_frame": 4745,
-      "end_frame": 5395,
-      "duration_sec": 21.688,
-      "avg_confidence": 0.8211,
+      "start_time": 158.4,
+      "end_time": 179.733,
+      "start_timecode": "00:02:38.400",
+      "end_timecode": "00:02:59.733",
+      "start_frame": 4752,
+      "end_frame": 5392,
+      "duration_sec": 21.333,
+      "avg_confidence": 0.8208,
       "peak_confidence": 0.8608,
-      "detection_count": 126,
+      "detection_count": 125,
       "trajectory": [
         {
           "t": 158.659,
@@ -10328,7 +10565,28 @@
             72.3
           ],
           "conf": 0.8516
-        },
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:3"
+      ],
+      "review_status": "confirmed_face"
+    },
+    {
+      "event_id": "bevt_0062",
+      "track_id": 358,
+      "tier": "auto",
+      "start_time": 179.433,
+      "end_time": 180.067,
+      "start_timecode": "00:02:59.432",
+      "end_timecode": "00:03:00.067",
+      "start_frame": 5383,
+      "end_frame": 5402,
+      "duration_sec": 0.634,
+      "avg_confidence": 0.8608,
+      "peak_confidence": 0.8608,
+      "detection_count": 1,
+      "trajectory": [
         {
           "t": 179.679,
           "frame": 5385,
@@ -10342,22 +10600,21 @@
         }
       ],
       "rule_hints": [
-        "identity_stitch:3",
-        "cross_presence_span"
+        "identity_stitch:3"
       ],
       "review_status": "confirmed_face"
     },
     {
-      "event_id": "bevt_0051",
+      "event_id": "bevt_0063",
       "track_id": 470,
       "tier": "review",
-      "start_time": 197.697,
-      "end_time": 198.865,
-      "start_timecode": "00:03:17.697",
-      "end_timecode": "00:03:18.865",
-      "start_frame": 5925,
-      "end_frame": 5960,
-      "duration_sec": 1.168,
+      "start_time": 197.767,
+      "end_time": 198.933,
+      "start_timecode": "00:03:17.766",
+      "end_timecode": "00:03:18.932",
+      "start_frame": 5933,
+      "end_frame": 5968,
+      "duration_sec": 1.166,
       "avg_confidence": 0.7751,
       "peak_confidence": 0.8145,
       "detection_count": 4,
@@ -10414,16 +10671,16 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0052",
+      "event_id": "bevt_0064",
       "track_id": 342,
       "tier": "review",
-      "start_time": 160.494,
-      "end_time": 176.009,
-      "start_timecode": "00:02:40.493",
-      "end_timecode": "00:02:56.008",
-      "start_frame": 4810,
-      "end_frame": 5275,
-      "duration_sec": 15.515,
+      "start_time": 160.567,
+      "end_time": 176.067,
+      "start_timecode": "00:02:40.567",
+      "end_timecode": "00:02:56.067",
+      "start_frame": 4817,
+      "end_frame": 5282,
+      "duration_sec": 15.5,
       "avg_confidence": 0.7124,
       "peak_confidence": 0.8198,
       "detection_count": 57,
@@ -11062,19 +11319,19 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0053",
+      "event_id": "bevt_0065",
       "track_id": 345,
       "tier": "review",
-      "start_time": 170.337,
-      "end_time": 185.685,
-      "start_timecode": "00:02:50.336",
-      "end_timecode": "00:03:05.685",
-      "start_frame": 5105,
-      "end_frame": 5565,
-      "duration_sec": 15.348,
-      "avg_confidence": 0.6873,
-      "peak_confidence": 0.7793,
-      "detection_count": 20,
+      "start_time": 170.433,
+      "end_time": 178.067,
+      "start_timecode": "00:02:50.432",
+      "end_timecode": "00:02:58.067",
+      "start_frame": 5113,
+      "end_frame": 5342,
+      "duration_sec": 7.634,
+      "avg_confidence": 0.6845,
+      "peak_confidence": 0.7637,
+      "detection_count": 18,
       "trajectory": [
         {
           "t": 170.671,
@@ -11273,7 +11530,31 @@
             732.8
           ],
           "conf": 0.6909
-        },
+        }
+      ],
+      "rule_hints": [
+        "workzone_low",
+        "edge_clip",
+        "identity_stitch:2",
+        "cross_presence_span"
+      ],
+      "review_status": "pending"
+    },
+    {
+      "event_id": "bevt_0066",
+      "track_id": 374,
+      "tier": "review",
+      "start_time": 184.933,
+      "end_time": 185.767,
+      "start_timecode": "00:03:04.932",
+      "end_timecode": "00:03:05.766",
+      "start_frame": 5548,
+      "end_frame": 5573,
+      "duration_sec": 0.834,
+      "avg_confidence": 0.7122,
+      "peak_confidence": 0.7793,
+      "detection_count": 2,
+      "trajectory": [
         {
           "t": 185.185,
           "frame": 5550,
@@ -11298,22 +11579,21 @@
         }
       ],
       "rule_hints": [
-        "identity_stitch:2",
-        "cross_presence_span"
+        "identity_stitch:2"
       ],
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0054",
+      "event_id": "bevt_0067",
       "track_id": 351,
       "tier": "review",
-      "start_time": 176.51,
-      "end_time": 177.844,
-      "start_timecode": "00:02:56.509",
-      "end_timecode": "00:02:57.843",
-      "start_frame": 5290,
-      "end_frame": 5330,
-      "duration_sec": 1.334,
+      "start_time": 176.6,
+      "end_time": 177.9,
+      "start_timecode": "00:02:56.599",
+      "end_timecode": "00:02:57.900",
+      "start_frame": 5298,
+      "end_frame": 5337,
+      "duration_sec": 1.3,
       "avg_confidence": 0.7067,
       "peak_confidence": 0.7695,
       "detection_count": 5,
@@ -11380,16 +11660,16 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0055",
+      "event_id": "bevt_0068",
       "track_id": 359,
       "tier": "review",
-      "start_time": 180.68,
-      "end_time": 181.848,
-      "start_timecode": "00:03:00.680",
-      "end_timecode": "00:03:01.848",
-      "start_frame": 5415,
-      "end_frame": 5450,
-      "duration_sec": 1.168,
+      "start_time": 180.767,
+      "end_time": 181.9,
+      "start_timecode": "00:03:00.766",
+      "end_timecode": "00:03:01.900",
+      "start_frame": 5423,
+      "end_frame": 5457,
+      "duration_sec": 1.133,
       "avg_confidence": 0.8343,
       "peak_confidence": 0.8481,
       "detection_count": 4,
@@ -11445,16 +11725,16 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0056",
+      "event_id": "bevt_0069",
       "track_id": 417,
       "tier": "review",
-      "start_time": 186.853,
-      "end_time": 189.523,
-      "start_timecode": "00:03:06.853",
-      "end_timecode": "00:03:09.522",
-      "start_frame": 5600,
-      "end_frame": 5680,
-      "duration_sec": 2.67,
+      "start_time": 186.933,
+      "end_time": 189.6,
+      "start_timecode": "00:03:06.932",
+      "end_timecode": "00:03:09.599",
+      "start_frame": 5608,
+      "end_frame": 5688,
+      "duration_sec": 2.667,
       "avg_confidence": 0.7929,
       "peak_confidence": 0.8228,
       "detection_count": 4,
@@ -11508,16 +11788,16 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0057",
+      "event_id": "bevt_0070",
       "track_id": 418,
       "tier": "review",
-      "start_time": 187.02,
-      "end_time": 187.688,
-      "start_timecode": "00:03:07.020",
-      "end_timecode": "00:03:07.687",
-      "start_frame": 5605,
-      "end_frame": 5625,
-      "duration_sec": 0.668,
+      "start_time": 187.1,
+      "end_time": 187.767,
+      "start_timecode": "00:03:07.099",
+      "end_timecode": "00:03:07.766",
+      "start_frame": 5613,
+      "end_frame": 5633,
+      "duration_sec": 0.667,
       "avg_confidence": 0.8066,
       "peak_confidence": 0.8066,
       "detection_count": 1,
@@ -11538,16 +11818,16 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0058",
+      "event_id": "bevt_0071",
       "track_id": 432,
       "tier": "review",
-      "start_time": 188.021,
-      "end_time": 189.356,
-      "start_timecode": "00:03:08.020",
-      "end_timecode": "00:03:09.355",
-      "start_frame": 5635,
-      "end_frame": 5675,
-      "duration_sec": 1.335,
+      "start_time": 188.1,
+      "end_time": 189.433,
+      "start_timecode": "00:03:08.099",
+      "end_timecode": "00:03:09.432",
+      "start_frame": 5643,
+      "end_frame": 5683,
+      "duration_sec": 1.333,
       "avg_confidence": 0.7993,
       "peak_confidence": 0.8105,
       "detection_count": 5,
@@ -11612,19 +11892,19 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0059",
+      "event_id": "bevt_0072",
       "track_id": 466,
       "tier": "review",
-      "start_time": 196.863,
-      "end_time": 202.869,
-      "start_timecode": "00:03:16.862",
-      "end_timecode": "00:03:22.868",
-      "start_frame": 5900,
-      "end_frame": 6080,
-      "duration_sec": 6.006,
-      "avg_confidence": 0.7754,
+      "start_time": 196.933,
+      "end_time": 198.933,
+      "start_timecode": "00:03:16.932",
+      "end_timecode": "00:03:18.932",
+      "start_frame": 5908,
+      "end_frame": 5968,
+      "duration_sec": 2.0,
+      "avg_confidence": 0.8015,
       "peak_confidence": 0.8154,
-      "detection_count": 16,
+      "detection_count": 9,
       "trajectory": [
         {
           "t": 197.197,
@@ -11724,7 +12004,28 @@
             57.8
           ],
           "conf": 0.8066
-        },
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:2"
+      ],
+      "review_status": "pending"
+    },
+    {
+      "event_id": "bevt_0073",
+      "track_id": 487,
+      "tier": "review",
+      "start_time": 201.3,
+      "end_time": 202.933,
+      "start_timecode": "00:03:21.300",
+      "end_timecode": "00:03:22.932",
+      "start_frame": 6039,
+      "end_frame": 6088,
+      "duration_sec": 1.633,
+      "avg_confidence": 0.7418,
+      "peak_confidence": 0.7905,
+      "detection_count": 7,
+      "trajectory": [
         {
           "t": 201.535,
           "frame": 6040,
@@ -11804,22 +12105,21 @@
         }
       ],
       "rule_hints": [
-        "identity_stitch:2",
-        "cross_presence_span"
+        "identity_stitch:2"
       ],
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0060",
+      "event_id": "bevt_0074",
       "track_id": 469,
       "tier": "low_conf",
-      "start_time": 197.531,
-      "end_time": 198.865,
-      "start_timecode": "00:03:17.531",
-      "end_timecode": "00:03:18.865",
-      "start_frame": 5920,
-      "end_frame": 5960,
-      "duration_sec": 1.334,
+      "start_time": 197.6,
+      "end_time": 198.933,
+      "start_timecode": "00:03:17.599",
+      "end_timecode": "00:03:18.932",
+      "start_frame": 5928,
+      "end_frame": 5968,
+      "duration_sec": 1.333,
       "avg_confidence": 0.6561,
       "peak_confidence": 0.7432,
       "detection_count": 5,
@@ -11886,16 +12186,16 @@
       "review_status": "logged_only"
     },
     {
-      "event_id": "bevt_0061",
+      "event_id": "bevt_0075",
       "track_id": 486,
       "tier": "review",
-      "start_time": 201.201,
-      "end_time": 203.537,
-      "start_timecode": "00:03:21.200",
-      "end_timecode": "00:03:23.537",
-      "start_frame": 6030,
-      "end_frame": 6100,
-      "duration_sec": 2.336,
+      "start_time": 201.3,
+      "end_time": 203.6,
+      "start_timecode": "00:03:21.300",
+      "end_timecode": "00:03:23.599",
+      "start_frame": 6039,
+      "end_frame": 6108,
+      "duration_sec": 2.3,
       "avg_confidence": 0.7608,
       "peak_confidence": 0.7988,
       "detection_count": 11,
@@ -12026,16 +12326,16 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0062",
+      "event_id": "bevt_0076",
       "track_id": 488,
       "tier": "low_conf",
-      "start_time": 201.201,
-      "end_time": 202.202,
-      "start_timecode": "00:03:21.200",
-      "end_timecode": "00:03:22.201",
-      "start_frame": 6030,
-      "end_frame": 6060,
-      "duration_sec": 1.001,
+      "start_time": 201.3,
+      "end_time": 202.267,
+      "start_timecode": "00:03:21.300",
+      "end_timecode": "00:03:22.266",
+      "start_frame": 6039,
+      "end_frame": 6068,
+      "duration_sec": 0.967,
       "avg_confidence": 0.5264,
       "peak_confidence": 0.6001,
       "detection_count": 3,
@@ -12081,16 +12381,16 @@
       "review_status": "logged_only"
     },
     {
-      "event_id": "bevt_0063",
+      "event_id": "bevt_0077",
       "track_id": 494,
       "tier": "low_conf",
-      "start_time": 208.208,
-      "end_time": 209.209,
-      "start_timecode": "00:03:28.207",
-      "end_timecode": "00:03:29.209",
-      "start_frame": 6240,
-      "end_frame": 6270,
-      "duration_sec": 1.001,
+      "start_time": 208.3,
+      "end_time": 209.267,
+      "start_timecode": "00:03:28.300",
+      "end_timecode": "00:03:29.266",
+      "start_frame": 6249,
+      "end_frame": 6278,
+      "duration_sec": 0.967,
       "avg_confidence": 0.5887,
       "peak_confidence": 0.6323,
       "detection_count": 3,
@@ -12135,16 +12435,16 @@
       "review_status": "logged_only"
     },
     {
-      "event_id": "bevt_0064",
+      "event_id": "bevt_0078",
       "track_id": 531,
       "tier": "auto",
-      "start_time": 225.726,
-      "end_time": 227.227,
-      "start_timecode": "00:03:45.725",
-      "end_timecode": "00:03:47.227",
-      "start_frame": 6765,
-      "end_frame": 6810,
-      "duration_sec": 1.501,
+      "start_time": 225.8,
+      "end_time": 227.3,
+      "start_timecode": "00:03:45.800",
+      "end_timecode": "00:03:47.300",
+      "start_frame": 6774,
+      "end_frame": 6819,
+      "duration_sec": 1.5,
       "avg_confidence": 0.8524,
       "peak_confidence": 0.8564,
       "detection_count": 6,
@@ -12222,16 +12522,16 @@
       "review_status": "confirmed_face"
     },
     {
-      "event_id": "bevt_0065",
+      "event_id": "bevt_0079",
       "track_id": 498,
       "tier": "review",
-      "start_time": 212.045,
-      "end_time": 212.713,
-      "start_timecode": "00:03:32.044",
-      "end_timecode": "00:03:32.712",
-      "start_frame": 6355,
-      "end_frame": 6375,
-      "duration_sec": 0.668,
+      "start_time": 212.133,
+      "end_time": 212.767,
+      "start_timecode": "00:03:32.133",
+      "end_timecode": "00:03:32.766",
+      "start_frame": 6364,
+      "end_frame": 6383,
+      "duration_sec": 0.634,
       "avg_confidence": 0.7759,
       "peak_confidence": 0.7759,
       "detection_count": 1,
@@ -12252,19 +12552,19 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0066",
+      "event_id": "bevt_0080",
       "track_id": 536,
       "tier": "review",
-      "start_time": 227.894,
-      "end_time": 232.065,
-      "start_timecode": "00:03:47.894",
-      "end_timecode": "00:03:52.064",
-      "start_frame": 6830,
-      "end_frame": 6955,
-      "duration_sec": 4.171,
-      "avg_confidence": 0.676,
+      "start_time": 227.967,
+      "end_time": 229.633,
+      "start_timecode": "00:03:47.967",
+      "end_timecode": "00:03:49.633",
+      "start_frame": 6839,
+      "end_frame": 6889,
+      "duration_sec": 1.666,
+      "avg_confidence": 0.6929,
       "peak_confidence": 0.8062,
-      "detection_count": 10,
+      "detection_count": 7,
       "trajectory": [
         {
           "t": 228.228,
@@ -12342,7 +12642,28 @@
             632.2
           ],
           "conf": 0.6704
-        },
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:3"
+      ],
+      "review_status": "pending"
+    },
+    {
+      "event_id": "bevt_0081",
+      "track_id": 537,
+      "tier": "low_conf",
+      "start_time": 229.967,
+      "end_time": 230.633,
+      "start_timecode": "00:03:49.967",
+      "end_timecode": "00:03:50.633",
+      "start_frame": 6899,
+      "end_frame": 6919,
+      "duration_sec": 0.666,
+      "avg_confidence": 0.731,
+      "peak_confidence": 0.731,
+      "detection_count": 1,
+      "trajectory": [
         {
           "t": 230.23,
           "frame": 6900,
@@ -12353,7 +12674,28 @@
             657.2
           ],
           "conf": 0.731
-        },
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:3"
+      ],
+      "review_status": "logged_only"
+    },
+    {
+      "event_id": "bevt_0082",
+      "track_id": 541,
+      "tier": "low_conf",
+      "start_time": 231.3,
+      "end_time": 232.133,
+      "start_timecode": "00:03:51.300",
+      "end_timecode": "00:03:52.133",
+      "start_frame": 6939,
+      "end_frame": 6964,
+      "duration_sec": 0.833,
+      "avg_confidence": 0.5894,
+      "peak_confidence": 0.7178,
+      "detection_count": 2,
+      "trajectory": [
         {
           "t": 231.565,
           "frame": 6940,
@@ -12378,25 +12720,26 @@
         }
       ],
       "rule_hints": [
-        "identity_stitch:3",
-        "cross_presence_span"
+        "workzone_low",
+        "edge_clip",
+        "identity_stitch:3"
       ],
-      "review_status": "pending"
+      "review_status": "logged_only"
     },
     {
-      "event_id": "bevt_0067",
+      "event_id": "bevt_0083",
       "track_id": 543,
-      "tier": "auto",
-      "start_time": 231.398,
-      "end_time": 240.74,
-      "start_timecode": "00:03:51.397",
-      "end_timecode": "00:04:00.740",
-      "start_frame": 6935,
-      "end_frame": 7215,
-      "duration_sec": 9.342,
-      "avg_confidence": 0.8164,
-      "peak_confidence": 0.875,
-      "detection_count": 20,
+      "tier": "low_conf",
+      "start_time": 231.467,
+      "end_time": 232.133,
+      "start_timecode": "00:03:51.467",
+      "end_timecode": "00:03:52.133",
+      "start_frame": 6944,
+      "end_frame": 6964,
+      "duration_sec": 0.666,
+      "avg_confidence": 0.5244,
+      "peak_confidence": 0.5244,
+      "detection_count": 1,
       "trajectory": [
         {
           "t": 231.732,
@@ -12408,7 +12751,30 @@
             29.5
           ],
           "conf": 0.5244
-        },
+        }
+      ],
+      "rule_hints": [
+        "edge_clip",
+        "aspect_ratio",
+        "identity_stitch:2"
+      ],
+      "review_status": "logged_only"
+    },
+    {
+      "event_id": "bevt_0084",
+      "track_id": 546,
+      "tier": "auto",
+      "start_time": 231.967,
+      "end_time": 240.8,
+      "start_timecode": "00:03:51.967",
+      "end_timecode": "00:04:00.800",
+      "start_frame": 6959,
+      "end_frame": 7224,
+      "duration_sec": 8.833,
+      "avg_confidence": 0.8317,
+      "peak_confidence": 0.875,
+      "detection_count": 19,
+      "trajectory": [
         {
           "t": 232.232,
           "frame": 6960,
@@ -12626,16 +12992,16 @@
       "review_status": "confirmed_face"
     },
     {
-      "event_id": "bevt_0068",
+      "event_id": "bevt_0085",
       "track_id": 550,
       "tier": "review",
-      "start_time": 235.736,
-      "end_time": 237.237,
-      "start_timecode": "00:03:55.735",
-      "end_timecode": "00:03:57.236",
-      "start_frame": 7065,
-      "end_frame": 7110,
-      "duration_sec": 1.501,
+      "start_time": 235.833,
+      "end_time": 237.3,
+      "start_timecode": "00:03:55.832",
+      "end_timecode": "00:03:57.300",
+      "start_frame": 7075,
+      "end_frame": 7119,
+      "duration_sec": 1.467,
       "avg_confidence": 0.8074,
       "peak_confidence": 0.8457,
       "detection_count": 6,
@@ -12711,19 +13077,19 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0069",
+      "event_id": "bevt_0086",
       "track_id": 569,
       "tier": "auto",
-      "start_time": 242.242,
-      "end_time": 262.596,
-      "start_timecode": "00:04:02.241",
-      "end_timecode": "00:04:22.596",
-      "start_frame": 7260,
-      "end_frame": 7870,
-      "duration_sec": 20.354,
-      "avg_confidence": 0.8365,
-      "peak_confidence": 0.8687,
-      "detection_count": 49,
+      "start_time": 242.333,
+      "end_time": 247.967,
+      "start_timecode": "00:04:02.332",
+      "end_timecode": "00:04:07.967",
+      "start_frame": 7270,
+      "end_frame": 7439,
+      "duration_sec": 5.634,
+      "avg_confidence": 0.8532,
+      "peak_confidence": 0.8579,
+      "detection_count": 3,
       "trajectory": [
         {
           "t": 242.576,
@@ -12757,7 +13123,29 @@
             103.6
           ],
           "conf": 0.8452
-        },
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:3",
+        "cross_presence_span"
+      ],
+      "review_status": "confirmed_face"
+    },
+    {
+      "event_id": "bevt_0087",
+      "track_id": 600,
+      "tier": "review",
+      "start_time": 254.333,
+      "end_time": 255.833,
+      "start_timecode": "00:04:14.332",
+      "end_timecode": "00:04:15.832",
+      "start_frame": 7630,
+      "end_frame": 7675,
+      "duration_sec": 1.5,
+      "avg_confidence": 0.7469,
+      "peak_confidence": 0.8647,
+      "detection_count": 6,
+      "trajectory": [
         {
           "t": 254.588,
           "frame": 7630,
@@ -12823,7 +13211,29 @@
             169.3
           ],
           "conf": 0.8647
-        },
+        }
+      ],
+      "rule_hints": [
+        "aspect_ratio",
+        "identity_stitch:3"
+      ],
+      "review_status": "pending"
+    },
+    {
+      "event_id": "bevt_0088",
+      "track_id": 601,
+      "tier": "auto",
+      "start_time": 255.5,
+      "end_time": 262.667,
+      "start_timecode": "00:04:15.500",
+      "end_timecode": "00:04:22.666",
+      "start_frame": 7665,
+      "end_frame": 7880,
+      "duration_sec": 7.167,
+      "avg_confidence": 0.8487,
+      "peak_confidence": 0.8687,
+      "detection_count": 40,
+      "trajectory": [
         {
           "t": 255.756,
           "frame": 7665,
@@ -13266,22 +13676,21 @@
         }
       ],
       "rule_hints": [
-        "identity_stitch:3",
-        "cross_presence_span"
+        "identity_stitch:3"
       ],
       "review_status": "confirmed_face"
     },
     {
-      "event_id": "bevt_0070",
+      "event_id": "bevt_0089",
       "track_id": 585,
       "tier": "review",
-      "start_time": 248.081,
-      "end_time": 250.25,
-      "start_timecode": "00:04:08.080",
-      "end_timecode": "00:04:10.250",
-      "start_frame": 7435,
-      "end_frame": 7500,
-      "duration_sec": 2.169,
+      "start_time": 248.167,
+      "end_time": 250.3,
+      "start_timecode": "00:04:08.167",
+      "end_timecode": "00:04:10.300",
+      "start_frame": 7445,
+      "end_frame": 7509,
+      "duration_sec": 2.133,
       "avg_confidence": 0.7882,
       "peak_confidence": 0.8452,
       "detection_count": 10,
@@ -13401,15 +13810,15 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0071",
+      "event_id": "bevt_0090",
       "track_id": 605,
       "tier": "low_conf",
-      "start_time": 257.257,
-      "end_time": 257.924,
-      "start_timecode": "00:04:17.257",
-      "end_timecode": "00:04:17.923",
-      "start_frame": 7710,
-      "end_frame": 7730,
+      "start_time": 257.333,
+      "end_time": 258.0,
+      "start_timecode": "00:04:17.333",
+      "end_timecode": "00:04:18.000",
+      "start_frame": 7720,
+      "end_frame": 7740,
       "duration_sec": 0.667,
       "avg_confidence": 0.6187,
       "peak_confidence": 0.6187,
@@ -13431,19 +13840,19 @@
       "review_status": "logged_only"
     },
     {
-      "event_id": "bevt_0072",
+      "event_id": "bevt_0091",
       "track_id": 608,
       "tier": "review",
-      "start_time": 261.428,
-      "end_time": 266.266,
-      "start_timecode": "00:04:21.427",
-      "end_timecode": "00:04:26.266",
-      "start_frame": 7835,
-      "end_frame": 7980,
-      "duration_sec": 4.838,
-      "avg_confidence": 0.7121,
+      "start_time": 261.5,
+      "end_time": 264.333,
+      "start_timecode": "00:04:21.500",
+      "end_timecode": "00:04:24.333",
+      "start_frame": 7845,
+      "end_frame": 7930,
+      "duration_sec": 2.833,
+      "avg_confidence": 0.7241,
       "peak_confidence": 0.8384,
-      "detection_count": 19,
+      "detection_count": 13,
       "trajectory": [
         {
           "t": 261.762,
@@ -13587,7 +13996,28 @@
             424.6
           ],
           "conf": 0.7881
-        },
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:3"
+      ],
+      "review_status": "pending"
+    },
+    {
+      "event_id": "bevt_0092",
+      "track_id": 609,
+      "tier": "review",
+      "start_time": 264.0,
+      "end_time": 265.5,
+      "start_timecode": "00:04:24.000",
+      "end_timecode": "00:04:25.500",
+      "start_frame": 7920,
+      "end_frame": 7965,
+      "duration_sec": 1.5,
+      "avg_confidence": 0.6779,
+      "peak_confidence": 0.8315,
+      "detection_count": 5,
+      "trajectory": [
         {
           "t": 264.264,
           "frame": 7920,
@@ -13642,7 +14072,28 @@
             616.9
           ],
           "conf": 0.4026
-        },
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:3"
+      ],
+      "review_status": "pending"
+    },
+    {
+      "event_id": "bevt_0093",
+      "track_id": 615,
+      "tier": "low_conf",
+      "start_time": 265.667,
+      "end_time": 266.333,
+      "start_timecode": "00:04:25.666",
+      "end_timecode": "00:04:26.333",
+      "start_frame": 7970,
+      "end_frame": 7990,
+      "duration_sec": 0.666,
+      "avg_confidence": 0.728,
+      "peak_confidence": 0.728,
+      "detection_count": 1,
+      "trajectory": [
         {
           "t": 265.932,
           "frame": 7970,
@@ -13656,25 +14107,25 @@
         }
       ],
       "rule_hints": [
-        "identity_stitch:3",
-        "cross_presence_span"
+        "edge_clip",
+        "identity_stitch:3"
       ],
-      "review_status": "pending"
+      "review_status": "logged_only"
     },
     {
-      "event_id": "bevt_0073",
+      "event_id": "bevt_0094",
       "track_id": 611,
       "tier": "auto",
-      "start_time": 264.931,
-      "end_time": 271.271,
-      "start_timecode": "00:04:24.930",
-      "end_timecode": "00:04:31.271",
-      "start_frame": 7940,
-      "end_frame": 8130,
-      "duration_sec": 6.34,
-      "avg_confidence": 0.8478,
-      "peak_confidence": 0.8857,
-      "detection_count": 34,
+      "start_time": 265.0,
+      "end_time": 270.167,
+      "start_timecode": "00:04:25.000",
+      "end_timecode": "00:04:30.166",
+      "start_frame": 7950,
+      "end_frame": 8105,
+      "duration_sec": 5.167,
+      "avg_confidence": 0.85,
+      "peak_confidence": 0.8652,
+      "detection_count": 28,
       "trajectory": [
         {
           "t": 265.265,
@@ -13983,7 +14434,28 @@
             190.9
           ],
           "conf": 0.8608
-        },
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:2"
+      ],
+      "review_status": "confirmed_face"
+    },
+    {
+      "event_id": "bevt_0095",
+      "track_id": 616,
+      "tier": "auto",
+      "start_time": 269.867,
+      "end_time": 271.333,
+      "start_timecode": "00:04:29.867",
+      "end_timecode": "00:04:31.333",
+      "start_frame": 8096,
+      "end_frame": 8140,
+      "duration_sec": 1.466,
+      "avg_confidence": 0.8378,
+      "peak_confidence": 0.8857,
+      "detection_count": 6,
+      "trajectory": [
         {
           "t": 270.103,
           "frame": 8095,
@@ -14052,22 +14524,21 @@
         }
       ],
       "rule_hints": [
-        "identity_stitch:2",
-        "cross_presence_span"
+        "identity_stitch:2"
       ],
       "review_status": "confirmed_face"
     },
     {
-      "event_id": "bevt_0074",
+      "event_id": "bevt_0096",
       "track_id": 617,
       "tier": "review",
-      "start_time": 270.604,
-      "end_time": 277.444,
-      "start_timecode": "00:04:30.603",
-      "end_timecode": "00:04:37.444",
-      "start_frame": 8110,
-      "end_frame": 8315,
-      "duration_sec": 6.84,
+      "start_time": 270.7,
+      "end_time": 277.5,
+      "start_timecode": "00:04:30.699",
+      "end_timecode": "00:04:37.500",
+      "start_frame": 8121,
+      "end_frame": 8325,
+      "duration_sec": 6.8,
       "avg_confidence": 0.6605,
       "peak_confidence": 0.7827,
       "detection_count": 35,
@@ -14464,16 +14935,16 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0075",
+      "event_id": "bevt_0097",
       "track_id": 622,
       "tier": "low_conf",
-      "start_time": 278.111,
-      "end_time": 280.113,
-      "start_timecode": "00:04:38.110",
-      "end_timecode": "00:04:40.112",
-      "start_frame": 8335,
-      "end_frame": 8395,
-      "duration_sec": 2.002,
+      "start_time": 278.2,
+      "end_time": 280.167,
+      "start_timecode": "00:04:38.199",
+      "end_timecode": "00:04:40.166",
+      "start_frame": 8346,
+      "end_frame": 8405,
+      "duration_sec": 1.967,
       "avg_confidence": 0.5128,
       "peak_confidence": 0.6504,
       "detection_count": 9,
@@ -14584,16 +15055,16 @@
       "review_status": "logged_only"
     },
     {
-      "event_id": "bevt_0076",
+      "event_id": "bevt_0098",
       "track_id": 631,
       "tier": "auto",
-      "start_time": 280.947,
-      "end_time": 289.289,
-      "start_timecode": "00:04:40.947",
-      "end_timecode": "00:04:49.288",
-      "start_frame": 8420,
-      "end_frame": 8670,
-      "duration_sec": 8.342,
+      "start_time": 281.033,
+      "end_time": 289.367,
+      "start_timecode": "00:04:41.033",
+      "end_timecode": "00:04:49.367",
+      "start_frame": 8431,
+      "end_frame": 8681,
+      "duration_sec": 8.334,
       "avg_confidence": 0.8464,
       "peak_confidence": 0.8701,
       "detection_count": 47,
@@ -15120,16 +15591,16 @@
       "review_status": "confirmed_face"
     },
     {
-      "event_id": "bevt_0077",
+      "event_id": "bevt_0099",
       "track_id": 633,
       "tier": "review",
-      "start_time": 281.281,
-      "end_time": 284.951,
-      "start_timecode": "00:04:41.281",
-      "end_timecode": "00:04:44.951",
-      "start_frame": 8430,
-      "end_frame": 8540,
-      "duration_sec": 3.67,
+      "start_time": 281.367,
+      "end_time": 285.033,
+      "start_timecode": "00:04:41.367",
+      "end_timecode": "00:04:45.033",
+      "start_frame": 8441,
+      "end_frame": 8551,
+      "duration_sec": 3.666,
       "avg_confidence": 0.7584,
       "peak_confidence": 0.7734,
       "detection_count": 19,
@@ -15350,19 +15821,19 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0078",
+      "event_id": "bevt_0100",
       "track_id": 641,
       "tier": "low_conf",
-      "start_time": 285.452,
-      "end_time": 289.122,
-      "start_timecode": "00:04:45.451",
-      "end_timecode": "00:04:49.122",
-      "start_frame": 8555,
-      "end_frame": 8665,
-      "duration_sec": 3.67,
-      "avg_confidence": 0.5855,
+      "start_time": 285.533,
+      "end_time": 287.2,
+      "start_timecode": "00:04:45.533",
+      "end_timecode": "00:04:47.199",
+      "start_frame": 8566,
+      "end_frame": 8616,
+      "duration_sec": 1.667,
+      "avg_confidence": 0.651,
       "peak_confidence": 0.7153,
-      "detection_count": 15,
+      "detection_count": 6,
       "trajectory": [
         {
           "t": 285.786,
@@ -15429,7 +15900,28 @@
             136.8
           ],
           "conf": 0.6343
-        },
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:3"
+      ],
+      "review_status": "logged_only"
+    },
+    {
+      "event_id": "bevt_0101",
+      "track_id": 644,
+      "tier": "low_conf",
+      "start_time": 287.033,
+      "end_time": 289.2,
+      "start_timecode": "00:04:47.033",
+      "end_timecode": "00:04:49.199",
+      "start_frame": 8611,
+      "end_frame": 8676,
+      "duration_sec": 2.167,
+      "avg_confidence": 0.5418,
+      "peak_confidence": 0.5957,
+      "detection_count": 9,
+      "trajectory": [
         {
           "t": 287.287,
           "frame": 8610,
@@ -15531,22 +16023,21 @@
         }
       ],
       "rule_hints": [
-        "identity_stitch:3",
-        "cross_presence_span"
+        "identity_stitch:3"
       ],
       "review_status": "logged_only"
     },
     {
-      "event_id": "bevt_0079",
+      "event_id": "bevt_0102",
       "track_id": 635,
       "tier": "low_conf",
-      "start_time": 282.783,
-      "end_time": 283.45,
-      "start_timecode": "00:04:42.783",
-      "end_timecode": "00:04:43.449",
-      "start_frame": 8475,
-      "end_frame": 8495,
-      "duration_sec": 0.667,
+      "start_time": 282.867,
+      "end_time": 283.5,
+      "start_timecode": "00:04:42.867",
+      "end_timecode": "00:04:43.500",
+      "start_frame": 8486,
+      "end_frame": 8505,
+      "duration_sec": 0.633,
       "avg_confidence": 0.7319,
       "peak_confidence": 0.7319,
       "detection_count": 1,
@@ -15570,19 +16061,19 @@
       "review_status": "logged_only"
     },
     {
-      "event_id": "bevt_0080",
+      "event_id": "bevt_0103",
       "track_id": 659,
       "tier": "review",
-      "start_time": 289.79,
-      "end_time": 291.291,
-      "start_timecode": "00:04:49.790",
-      "end_timecode": "00:04:51.290",
-      "start_frame": 8685,
-      "end_frame": 8730,
-      "duration_sec": 1.501,
-      "avg_confidence": 0.7783,
+      "start_time": 289.867,
+      "end_time": 290.533,
+      "start_timecode": "00:04:49.867",
+      "end_timecode": "00:04:50.533",
+      "start_frame": 8696,
+      "end_frame": 8716,
+      "duration_sec": 0.666,
+      "avg_confidence": 0.7983,
       "peak_confidence": 0.7983,
-      "detection_count": 3,
+      "detection_count": 1,
       "trajectory": [
         {
           "t": 290.123,
@@ -15594,7 +16085,28 @@
             157.9
           ],
           "conf": 0.7983
-        },
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:2"
+      ],
+      "review_status": "pending"
+    },
+    {
+      "event_id": "bevt_0104",
+      "track_id": 662,
+      "tier": "review",
+      "start_time": 290.533,
+      "end_time": 291.367,
+      "start_timecode": "00:04:50.533",
+      "end_timecode": "00:04:51.367",
+      "start_frame": 8716,
+      "end_frame": 8741,
+      "duration_sec": 0.834,
+      "avg_confidence": 0.7683,
+      "peak_confidence": 0.7695,
+      "detection_count": 2,
+      "trajectory": [
         {
           "t": 290.791,
           "frame": 8715,
@@ -15619,21 +16131,20 @@
         }
       ],
       "rule_hints": [
-        "identity_stitch:2",
-        "cross_presence_span"
+        "identity_stitch:2"
       ],
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0081",
+      "event_id": "bevt_0105",
       "track_id": 681,
       "tier": "review",
-      "start_time": 293.126,
-      "end_time": 293.793,
-      "start_timecode": "00:04:53.125",
-      "end_timecode": "00:04:53.793",
-      "start_frame": 8785,
-      "end_frame": 8805,
+      "start_time": 293.2,
+      "end_time": 293.867,
+      "start_timecode": "00:04:53.199",
+      "end_timecode": "00:04:53.867",
+      "start_frame": 8796,
+      "end_frame": 8816,
       "duration_sec": 0.667,
       "avg_confidence": 0.8145,
       "peak_confidence": 0.8145,
@@ -15658,16 +16169,16 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0082",
+      "event_id": "bevt_0106",
       "track_id": 709,
       "tier": "low_conf",
-      "start_time": 310.477,
-      "end_time": 311.144,
-      "start_timecode": "00:05:10.476",
-      "end_timecode": "00:05:11.144",
-      "start_frame": 9305,
-      "end_frame": 9325,
-      "duration_sec": 0.667,
+      "start_time": 310.567,
+      "end_time": 311.2,
+      "start_timecode": "00:05:10.567",
+      "end_timecode": "00:05:11.199",
+      "start_frame": 9317,
+      "end_frame": 9336,
+      "duration_sec": 0.633,
       "avg_confidence": 0.5698,
       "peak_confidence": 0.5698,
       "detection_count": 1,
@@ -15690,19 +16201,19 @@
       "review_status": "logged_only"
     },
     {
-      "event_id": "bevt_0083",
+      "event_id": "bevt_0107",
       "track_id": 784,
       "tier": "auto",
-      "start_time": 376.042,
-      "end_time": 402.569,
-      "start_timecode": "00:06:16.041",
-      "end_timecode": "00:06:42.569",
-      "start_frame": 11270,
-      "end_frame": 12065,
-      "duration_sec": 26.527,
-      "avg_confidence": 0.8205,
-      "peak_confidence": 0.8682,
-      "detection_count": 154,
+      "start_time": 376.133,
+      "end_time": 400.3,
+      "start_timecode": "00:06:16.132",
+      "end_timecode": "00:06:40.300",
+      "start_frame": 11284,
+      "end_frame": 12009,
+      "duration_sec": 24.167,
+      "avg_confidence": 0.8195,
+      "peak_confidence": 0.8599,
+      "detection_count": 142,
       "trajectory": [
         {
           "t": 376.376,
@@ -17265,7 +17776,28 @@
             143.6
           ],
           "conf": 0.8423
-        },
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:4"
+      ],
+      "review_status": "confirmed_face"
+    },
+    {
+      "event_id": "bevt_0108",
+      "track_id": 819,
+      "tier": "auto",
+      "start_time": 400.133,
+      "end_time": 402.633,
+      "start_timecode": "00:06:40.132",
+      "end_timecode": "00:06:42.632",
+      "start_frame": 12004,
+      "end_frame": 12079,
+      "duration_sec": 2.5,
+      "avg_confidence": 0.8334,
+      "peak_confidence": 0.8682,
+      "detection_count": 12,
+      "trajectory": [
         {
           "t": 400.4,
           "frame": 12000,
@@ -17400,22 +17932,21 @@
         }
       ],
       "rule_hints": [
-        "identity_stitch:4",
-        "cross_presence_span"
+        "identity_stitch:4"
       ],
       "review_status": "confirmed_face"
     },
     {
-      "event_id": "bevt_0084",
+      "event_id": "bevt_0109",
       "track_id": 724,
       "tier": "review",
-      "start_time": 319.82,
-      "end_time": 321.822,
-      "start_timecode": "00:05:19.819",
-      "end_timecode": "00:05:21.822",
-      "start_frame": 9585,
-      "end_frame": 9645,
-      "duration_sec": 2.002,
+      "start_time": 319.9,
+      "end_time": 321.9,
+      "start_timecode": "00:05:19.899",
+      "end_timecode": "00:05:21.899",
+      "start_frame": 9597,
+      "end_frame": 9657,
+      "duration_sec": 2.0,
       "avg_confidence": 0.6928,
       "peak_confidence": 0.7607,
       "detection_count": 9,
@@ -17524,16 +18055,16 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0085",
+      "event_id": "bevt_0110",
       "track_id": 730,
       "tier": "review",
-      "start_time": 324.658,
-      "end_time": 327.661,
-      "start_timecode": "00:05:24.658",
-      "end_timecode": "00:05:27.661",
-      "start_frame": 9730,
-      "end_frame": 9820,
-      "duration_sec": 3.003,
+      "start_time": 324.733,
+      "end_time": 327.733,
+      "start_timecode": "00:05:24.733",
+      "end_timecode": "00:05:27.733",
+      "start_frame": 9742,
+      "end_frame": 9832,
+      "duration_sec": 3.0,
       "avg_confidence": 0.8023,
       "peak_confidence": 0.8442,
       "detection_count": 15,
@@ -17710,16 +18241,16 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0086",
+      "event_id": "bevt_0111",
       "track_id": 731,
       "tier": "low_conf",
-      "start_time": 326.159,
-      "end_time": 326.827,
-      "start_timecode": "00:05:26.158",
-      "end_timecode": "00:05:26.826",
-      "start_frame": 9775,
-      "end_frame": 9795,
-      "duration_sec": 0.668,
+      "start_time": 326.233,
+      "end_time": 326.9,
+      "start_timecode": "00:05:26.233",
+      "end_timecode": "00:05:26.899",
+      "start_frame": 9787,
+      "end_frame": 9807,
+      "duration_sec": 0.667,
       "avg_confidence": 0.7139,
       "peak_confidence": 0.7139,
       "detection_count": 1,
@@ -17740,16 +18271,16 @@
       "review_status": "logged_only"
     },
     {
-      "event_id": "bevt_0087",
+      "event_id": "bevt_0112",
       "track_id": 731,
       "tier": "review",
-      "start_time": 345.178,
-      "end_time": 347.347,
-      "start_timecode": "00:05:45.177",
-      "end_timecode": "00:05:47.346",
-      "start_frame": 10345,
-      "end_frame": 10410,
-      "duration_sec": 2.169,
+      "start_time": 345.267,
+      "end_time": 347.4,
+      "start_timecode": "00:05:45.266",
+      "end_timecode": "00:05:47.399",
+      "start_frame": 10358,
+      "end_frame": 10422,
+      "duration_sec": 2.133,
       "avg_confidence": 0.6254,
       "peak_confidence": 0.7515,
       "detection_count": 3,
@@ -17792,16 +18323,16 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0088",
+      "event_id": "bevt_0113",
       "track_id": 742,
       "tier": "auto",
-      "start_time": 343.343,
-      "end_time": 366.366,
-      "start_timecode": "00:05:43.343",
-      "end_timecode": "00:06:06.365",
-      "start_frame": 10290,
-      "end_frame": 10980,
-      "duration_sec": 23.023,
+      "start_time": 343.433,
+      "end_time": 366.433,
+      "start_timecode": "00:05:43.432",
+      "end_timecode": "00:06:06.432",
+      "start_frame": 10303,
+      "end_frame": 10993,
+      "duration_sec": 23.0,
       "avg_confidence": 0.8098,
       "peak_confidence": 0.8545,
       "detection_count": 135,
@@ -19296,19 +19827,19 @@
       "review_status": "confirmed_face"
     },
     {
-      "event_id": "bevt_0089",
+      "event_id": "bevt_0114",
       "track_id": 760,
       "tier": "low_conf",
-      "start_time": 360.36,
-      "end_time": 365.699,
-      "start_timecode": "00:06:00.360",
-      "end_timecode": "00:06:05.699",
-      "start_frame": 10800,
-      "end_frame": 10960,
-      "duration_sec": 5.339,
-      "avg_confidence": 0.5497,
-      "peak_confidence": 0.7295,
-      "detection_count": 16,
+      "start_time": 360.433,
+      "end_time": 361.1,
+      "start_timecode": "00:06:00.432",
+      "end_timecode": "00:06:01.100",
+      "start_frame": 10813,
+      "end_frame": 10833,
+      "duration_sec": 0.667,
+      "avg_confidence": 0.4736,
+      "peak_confidence": 0.4736,
+      "detection_count": 1,
       "trajectory": [
         {
           "t": 360.694,
@@ -19320,7 +19851,28 @@
             451.6
           ],
           "conf": 0.4736
-        },
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:3"
+      ],
+      "review_status": "logged_only"
+    },
+    {
+      "event_id": "bevt_0115",
+      "track_id": 761,
+      "tier": "low_conf",
+      "start_time": 360.767,
+      "end_time": 361.433,
+      "start_timecode": "00:06:00.766",
+      "end_timecode": "00:06:01.432",
+      "start_frame": 10823,
+      "end_frame": 10843,
+      "duration_sec": 0.666,
+      "avg_confidence": 0.4951,
+      "peak_confidence": 0.4951,
+      "detection_count": 1,
+      "trajectory": [
         {
           "t": 361.027,
           "frame": 10820,
@@ -19331,7 +19883,28 @@
             511.4
           ],
           "conf": 0.4951
-        },
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:3"
+      ],
+      "review_status": "logged_only"
+    },
+    {
+      "event_id": "bevt_0116",
+      "track_id": 763,
+      "tier": "low_conf",
+      "start_time": 361.767,
+      "end_time": 365.767,
+      "start_timecode": "00:06:01.766",
+      "end_timecode": "00:06:05.766",
+      "start_frame": 10853,
+      "end_frame": 10973,
+      "duration_sec": 4.0,
+      "avg_confidence": 0.559,
+      "peak_confidence": 0.7295,
+      "detection_count": 14,
+      "trajectory": [
         {
           "t": 362.028,
           "frame": 10850,
@@ -19488,22 +20061,21 @@
         }
       ],
       "rule_hints": [
-        "identity_stitch:3",
-        "cross_presence_span"
+        "identity_stitch:3"
       ],
       "review_status": "logged_only"
     },
     {
-      "event_id": "bevt_0090",
+      "event_id": "bevt_0117",
       "track_id": 790,
       "tier": "low_conf",
-      "start_time": 380.213,
-      "end_time": 381.882,
-      "start_timecode": "00:06:20.213",
-      "end_timecode": "00:06:21.882",
-      "start_frame": 11395,
-      "end_frame": 11445,
-      "duration_sec": 1.669,
+      "start_time": 380.3,
+      "end_time": 381.933,
+      "start_timecode": "00:06:20.300",
+      "end_timecode": "00:06:21.932",
+      "start_frame": 11409,
+      "end_frame": 11458,
+      "duration_sec": 1.633,
       "avg_confidence": 0.668,
       "peak_confidence": 0.6816,
       "detection_count": 3,
@@ -19546,19 +20118,19 @@
       "review_status": "logged_only"
     },
     {
-      "event_id": "bevt_0091",
+      "event_id": "bevt_0118",
       "track_id": 793,
       "tier": "low_conf",
-      "start_time": 386.887,
-      "end_time": 399.566,
-      "start_timecode": "00:06:26.887",
-      "end_timecode": "00:06:39.565",
-      "start_frame": 11595,
-      "end_frame": 11975,
-      "duration_sec": 12.679,
-      "avg_confidence": 0.463,
-      "peak_confidence": 0.5898,
-      "detection_count": 10,
+      "start_time": 386.967,
+      "end_time": 387.633,
+      "start_timecode": "00:06:26.966",
+      "end_timecode": "00:06:27.632",
+      "start_frame": 11609,
+      "end_frame": 11629,
+      "duration_sec": 0.666,
+      "avg_confidence": 0.4417,
+      "peak_confidence": 0.4417,
+      "detection_count": 1,
       "trajectory": [
         {
           "t": 387.22,
@@ -19570,7 +20142,28 @@
             46.1
           ],
           "conf": 0.4417
-        },
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:3"
+      ],
+      "review_status": "logged_only"
+    },
+    {
+      "event_id": "bevt_0119",
+      "track_id": 799,
+      "tier": "low_conf",
+      "start_time": 390.967,
+      "end_time": 392.133,
+      "start_timecode": "00:06:30.966",
+      "end_timecode": "00:06:32.132",
+      "start_frame": 11729,
+      "end_frame": 11764,
+      "duration_sec": 1.166,
+      "avg_confidence": 0.4553,
+      "peak_confidence": 0.5898,
+      "detection_count": 4,
+      "trajectory": [
         {
           "t": 391.224,
           "frame": 11725,
@@ -19614,7 +20207,28 @@
             55.0
           ],
           "conf": 0.385
-        },
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:3"
+      ],
+      "review_status": "logged_only"
+    },
+    {
+      "event_id": "bevt_0120",
+      "track_id": 812,
+      "tier": "low_conf",
+      "start_time": 397.8,
+      "end_time": 399.633,
+      "start_timecode": "00:06:37.800",
+      "end_timecode": "00:06:39.632",
+      "start_frame": 11934,
+      "end_frame": 11989,
+      "duration_sec": 1.833,
+      "avg_confidence": 0.4734,
+      "peak_confidence": 0.5747,
+      "detection_count": 5,
+      "trajectory": [
         {
           "t": 398.064,
           "frame": 11930,
@@ -19672,25 +20286,24 @@
         }
       ],
       "rule_hints": [
-        "identity_stitch:3",
-        "cross_presence_span"
+        "identity_stitch:3"
       ],
       "review_status": "logged_only"
     },
     {
-      "event_id": "bevt_0092",
+      "event_id": "bevt_0121",
       "track_id": 797,
       "tier": "review",
-      "start_time": 390.39,
-      "end_time": 399.065,
-      "start_timecode": "00:06:30.389",
-      "end_timecode": "00:06:39.064",
-      "start_frame": 11700,
-      "end_frame": 11960,
-      "duration_sec": 8.675,
-      "avg_confidence": 0.679,
+      "start_time": 390.467,
+      "end_time": 393.467,
+      "start_timecode": "00:06:30.466",
+      "end_timecode": "00:06:33.466",
+      "start_frame": 11714,
+      "end_frame": 11804,
+      "duration_sec": 3.0,
+      "avg_confidence": 0.7415,
       "peak_confidence": 0.7812,
-      "detection_count": 22,
+      "detection_count": 15,
       "trajectory": [
         {
           "t": 390.724,
@@ -19856,7 +20469,28 @@
             33.4
           ],
           "conf": 0.541
-        },
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:3"
+      ],
+      "review_status": "pending"
+    },
+    {
+      "event_id": "bevt_0122",
+      "track_id": 809,
+      "tier": "low_conf",
+      "start_time": 396.3,
+      "end_time": 397.633,
+      "start_timecode": "00:06:36.300",
+      "end_timecode": "00:06:37.632",
+      "start_frame": 11889,
+      "end_frame": 11929,
+      "duration_sec": 1.333,
+      "avg_confidence": 0.5311,
+      "peak_confidence": 0.6655,
+      "detection_count": 3,
+      "trajectory": [
         {
           "t": 396.563,
           "frame": 11885,
@@ -19889,7 +20523,28 @@
             41.9
           ],
           "conf": 0.4707
-        },
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:3"
+      ],
+      "review_status": "logged_only"
+    },
+    {
+      "event_id": "bevt_0123",
+      "track_id": 810,
+      "tier": "low_conf",
+      "start_time": 397.8,
+      "end_time": 399.133,
+      "start_timecode": "00:06:37.800",
+      "end_timecode": "00:06:39.132",
+      "start_frame": 11934,
+      "end_frame": 11974,
+      "duration_sec": 1.333,
+      "avg_confidence": 0.5557,
+      "peak_confidence": 0.7178,
+      "detection_count": 4,
+      "trajectory": [
         {
           "t": 398.064,
           "frame": 11930,
@@ -19936,21 +20591,20 @@
         }
       ],
       "rule_hints": [
-        "identity_stitch:3",
-        "cross_presence_span"
+        "identity_stitch:3"
       ],
-      "review_status": "pending"
+      "review_status": "logged_only"
     },
     {
-      "event_id": "bevt_0093",
+      "event_id": "bevt_0124",
       "track_id": 798,
       "tier": "low_conf",
-      "start_time": 390.557,
-      "end_time": 391.224,
-      "start_timecode": "00:06:30.557",
-      "end_timecode": "00:06:31.223",
-      "start_frame": 11705,
-      "end_frame": 11725,
+      "start_time": 390.633,
+      "end_time": 391.3,
+      "start_timecode": "00:06:30.632",
+      "end_timecode": "00:06:31.300",
+      "start_frame": 11719,
+      "end_frame": 11739,
       "duration_sec": 0.667,
       "avg_confidence": 0.459,
       "peak_confidence": 0.459,
@@ -19974,16 +20628,16 @@
       "review_status": "logged_only"
     },
     {
-      "event_id": "bevt_0094",
+      "event_id": "bevt_0125",
       "track_id": 814,
       "tier": "low_conf",
-      "start_time": 398.899,
-      "end_time": 400.233,
-      "start_timecode": "00:06:38.899",
-      "end_timecode": "00:06:40.233",
-      "start_frame": 11955,
-      "end_frame": 11995,
-      "duration_sec": 1.334,
+      "start_time": 398.967,
+      "end_time": 400.3,
+      "start_timecode": "00:06:38.966",
+      "end_timecode": "00:06:40.300",
+      "start_frame": 11969,
+      "end_frame": 12009,
+      "duration_sec": 1.333,
       "avg_confidence": 0.524,
       "peak_confidence": 0.7041,
       "detection_count": 4,
@@ -20039,16 +20693,16 @@
       "review_status": "logged_only"
     },
     {
-      "event_id": "bevt_0095",
+      "event_id": "bevt_0126",
       "track_id": 806,
       "tier": "review",
-      "start_time": 393.059,
-      "end_time": 402.235,
-      "start_timecode": "00:06:33.059",
-      "end_timecode": "00:06:42.235",
-      "start_frame": 11780,
-      "end_frame": 12055,
-      "duration_sec": 9.176,
+      "start_time": 393.133,
+      "end_time": 402.3,
+      "start_timecode": "00:06:33.132",
+      "end_timecode": "00:06:42.300",
+      "start_frame": 11794,
+      "end_frame": 12069,
+      "duration_sec": 9.167,
       "avg_confidence": 0.7783,
       "peak_confidence": 0.8228,
       "detection_count": 52,
@@ -20630,16 +21284,16 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0096",
+      "event_id": "bevt_0127",
       "track_id": 823,
       "tier": "low_conf",
-      "start_time": 401.067,
-      "end_time": 401.901,
-      "start_timecode": "00:06:41.067",
-      "end_timecode": "00:06:41.901",
-      "start_frame": 12020,
-      "end_frame": 12045,
-      "duration_sec": 0.834,
+      "start_time": 401.167,
+      "end_time": 401.967,
+      "start_timecode": "00:06:41.166",
+      "end_timecode": "00:06:41.966",
+      "start_frame": 12035,
+      "end_frame": 12059,
+      "duration_sec": 0.8,
       "avg_confidence": 0.666,
       "peak_confidence": 0.6943,
       "detection_count": 2,
@@ -20671,16 +21325,16 @@
       "review_status": "logged_only"
     },
     {
-      "event_id": "bevt_0097",
+      "event_id": "bevt_0128",
       "track_id": 835,
       "tier": "low_conf",
-      "start_time": 402.068,
-      "end_time": 403.236,
-      "start_timecode": "00:06:42.067",
-      "end_timecode": "00:06:43.235",
-      "start_frame": 12050,
-      "end_frame": 12085,
-      "duration_sec": 1.168,
+      "start_time": 402.167,
+      "end_time": 403.3,
+      "start_timecode": "00:06:42.166",
+      "end_timecode": "00:06:43.300",
+      "start_frame": 12065,
+      "end_frame": 12099,
+      "duration_sec": 1.133,
       "avg_confidence": 0.5102,
       "peak_confidence": 0.5547,
       "detection_count": 2,
@@ -20712,16 +21366,16 @@
       "review_status": "logged_only"
     },
     {
-      "event_id": "bevt_0098",
+      "event_id": "bevt_0129",
       "track_id": 844,
       "tier": "review",
-      "start_time": 402.569,
-      "end_time": 403.236,
-      "start_timecode": "00:06:42.569",
-      "end_timecode": "00:06:43.235",
-      "start_frame": 12065,
-      "end_frame": 12085,
-      "duration_sec": 0.667,
+      "start_time": 402.667,
+      "end_time": 403.3,
+      "start_timecode": "00:06:42.666",
+      "end_timecode": "00:06:43.300",
+      "start_frame": 12080,
+      "end_frame": 12099,
+      "duration_sec": 0.633,
       "avg_confidence": 0.8232,
       "peak_confidence": 0.8232,
       "detection_count": 1,
@@ -20742,16 +21396,16 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0099",
+      "event_id": "bevt_0130",
       "track_id": 845,
       "tier": "review",
-      "start_time": 402.569,
-      "end_time": 403.236,
-      "start_timecode": "00:06:42.569",
-      "end_timecode": "00:06:43.235",
-      "start_frame": 12065,
-      "end_frame": 12085,
-      "duration_sec": 0.667,
+      "start_time": 402.667,
+      "end_time": 403.3,
+      "start_timecode": "00:06:42.666",
+      "end_timecode": "00:06:43.300",
+      "start_frame": 12080,
+      "end_frame": 12099,
+      "duration_sec": 0.633,
       "avg_confidence": 0.7656,
       "peak_confidence": 0.7656,
       "detection_count": 1,
@@ -20774,19 +21428,19 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0100",
+      "event_id": "bevt_0131",
       "track_id": 920,
-      "tier": "review",
-      "start_time": 430.597,
-      "end_time": 446.78,
-      "start_timecode": "00:07:10.596",
-      "end_timecode": "00:07:26.779",
-      "start_frame": 12905,
-      "end_frame": 13390,
-      "duration_sec": 16.183,
-      "avg_confidence": 0.7065,
-      "peak_confidence": 0.8091,
-      "detection_count": 68,
+      "tier": "low_conf",
+      "start_time": 430.667,
+      "end_time": 432.333,
+      "start_timecode": "00:07:10.666",
+      "end_timecode": "00:07:12.333",
+      "start_frame": 12920,
+      "end_frame": 12970,
+      "duration_sec": 1.666,
+      "avg_confidence": 0.6824,
+      "peak_confidence": 0.7456,
+      "detection_count": 7,
       "trajectory": [
         {
           "t": 430.93,
@@ -20864,7 +21518,28 @@
             57.7
           ],
           "conf": 0.7432
-        },
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:5"
+      ],
+      "review_status": "logged_only"
+    },
+    {
+      "event_id": "bevt_0132",
+      "track_id": 924,
+      "tier": "review",
+      "start_time": 432.333,
+      "end_time": 441.167,
+      "start_timecode": "00:07:12.333",
+      "end_timecode": "00:07:21.166",
+      "start_frame": 12970,
+      "end_frame": 13235,
+      "duration_sec": 8.834,
+      "avg_confidence": 0.7644,
+      "peak_confidence": 0.8091,
+      "detection_count": 31,
+      "trajectory": [
         {
           "t": 432.599,
           "frame": 12965,
@@ -21205,7 +21880,29 @@
             24.5
           ],
           "conf": 0.5991
-        },
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:5",
+        "cross_presence_span"
+      ],
+      "review_status": "pending"
+    },
+    {
+      "event_id": "bevt_0133",
+      "track_id": 939,
+      "tier": "review",
+      "start_time": 441.2,
+      "end_time": 443.333,
+      "start_timecode": "00:07:21.199",
+      "end_timecode": "00:07:23.333",
+      "start_frame": 13236,
+      "end_frame": 13300,
+      "duration_sec": 2.133,
+      "avg_confidence": 0.7186,
+      "peak_confidence": 0.7773,
+      "detection_count": 10,
+      "trajectory": [
         {
           "t": 441.441,
           "frame": 13230,
@@ -21315,7 +22012,29 @@
             24.2
           ],
           "conf": 0.7773
-        },
+        }
+      ],
+      "rule_hints": [
+        "edge_clip",
+        "identity_stitch:5"
+      ],
+      "review_status": "pending"
+    },
+    {
+      "event_id": "bevt_0134",
+      "track_id": 940,
+      "tier": "low_conf",
+      "start_time": 443.033,
+      "end_time": 446.833,
+      "start_timecode": "00:07:23.033",
+      "end_timecode": "00:07:26.833",
+      "start_frame": 13291,
+      "end_frame": 13405,
+      "duration_sec": 3.8,
+      "avg_confidence": 0.619,
+      "peak_confidence": 0.7358,
+      "detection_count": 20,
+      "trajectory": [
         {
           "t": 443.276,
           "frame": 13285,
@@ -21538,22 +22257,22 @@
         }
       ],
       "rule_hints": [
-        "identity_stitch:5",
-        "cross_presence_span"
+        "edge_clip",
+        "identity_stitch:5"
       ],
-      "review_status": "pending"
+      "review_status": "logged_only"
     },
     {
-      "event_id": "bevt_0101",
+      "event_id": "bevt_0135",
       "track_id": 849,
       "tier": "auto",
-      "start_time": 403.904,
-      "end_time": 405.739,
-      "start_timecode": "00:06:43.903",
-      "end_timecode": "00:06:45.738",
-      "start_frame": 12105,
-      "end_frame": 12160,
-      "duration_sec": 1.835,
+      "start_time": 404.0,
+      "end_time": 405.8,
+      "start_timecode": "00:06:44.000",
+      "end_timecode": "00:06:45.800",
+      "start_frame": 12120,
+      "end_frame": 12174,
+      "duration_sec": 1.8,
       "avg_confidence": 0.8322,
       "peak_confidence": 0.8525,
       "detection_count": 8,
@@ -21653,19 +22372,19 @@
       "review_status": "confirmed_face"
     },
     {
-      "event_id": "bevt_0102",
+      "event_id": "bevt_0136",
       "track_id": 890,
-      "tier": "review",
-      "start_time": 424.257,
-      "end_time": 448.281,
-      "start_timecode": "00:07:04.257",
-      "end_timecode": "00:07:28.281",
-      "start_frame": 12715,
-      "end_frame": 13435,
-      "duration_sec": 24.024,
-      "avg_confidence": 0.759,
-      "peak_confidence": 0.8169,
-      "detection_count": 98,
+      "tier": "low_conf",
+      "start_time": 424.333,
+      "end_time": 425.167,
+      "start_timecode": "00:07:04.333",
+      "end_timecode": "00:07:05.166",
+      "start_frame": 12730,
+      "end_frame": 12755,
+      "duration_sec": 0.834,
+      "avg_confidence": 0.5798,
+      "peak_confidence": 0.6636,
+      "detection_count": 2,
       "trajectory": [
         {
           "t": 424.591,
@@ -21688,7 +22407,28 @@
             183.3
           ],
           "conf": 0.4961
-        },
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:4"
+      ],
+      "review_status": "logged_only"
+    },
+    {
+      "event_id": "bevt_0137",
+      "track_id": 899,
+      "tier": "review",
+      "start_time": 427.5,
+      "end_time": 429.5,
+      "start_timecode": "00:07:07.500",
+      "end_timecode": "00:07:09.500",
+      "start_frame": 12825,
+      "end_frame": 12885,
+      "duration_sec": 2.0,
+      "avg_confidence": 0.7852,
+      "peak_confidence": 0.8027,
+      "detection_count": 2,
+      "trajectory": [
         {
           "t": 427.761,
           "frame": 12820,
@@ -21710,7 +22450,28 @@
             242.6
           ],
           "conf": 0.8027
-        },
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:4"
+      ],
+      "review_status": "pending"
+    },
+    {
+      "event_id": "bevt_0138",
+      "track_id": 911,
+      "tier": "review",
+      "start_time": 429.167,
+      "end_time": 448.333,
+      "start_timecode": "00:07:09.166",
+      "end_timecode": "00:07:28.333",
+      "start_frame": 12875,
+      "end_frame": 13450,
+      "duration_sec": 19.166,
+      "avg_confidence": 0.7622,
+      "peak_confidence": 0.8169,
+      "detection_count": 94,
+      "trajectory": [
         {
           "t": 429.429,
           "frame": 12870,
@@ -22747,22 +23508,21 @@
         }
       ],
       "rule_hints": [
-        "identity_stitch:4",
-        "cross_presence_span"
+        "identity_stitch:4"
       ],
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0103",
+      "event_id": "bevt_0139",
       "track_id": 855,
       "tier": "review",
-      "start_time": 408.742,
-      "end_time": 409.576,
-      "start_timecode": "00:06:48.742",
-      "end_timecode": "00:06:49.576",
-      "start_frame": 12250,
-      "end_frame": 12275,
-      "duration_sec": 0.834,
+      "start_time": 408.833,
+      "end_time": 409.633,
+      "start_timecode": "00:06:48.833",
+      "end_timecode": "00:06:49.632",
+      "start_frame": 12265,
+      "end_frame": 12289,
+      "duration_sec": 0.8,
       "avg_confidence": 0.823,
       "peak_confidence": 0.8252,
       "detection_count": 2,
@@ -22794,16 +23554,16 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0104",
+      "event_id": "bevt_0140",
       "track_id": 860,
       "tier": "review",
-      "start_time": 414.581,
-      "end_time": 416.082,
-      "start_timecode": "00:06:54.581",
-      "end_timecode": "00:06:56.081",
-      "start_frame": 12425,
-      "end_frame": 12470,
-      "duration_sec": 1.501,
+      "start_time": 414.667,
+      "end_time": 416.133,
+      "start_timecode": "00:06:54.666",
+      "end_timecode": "00:06:56.132",
+      "start_frame": 12440,
+      "end_frame": 12484,
+      "duration_sec": 1.466,
       "avg_confidence": 0.6887,
       "peak_confidence": 0.7866,
       "detection_count": 2,
@@ -22837,19 +23597,19 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0105",
+      "event_id": "bevt_0141",
       "track_id": 873,
-      "tier": "review",
-      "start_time": 418.918,
-      "end_time": 423.757,
-      "start_timecode": "00:06:58.918",
-      "end_timecode": "00:07:03.757",
-      "start_frame": 12555,
-      "end_frame": 12700,
-      "duration_sec": 4.839,
-      "avg_confidence": 0.7222,
-      "peak_confidence": 0.7788,
-      "detection_count": 4,
+      "tier": "low_conf",
+      "start_time": 419.0,
+      "end_time": 419.833,
+      "start_timecode": "00:06:59.000",
+      "end_timecode": "00:06:59.833",
+      "start_frame": 12570,
+      "end_frame": 12595,
+      "duration_sec": 0.833,
+      "avg_confidence": 0.6914,
+      "peak_confidence": 0.7456,
+      "detection_count": 2,
       "trajectory": [
         {
           "t": 419.252,
@@ -22872,7 +23632,28 @@
             197.1
           ],
           "conf": 0.7456
-        },
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:2"
+      ],
+      "review_status": "logged_only"
+    },
+    {
+      "event_id": "bevt_0142",
+      "track_id": 884,
+      "tier": "review",
+      "start_time": 423.0,
+      "end_time": 423.833,
+      "start_timecode": "00:07:03.000",
+      "end_timecode": "00:07:03.833",
+      "start_frame": 12690,
+      "end_frame": 12715,
+      "duration_sec": 0.833,
+      "avg_confidence": 0.753,
+      "peak_confidence": 0.7788,
+      "detection_count": 2,
+      "trajectory": [
         {
           "t": 423.256,
           "frame": 12685,
@@ -22897,22 +23678,21 @@
         }
       ],
       "rule_hints": [
-        "identity_stitch:2",
-        "cross_presence_span"
+        "identity_stitch:2"
       ],
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0106",
+      "event_id": "bevt_0143",
       "track_id": 918,
       "tier": "review",
-      "start_time": 429.429,
-      "end_time": 436.102,
-      "start_timecode": "00:07:09.428",
-      "end_timecode": "00:07:16.101",
-      "start_frame": 12870,
-      "end_frame": 13070,
-      "duration_sec": 6.673,
+      "start_time": 429.5,
+      "end_time": 436.167,
+      "start_timecode": "00:07:09.500",
+      "end_timecode": "00:07:16.166",
+      "start_frame": 12885,
+      "end_frame": 13085,
+      "duration_sec": 6.667,
       "avg_confidence": 0.6798,
       "peak_confidence": 0.7773,
       "detection_count": 37,
@@ -23332,19 +24112,19 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0107",
+      "event_id": "bevt_0144",
       "track_id": 933,
       "tier": "low_conf",
-      "start_time": 440.273,
-      "end_time": 444.11,
-      "start_timecode": "00:07:20.273",
-      "end_timecode": "00:07:24.110",
-      "start_frame": 13195,
-      "end_frame": 13310,
-      "duration_sec": 3.837,
-      "avg_confidence": 0.4752,
+      "start_time": 440.367,
+      "end_time": 441.167,
+      "start_timecode": "00:07:20.367",
+      "end_timecode": "00:07:21.166",
+      "start_frame": 13211,
+      "end_frame": 13235,
+      "duration_sec": 0.8,
+      "avg_confidence": 0.5072,
       "peak_confidence": 0.5601,
-      "detection_count": 3,
+      "detection_count": 2,
       "trajectory": [
         {
           "t": 440.607,
@@ -23367,7 +24147,29 @@
             29.7
           ],
           "conf": 0.4543
-        },
+        }
+      ],
+      "rule_hints": [
+        "edge_clip",
+        "identity_stitch:3"
+      ],
+      "review_status": "logged_only"
+    },
+    {
+      "event_id": "bevt_0145",
+      "track_id": 941,
+      "tier": "low_conf",
+      "start_time": 443.533,
+      "end_time": 444.167,
+      "start_timecode": "00:07:23.533",
+      "end_timecode": "00:07:24.166",
+      "start_frame": 13306,
+      "end_frame": 13325,
+      "duration_sec": 0.634,
+      "avg_confidence": 0.4111,
+      "peak_confidence": 0.4111,
+      "detection_count": 1,
+      "trajectory": [
         {
           "t": 443.777,
           "frame": 13300,
@@ -23382,22 +24184,21 @@
       ],
       "rule_hints": [
         "edge_clip",
-        "identity_stitch:3",
-        "cross_presence_span"
+        "identity_stitch:3"
       ],
       "review_status": "logged_only"
     },
     {
-      "event_id": "bevt_0108",
+      "event_id": "bevt_0146",
       "track_id": 919,
       "tier": "low_conf",
-      "start_time": 429.429,
-      "end_time": 430.597,
-      "start_timecode": "00:07:09.428",
-      "end_timecode": "00:07:10.596",
-      "start_frame": 12870,
-      "end_frame": 12905,
-      "duration_sec": 1.168,
+      "start_time": 429.5,
+      "end_time": 430.667,
+      "start_timecode": "00:07:09.500",
+      "end_timecode": "00:07:10.666",
+      "start_frame": 12885,
+      "end_frame": 12920,
+      "duration_sec": 1.167,
       "avg_confidence": 0.6521,
       "peak_confidence": 0.7124,
       "detection_count": 4,
@@ -23451,19 +24252,19 @@
       "review_status": "logged_only"
     },
     {
-      "event_id": "bevt_0109",
+      "event_id": "bevt_0147",
       "track_id": 923,
-      "tier": "review",
-      "start_time": 432.098,
-      "end_time": 438.605,
-      "start_timecode": "00:07:12.098",
-      "end_timecode": "00:07:18.605",
-      "start_frame": 12950,
-      "end_frame": 13145,
-      "duration_sec": 6.507,
-      "avg_confidence": 0.5758,
-      "peak_confidence": 0.7661,
-      "detection_count": 33,
+      "tier": "low_conf",
+      "start_time": 432.167,
+      "end_time": 434.0,
+      "start_timecode": "00:07:12.166",
+      "end_timecode": "00:07:14.000",
+      "start_frame": 12965,
+      "end_frame": 13020,
+      "duration_sec": 1.833,
+      "avg_confidence": 0.5767,
+      "peak_confidence": 0.731,
+      "detection_count": 8,
       "trajectory": [
         {
           "t": 432.432,
@@ -23552,7 +24353,28 @@
             65.5
           ],
           "conf": 0.5928
-        },
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:2"
+      ],
+      "review_status": "logged_only"
+    },
+    {
+      "event_id": "bevt_0148",
+      "track_id": 926,
+      "tier": "review",
+      "start_time": 433.667,
+      "end_time": 438.667,
+      "start_timecode": "00:07:13.666",
+      "end_timecode": "00:07:18.666",
+      "start_frame": 13010,
+      "end_frame": 13160,
+      "duration_sec": 5.0,
+      "avg_confidence": 0.5755,
+      "peak_confidence": 0.7661,
+      "detection_count": 25,
+      "trajectory": [
         {
           "t": 433.933,
           "frame": 13005,
@@ -23830,22 +24652,21 @@
         }
       ],
       "rule_hints": [
-        "identity_stitch:2",
-        "cross_presence_span"
+        "identity_stitch:2"
       ],
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0110",
+      "event_id": "bevt_0149",
       "track_id": 930,
       "tier": "low_conf",
-      "start_time": 439.94,
-      "end_time": 440.774,
-      "start_timecode": "00:07:19.939",
-      "end_timecode": "00:07:20.774",
-      "start_frame": 13185,
-      "end_frame": 13210,
-      "duration_sec": 0.834,
+      "start_time": 440.033,
+      "end_time": 440.833,
+      "start_timecode": "00:07:20.033",
+      "end_timecode": "00:07:20.833",
+      "start_frame": 13201,
+      "end_frame": 13225,
+      "duration_sec": 0.8,
       "avg_confidence": 0.5681,
       "peak_confidence": 0.6196,
       "detection_count": 2,
@@ -23879,16 +24700,16 @@
       "review_status": "logged_only"
     },
     {
-      "event_id": "bevt_0111",
+      "event_id": "bevt_0150",
       "track_id": 936,
       "tier": "review",
-      "start_time": 440.44,
-      "end_time": 445.779,
-      "start_timecode": "00:07:20.439",
-      "end_timecode": "00:07:25.778",
-      "start_frame": 13200,
-      "end_frame": 13360,
-      "duration_sec": 5.339,
+      "start_time": 440.533,
+      "end_time": 445.833,
+      "start_timecode": "00:07:20.533",
+      "end_timecode": "00:07:25.833",
+      "start_frame": 13216,
+      "end_frame": 13375,
+      "duration_sec": 5.3,
       "avg_confidence": 0.5788,
       "peak_confidence": 0.7656,
       "detection_count": 28,
@@ -24208,16 +25029,16 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0112",
+      "event_id": "bevt_0151",
       "track_id": 954,
       "tier": "low_conf",
-      "start_time": 449.449,
-      "end_time": 450.116,
-      "start_timecode": "00:07:29.449",
-      "end_timecode": "00:07:30.115",
-      "start_frame": 13470,
-      "end_frame": 13490,
-      "duration_sec": 0.667,
+      "start_time": 449.533,
+      "end_time": 450.167,
+      "start_timecode": "00:07:29.533",
+      "end_timecode": "00:07:30.166",
+      "start_frame": 13486,
+      "end_frame": 13505,
+      "duration_sec": 0.634,
       "avg_confidence": 0.6655,
       "peak_confidence": 0.6655,
       "detection_count": 1,
@@ -24238,19 +25059,19 @@
       "review_status": "logged_only"
     },
     {
-      "event_id": "bevt_0113",
+      "event_id": "bevt_0152",
       "track_id": 966,
       "tier": "review",
-      "start_time": 449.95,
-      "end_time": 481.815,
-      "start_timecode": "00:07:29.949",
-      "end_timecode": "00:08:01.814",
-      "start_frame": 13485,
-      "end_frame": 14440,
-      "duration_sec": 31.865,
-      "avg_confidence": 0.7553,
+      "start_time": 450.033,
+      "end_time": 479.867,
+      "start_timecode": "00:07:30.033",
+      "end_timecode": "00:07:59.867",
+      "start_frame": 13501,
+      "end_frame": 14396,
+      "duration_sec": 29.834,
+      "avg_confidence": 0.7547,
       "peak_confidence": 0.8218,
-      "detection_count": 163,
+      "detection_count": 160,
       "trajectory": [
         {
           "t": 450.283,
@@ -26011,7 +26832,28 @@
             216.4
           ],
           "conf": 0.7656
-        },
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:4"
+      ],
+      "review_status": "pending"
+    },
+    {
+      "event_id": "bevt_0153",
+      "track_id": 1044,
+      "tier": "review",
+      "start_time": 480.9,
+      "end_time": 481.867,
+      "start_timecode": "00:08:00.899",
+      "end_timecode": "00:08:01.867",
+      "start_frame": 14427,
+      "end_frame": 14456,
+      "duration_sec": 0.967,
+      "avg_confidence": 0.7897,
+      "peak_confidence": 0.7993,
+      "detection_count": 3,
+      "trajectory": [
         {
           "t": 481.147,
           "frame": 14420,
@@ -26047,25 +26889,24 @@
         }
       ],
       "rule_hints": [
-        "identity_stitch:4",
-        "cross_presence_span"
+        "identity_stitch:4"
       ],
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0114",
+      "event_id": "bevt_0154",
       "track_id": 1076,
       "tier": "review",
-      "start_time": 501.835,
-      "end_time": 532.866,
-      "start_timecode": "00:08:21.834",
-      "end_timecode": "00:08:52.865",
-      "start_frame": 15040,
-      "end_frame": 15970,
-      "duration_sec": 31.031,
-      "avg_confidence": 0.7441,
+      "start_time": 501.933,
+      "end_time": 531.267,
+      "start_timecode": "00:08:21.932",
+      "end_timecode": "00:08:51.267",
+      "start_frame": 15058,
+      "end_frame": 15938,
+      "duration_sec": 29.334,
+      "avg_confidence": 0.7438,
       "peak_confidence": 0.8042,
-      "detection_count": 175,
+      "detection_count": 173,
       "trajectory": [
         {
           "t": 502.168,
@@ -27969,7 +28810,28 @@
             193.9
           ],
           "conf": 0.6094
-        },
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:4"
+      ],
+      "review_status": "pending"
+    },
+    {
+      "event_id": "bevt_0155",
+      "track_id": 1101,
+      "tier": "review",
+      "start_time": 532.1,
+      "end_time": 532.933,
+      "start_timecode": "00:08:52.100",
+      "end_timecode": "00:08:52.932",
+      "start_frame": 15963,
+      "end_frame": 15988,
+      "duration_sec": 0.833,
+      "avg_confidence": 0.7679,
+      "peak_confidence": 0.772,
+      "detection_count": 2,
+      "trajectory": [
         {
           "t": 532.365,
           "frame": 15955,
@@ -27994,25 +28856,24 @@
         }
       ],
       "rule_hints": [
-        "identity_stitch:4",
-        "cross_presence_span"
+        "identity_stitch:4"
       ],
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0115",
+      "event_id": "bevt_0156",
       "track_id": 980,
       "tier": "review",
-      "start_time": 450.784,
-      "end_time": 455.956,
-      "start_timecode": "00:07:30.783",
-      "end_timecode": "00:07:35.956",
-      "start_frame": 13510,
-      "end_frame": 13665,
-      "duration_sec": 5.172,
-      "avg_confidence": 0.7883,
+      "start_time": 450.867,
+      "end_time": 452.367,
+      "start_timecode": "00:07:30.867",
+      "end_timecode": "00:07:32.367",
+      "start_frame": 13526,
+      "end_frame": 13571,
+      "duration_sec": 1.5,
+      "avg_confidence": 0.8098,
       "peak_confidence": 0.8193,
-      "detection_count": 27,
+      "detection_count": 6,
       "trajectory": [
         {
           "t": 451.117,
@@ -28079,7 +28940,28 @@
             76.2
           ],
           "conf": 0.8154
-        },
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:2"
+      ],
+      "review_status": "pending"
+    },
+    {
+      "event_id": "bevt_0157",
+      "track_id": 989,
+      "tier": "review",
+      "start_time": 452.033,
+      "end_time": 456.033,
+      "start_timecode": "00:07:32.033",
+      "end_timecode": "00:07:36.033",
+      "start_frame": 13561,
+      "end_frame": 13681,
+      "duration_sec": 4.0,
+      "avg_confidence": 0.7822,
+      "peak_confidence": 0.8164,
+      "detection_count": 21,
+      "trajectory": [
         {
           "t": 452.285,
           "frame": 13555,
@@ -28313,22 +29195,21 @@
         }
       ],
       "rule_hints": [
-        "identity_stitch:2",
-        "cross_presence_span"
+        "identity_stitch:2"
       ],
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0116",
+      "event_id": "bevt_0158",
       "track_id": 984,
       "tier": "low_conf",
-      "start_time": 450.951,
-      "end_time": 451.952,
-      "start_timecode": "00:07:30.951",
-      "end_timecode": "00:07:31.951",
-      "start_frame": 13515,
-      "end_frame": 13545,
-      "duration_sec": 1.001,
+      "start_time": 451.033,
+      "end_time": 452.033,
+      "start_timecode": "00:07:31.033",
+      "end_timecode": "00:07:32.033",
+      "start_frame": 13531,
+      "end_frame": 13561,
+      "duration_sec": 1.0,
       "avg_confidence": 0.6268,
       "peak_confidence": 0.6934,
       "detection_count": 3,
@@ -28371,16 +29252,16 @@
       "review_status": "logged_only"
     },
     {
-      "event_id": "bevt_0117",
+      "event_id": "bevt_0159",
       "track_id": 991,
       "tier": "review",
-      "start_time": 452.452,
-      "end_time": 478.478,
-      "start_timecode": "00:07:32.451",
-      "end_timecode": "00:07:58.478",
-      "start_frame": 13560,
-      "end_frame": 14340,
-      "duration_sec": 26.026,
+      "start_time": 452.533,
+      "end_time": 478.533,
+      "start_timecode": "00:07:32.533",
+      "end_timecode": "00:07:58.533",
+      "start_frame": 13576,
+      "end_frame": 14356,
+      "duration_sec": 26.0,
       "avg_confidence": 0.6663,
       "peak_confidence": 0.7993,
       "detection_count": 111,
@@ -29614,16 +30495,16 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0118",
+      "event_id": "bevt_0160",
       "track_id": 1081,
       "tier": "low_conf",
-      "start_time": 502.836,
-      "end_time": 504.504,
-      "start_timecode": "00:08:22.836",
-      "end_timecode": "00:08:24.504",
-      "start_frame": 15070,
-      "end_frame": 15120,
-      "duration_sec": 1.668,
+      "start_time": 502.933,
+      "end_time": 504.567,
+      "start_timecode": "00:08:22.932",
+      "end_timecode": "00:08:24.567",
+      "start_frame": 15088,
+      "end_frame": 15137,
+      "duration_sec": 1.634,
       "avg_confidence": 0.4929,
       "peak_confidence": 0.5439,
       "detection_count": 5,
@@ -29690,16 +30571,16 @@
       "review_status": "logged_only"
     },
     {
-      "event_id": "bevt_0119",
+      "event_id": "bevt_0161",
       "track_id": 992,
       "tier": "review",
-      "start_time": 452.952,
-      "end_time": 455.455,
-      "start_timecode": "00:07:32.951",
-      "end_timecode": "00:07:35.454",
-      "start_frame": 13575,
-      "end_frame": 13650,
-      "duration_sec": 2.503,
+      "start_time": 453.033,
+      "end_time": 455.533,
+      "start_timecode": "00:07:33.033",
+      "end_timecode": "00:07:35.533",
+      "start_frame": 13591,
+      "end_frame": 13666,
+      "duration_sec": 2.5,
       "avg_confidence": 0.6616,
       "peak_confidence": 0.75,
       "detection_count": 5,
@@ -29764,16 +30645,16 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0120",
+      "event_id": "bevt_0162",
       "track_id": 997,
       "tier": "review",
-      "start_time": 455.288,
-      "end_time": 464.631,
-      "start_timecode": "00:07:35.288",
-      "end_timecode": "00:07:44.630",
-      "start_frame": 13645,
-      "end_frame": 13925,
-      "duration_sec": 9.343,
+      "start_time": 455.367,
+      "end_time": 464.7,
+      "start_timecode": "00:07:35.367",
+      "end_timecode": "00:07:44.699",
+      "start_frame": 13661,
+      "end_frame": 13941,
+      "duration_sec": 9.333,
       "avg_confidence": 0.7113,
       "peak_confidence": 0.7744,
       "detection_count": 20,
@@ -30005,19 +30886,19 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0121",
+      "event_id": "bevt_0163",
       "track_id": 1000,
       "tier": "review",
-      "start_time": 455.789,
-      "end_time": 477.644,
-      "start_timecode": "00:07:35.788",
-      "end_timecode": "00:07:57.644",
-      "start_frame": 13660,
-      "end_frame": 14315,
-      "duration_sec": 21.855,
-      "avg_confidence": 0.7046,
+      "start_time": 455.867,
+      "end_time": 469.533,
+      "start_timecode": "00:07:35.867",
+      "end_timecode": "00:07:49.533",
+      "start_frame": 13676,
+      "end_frame": 14086,
+      "duration_sec": 13.666,
+      "avg_confidence": 0.7191,
       "peak_confidence": 0.7861,
-      "detection_count": 107,
+      "detection_count": 61,
       "trajectory": [
         {
           "t": 456.122,
@@ -30689,7 +31570,28 @@
             42.6
           ],
           "conf": 0.5908
-        },
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:2"
+      ],
+      "review_status": "pending"
+    },
+    {
+      "event_id": "bevt_0164",
+      "track_id": 1034,
+      "tier": "review",
+      "start_time": 469.4,
+      "end_time": 477.7,
+      "start_timecode": "00:07:49.399",
+      "end_timecode": "00:07:57.699",
+      "start_frame": 14082,
+      "end_frame": 14331,
+      "duration_sec": 8.3,
+      "avg_confidence": 0.6853,
+      "peak_confidence": 0.7637,
+      "detection_count": 46,
+      "trajectory": [
         {
           "t": 469.636,
           "frame": 14075,
@@ -31198,22 +32100,21 @@
         }
       ],
       "rule_hints": [
-        "identity_stitch:2",
-        "cross_presence_span"
+        "identity_stitch:2"
       ],
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0122",
+      "event_id": "bevt_0165",
       "track_id": 1002,
       "tier": "low_conf",
-      "start_time": 456.122,
-      "end_time": 456.957,
-      "start_timecode": "00:07:36.122",
-      "end_timecode": "00:07:36.956",
-      "start_frame": 13670,
-      "end_frame": 13695,
-      "duration_sec": 0.835,
+      "start_time": 456.2,
+      "end_time": 457.033,
+      "start_timecode": "00:07:36.199",
+      "end_timecode": "00:07:37.033",
+      "start_frame": 13686,
+      "end_frame": 13711,
+      "duration_sec": 0.833,
       "avg_confidence": 0.6926,
       "peak_confidence": 0.7358,
       "detection_count": 2,
@@ -31245,16 +32146,16 @@
       "review_status": "logged_only"
     },
     {
-      "event_id": "bevt_0123",
+      "event_id": "bevt_0166",
       "track_id": 1009,
       "tier": "low_conf",
-      "start_time": 458.124,
-      "end_time": 458.959,
-      "start_timecode": "00:07:38.124",
-      "end_timecode": "00:07:38.959",
-      "start_frame": 13730,
-      "end_frame": 13755,
-      "duration_sec": 0.835,
+      "start_time": 458.2,
+      "end_time": 459.033,
+      "start_timecode": "00:07:38.199",
+      "end_timecode": "00:07:39.033",
+      "start_frame": 13746,
+      "end_frame": 13771,
+      "duration_sec": 0.833,
       "avg_confidence": 0.4534,
       "peak_confidence": 0.4736,
       "detection_count": 2,
@@ -31286,16 +32187,16 @@
       "review_status": "logged_only"
     },
     {
-      "event_id": "bevt_0124",
+      "event_id": "bevt_0167",
       "track_id": 1011,
       "tier": "low_conf",
-      "start_time": 460.627,
-      "end_time": 463.296,
-      "start_timecode": "00:07:40.627",
-      "end_timecode": "00:07:43.295",
-      "start_frame": 13805,
-      "end_frame": 13885,
-      "duration_sec": 2.669,
+      "start_time": 460.7,
+      "end_time": 463.367,
+      "start_timecode": "00:07:40.699",
+      "end_timecode": "00:07:43.367",
+      "start_frame": 13821,
+      "end_frame": 13901,
+      "duration_sec": 2.667,
       "avg_confidence": 0.6542,
       "peak_confidence": 0.7041,
       "detection_count": 7,
@@ -31382,16 +32283,16 @@
       "review_status": "logged_only"
     },
     {
-      "event_id": "bevt_0125",
+      "event_id": "bevt_0168",
       "track_id": 1017,
       "tier": "low_conf",
-      "start_time": 464.964,
-      "end_time": 466.132,
-      "start_timecode": "00:07:44.963",
-      "end_timecode": "00:07:46.132",
-      "start_frame": 13935,
-      "end_frame": 13970,
-      "duration_sec": 1.168,
+      "start_time": 465.033,
+      "end_time": 466.2,
+      "start_timecode": "00:07:45.033",
+      "end_timecode": "00:07:46.199",
+      "start_frame": 13951,
+      "end_frame": 13986,
+      "duration_sec": 1.167,
       "avg_confidence": 0.4338,
       "peak_confidence": 0.5381,
       "detection_count": 4,
@@ -31447,16 +32348,16 @@
       "review_status": "logged_only"
     },
     {
-      "event_id": "bevt_0126",
+      "event_id": "bevt_0169",
       "track_id": 1019,
       "tier": "low_conf",
-      "start_time": 465.298,
-      "end_time": 466.633,
-      "start_timecode": "00:07:45.298",
-      "end_timecode": "00:07:46.632",
-      "start_frame": 13945,
-      "end_frame": 13985,
-      "duration_sec": 1.335,
+      "start_time": 465.367,
+      "end_time": 466.7,
+      "start_timecode": "00:07:45.367",
+      "end_timecode": "00:07:46.699",
+      "start_frame": 13961,
+      "end_frame": 14001,
+      "duration_sec": 1.333,
       "avg_confidence": 0.4462,
       "peak_confidence": 0.5234,
       "detection_count": 5,
@@ -31523,19 +32424,19 @@
       "review_status": "logged_only"
     },
     {
-      "event_id": "bevt_0127",
+      "event_id": "bevt_0170",
       "track_id": 1028,
       "tier": "review",
-      "start_time": 466.8,
-      "end_time": 477.31,
-      "start_timecode": "00:07:46.800",
-      "end_timecode": "00:07:57.310",
-      "start_frame": 13990,
-      "end_frame": 14305,
-      "duration_sec": 10.51,
-      "avg_confidence": 0.623,
+      "start_time": 466.867,
+      "end_time": 473.033,
+      "start_timecode": "00:07:46.867",
+      "end_timecode": "00:07:53.033",
+      "start_frame": 14006,
+      "end_frame": 14191,
+      "duration_sec": 6.166,
+      "avg_confidence": 0.6726,
       "peak_confidence": 0.7822,
-      "detection_count": 28,
+      "detection_count": 20,
       "trajectory": [
         {
           "t": 467.133,
@@ -31756,7 +32657,28 @@
             16.6
           ],
           "conf": 0.4524
-        },
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:3"
+      ],
+      "review_status": "pending"
+    },
+    {
+      "event_id": "bevt_0171",
+      "track_id": 1036,
+      "tier": "low_conf",
+      "start_time": 474.567,
+      "end_time": 475.2,
+      "start_timecode": "00:07:54.567",
+      "end_timecode": "00:07:55.199",
+      "start_frame": 14237,
+      "end_frame": 14256,
+      "duration_sec": 0.633,
+      "avg_confidence": 0.4341,
+      "peak_confidence": 0.4341,
+      "detection_count": 1,
+      "trajectory": [
         {
           "t": 474.808,
           "frame": 14230,
@@ -31767,7 +32689,29 @@
             18.6
           ],
           "conf": 0.4341
-        },
+        }
+      ],
+      "rule_hints": [
+        "edge_clip",
+        "identity_stitch:3"
+      ],
+      "review_status": "logged_only"
+    },
+    {
+      "event_id": "bevt_0172",
+      "track_id": 1038,
+      "tier": "low_conf",
+      "start_time": 475.733,
+      "end_time": 477.367,
+      "start_timecode": "00:07:55.733",
+      "end_timecode": "00:07:57.367",
+      "start_frame": 14272,
+      "end_frame": 14321,
+      "duration_sec": 1.634,
+      "avg_confidence": 0.5082,
+      "peak_confidence": 0.6133,
+      "detection_count": 7,
+      "trajectory": [
         {
           "t": 475.976,
           "frame": 14265,
@@ -31847,22 +32791,22 @@
         }
       ],
       "rule_hints": [
-        "identity_stitch:3",
-        "cross_presence_span"
+        "edge_clip",
+        "identity_stitch:3"
       ],
-      "review_status": "pending"
+      "review_status": "logged_only"
     },
     {
-      "event_id": "bevt_0128",
+      "event_id": "bevt_0173",
       "track_id": 1030,
       "tier": "review",
-      "start_time": 467.133,
-      "end_time": 467.968,
-      "start_timecode": "00:07:47.132",
-      "end_timecode": "00:07:47.968",
-      "start_frame": 14000,
-      "end_frame": 14025,
-      "duration_sec": 0.835,
+      "start_time": 467.233,
+      "end_time": 468.033,
+      "start_timecode": "00:07:47.233",
+      "end_timecode": "00:07:48.033",
+      "start_frame": 14017,
+      "end_frame": 14041,
+      "duration_sec": 0.8,
       "avg_confidence": 0.7698,
       "peak_confidence": 0.7759,
       "detection_count": 2,
@@ -31894,16 +32838,16 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0129",
+      "event_id": "bevt_0174",
       "track_id": 1053,
       "tier": "review",
-      "start_time": 483.316,
-      "end_time": 497.831,
-      "start_timecode": "00:08:03.315",
-      "end_timecode": "00:08:17.831",
-      "start_frame": 14485,
-      "end_frame": 14920,
-      "duration_sec": 14.515,
+      "start_time": 483.4,
+      "end_time": 497.9,
+      "start_timecode": "00:08:03.399",
+      "end_timecode": "00:08:17.899",
+      "start_frame": 14502,
+      "end_frame": 14937,
+      "duration_sec": 14.5,
       "avg_confidence": 0.7849,
       "peak_confidence": 0.8223,
       "detection_count": 84,
@@ -32837,16 +33781,16 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0130",
+      "event_id": "bevt_0175",
       "track_id": 1067,
       "tier": "review",
-      "start_time": 499.833,
-      "end_time": 500.667,
-      "start_timecode": "00:08:19.833",
-      "end_timecode": "00:08:20.666",
-      "start_frame": 14980,
-      "end_frame": 15005,
-      "duration_sec": 0.834,
+      "start_time": 499.9,
+      "end_time": 500.733,
+      "start_timecode": "00:08:19.899",
+      "end_timecode": "00:08:20.733",
+      "start_frame": 14997,
+      "end_frame": 15022,
+      "duration_sec": 0.833,
       "avg_confidence": 0.7288,
       "peak_confidence": 0.7559,
       "detection_count": 2,
@@ -32878,16 +33822,16 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0131",
+      "event_id": "bevt_0176",
       "track_id": 1082,
       "tier": "low_conf",
-      "start_time": 502.836,
-      "end_time": 504.671,
-      "start_timecode": "00:08:22.836",
-      "end_timecode": "00:08:24.670",
-      "start_frame": 15070,
-      "end_frame": 15125,
-      "duration_sec": 1.835,
+      "start_time": 502.933,
+      "end_time": 504.733,
+      "start_timecode": "00:08:22.932",
+      "end_timecode": "00:08:24.733",
+      "start_frame": 15088,
+      "end_frame": 15142,
+      "duration_sec": 1.8,
       "avg_confidence": 0.6515,
       "peak_confidence": 0.7212,
       "detection_count": 8,
@@ -32985,16 +33929,16 @@
       "review_status": "logged_only"
     },
     {
-      "event_id": "bevt_0132",
+      "event_id": "bevt_0177",
       "track_id": 1107,
       "tier": "review",
-      "start_time": 533.366,
-      "end_time": 534.2,
-      "start_timecode": "00:08:53.365",
-      "end_timecode": "00:08:54.200",
-      "start_frame": 15985,
-      "end_frame": 16010,
-      "duration_sec": 0.834,
+      "start_time": 533.467,
+      "end_time": 534.267,
+      "start_timecode": "00:08:53.466",
+      "end_timecode": "00:08:54.267",
+      "start_frame": 16004,
+      "end_frame": 16028,
+      "duration_sec": 0.8,
       "avg_confidence": 0.7769,
       "peak_confidence": 0.7812,
       "detection_count": 2,
@@ -33026,19 +33970,19 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0133",
+      "event_id": "bevt_0178",
       "track_id": 1115,
       "tier": "review",
-      "start_time": 535.034,
-      "end_time": 551.551,
-      "start_timecode": "00:08:55.033",
-      "end_timecode": "00:09:11.551",
-      "start_frame": 16035,
-      "end_frame": 16530,
-      "duration_sec": 16.517,
-      "avg_confidence": 0.7704,
-      "peak_confidence": 0.8193,
-      "detection_count": 54,
+      "start_time": 535.133,
+      "end_time": 546.933,
+      "start_timecode": "00:08:55.133",
+      "end_timecode": "00:09:06.932",
+      "start_frame": 16054,
+      "end_frame": 16408,
+      "duration_sec": 11.8,
+      "avg_confidence": 0.7765,
+      "peak_confidence": 0.8154,
+      "detection_count": 27,
       "trajectory": [
         {
           "t": 535.368,
@@ -33336,7 +34280,29 @@
             253.8
           ],
           "conf": 0.7832
-        },
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:2",
+        "cross_presence_span"
+      ],
+      "review_status": "pending"
+    },
+    {
+      "event_id": "bevt_0179",
+      "track_id": 1149,
+      "tier": "review",
+      "start_time": 546.633,
+      "end_time": 551.633,
+      "start_timecode": "00:09:06.633",
+      "end_timecode": "00:09:11.633",
+      "start_frame": 16399,
+      "end_frame": 16549,
+      "duration_sec": 5.0,
+      "avg_confidence": 0.7643,
+      "peak_confidence": 0.8193,
+      "detection_count": 27,
+      "trajectory": [
         {
           "t": 546.88,
           "frame": 16390,
@@ -33636,22 +34602,21 @@
         }
       ],
       "rule_hints": [
-        "identity_stitch:2",
-        "cross_presence_span"
+        "identity_stitch:2"
       ],
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0134",
+      "event_id": "bevt_0180",
       "track_id": 1128,
       "tier": "review",
-      "start_time": 539.873,
-      "end_time": 541.374,
-      "start_timecode": "00:08:59.873",
-      "end_timecode": "00:09:01.374",
-      "start_frame": 16180,
-      "end_frame": 16225,
-      "duration_sec": 1.501,
+      "start_time": 539.967,
+      "end_time": 541.433,
+      "start_timecode": "00:08:59.966",
+      "end_timecode": "00:09:01.432",
+      "start_frame": 16199,
+      "end_frame": 16243,
+      "duration_sec": 1.466,
       "avg_confidence": 0.734,
       "peak_confidence": 0.7866,
       "detection_count": 6,
@@ -33727,16 +34692,16 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0135",
+      "event_id": "bevt_0181",
       "track_id": 1148,
       "tier": "review",
-      "start_time": 544.878,
-      "end_time": 551.551,
-      "start_timecode": "00:09:04.878",
-      "end_timecode": "00:09:11.551",
-      "start_frame": 16330,
-      "end_frame": 16530,
-      "duration_sec": 6.673,
+      "start_time": 544.967,
+      "end_time": 551.633,
+      "start_timecode": "00:09:04.966",
+      "end_timecode": "00:09:11.633",
+      "start_frame": 16349,
+      "end_frame": 16549,
+      "duration_sec": 6.666,
       "avg_confidence": 0.692,
       "peak_confidence": 0.8052,
       "detection_count": 37,
@@ -34153,16 +35118,16 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0136",
+      "event_id": "bevt_0182",
       "track_id": 1155,
       "tier": "review",
-      "start_time": 552.218,
-      "end_time": 557.557,
-      "start_timecode": "00:09:12.217",
-      "end_timecode": "00:09:17.557",
-      "start_frame": 16550,
-      "end_frame": 16710,
-      "duration_sec": 5.339,
+      "start_time": 552.3,
+      "end_time": 557.633,
+      "start_timecode": "00:09:12.299",
+      "end_timecode": "00:09:17.633",
+      "start_frame": 16569,
+      "end_frame": 16729,
+      "duration_sec": 5.333,
       "avg_confidence": 0.7687,
       "peak_confidence": 0.835,
       "detection_count": 9,
@@ -34271,16 +35236,16 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0137",
+      "event_id": "bevt_0183",
       "track_id": 1163,
       "tier": "review",
-      "start_time": 554.888,
-      "end_time": 557.223,
-      "start_timecode": "00:09:14.888",
-      "end_timecode": "00:09:17.222",
-      "start_frame": 16630,
-      "end_frame": 16700,
-      "duration_sec": 2.335,
+      "start_time": 554.967,
+      "end_time": 557.3,
+      "start_timecode": "00:09:14.966",
+      "end_timecode": "00:09:17.299",
+      "start_frame": 16649,
+      "end_frame": 16719,
+      "duration_sec": 2.333,
       "avg_confidence": 0.8007,
       "peak_confidence": 0.8208,
       "detection_count": 11,
@@ -34411,16 +35376,16 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0138",
+      "event_id": "bevt_0184",
       "track_id": 1194,
       "tier": "review",
-      "start_time": 561.227,
-      "end_time": 564.564,
-      "start_timecode": "00:09:21.226",
-      "end_timecode": "00:09:24.563",
-      "start_frame": 16820,
-      "end_frame": 16920,
-      "duration_sec": 3.337,
+      "start_time": 561.3,
+      "end_time": 564.633,
+      "start_timecode": "00:09:21.299",
+      "end_timecode": "00:09:24.633",
+      "start_frame": 16839,
+      "end_frame": 16939,
+      "duration_sec": 3.333,
       "avg_confidence": 0.7711,
       "peak_confidence": 0.8257,
       "detection_count": 17,
@@ -34617,16 +35582,16 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0139",
+      "event_id": "bevt_0185",
       "track_id": 1196,
       "tier": "review",
-      "start_time": 561.561,
-      "end_time": 564.564,
-      "start_timecode": "00:09:21.561",
-      "end_timecode": "00:09:24.563",
-      "start_frame": 16830,
-      "end_frame": 16920,
-      "duration_sec": 3.003,
+      "start_time": 561.633,
+      "end_time": 564.633,
+      "start_timecode": "00:09:21.633",
+      "end_timecode": "00:09:24.633",
+      "start_frame": 16849,
+      "end_frame": 16939,
+      "duration_sec": 3.0,
       "avg_confidence": 0.7791,
       "peak_confidence": 0.8018,
       "detection_count": 15,
@@ -34801,19 +35766,19 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0140",
+      "event_id": "bevt_0186",
       "track_id": 1211,
       "tier": "review",
-      "start_time": 568.902,
-      "end_time": 581.247,
-      "start_timecode": "00:09:28.902",
-      "end_timecode": "00:09:41.246",
-      "start_frame": 17050,
-      "end_frame": 17420,
-      "duration_sec": 12.345,
-      "avg_confidence": 0.647,
+      "start_time": 569.0,
+      "end_time": 569.967,
+      "start_timecode": "00:09:29.000",
+      "end_timecode": "00:09:29.966",
+      "start_frame": 17070,
+      "end_frame": 17099,
+      "duration_sec": 0.967,
+      "avg_confidence": 0.7721,
       "peak_confidence": 0.7773,
-      "detection_count": 10,
+      "detection_count": 3,
       "trajectory": [
         {
           "t": 569.235,
@@ -34847,7 +35812,28 @@
             328.7
           ],
           "conf": 0.7695
-        },
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:4"
+      ],
+      "review_status": "pending"
+    },
+    {
+      "event_id": "bevt_0187",
+      "track_id": 1226,
+      "tier": "low_conf",
+      "start_time": 574.0,
+      "end_time": 575.3,
+      "start_timecode": "00:09:34.000",
+      "end_timecode": "00:09:35.299",
+      "start_frame": 17220,
+      "end_frame": 17259,
+      "duration_sec": 1.3,
+      "avg_confidence": 0.5075,
+      "peak_confidence": 0.5498,
+      "detection_count": 4,
+      "trajectory": [
         {
           "t": 574.24,
           "frame": 17210,
@@ -34891,7 +35877,29 @@
             1049.0
           ],
           "conf": 0.5498
-        },
+        }
+      ],
+      "rule_hints": [
+        "workzone_low",
+        "identity_stitch:4"
+      ],
+      "review_status": "logged_only"
+    },
+    {
+      "event_id": "bevt_0188",
+      "track_id": 1229,
+      "tier": "low_conf",
+      "start_time": 577.5,
+      "end_time": 578.133,
+      "start_timecode": "00:09:37.500",
+      "end_timecode": "00:09:38.133",
+      "start_frame": 17325,
+      "end_frame": 17344,
+      "duration_sec": 0.633,
+      "avg_confidence": 0.6704,
+      "peak_confidence": 0.6704,
+      "detection_count": 1,
+      "trajectory": [
         {
           "t": 577.744,
           "frame": 17315,
@@ -34902,7 +35910,28 @@
             567.6
           ],
           "conf": 0.6704
-        },
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:4"
+      ],
+      "review_status": "logged_only"
+    },
+    {
+      "event_id": "bevt_0189",
+      "track_id": 1233,
+      "tier": "low_conf",
+      "start_time": 578.167,
+      "end_time": 581.3,
+      "start_timecode": "00:09:38.167",
+      "end_timecode": "00:09:41.299",
+      "start_frame": 17345,
+      "end_frame": 17439,
+      "duration_sec": 3.133,
+      "avg_confidence": 0.7263,
+      "peak_confidence": 0.7324,
+      "detection_count": 2,
+      "trajectory": [
         {
           "t": 578.411,
           "frame": 17335,
@@ -34927,22 +35956,22 @@
         }
       ],
       "rule_hints": [
-        "identity_stitch:4",
-        "cross_presence_span"
+        "workzone_low",
+        "identity_stitch:4"
       ],
-      "review_status": "pending"
+      "review_status": "logged_only"
     },
     {
-      "event_id": "bevt_0141",
+      "event_id": "bevt_0190",
       "track_id": 1218,
       "tier": "review",
-      "start_time": 570.403,
-      "end_time": 571.071,
-      "start_timecode": "00:09:30.403",
-      "end_timecode": "00:09:31.071",
-      "start_frame": 17095,
-      "end_frame": 17115,
-      "duration_sec": 0.668,
+      "start_time": 570.5,
+      "end_time": 571.133,
+      "start_timecode": "00:09:30.500",
+      "end_timecode": "00:09:31.133",
+      "start_frame": 17115,
+      "end_frame": 17134,
+      "duration_sec": 0.633,
       "avg_confidence": 0.8018,
       "peak_confidence": 0.8018,
       "detection_count": 1,
@@ -34965,15 +35994,15 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0142",
+      "event_id": "bevt_0191",
       "track_id": 1368,
       "tier": "review",
-      "start_time": 625.959,
-      "end_time": 627.126,
-      "start_timecode": "00:10:25.958",
-      "end_timecode": "00:10:27.125",
-      "start_frame": 18760,
-      "end_frame": 18795,
+      "start_time": 626.033,
+      "end_time": 627.2,
+      "start_timecode": "00:10:26.033",
+      "end_timecode": "00:10:27.200",
+      "start_frame": 18781,
+      "end_frame": 18816,
       "duration_sec": 1.167,
       "avg_confidence": 0.8318,
       "peak_confidence": 0.8389,
@@ -35030,16 +36059,16 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0143",
+      "event_id": "bevt_0192",
       "track_id": 1219,
       "tier": "review",
-      "start_time": 570.403,
-      "end_time": 571.071,
-      "start_timecode": "00:09:30.403",
-      "end_timecode": "00:09:31.071",
-      "start_frame": 17095,
-      "end_frame": 17115,
-      "duration_sec": 0.668,
+      "start_time": 570.5,
+      "end_time": 571.133,
+      "start_timecode": "00:09:30.500",
+      "end_timecode": "00:09:31.133",
+      "start_frame": 17115,
+      "end_frame": 17134,
+      "duration_sec": 0.633,
       "avg_confidence": 0.7583,
       "peak_confidence": 0.7583,
       "detection_count": 1,
@@ -35062,16 +36091,16 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0144",
+      "event_id": "bevt_0193",
       "track_id": 1330,
       "tier": "review",
-      "start_time": 619.619,
-      "end_time": 623.289,
-      "start_timecode": "00:10:19.619",
-      "end_timecode": "00:10:23.288",
-      "start_frame": 18570,
-      "end_frame": 18680,
-      "duration_sec": 3.67,
+      "start_time": 619.7,
+      "end_time": 623.367,
+      "start_timecode": "00:10:19.700",
+      "end_timecode": "00:10:23.366",
+      "start_frame": 18591,
+      "end_frame": 18701,
+      "duration_sec": 3.667,
       "avg_confidence": 0.7814,
       "peak_confidence": 0.8027,
       "detection_count": 19,
@@ -35292,19 +36321,19 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0145",
+      "event_id": "bevt_0194",
       "track_id": 1245,
       "tier": "review",
-      "start_time": 581.081,
-      "end_time": 598.431,
-      "start_timecode": "00:09:41.081",
-      "end_timecode": "00:09:58.431",
-      "start_frame": 17415,
-      "end_frame": 17935,
-      "duration_sec": 17.35,
-      "avg_confidence": 0.6701,
+      "start_time": 581.167,
+      "end_time": 584.133,
+      "start_timecode": "00:09:41.167",
+      "end_timecode": "00:09:44.133",
+      "start_frame": 17435,
+      "end_frame": 17524,
+      "duration_sec": 2.966,
+      "avg_confidence": 0.7249,
       "peak_confidence": 0.8081,
-      "detection_count": 41,
+      "detection_count": 12,
       "trajectory": [
         {
           "t": 581.414,
@@ -35437,7 +36466,30 @@
             876.3
           ],
           "conf": 0.7637
-        },
+        }
+      ],
+      "rule_hints": [
+        "workzone_low",
+        "edge_clip",
+        "identity_stitch:3"
+      ],
+      "review_status": "pending"
+    },
+    {
+      "event_id": "bevt_0195",
+      "track_id": 1250,
+      "tier": "review",
+      "start_time": 585.167,
+      "end_time": 586.833,
+      "start_timecode": "00:09:45.167",
+      "end_timecode": "00:09:46.832",
+      "start_frame": 17555,
+      "end_frame": 17605,
+      "duration_sec": 1.666,
+      "avg_confidence": 0.6957,
+      "peak_confidence": 0.7827,
+      "detection_count": 7,
+      "trajectory": [
         {
           "t": 585.418,
           "frame": 17545,
@@ -35514,7 +36566,29 @@
             728.2
           ],
           "conf": 0.6943
-        },
+        }
+      ],
+      "rule_hints": [
+        "workzone_low",
+        "identity_stitch:3"
+      ],
+      "review_status": "pending"
+    },
+    {
+      "event_id": "bevt_0196",
+      "track_id": 1255,
+      "tier": "review",
+      "start_time": 586.667,
+      "end_time": 598.5,
+      "start_timecode": "00:09:46.667",
+      "end_timecode": "00:09:58.500",
+      "start_frame": 17600,
+      "end_frame": 17955,
+      "duration_sec": 11.833,
+      "avg_confidence": 0.6321,
+      "peak_confidence": 0.7734,
+      "detection_count": 22,
+      "trajectory": [
         {
           "t": 586.92,
           "frame": 17590,
@@ -35759,24 +36833,22 @@
         }
       ],
       "rule_hints": [
-        "workzone_low",
-        "edge_clip",
         "identity_stitch:3",
         "cross_presence_span"
       ],
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0146",
+      "event_id": "bevt_0197",
       "track_id": 1248,
       "tier": "review",
-      "start_time": 581.414,
-      "end_time": 585.919,
-      "start_timecode": "00:09:41.413",
-      "end_timecode": "00:09:45.918",
-      "start_frame": 17425,
-      "end_frame": 17560,
-      "duration_sec": 4.505,
+      "start_time": 581.5,
+      "end_time": 586.0,
+      "start_timecode": "00:09:41.500",
+      "end_timecode": "00:09:46.000",
+      "start_frame": 17445,
+      "end_frame": 17580,
+      "duration_sec": 4.5,
       "avg_confidence": 0.7664,
       "peak_confidence": 0.8169,
       "detection_count": 24,
@@ -36052,19 +37124,19 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0147",
+      "event_id": "bevt_0198",
       "track_id": 1254,
       "tier": "review",
-      "start_time": 586.086,
-      "end_time": 605.939,
-      "start_timecode": "00:09:46.086",
-      "end_timecode": "00:10:05.938",
-      "start_frame": 17565,
-      "end_frame": 18160,
-      "duration_sec": 19.853,
-      "avg_confidence": 0.7478,
-      "peak_confidence": 0.8447,
-      "detection_count": 113,
+      "start_time": 586.167,
+      "end_time": 596.333,
+      "start_timecode": "00:09:46.167",
+      "end_timecode": "00:09:56.332",
+      "start_frame": 17585,
+      "end_frame": 17890,
+      "duration_sec": 10.166,
+      "avg_confidence": 0.7728,
+      "peak_confidence": 0.8389,
+      "detection_count": 58,
       "trajectory": [
         {
           "t": 586.419,
@@ -36703,7 +37775,28 @@
             162.9
           ],
           "conf": 0.8267
-        },
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:4"
+      ],
+      "review_status": "pending"
+    },
+    {
+      "event_id": "bevt_0199",
+      "track_id": 1260,
+      "tier": "review",
+      "start_time": 596.167,
+      "end_time": 600.5,
+      "start_timecode": "00:09:56.167",
+      "end_timecode": "00:10:00.500",
+      "start_frame": 17885,
+      "end_frame": 18015,
+      "duration_sec": 4.333,
+      "avg_confidence": 0.7873,
+      "peak_confidence": 0.8447,
+      "detection_count": 23,
+      "trajectory": [
         {
           "t": 596.429,
           "frame": 17875,
@@ -36956,7 +38049,29 @@
             27.5
           ],
           "conf": 0.5518
-        },
+        }
+      ],
+      "rule_hints": [
+        "edge_clip",
+        "identity_stitch:4"
+      ],
+      "review_status": "pending"
+    },
+    {
+      "event_id": "bevt_0200",
+      "track_id": 1264,
+      "tier": "review",
+      "start_time": 600.167,
+      "end_time": 606.0,
+      "start_timecode": "00:10:00.167",
+      "end_timecode": "00:10:06.000",
+      "start_frame": 18005,
+      "end_frame": 18180,
+      "duration_sec": 5.833,
+      "avg_confidence": 0.6742,
+      "peak_confidence": 0.8364,
+      "detection_count": 32,
+      "trajectory": [
         {
           "t": 600.433,
           "frame": 17995,
@@ -37312,25 +38427,24 @@
       ],
       "rule_hints": [
         "edge_clip",
-        "identity_stitch:4",
-        "cross_presence_span"
+        "identity_stitch:4"
       ],
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0148",
+      "event_id": "bevt_0201",
       "track_id": 1262,
-      "tier": "review",
-      "start_time": 599.766,
-      "end_time": 608.942,
-      "start_timecode": "00:09:59.765",
-      "end_timecode": "00:10:08.942",
-      "start_frame": 17975,
-      "end_frame": 18250,
-      "duration_sec": 9.176,
-      "avg_confidence": 0.6533,
-      "peak_confidence": 0.7622,
-      "detection_count": 11,
+      "tier": "low_conf",
+      "start_time": 599.867,
+      "end_time": 601.333,
+      "start_timecode": "00:09:59.866",
+      "end_timecode": "00:10:01.332",
+      "start_frame": 17996,
+      "end_frame": 18040,
+      "duration_sec": 1.466,
+      "avg_confidence": 0.6607,
+      "peak_confidence": 0.7285,
+      "detection_count": 6,
       "trajectory": [
         {
           "t": 600.1,
@@ -37397,7 +38511,28 @@
             671.0
           ],
           "conf": 0.6875
-        },
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:5"
+      ],
+      "review_status": "logged_only"
+    },
+    {
+      "event_id": "bevt_0202",
+      "track_id": 1272,
+      "tier": "review",
+      "start_time": 606.033,
+      "end_time": 607.167,
+      "start_timecode": "00:10:06.033",
+      "end_timecode": "00:10:07.167",
+      "start_frame": 18181,
+      "end_frame": 18215,
+      "duration_sec": 1.134,
+      "avg_confidence": 0.7051,
+      "peak_confidence": 0.7622,
+      "detection_count": 4,
+      "trajectory": [
         {
           "t": 606.272,
           "frame": 18170,
@@ -37441,7 +38576,28 @@
             656.0
           ],
           "conf": 0.5747
-        },
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:5"
+      ],
+      "review_status": "pending"
+    },
+    {
+      "event_id": "bevt_0203",
+      "track_id": 1274,
+      "tier": "low_conf",
+      "start_time": 608.367,
+      "end_time": 609.0,
+      "start_timecode": "00:10:08.366",
+      "end_timecode": "00:10:09.000",
+      "start_frame": 18251,
+      "end_frame": 18270,
+      "duration_sec": 0.633,
+      "avg_confidence": 0.4016,
+      "peak_confidence": 0.4016,
+      "detection_count": 1,
+      "trajectory": [
         {
           "t": 608.608,
           "frame": 18240,
@@ -37455,25 +38611,24 @@
         }
       ],
       "rule_hints": [
-        "identity_stitch:5",
-        "cross_presence_span"
+        "identity_stitch:5"
       ],
-      "review_status": "pending"
+      "review_status": "logged_only"
     },
     {
-      "event_id": "bevt_0149",
+      "event_id": "bevt_0204",
       "track_id": 1334,
       "tier": "review",
-      "start_time": 619.953,
-      "end_time": 622.789,
-      "start_timecode": "00:10:19.952",
-      "end_timecode": "00:10:22.788",
-      "start_frame": 18580,
-      "end_frame": 18665,
-      "duration_sec": 2.836,
-      "avg_confidence": 0.7472,
-      "peak_confidence": 0.8066,
-      "detection_count": 11,
+      "start_time": 620.033,
+      "end_time": 621.7,
+      "start_timecode": "00:10:20.033",
+      "end_timecode": "00:10:21.700",
+      "start_frame": 18601,
+      "end_frame": 18651,
+      "duration_sec": 1.667,
+      "avg_confidence": 0.7268,
+      "peak_confidence": 0.7739,
+      "detection_count": 7,
       "trajectory": [
         {
           "t": 620.286,
@@ -37551,7 +38706,28 @@
             61.5
           ],
           "conf": 0.7563
-        },
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:5"
+      ],
+      "review_status": "pending"
+    },
+    {
+      "event_id": "bevt_0205",
+      "track_id": 1339,
+      "tier": "review",
+      "start_time": 621.7,
+      "end_time": 622.867,
+      "start_timecode": "00:10:21.700",
+      "end_timecode": "00:10:22.866",
+      "start_frame": 18651,
+      "end_frame": 18686,
+      "duration_sec": 1.167,
+      "avg_confidence": 0.783,
+      "peak_confidence": 0.8066,
+      "detection_count": 4,
+      "trajectory": [
         {
           "t": 621.955,
           "frame": 18640,
@@ -37598,22 +38774,21 @@
         }
       ],
       "rule_hints": [
-        "identity_stitch:5",
-        "cross_presence_span"
+        "identity_stitch:5"
       ],
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0150",
+      "event_id": "bevt_0206",
       "track_id": 1267,
       "tier": "low_conf",
-      "start_time": 601.101,
-      "end_time": 602.101,
-      "start_timecode": "00:10:01.100",
-      "end_timecode": "00:10:02.100",
-      "start_frame": 18015,
-      "end_frame": 18045,
-      "duration_sec": 1.0,
+      "start_time": 601.2,
+      "end_time": 602.167,
+      "start_timecode": "00:10:01.200",
+      "end_timecode": "00:10:02.167",
+      "start_frame": 18036,
+      "end_frame": 18065,
+      "duration_sec": 0.967,
       "avg_confidence": 0.7082,
       "peak_confidence": 0.7378,
       "detection_count": 3,
@@ -37656,16 +38831,16 @@
       "review_status": "logged_only"
     },
     {
-      "event_id": "bevt_0151",
+      "event_id": "bevt_0207",
       "track_id": 1275,
       "tier": "auto",
-      "start_time": 609.442,
-      "end_time": 610.944,
-      "start_timecode": "00:10:09.442",
-      "end_timecode": "00:10:10.943",
-      "start_frame": 18265,
-      "end_frame": 18310,
-      "duration_sec": 1.502,
+      "start_time": 609.533,
+      "end_time": 611.0,
+      "start_timecode": "00:10:09.533",
+      "end_timecode": "00:10:11.000",
+      "start_frame": 18286,
+      "end_frame": 18330,
+      "duration_sec": 1.467,
       "avg_confidence": 0.8428,
       "peak_confidence": 0.8599,
       "detection_count": 2,
@@ -37699,16 +38874,16 @@
       "review_status": "confirmed_face"
     },
     {
-      "event_id": "bevt_0152",
+      "event_id": "bevt_0208",
       "track_id": 1323,
       "tier": "review",
-      "start_time": 618.952,
-      "end_time": 623.123,
-      "start_timecode": "00:10:18.951",
-      "end_timecode": "00:10:23.123",
-      "start_frame": 18550,
-      "end_frame": 18675,
-      "duration_sec": 4.171,
+      "start_time": 619.033,
+      "end_time": 623.2,
+      "start_timecode": "00:10:19.033",
+      "end_timecode": "00:10:23.200",
+      "start_frame": 18571,
+      "end_frame": 18696,
+      "duration_sec": 4.167,
       "avg_confidence": 0.7788,
       "peak_confidence": 0.8257,
       "detection_count": 22,
@@ -37962,16 +39137,16 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0153",
+      "event_id": "bevt_0209",
       "track_id": 1277,
       "tier": "review",
-      "start_time": 609.943,
-      "end_time": 610.777,
-      "start_timecode": "00:10:09.942",
-      "end_timecode": "00:10:10.777",
-      "start_frame": 18280,
-      "end_frame": 18305,
-      "duration_sec": 0.834,
+      "start_time": 610.033,
+      "end_time": 610.833,
+      "start_timecode": "00:10:10.033",
+      "end_timecode": "00:10:10.832",
+      "start_frame": 18301,
+      "end_frame": 18325,
+      "duration_sec": 0.8,
       "avg_confidence": 0.8362,
       "peak_confidence": 0.8472,
       "detection_count": 2,
@@ -38003,16 +39178,16 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0154",
+      "event_id": "bevt_0210",
       "track_id": 1286,
       "tier": "low_conf",
-      "start_time": 611.611,
-      "end_time": 612.278,
-      "start_timecode": "00:10:11.610",
-      "end_timecode": "00:10:12.278",
-      "start_frame": 18330,
-      "end_frame": 18350,
-      "duration_sec": 0.667,
+      "start_time": 611.7,
+      "end_time": 612.333,
+      "start_timecode": "00:10:11.700",
+      "end_timecode": "00:10:12.332",
+      "start_frame": 18351,
+      "end_frame": 18370,
+      "duration_sec": 0.633,
       "avg_confidence": 0.6699,
       "peak_confidence": 0.6699,
       "detection_count": 1,
@@ -38033,19 +39208,19 @@
       "review_status": "logged_only"
     },
     {
-      "event_id": "bevt_0155",
+      "event_id": "bevt_0211",
       "track_id": 1332,
-      "tier": "review",
-      "start_time": 619.619,
-      "end_time": 622.789,
-      "start_timecode": "00:10:19.619",
-      "end_timecode": "00:10:22.788",
-      "start_frame": 18570,
-      "end_frame": 18665,
-      "duration_sec": 3.17,
-      "avg_confidence": 0.6458,
-      "peak_confidence": 0.7798,
-      "detection_count": 13,
+      "tier": "low_conf",
+      "start_time": 619.7,
+      "end_time": 620.533,
+      "start_timecode": "00:10:19.700",
+      "end_timecode": "00:10:20.533",
+      "start_frame": 18591,
+      "end_frame": 18616,
+      "duration_sec": 0.833,
+      "avg_confidence": 0.6655,
+      "peak_confidence": 0.7041,
+      "detection_count": 2,
       "trajectory": [
         {
           "t": 619.953,
@@ -38068,7 +39243,28 @@
             87.2
           ],
           "conf": 0.627
-        },
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:2"
+      ],
+      "review_status": "logged_only"
+    },
+    {
+      "event_id": "bevt_0212",
+      "track_id": 1336,
+      "tier": "review",
+      "start_time": 620.367,
+      "end_time": 622.867,
+      "start_timecode": "00:10:20.366",
+      "end_timecode": "00:10:22.866",
+      "start_frame": 18611,
+      "end_frame": 18686,
+      "duration_sec": 2.5,
+      "avg_confidence": 0.6422,
+      "peak_confidence": 0.7798,
+      "detection_count": 11,
+      "trajectory": [
         {
           "t": 620.62,
           "frame": 18600,
@@ -38192,25 +39388,24 @@
         }
       ],
       "rule_hints": [
-        "identity_stitch:2",
-        "cross_presence_span"
+        "identity_stitch:2"
       ],
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0156",
+      "event_id": "bevt_0213",
       "track_id": 1354,
       "tier": "auto",
-      "start_time": 624.29,
-      "end_time": 628.628,
-      "start_timecode": "00:10:24.289",
-      "end_timecode": "00:10:28.628",
-      "start_frame": 18710,
-      "end_frame": 18840,
-      "duration_sec": 4.338,
-      "avg_confidence": 0.8218,
+      "start_time": 624.367,
+      "end_time": 627.367,
+      "start_timecode": "00:10:24.366",
+      "end_timecode": "00:10:27.366",
+      "start_frame": 18731,
+      "end_frame": 18821,
+      "duration_sec": 3.0,
+      "avg_confidence": 0.8508,
       "peak_confidence": 0.897,
-      "detection_count": 22,
+      "detection_count": 15,
       "trajectory": [
         {
           "t": 624.624,
@@ -38376,7 +39571,28 @@
             529.6
           ],
           "conf": 0.7974
-        },
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:2"
+      ],
+      "review_status": "confirmed_face"
+    },
+    {
+      "event_id": "bevt_0214",
+      "track_id": 1370,
+      "tier": "review",
+      "start_time": 627.033,
+      "end_time": 628.7,
+      "start_timecode": "00:10:27.033",
+      "end_timecode": "00:10:28.700",
+      "start_frame": 18811,
+      "end_frame": 18861,
+      "duration_sec": 1.667,
+      "avg_confidence": 0.7596,
+      "peak_confidence": 0.793,
+      "detection_count": 7,
+      "trajectory": [
         {
           "t": 627.293,
           "frame": 18800,
@@ -38456,22 +39672,21 @@
         }
       ],
       "rule_hints": [
-        "identity_stitch:2",
-        "cross_presence_span"
+        "identity_stitch:2"
       ],
-      "review_status": "confirmed_face"
+      "review_status": "pending"
     },
     {
-      "event_id": "bevt_0157",
+      "event_id": "bevt_0215",
       "track_id": 1390,
       "tier": "review",
-      "start_time": 632.465,
-      "end_time": 633.633,
-      "start_timecode": "00:10:32.465",
-      "end_timecode": "00:10:33.633",
-      "start_frame": 18955,
-      "end_frame": 18990,
-      "duration_sec": 1.168,
+      "start_time": 632.533,
+      "end_time": 633.7,
+      "start_timecode": "00:10:32.533",
+      "end_timecode": "00:10:33.700",
+      "start_frame": 18976,
+      "end_frame": 19011,
+      "duration_sec": 1.167,
       "avg_confidence": 0.7802,
       "peak_confidence": 0.8174,
       "detection_count": 4,
@@ -38525,16 +39740,16 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0158",
+      "event_id": "bevt_0216",
       "track_id": 1391,
       "tier": "review",
-      "start_time": 632.632,
-      "end_time": 633.8,
-      "start_timecode": "00:10:32.631",
-      "end_timecode": "00:10:33.799",
-      "start_frame": 18960,
-      "end_frame": 18995,
-      "duration_sec": 1.168,
+      "start_time": 632.7,
+      "end_time": 633.867,
+      "start_timecode": "00:10:32.700",
+      "end_timecode": "00:10:33.866",
+      "start_frame": 18981,
+      "end_frame": 19016,
+      "duration_sec": 1.167,
       "avg_confidence": 0.799,
       "peak_confidence": 0.8418,
       "detection_count": 4,
@@ -38588,19 +39803,19 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0159",
+      "event_id": "bevt_0217",
       "track_id": 1401,
-      "tier": "review",
-      "start_time": 633.967,
-      "end_time": 641.307,
-      "start_timecode": "00:10:33.966",
-      "end_timecode": "00:10:41.307",
-      "start_frame": 19000,
-      "end_frame": 19220,
-      "duration_sec": 7.34,
-      "avg_confidence": 0.6195,
-      "peak_confidence": 0.7871,
-      "detection_count": 7,
+      "tier": "low_conf",
+      "start_time": 634.067,
+      "end_time": 634.7,
+      "start_timecode": "00:10:34.067",
+      "end_timecode": "00:10:34.700",
+      "start_frame": 19022,
+      "end_frame": 19041,
+      "duration_sec": 0.633,
+      "avg_confidence": 0.7422,
+      "peak_confidence": 0.7422,
+      "detection_count": 1,
       "trajectory": [
         {
           "t": 634.3,
@@ -38612,7 +39827,28 @@
             636.3
           ],
           "conf": 0.7422
-        },
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:2"
+      ],
+      "review_status": "logged_only"
+    },
+    {
+      "event_id": "bevt_0218",
+      "track_id": 1432,
+      "tier": "review",
+      "start_time": 639.9,
+      "end_time": 641.367,
+      "start_timecode": "00:10:39.899",
+      "end_timecode": "00:10:41.366",
+      "start_frame": 19197,
+      "end_frame": 19241,
+      "duration_sec": 1.467,
+      "avg_confidence": 0.5991,
+      "peak_confidence": 0.7871,
+      "detection_count": 6,
+      "trajectory": [
         {
           "t": 640.139,
           "frame": 19185,
@@ -38683,25 +39919,24 @@
       "rule_hints": [
         "workzone_low",
         "edge_clip",
-        "identity_stitch:2",
-        "cross_presence_span"
+        "identity_stitch:2"
       ],
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0160",
+      "event_id": "bevt_0219",
       "track_id": 1420,
       "tier": "auto",
-      "start_time": 635.802,
-      "end_time": 638.805,
-      "start_timecode": "00:10:35.802",
-      "end_timecode": "00:10:38.804",
-      "start_frame": 19055,
-      "end_frame": 19145,
-      "duration_sec": 3.003,
-      "avg_confidence": 0.82,
+      "start_time": 635.9,
+      "end_time": 637.533,
+      "start_timecode": "00:10:35.899",
+      "end_timecode": "00:10:37.533",
+      "start_frame": 19077,
+      "end_frame": 19126,
+      "duration_sec": 1.633,
+      "avg_confidence": 0.8329,
       "peak_confidence": 0.8579,
-      "detection_count": 13,
+      "detection_count": 7,
       "trajectory": [
         {
           "t": 636.135,
@@ -38779,7 +40014,28 @@
             224.9
           ],
           "conf": 0.8169
-        },
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:3"
+      ],
+      "review_status": "confirmed_face"
+    },
+    {
+      "event_id": "bevt_0220",
+      "track_id": 1424,
+      "tier": "review",
+      "start_time": 637.233,
+      "end_time": 637.867,
+      "start_timecode": "00:10:37.232",
+      "end_timecode": "00:10:37.866",
+      "start_frame": 19117,
+      "end_frame": 19136,
+      "duration_sec": 0.634,
+      "avg_confidence": 0.7891,
+      "peak_confidence": 0.7891,
+      "detection_count": 1,
+      "trajectory": [
         {
           "t": 637.47,
           "frame": 19105,
@@ -38790,7 +40046,28 @@
             181.4
           ],
           "conf": 0.7891
-        },
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:3"
+      ],
+      "review_status": "pending"
+    },
+    {
+      "event_id": "bevt_0221",
+      "track_id": 1426,
+      "tier": "review",
+      "start_time": 637.567,
+      "end_time": 638.867,
+      "start_timecode": "00:10:37.567",
+      "end_timecode": "00:10:38.866",
+      "start_frame": 19127,
+      "end_frame": 19166,
+      "duration_sec": 1.3,
+      "avg_confidence": 0.8081,
+      "peak_confidence": 0.8267,
+      "detection_count": 5,
+      "trajectory": [
         {
           "t": 637.804,
           "frame": 19115,
@@ -38848,22 +40125,22 @@
         }
       ],
       "rule_hints": [
-        "identity_stitch:3",
-        "cross_presence_span"
+        "edge_clip",
+        "identity_stitch:3"
       ],
-      "review_status": "confirmed_face"
+      "review_status": "pending"
     },
     {
-      "event_id": "bevt_0161",
+      "event_id": "bevt_0222",
       "track_id": 1423,
       "tier": "review",
-      "start_time": 636.803,
-      "end_time": 637.47,
-      "start_timecode": "00:10:36.802",
-      "end_timecode": "00:10:37.470",
-      "start_frame": 19085,
-      "end_frame": 19105,
-      "duration_sec": 0.667,
+      "start_time": 636.9,
+      "end_time": 637.533,
+      "start_timecode": "00:10:36.899",
+      "end_timecode": "00:10:37.533",
+      "start_frame": 19107,
+      "end_frame": 19126,
+      "duration_sec": 0.633,
       "avg_confidence": 0.7534,
       "peak_confidence": 0.7534,
       "detection_count": 1,
@@ -38884,16 +40161,16 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0162",
+      "event_id": "bevt_0223",
       "track_id": 1436,
       "tier": "review",
-      "start_time": 641.808,
-      "end_time": 642.976,
-      "start_timecode": "00:10:41.807",
-      "end_timecode": "00:10:42.975",
-      "start_frame": 19235,
-      "end_frame": 19270,
-      "duration_sec": 1.168,
+      "start_time": 641.9,
+      "end_time": 643.033,
+      "start_timecode": "00:10:41.899",
+      "end_timecode": "00:10:43.033",
+      "start_frame": 19257,
+      "end_frame": 19291,
+      "duration_sec": 1.133,
       "avg_confidence": 0.7175,
       "peak_confidence": 0.8442,
       "detection_count": 4,
@@ -38949,16 +40226,16 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0163",
+      "event_id": "bevt_0224",
       "track_id": 1440,
       "tier": "auto",
-      "start_time": 648.481,
-      "end_time": 650.65,
-      "start_timecode": "00:10:48.480",
-      "end_timecode": "00:10:50.649",
-      "start_frame": 19435,
-      "end_frame": 19500,
-      "duration_sec": 2.169,
+      "start_time": 648.567,
+      "end_time": 650.7,
+      "start_timecode": "00:10:48.567",
+      "end_timecode": "00:10:50.700",
+      "start_frame": 19457,
+      "end_frame": 19521,
+      "duration_sec": 2.133,
       "avg_confidence": 0.8303,
       "peak_confidence": 0.8682,
       "detection_count": 10,
@@ -39078,16 +40355,16 @@
       "review_status": "confirmed_face"
     },
     {
-      "event_id": "bevt_0164",
+      "event_id": "bevt_0225",
       "track_id": 1442,
       "tier": "review",
-      "start_time": 652.318,
-      "end_time": 661.16,
-      "start_timecode": "00:10:52.317",
-      "end_timecode": "00:11:01.159",
-      "start_frame": 19550,
-      "end_frame": 19815,
-      "duration_sec": 8.842,
+      "start_time": 652.4,
+      "end_time": 661.233,
+      "start_timecode": "00:10:52.399",
+      "end_timecode": "00:11:01.232",
+      "start_frame": 19572,
+      "end_frame": 19837,
+      "duration_sec": 8.833,
       "avg_confidence": 0.6727,
       "peak_confidence": 0.8237,
       "detection_count": 36,
@@ -39496,16 +40773,16 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0165",
+      "event_id": "bevt_0226",
       "track_id": 1468,
       "tier": "review",
-      "start_time": 679.846,
-      "end_time": 682.182,
-      "start_timecode": "00:11:19.846",
-      "end_timecode": "00:11:22.182",
-      "start_frame": 20375,
-      "end_frame": 20445,
-      "duration_sec": 2.336,
+      "start_time": 679.933,
+      "end_time": 682.233,
+      "start_timecode": "00:11:19.932",
+      "end_timecode": "00:11:22.232",
+      "start_frame": 20398,
+      "end_frame": 20467,
+      "duration_sec": 2.3,
       "avg_confidence": 0.7681,
       "peak_confidence": 0.8013,
       "detection_count": 3,
@@ -39548,16 +40825,16 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0166",
+      "event_id": "bevt_0227",
       "track_id": 1472,
       "tier": "review",
-      "start_time": 680.847,
-      "end_time": 681.848,
-      "start_timecode": "00:11:20.846",
-      "end_timecode": "00:11:21.847",
-      "start_frame": 20405,
-      "end_frame": 20435,
-      "duration_sec": 1.001,
+      "start_time": 680.933,
+      "end_time": 681.9,
+      "start_timecode": "00:11:20.932",
+      "end_timecode": "00:11:21.899",
+      "start_frame": 20428,
+      "end_frame": 20457,
+      "duration_sec": 0.967,
       "avg_confidence": 0.7578,
       "peak_confidence": 0.7842,
       "detection_count": 3,
@@ -39600,15 +40877,15 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0167",
+      "event_id": "bevt_0228",
       "track_id": 1481,
       "tier": "low_conf",
-      "start_time": 684.517,
-      "end_time": 685.184,
-      "start_timecode": "00:11:24.517",
-      "end_timecode": "00:11:25.183",
-      "start_frame": 20515,
-      "end_frame": 20535,
+      "start_time": 684.6,
+      "end_time": 685.267,
+      "start_timecode": "00:11:24.600",
+      "end_timecode": "00:11:25.267",
+      "start_frame": 20538,
+      "end_frame": 20558,
       "duration_sec": 0.667,
       "avg_confidence": 0.7202,
       "peak_confidence": 0.7202,
@@ -39630,19 +40907,19 @@
       "review_status": "logged_only"
     },
     {
-      "event_id": "bevt_0168",
+      "event_id": "bevt_0229",
       "track_id": 1509,
       "tier": "review",
-      "start_time": 728.394,
-      "end_time": 733.399,
-      "start_timecode": "00:12:08.394",
-      "end_timecode": "00:12:13.399",
-      "start_frame": 21830,
-      "end_frame": 21980,
-      "duration_sec": 5.005,
-      "avg_confidence": 0.747,
+      "start_time": 728.467,
+      "end_time": 729.967,
+      "start_timecode": "00:12:08.466",
+      "end_timecode": "00:12:09.966",
+      "start_frame": 21854,
+      "end_frame": 21899,
+      "duration_sec": 1.5,
+      "avg_confidence": 0.7854,
       "peak_confidence": 0.8687,
-      "detection_count": 24,
+      "detection_count": 6,
       "trajectory": [
         {
           "t": 728.728,
@@ -39709,7 +40986,29 @@
             140.0
           ],
           "conf": 0.8413
-        },
+        }
+      ],
+      "rule_hints": [
+        "aspect_ratio",
+        "identity_stitch:3"
+      ],
+      "review_status": "pending"
+    },
+    {
+      "event_id": "bevt_0230",
+      "track_id": 1511,
+      "tier": "review",
+      "start_time": 729.633,
+      "end_time": 731.8,
+      "start_timecode": "00:12:09.633",
+      "end_timecode": "00:12:11.799",
+      "start_frame": 21889,
+      "end_frame": 21954,
+      "duration_sec": 2.167,
+      "avg_confidence": 0.7224,
+      "peak_confidence": 0.8374,
+      "detection_count": 10,
+      "trajectory": [
         {
           "t": 729.896,
           "frame": 21875,
@@ -39819,7 +41118,28 @@
             711.9
           ],
           "conf": 0.7334
-        },
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:3"
+      ],
+      "review_status": "pending"
+    },
+    {
+      "event_id": "bevt_0231",
+      "track_id": 1513,
+      "tier": "review",
+      "start_time": 731.633,
+      "end_time": 733.467,
+      "start_timecode": "00:12:11.633",
+      "end_timecode": "00:12:13.466",
+      "start_frame": 21949,
+      "end_frame": 22004,
+      "duration_sec": 1.834,
+      "avg_confidence": 0.7489,
+      "peak_confidence": 0.8115,
+      "detection_count": 8,
+      "trajectory": [
         {
           "t": 731.898,
           "frame": 21935,
@@ -39910,23 +41230,21 @@
         }
       ],
       "rule_hints": [
-        "aspect_ratio",
-        "identity_stitch:3",
-        "cross_presence_span"
+        "identity_stitch:3"
       ],
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0169",
+      "event_id": "bevt_0232",
       "track_id": 1539,
       "tier": "review",
-      "start_time": 738.905,
-      "end_time": 739.572,
-      "start_timecode": "00:12:18.904",
-      "end_timecode": "00:12:19.572",
-      "start_frame": 22145,
-      "end_frame": 22165,
-      "duration_sec": 0.667,
+      "start_time": 739.0,
+      "end_time": 739.633,
+      "start_timecode": "00:12:19.000",
+      "end_timecode": "00:12:19.633",
+      "start_frame": 22170,
+      "end_frame": 22189,
+      "duration_sec": 0.633,
       "avg_confidence": 0.8447,
       "peak_confidence": 0.8447,
       "detection_count": 1,
@@ -39947,16 +41265,16 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0170",
+      "event_id": "bevt_0233",
       "track_id": 1546,
       "tier": "review",
-      "start_time": 739.906,
-      "end_time": 740.573,
-      "start_timecode": "00:12:19.905",
-      "end_timecode": "00:12:20.572",
-      "start_frame": 22175,
-      "end_frame": 22195,
-      "duration_sec": 0.667,
+      "start_time": 740.0,
+      "end_time": 740.633,
+      "start_timecode": "00:12:20.000",
+      "end_timecode": "00:12:20.633",
+      "start_frame": 22200,
+      "end_frame": 22219,
+      "duration_sec": 0.633,
       "avg_confidence": 0.8218,
       "peak_confidence": 0.8218,
       "detection_count": 1,
@@ -39979,16 +41297,16 @@
       "review_status": "pending"
     },
     {
-      "event_id": "bevt_0171",
+      "event_id": "bevt_0234",
       "track_id": 1562,
       "tier": "low_conf",
-      "start_time": 752.585,
-      "end_time": 753.419,
-      "start_timecode": "00:12:32.585",
-      "end_timecode": "00:12:33.418",
-      "start_frame": 22555,
-      "end_frame": 22580,
-      "duration_sec": 0.834,
+      "start_time": 752.667,
+      "end_time": 753.5,
+      "start_timecode": "00:12:32.667",
+      "end_timecode": "00:12:33.500",
+      "start_frame": 22580,
+      "end_frame": 22605,
+      "duration_sec": 0.833,
       "avg_confidence": 0.6657,
       "peak_confidence": 0.6738,
       "detection_count": 2,

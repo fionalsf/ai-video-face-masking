@@ -30,6 +30,16 @@ def _read_frame(video_path: str, frame_idx: int):
     return frame if ok else None
 
 
+def _imwrite_jpg(path: str, img, quality: int = 90) -> bool:
+    """Write JPEG; cv2.imwrite fails on Windows paths with non-ASCII chars."""
+    ok, buf = cv2.imencode(".jpg", img, [cv2.IMWRITE_JPEG_QUALITY, quality])
+    if not ok:
+        return False
+    with open(path, "wb") as f:
+        f.write(buf.tobytes())
+    return True
+
+
 def export_review_pack(
     video_path: str,
     review_dir: str,
@@ -52,7 +62,7 @@ def export_review_pack(
             annotated = draw_detections(frame, [{"bbox": pt["bbox"], "confidence": pt["conf"]}])
             fname = f"{ev.event_id}_{label}.jpg"
             fpath = os.path.join(previews_dir, fname)
-            cv2.imwrite(fpath, annotated, [cv2.IMWRITE_JPEG_QUALITY, 90])
+            _imwrite_jpg(fpath, annotated)
             preview_paths[label] = os.path.join("previews", fname).replace("\\", "/")
 
         d["previews"] = preview_paths

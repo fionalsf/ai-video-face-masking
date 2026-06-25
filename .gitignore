@@ -6,3 +6,8 @@ models/*.pt
 *.log
 *.mp4
 *.MP4
+
+# validation 临时代码与标注产物（不上传）
+output_validation_track_split/_*.py
+output_validation_track_split/bbox_*/
+output_validation_track_split/review_*/

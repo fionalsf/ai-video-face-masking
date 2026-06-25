@@ -1,0 +1,43 @@
+{
+  "video": "DJI_20260510153703_0003_D.MP4",
+  "video_path": "D:\\work\\制造业视频数据\\20260514上午汽车门锁装搭\\20250509汽配滤清器厂\\DJI_20260510153703_0003_D.MP4",
+  "total_events": 130,
+  "accepted": 0,
+  "rejected": 2,
+  "skipped": 0,
+  "remaining": 128,
+  "accept_rate": 0.0,
+  "reject_rate": 1.5,
+  "skip_rate": 0.0,
+  "updated_at": "2026-06-25 17:30:22",
+  "review_finished_at": null,
+  "analysis": {
+    "accepted_avg_peak_confidence": null,
+    "rejected_avg_peak_confidence": 0.8198,
+    "accepted_avg_duration_sec": null,
+    "rejected_avg_duration_sec": 1.317,
+    "accepted_avg_frame_count": null,
+    "rejected_avg_frame_count": 1.5
+  },
+  "quality_gate": {
+    "counts": {
+      "HIGH": 0,
+      "MEDIUM": 0,
+      "LOW": 0
+    },
+    "by_quality": {
+      "HIGH": {
+        "accepted": 0,
+        "rejected": 0
+      },
+      "MEDIUM": {
+        "accepted": 0,
+        "rejected": 0
+      },
+      "LOW": {
+        "accepted": 0,
+        "rejected": 0
+      }
+    }
+  }
+}

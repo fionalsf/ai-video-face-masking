@@ -1,10 +1,10 @@
 {
   "video": "D:\\work\\制造业视频数据\\20260514上午汽车门锁装搭\\20250509汽配滤清器厂\\DJI_20260510153703_0003_D.MP4",
-  "processed_at": "2026-06-24T17:11:32",
-  "events_total": 171,
-  "auto_masked": 26,
-  "pending_review": 103,
-  "low_conf_logged": 42,
+  "processed_at": "2026-06-25T17:04:45",
+  "events_total": 234,
+  "auto_masked": 33,
+  "pending_review": 130,
+  "low_conf_logged": 71,
   "builder_stats": {
     "original_event_count": 284,
     "merged_event_count": 247,
@@ -700,13 +700,9 @@
   "masked_draft": "D:\\work\\制造业视频数据\\new_da_ma\\output_production_DJI_20260510153703_0003_D\\DJI_20260510153703_0003_D\\masked_draft.mp4",
   "review_dir": "D:\\work\\制造业视频数据\\new_da_ma\\output_production_DJI_20260510153703_0003_D\\DJI_20260510153703_0003_D\\review",
   "delivery_ready": true,
-  "morning_action": "streamlit run review_ui.py -- --review-dir D:\\work\\制造业视频数据\\new_da_ma\\output_production_DJI_20260510153703_0003_D\\DJI_20260510153703_0003_D\\review",
-  "morning_confirmed_at": "2026-06-24T17:20:23",
+  "morning_action": "streamlit run review_ui.py -- --review-dir d:\\work\\制造业视频数据\\new_da_ma\\output_production_DJI_20260510153703_0003_D\\DJI_20260510153703_0003_D\\review",
+  "morning_confirmed_at": "2026-06-25T17:40:04",
   "final_video": "d:\\work\\制造业视频数据\\new_da_ma\\output_production_DJI_20260510153703_0003_D\\DJI_20260510153703_0003_D\\final.mp4",
-  "review_confirmed_count": 103,
-  "review_summary": {
-    "confirmed_face": 0,
-    "rejected_fp": 0,
-    "skipped": 0
-  }
+  "review_confirmed_count": 128,
+  "review_summary": {}
 }

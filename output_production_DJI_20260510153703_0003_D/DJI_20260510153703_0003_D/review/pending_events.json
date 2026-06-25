@@ -1,19 +1,19 @@
 {
   "video": "D:\\work\\制造业视频数据\\20260514上午汽车门锁装搭\\20250509汽配滤清器厂\\DJI_20260510153703_0003_D.MP4",
-  "exported_at": "2026-06-24T17:11:32",
-  "count": 103,
+  "exported_at": "2026-06-25T17:18:02",
+  "count": 130,
   "events": [
     {
       "event_id": "bevt_0001",
       "track_id": 1,
       "tier": "review",
-      "start_time": 0.334,
-      "end_time": 2.002,
-      "start_timecode": "00:00:00.334",
-      "end_timecode": "00:00:02.001",
-      "start_frame": 10,
-      "end_frame": 60,
-      "duration_sec": 1.668,
+      "start_time": 0.433,
+      "end_time": 2.067,
+      "start_timecode": "00:00:00.433",
+      "end_timecode": "00:00:02.067",
+      "start_frame": 13,
+      "end_frame": 62,
+      "duration_sec": 1.634,
       "avg_confidence": 0.6968,
       "peak_confidence": 0.8164,
       "detection_count": 7,
@@ -109,15 +109,300 @@
     },
     {
       "event_id": "bevt_0003",
+      "track_id": 3,
+      "tier": "review",
+      "start_time": 0.767,
+      "end_time": 2.067,
+      "start_timecode": "00:00:00.767",
+      "end_timecode": "00:00:02.067",
+      "start_frame": 23,
+      "end_frame": 62,
+      "duration_sec": 1.3,
+      "avg_confidence": 0.7454,
+      "peak_confidence": 0.8125,
+      "detection_count": 5,
+      "trajectory": [
+        {
+          "t": 1.001,
+          "frame": 30,
+          "bbox": [
+            667.8,
+            0.0,
+            768.6,
+            32.6
+          ],
+          "conf": 0.6333
+        },
+        {
+          "t": 1.168,
+          "frame": 35,
+          "bbox": [
+            661.1,
+            1.3,
+            785.2,
+            41.8
+          ],
+          "conf": 0.7192
+        },
+        {
+          "t": 1.335,
+          "frame": 40,
+          "bbox": [
+            653.4,
+            1.6,
+            810.4,
+            53.6
+          ],
+          "conf": 0.7583
+        },
+        {
+          "t": 1.502,
+          "frame": 45,
+          "bbox": [
+            649.7,
+            3.1,
+            833.7,
+            65.3
+          ],
+          "conf": 0.8125
+        },
+        {
+          "t": 1.668,
+          "frame": 50,
+          "bbox": [
+            648.7,
+            4.6,
+            855.4,
+            76.7
+          ],
+          "conf": 0.8037
+        }
+      ],
+      "rule_hints": [
+        "edge_clip",
+        "aspect_ratio",
+        "identity_stitch:4"
+      ],
+      "review_status": "pending",
+      "previews": {
+        "start": "previews/bevt_0003_start.jpg",
+        "mid": "previews/bevt_0003_mid.jpg",
+        "end": "previews/bevt_0003_end.jpg"
+      }
+    },
+    {
+      "event_id": "bevt_0004",
+      "track_id": 4,
+      "tier": "review",
+      "start_time": 1.767,
+      "end_time": 4.9,
+      "start_timecode": "00:00:01.766",
+      "end_timecode": "00:00:04.900",
+      "start_frame": 53,
+      "end_frame": 147,
+      "duration_sec": 3.133,
+      "avg_confidence": 0.7834,
+      "peak_confidence": 0.8105,
+      "detection_count": 16,
+      "trajectory": [
+        {
+          "t": 2.002,
+          "frame": 60,
+          "bbox": [
+            742.8,
+            17.9,
+            800.7,
+            98.8
+          ],
+          "conf": 0.7769
+        },
+        {
+          "t": 2.169,
+          "frame": 65,
+          "bbox": [
+            740.0,
+            26.2,
+            797.8,
+            107.2
+          ],
+          "conf": 0.7476
+        },
+        {
+          "t": 2.336,
+          "frame": 70,
+          "bbox": [
+            733.1,
+            36.4,
+            791.1,
+            117.9
+          ],
+          "conf": 0.7407
+        },
+        {
+          "t": 2.502,
+          "frame": 75,
+          "bbox": [
+            723.8,
+            47.4,
+            780.6,
+            127.4
+          ],
+          "conf": 0.7192
+        },
+        {
+          "t": 2.669,
+          "frame": 80,
+          "bbox": [
+            709.8,
+            49.1,
+            770.4,
+            135.0
+          ],
+          "conf": 0.7812
+        },
+        {
+          "t": 2.836,
+          "frame": 85,
+          "bbox": [
+            693.7,
+            54.0,
+            754.1,
+            139.8
+          ],
+          "conf": 0.7861
+        },
+        {
+          "t": 3.003,
+          "frame": 90,
+          "bbox": [
+            670.8,
+            55.0,
+            732.2,
+            142.1
+          ],
+          "conf": 0.8105
+        },
+        {
+          "t": 3.17,
+          "frame": 95,
+          "bbox": [
+            646.5,
+            54.3,
+            708.4,
+            141.8
+          ],
+          "conf": 0.8091
+        },
+        {
+          "t": 3.337,
+          "frame": 100,
+          "bbox": [
+            622.9,
+            50.7,
+            685.0,
+            138.1
+          ],
+          "conf": 0.8101
+        },
+        {
+          "t": 3.504,
+          "frame": 105,
+          "bbox": [
+            600.2,
+            43.6,
+            663.0,
+            131.8
+          ],
+          "conf": 0.7866
+        },
+        {
+          "t": 3.67,
+          "frame": 110,
+          "bbox": [
+            579.4,
+            34.3,
+            643.4,
+            123.8
+          ],
+          "conf": 0.8013
+        },
+        {
+          "t": 3.837,
+          "frame": 115,
+          "bbox": [
+            559.4,
+            25.3,
+            623.5,
+            113.7
+          ],
+          "conf": 0.7974
+        },
+        {
+          "t": 4.004,
+          "frame": 120,
+          "bbox": [
+            534.4,
+            12.4,
+            596.9,
+            97.3
+          ],
+          "conf": 0.8042
+        },
+        {
+          "t": 4.171,
+          "frame": 125,
+          "bbox": [
+            519.5,
+            5.3,
+            576.8,
+            80.2
+          ],
+          "conf": 0.8101
+        },
+        {
+          "t": 4.338,
+          "frame": 130,
+          "bbox": [
+            520.3,
+            3.0,
+            570.9,
+            65.0
+          ],
+          "conf": 0.7822
+        },
+        {
+          "t": 4.505,
+          "frame": 135,
+          "bbox": [
+            531.6,
+            0.5,
+            577.9,
+            52.8
+          ],
+          "conf": 0.772
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:4"
+      ],
+      "review_status": "pending",
+      "previews": {
+        "start": "previews/bevt_0004_start.jpg",
+        "mid": "previews/bevt_0004_mid.jpg",
+        "end": "previews/bevt_0004_end.jpg"
+      }
+    },
+    {
+      "event_id": "bevt_0006",
       "track_id": 5,
       "tier": "review",
-      "start_time": 3.67,
-      "end_time": 4.838,
-      "start_timecode": "00:00:03.669",
-      "end_timecode": "00:00:04.838",
-      "start_frame": 110,
-      "end_frame": 145,
-      "duration_sec": 1.168,
+      "start_time": 3.767,
+      "end_time": 4.9,
+      "start_timecode": "00:00:03.766",
+      "end_timecode": "00:00:04.900",
+      "start_frame": 113,
+      "end_frame": 147,
+      "duration_sec": 1.133,
       "avg_confidence": 0.6022,
       "peak_confidence": 0.7612,
       "detection_count": 4,
@@ -170,22 +455,22 @@
       "rule_hints": [],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0003_start.jpg",
-        "mid": "previews/bevt_0003_mid.jpg",
-        "end": "previews/bevt_0003_end.jpg"
+        "start": "previews/bevt_0006_start.jpg",
+        "mid": "previews/bevt_0006_mid.jpg",
+        "end": "previews/bevt_0006_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0005",
+      "event_id": "bevt_0008",
       "track_id": 20,
       "tier": "review",
-      "start_time": 8.175,
-      "end_time": 11.011,
-      "start_timecode": "00:00:08.175",
-      "end_timecode": "00:00:11.010",
-      "start_frame": 245,
-      "end_frame": 330,
-      "duration_sec": 2.836,
+      "start_time": 8.267,
+      "end_time": 11.067,
+      "start_timecode": "00:00:08.266",
+      "end_timecode": "00:00:11.067",
+      "start_frame": 248,
+      "end_frame": 332,
+      "duration_sec": 2.8,
       "avg_confidence": 0.8424,
       "peak_confidence": 0.873,
       "detection_count": 5,
@@ -251,22 +536,22 @@
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0005_start.jpg",
-        "mid": "previews/bevt_0005_mid.jpg",
-        "end": "previews/bevt_0005_end.jpg"
+        "start": "previews/bevt_0008_start.jpg",
+        "mid": "previews/bevt_0008_mid.jpg",
+        "end": "previews/bevt_0008_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0007",
+      "event_id": "bevt_0010",
       "track_id": 37,
       "tier": "review",
-      "start_time": 11.345,
-      "end_time": 13.18,
-      "start_timecode": "00:00:11.345",
-      "end_timecode": "00:00:13.179",
-      "start_frame": 340,
-      "end_frame": 395,
-      "duration_sec": 1.835,
+      "start_time": 11.433,
+      "end_time": 13.233,
+      "start_timecode": "00:00:11.432",
+      "end_timecode": "00:00:13.233",
+      "start_frame": 343,
+      "end_frame": 397,
+      "duration_sec": 1.8,
       "avg_confidence": 0.8119,
       "peak_confidence": 0.8252,
       "detection_count": 4,
@@ -321,22 +606,22 @@
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0007_start.jpg",
-        "mid": "previews/bevt_0007_mid.jpg",
-        "end": "previews/bevt_0007_end.jpg"
+        "start": "previews/bevt_0010_start.jpg",
+        "mid": "previews/bevt_0010_mid.jpg",
+        "end": "previews/bevt_0010_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0008",
+      "event_id": "bevt_0011",
       "track_id": 39,
       "tier": "review",
-      "start_time": 11.678,
-      "end_time": 12.679,
-      "start_timecode": "00:00:11.678",
-      "end_timecode": "00:00:12.679",
-      "start_frame": 350,
-      "end_frame": 380,
-      "duration_sec": 1.001,
+      "start_time": 11.767,
+      "end_time": 12.733,
+      "start_timecode": "00:00:11.766",
+      "end_timecode": "00:00:12.733",
+      "start_frame": 353,
+      "end_frame": 382,
+      "duration_sec": 0.966,
       "avg_confidence": 0.63,
       "peak_confidence": 0.8218,
       "detection_count": 3,
@@ -380,22 +665,22 @@
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0008_start.jpg",
-        "mid": "previews/bevt_0008_mid.jpg",
-        "end": "previews/bevt_0008_end.jpg"
+        "start": "previews/bevt_0011_start.jpg",
+        "mid": "previews/bevt_0011_mid.jpg",
+        "end": "previews/bevt_0011_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0012",
+      "event_id": "bevt_0016",
       "track_id": 81,
       "tier": "review",
-      "start_time": 39.206,
-      "end_time": 40.541,
-      "start_timecode": "00:00:39.206",
-      "end_timecode": "00:00:40.540",
-      "start_frame": 1175,
-      "end_frame": 1215,
-      "duration_sec": 1.335,
+      "start_time": 39.3,
+      "end_time": 40.6,
+      "start_timecode": "00:00:39.299",
+      "end_timecode": "00:00:40.600",
+      "start_frame": 1179,
+      "end_frame": 1218,
+      "duration_sec": 1.3,
       "avg_confidence": 0.7805,
       "peak_confidence": 0.8467,
       "detection_count": 5,
@@ -462,22 +747,22 @@
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0012_start.jpg",
-        "mid": "previews/bevt_0012_mid.jpg",
-        "end": "previews/bevt_0012_end.jpg"
+        "start": "previews/bevt_0016_start.jpg",
+        "mid": "previews/bevt_0016_mid.jpg",
+        "end": "previews/bevt_0016_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0013",
+      "event_id": "bevt_0017",
       "track_id": 66,
       "tier": "review",
-      "start_time": 20.854,
-      "end_time": 34.868,
-      "start_timecode": "00:00:20.853",
-      "end_timecode": "00:00:34.868",
-      "start_frame": 625,
-      "end_frame": 1045,
-      "duration_sec": 14.014,
+      "start_time": 20.933,
+      "end_time": 34.933,
+      "start_timecode": "00:00:20.932",
+      "end_timecode": "00:00:34.932",
+      "start_frame": 628,
+      "end_frame": 1048,
+      "duration_sec": 14.0,
       "avg_confidence": 0.7873,
       "peak_confidence": 0.8369,
       "detection_count": 31,
@@ -830,22 +1115,22 @@
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0013_start.jpg",
-        "mid": "previews/bevt_0013_mid.jpg",
-        "end": "previews/bevt_0013_end.jpg"
+        "start": "previews/bevt_0017_start.jpg",
+        "mid": "previews/bevt_0017_mid.jpg",
+        "end": "previews/bevt_0017_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0014",
+      "event_id": "bevt_0018",
       "track_id": 152,
       "tier": "review",
-      "start_time": 52.719,
-      "end_time": 54.555,
-      "start_timecode": "00:00:52.719",
-      "end_timecode": "00:00:54.554",
-      "start_frame": 1580,
-      "end_frame": 1635,
-      "duration_sec": 1.836,
+      "start_time": 52.8,
+      "end_time": 54.633,
+      "start_timecode": "00:00:52.799",
+      "end_timecode": "00:00:54.633",
+      "start_frame": 1584,
+      "end_frame": 1639,
+      "duration_sec": 1.833,
       "avg_confidence": 0.8068,
       "peak_confidence": 0.8438,
       "detection_count": 8,
@@ -944,22 +1229,22 @@
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0014_start.jpg",
-        "mid": "previews/bevt_0014_mid.jpg",
-        "end": "previews/bevt_0014_end.jpg"
+        "start": "previews/bevt_0018_start.jpg",
+        "mid": "previews/bevt_0018_mid.jpg",
+        "end": "previews/bevt_0018_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0017",
+      "event_id": "bevt_0021",
       "track_id": 75,
       "tier": "review",
-      "start_time": 36.203,
-      "end_time": 39.373,
-      "start_timecode": "00:00:36.203",
-      "end_timecode": "00:00:39.372",
-      "start_frame": 1085,
-      "end_frame": 1180,
-      "duration_sec": 3.17,
+      "start_time": 36.3,
+      "end_time": 39.433,
+      "start_timecode": "00:00:36.299",
+      "end_timecode": "00:00:39.432",
+      "start_frame": 1089,
+      "end_frame": 1183,
+      "duration_sec": 3.133,
       "avg_confidence": 0.7593,
       "peak_confidence": 0.8301,
       "detection_count": 9,
@@ -1070,22 +1355,22 @@
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0017_start.jpg",
-        "mid": "previews/bevt_0017_mid.jpg",
-        "end": "previews/bevt_0017_end.jpg"
+        "start": "previews/bevt_0021_start.jpg",
+        "mid": "previews/bevt_0021_mid.jpg",
+        "end": "previews/bevt_0021_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0018",
+      "event_id": "bevt_0022",
       "track_id": 83,
       "tier": "review",
-      "start_time": 39.54,
-      "end_time": 40.874,
-      "start_timecode": "00:00:39.539",
-      "end_timecode": "00:00:40.874",
-      "start_frame": 1185,
-      "end_frame": 1225,
-      "duration_sec": 1.334,
+      "start_time": 39.633,
+      "end_time": 40.933,
+      "start_timecode": "00:00:39.633",
+      "end_timecode": "00:00:40.932",
+      "start_frame": 1189,
+      "end_frame": 1228,
+      "duration_sec": 1.3,
       "avg_confidence": 0.8079,
       "peak_confidence": 0.8115,
       "detection_count": 5,
@@ -1151,22 +1436,22 @@
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0018_start.jpg",
-        "mid": "previews/bevt_0018_mid.jpg",
-        "end": "previews/bevt_0018_end.jpg"
+        "start": "previews/bevt_0022_start.jpg",
+        "mid": "previews/bevt_0022_mid.jpg",
+        "end": "previews/bevt_0022_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0019",
+      "event_id": "bevt_0023",
       "track_id": 141,
       "tier": "review",
-      "start_time": 49.383,
-      "end_time": 50.217,
-      "start_timecode": "00:00:49.383",
-      "end_timecode": "00:00:50.216",
-      "start_frame": 1480,
-      "end_frame": 1505,
-      "duration_sec": 0.834,
+      "start_time": 49.467,
+      "end_time": 50.267,
+      "start_timecode": "00:00:49.466",
+      "end_timecode": "00:00:50.267",
+      "start_frame": 1484,
+      "end_frame": 1508,
+      "duration_sec": 0.8,
       "avg_confidence": 0.7471,
       "peak_confidence": 0.7637,
       "detection_count": 2,
@@ -1199,22 +1484,22 @@
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0019_start.jpg",
-        "mid": "previews/bevt_0019_mid.jpg",
-        "end": "previews/bevt_0019_end.jpg"
+        "start": "previews/bevt_0023_start.jpg",
+        "mid": "previews/bevt_0023_mid.jpg",
+        "end": "previews/bevt_0023_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0024",
+      "event_id": "bevt_0029",
       "track_id": 182,
       "tier": "review",
-      "start_time": 59.726,
-      "end_time": 61.395,
-      "start_timecode": "00:00:59.725",
-      "end_timecode": "00:01:01.395",
-      "start_frame": 1790,
-      "end_frame": 1840,
-      "duration_sec": 1.669,
+      "start_time": 59.8,
+      "end_time": 61.467,
+      "start_timecode": "00:00:59.799",
+      "end_timecode": "00:01:01.466",
+      "start_frame": 1794,
+      "end_frame": 1844,
+      "duration_sec": 1.667,
       "avg_confidence": 0.8233,
       "peak_confidence": 0.8433,
       "detection_count": 2,
@@ -1245,22 +1530,22 @@
       "rule_hints": [],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0024_start.jpg",
-        "mid": "previews/bevt_0024_mid.jpg",
-        "end": "previews/bevt_0024_end.jpg"
+        "start": "previews/bevt_0029_start.jpg",
+        "mid": "previews/bevt_0029_mid.jpg",
+        "end": "previews/bevt_0029_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0025",
+      "event_id": "bevt_0030",
       "track_id": 185,
       "tier": "review",
-      "start_time": 60.227,
-      "end_time": 61.061,
-      "start_timecode": "00:01:00.226",
-      "end_timecode": "00:01:01.060",
-      "start_frame": 1805,
-      "end_frame": 1830,
-      "duration_sec": 0.834,
+      "start_time": 60.3,
+      "end_time": 61.133,
+      "start_timecode": "00:01:00.299",
+      "end_timecode": "00:01:01.133",
+      "start_frame": 1809,
+      "end_frame": 1834,
+      "duration_sec": 0.833,
       "avg_confidence": 0.7981,
       "peak_confidence": 0.8101,
       "detection_count": 2,
@@ -1291,180 +1576,214 @@
       "rule_hints": [],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0025_start.jpg",
-        "mid": "previews/bevt_0025_mid.jpg",
-        "end": "previews/bevt_0025_end.jpg"
+        "start": "previews/bevt_0030_start.jpg",
+        "mid": "previews/bevt_0030_mid.jpg",
+        "end": "previews/bevt_0030_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0031",
-      "track_id": 197,
+      "event_id": "bevt_0033",
+      "track_id": 192,
       "tier": "review",
-      "start_time": 72.573,
-      "end_time": 83.75,
-      "start_timecode": "00:01:12.572",
-      "end_timecode": "00:01:23.750",
-      "start_frame": 2175,
-      "end_frame": 2510,
-      "duration_sec": 11.177,
-      "avg_confidence": 0.7205,
-      "peak_confidence": 0.8633,
-      "detection_count": 35,
+      "start_time": 79.0,
+      "end_time": 80.467,
+      "start_timecode": "00:01:19.000",
+      "end_timecode": "00:01:20.466",
+      "start_frame": 2370,
+      "end_frame": 2414,
+      "duration_sec": 1.467,
+      "avg_confidence": 0.6745,
+      "peak_confidence": 0.8477,
+      "detection_count": 6,
       "trajectory": [
         {
-          "t": 72.906,
-          "frame": 2185,
+          "t": 79.246,
+          "frame": 2375,
           "bbox": [
-            542.0,
-            0.4,
-            665.5,
-            48.1
-          ],
-          "conf": 0.4216
-        },
-        {
-          "t": 73.073,
-          "frame": 2190,
-          "bbox": [
-            554.2,
+            591.9,
             0.1,
-            689.4,
-            52.4
+            790.2,
+            71.5
           ],
-          "conf": 0.4678
+          "conf": 0.8477
         },
         {
-          "t": 73.24,
-          "frame": 2195,
+          "t": 79.413,
+          "frame": 2380,
           "bbox": [
-            557.2,
+            595.0,
             0.3,
-            696.2,
-            54.2
+            761.7,
+            65.2
           ],
-          "conf": 0.6377
+          "conf": 0.8076
         },
         {
-          "t": 73.407,
-          "frame": 2200,
+          "t": 79.579,
+          "frame": 2385,
           "bbox": [
-            551.7,
-            0.1,
-            695.7,
-            56.0
+            593.6,
+            0.7,
+            734.2,
+            58.3
           ],
-          "conf": 0.6704
+          "conf": 0.6807
         },
         {
-          "t": 73.573,
-          "frame": 2205,
+          "t": 79.746,
+          "frame": 2390,
           "bbox": [
-            551.5,
-            0.0,
+            573.4,
+            0.2,
             696.8,
-            56.5
+            51.0
           ],
-          "conf": 0.6611
+          "conf": 0.583
         },
         {
-          "t": 73.74,
-          "frame": 2210,
+          "t": 79.913,
+          "frame": 2395,
           "bbox": [
-            562.9,
-            0.4,
-            708.5,
-            57.5
+            561.3,
+            0.0,
+            661.9,
+            41.1
           ],
-          "conf": 0.6958
+          "conf": 0.582
         },
         {
-          "t": 73.907,
-          "frame": 2215,
+          "t": 80.08,
+          "frame": 2400,
           "bbox": [
-            568.3,
-            0.1,
-            715.3,
-            58.1
-          ],
-          "conf": 0.6792
-        },
-        {
-          "t": 74.074,
-          "frame": 2220,
-          "bbox": [
-            574.1,
-            0.5,
-            717.2,
-            57.1
-          ],
-          "conf": 0.5928
-        },
-        {
-          "t": 74.241,
-          "frame": 2225,
-          "bbox": [
-            585.6,
-            0.6,
-            722.7,
-            54.9
-          ],
-          "conf": 0.5508
-        },
-        {
-          "t": 74.408,
-          "frame": 2230,
-          "bbox": [
-            592.9,
-            0.9,
-            726.8,
-            53.7
-          ],
-          "conf": 0.5747
-        },
-        {
-          "t": 74.575,
-          "frame": 2235,
-          "bbox": [
-            618.1,
-            0.3,
-            735.8,
-            46.8
-          ],
-          "conf": 0.5508
-        },
-        {
-          "t": 74.741,
-          "frame": 2240,
-          "bbox": [
-            640.3,
-            0.1,
-            746.9,
-            42.2
-          ],
-          "conf": 0.5879
-        },
-        {
-          "t": 74.908,
-          "frame": 2245,
-          "bbox": [
-            655.5,
-            1.3,
-            744.2,
-            35.0
-          ],
-          "conf": 0.4543
-        },
-        {
-          "t": 75.075,
-          "frame": 2250,
-          "bbox": [
-            664.2,
-            1.5,
-            746.1,
+            550.3,
+            1.9,
+            628.9,
             31.4
           ],
-          "conf": 0.5078
+          "conf": 0.5459
+        }
+      ],
+      "rule_hints": [
+        "edge_clip",
+        "aspect_ratio",
+        "identity_stitch:6"
+      ],
+      "review_status": "pending",
+      "previews": {
+        "start": "previews/bevt_0033_start.jpg",
+        "mid": "previews/bevt_0033_mid.jpg",
+        "end": "previews/bevt_0033_end.jpg"
+      }
+    },
+    {
+      "event_id": "bevt_0035",
+      "track_id": 226,
+      "tier": "review",
+      "start_time": 90.5,
+      "end_time": 92.0,
+      "start_timecode": "00:01:30.500",
+      "end_timecode": "00:01:32.000",
+      "start_frame": 2715,
+      "end_frame": 2760,
+      "duration_sec": 1.5,
+      "avg_confidence": 0.7389,
+      "peak_confidence": 0.8433,
+      "detection_count": 6,
+      "trajectory": [
+        {
+          "t": 90.757,
+          "frame": 2720,
+          "bbox": [
+            656.5,
+            0.4,
+            764.1,
+            25.1
+          ],
+          "conf": 0.3877
         },
+        {
+          "t": 90.924,
+          "frame": 2725,
+          "bbox": [
+            640.7,
+            0.7,
+            818.1,
+            41.7
+          ],
+          "conf": 0.7212
+        },
+        {
+          "t": 91.091,
+          "frame": 2730,
+          "bbox": [
+            627.0,
+            1.3,
+            872.8,
+            59.2
+          ],
+          "conf": 0.7974
+        },
+        {
+          "t": 91.258,
+          "frame": 2735,
+          "bbox": [
+            607.8,
+            1.5,
+            924.0,
+            77.8
+          ],
+          "conf": 0.8408
+        },
+        {
+          "t": 91.425,
+          "frame": 2740,
+          "bbox": [
+            598.4,
+            2.6,
+            949.9,
+            90.0
+          ],
+          "conf": 0.8433
+        },
+        {
+          "t": 91.591,
+          "frame": 2745,
+          "bbox": [
+            598.7,
+            2.2,
+            945.5,
+            91.4
+          ],
+          "conf": 0.8433
+        }
+      ],
+      "rule_hints": [
+        "edge_clip",
+        "aspect_ratio",
+        "identity_stitch:6"
+      ],
+      "review_status": "pending",
+      "previews": {
+        "start": "previews/bevt_0035_start.jpg",
+        "mid": "previews/bevt_0035_mid.jpg",
+        "end": "previews/bevt_0035_end.jpg"
+      }
+    },
+    {
+      "event_id": "bevt_0040",
+      "track_id": 202,
+      "tier": "review",
+      "start_time": 77.333,
+      "end_time": 83.833,
+      "start_timecode": "00:01:17.332",
+      "end_timecode": "00:01:23.832",
+      "start_frame": 2320,
+      "end_frame": 2515,
+      "duration_sec": 6.5,
+      "avg_confidence": 0.8174,
+      "peak_confidence": 0.8633,
+      "detection_count": 21,
+      "trajectory": [
         {
           "t": 77.578,
           "frame": 2325,
@@ -1699,27 +2018,26 @@
       ],
       "rule_hints": [
         "aspect_ratio",
-        "identity_stitch:2",
-        "cross_presence_span"
+        "identity_stitch:2"
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0031_start.jpg",
-        "mid": "previews/bevt_0031_mid.jpg",
-        "end": "previews/bevt_0031_end.jpg"
+        "start": "previews/bevt_0040_start.jpg",
+        "mid": "previews/bevt_0040_mid.jpg",
+        "end": "previews/bevt_0040_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0032",
+      "event_id": "bevt_0041",
       "track_id": 203,
       "tier": "review",
-      "start_time": 78.745,
-      "end_time": 79.413,
-      "start_timecode": "00:01:18.745",
-      "end_timecode": "00:01:19.412",
-      "start_frame": 2360,
-      "end_frame": 2380,
-      "duration_sec": 0.668,
+      "start_time": 78.833,
+      "end_time": 79.467,
+      "start_timecode": "00:01:18.832",
+      "end_timecode": "00:01:19.466",
+      "start_frame": 2365,
+      "end_frame": 2384,
+      "duration_sec": 0.634,
       "avg_confidence": 0.7568,
       "peak_confidence": 0.7568,
       "detection_count": 1,
@@ -1741,22 +2059,22 @@
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0032_start.jpg",
-        "mid": "previews/bevt_0032_mid.jpg",
-        "end": "previews/bevt_0032_end.jpg"
+        "start": "previews/bevt_0041_start.jpg",
+        "mid": "previews/bevt_0041_mid.jpg",
+        "end": "previews/bevt_0041_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0033",
+      "event_id": "bevt_0042",
       "track_id": 233,
       "tier": "review",
-      "start_time": 94.761,
-      "end_time": 96.263,
-      "start_timecode": "00:01:34.760",
-      "end_timecode": "00:01:36.263",
-      "start_frame": 2840,
-      "end_frame": 2885,
-      "duration_sec": 1.502,
+      "start_time": 94.833,
+      "end_time": 96.333,
+      "start_timecode": "00:01:34.832",
+      "end_timecode": "00:01:36.332",
+      "start_frame": 2845,
+      "end_frame": 2890,
+      "duration_sec": 1.5,
       "avg_confidence": 0.8964,
       "peak_confidence": 0.915,
       "detection_count": 6,
@@ -1834,22 +2152,22 @@
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0033_start.jpg",
-        "mid": "previews/bevt_0033_mid.jpg",
-        "end": "previews/bevt_0033_end.jpg"
+        "start": "previews/bevt_0042_start.jpg",
+        "mid": "previews/bevt_0042_mid.jpg",
+        "end": "previews/bevt_0042_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0035",
+      "event_id": "bevt_0044",
       "track_id": 293,
       "tier": "review",
-      "start_time": 121.788,
-      "end_time": 128.629,
-      "start_timecode": "00:02:01.787",
-      "end_timecode": "00:02:08.628",
-      "start_frame": 3650,
-      "end_frame": 3855,
-      "duration_sec": 6.841,
+      "start_time": 121.867,
+      "end_time": 128.7,
+      "start_timecode": "00:02:01.867",
+      "end_timecode": "00:02:08.699",
+      "start_frame": 3656,
+      "end_frame": 3861,
+      "duration_sec": 6.833,
       "avg_confidence": 0.6671,
       "peak_confidence": 0.7842,
       "detection_count": 7,
@@ -1938,22 +2256,22 @@
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0035_start.jpg",
-        "mid": "previews/bevt_0035_mid.jpg",
-        "end": "previews/bevt_0035_end.jpg"
+        "start": "previews/bevt_0044_start.jpg",
+        "mid": "previews/bevt_0044_mid.jpg",
+        "end": "previews/bevt_0044_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0036",
+      "event_id": "bevt_0045",
       "track_id": 231,
       "tier": "review",
-      "start_time": 93.26,
-      "end_time": 94.928,
-      "start_timecode": "00:01:33.260",
-      "end_timecode": "00:01:34.927",
-      "start_frame": 2795,
-      "end_frame": 2845,
-      "duration_sec": 1.668,
+      "start_time": 93.333,
+      "end_time": 95.0,
+      "start_timecode": "00:01:33.332",
+      "end_timecode": "00:01:35.000",
+      "start_frame": 2800,
+      "end_frame": 2850,
+      "duration_sec": 1.667,
       "avg_confidence": 0.8122,
       "peak_confidence": 0.877,
       "detection_count": 7,
@@ -2041,22 +2359,22 @@
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0036_start.jpg",
-        "mid": "previews/bevt_0036_mid.jpg",
-        "end": "previews/bevt_0036_end.jpg"
+        "start": "previews/bevt_0045_start.jpg",
+        "mid": "previews/bevt_0045_mid.jpg",
+        "end": "previews/bevt_0045_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0037",
+      "event_id": "bevt_0046",
       "track_id": 244,
       "tier": "review",
-      "start_time": 97.431,
-      "end_time": 99.266,
-      "start_timecode": "00:01:37.430",
-      "end_timecode": "00:01:39.266",
-      "start_frame": 2920,
-      "end_frame": 2975,
-      "duration_sec": 1.835,
+      "start_time": 97.5,
+      "end_time": 99.333,
+      "start_timecode": "00:01:37.500",
+      "end_timecode": "00:01:39.332",
+      "start_frame": 2925,
+      "end_frame": 2980,
+      "duration_sec": 1.833,
       "avg_confidence": 0.6899,
       "peak_confidence": 0.7852,
       "detection_count": 7,
@@ -2142,22 +2460,71 @@
       "rule_hints": [],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0037_start.jpg",
-        "mid": "previews/bevt_0037_mid.jpg",
-        "end": "previews/bevt_0037_end.jpg"
+        "start": "previews/bevt_0046_start.jpg",
+        "mid": "previews/bevt_0046_mid.jpg",
+        "end": "previews/bevt_0046_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0040",
+      "event_id": "bevt_0049",
+      "track_id": 301,
+      "tier": "review",
+      "start_time": 126.367,
+      "end_time": 127.2,
+      "start_timecode": "00:02:06.367",
+      "end_timecode": "00:02:07.200",
+      "start_frame": 3791,
+      "end_frame": 3816,
+      "duration_sec": 0.833,
+      "avg_confidence": 0.6465,
+      "peak_confidence": 0.7725,
+      "detection_count": 2,
+      "trajectory": [
+        {
+          "t": 126.627,
+          "frame": 3795,
+          "bbox": [
+            6.0,
+            41.1,
+            55.4,
+            207.6
+          ],
+          "conf": 0.7725
+        },
+        {
+          "t": 126.793,
+          "frame": 3800,
+          "bbox": [
+            2.1,
+            44.5,
+            50.9,
+            209.0
+          ],
+          "conf": 0.5205
+        }
+      ],
+      "rule_hints": [
+        "aspect_ratio",
+        "identity_stitch:4"
+      ],
+      "review_status": "pending",
+      "previews": {
+        "start": "previews/bevt_0049_start.jpg",
+        "mid": "previews/bevt_0049_mid.jpg",
+        "end": "previews/bevt_0049_end.jpg"
+      }
+    },
+    {
+      "event_id": "bevt_0051",
       "track_id": 273,
       "tier": "review",
-      "start_time": 108.442,
-      "end_time": 109.109,
-      "start_timecode": "00:01:48.441",
-      "end_timecode": "00:01:49.108",
-      "start_frame": 3250,
-      "end_frame": 3270,
-      "duration_sec": 0.667,
+      "start_time": 108.533,
+      "end_time": 109.167,
+      "start_timecode": "00:01:48.533",
+      "end_timecode": "00:01:49.167",
+      "start_frame": 3256,
+      "end_frame": 3275,
+      "duration_sec": 0.634,
       "avg_confidence": 0.8369,
       "peak_confidence": 0.8369,
       "detection_count": 1,
@@ -2179,21 +2546,21 @@
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0040_start.jpg",
-        "mid": "previews/bevt_0040_mid.jpg",
-        "end": "previews/bevt_0040_end.jpg"
+        "start": "previews/bevt_0051_start.jpg",
+        "mid": "previews/bevt_0051_mid.jpg",
+        "end": "previews/bevt_0051_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0041",
+      "event_id": "bevt_0052",
       "track_id": 326,
       "tier": "review",
-      "start_time": 153.153,
-      "end_time": 153.987,
-      "start_timecode": "00:02:33.152",
-      "end_timecode": "00:02:33.986",
-      "start_frame": 4590,
-      "end_frame": 4615,
+      "start_time": 153.233,
+      "end_time": 154.067,
+      "start_timecode": "00:02:33.233",
+      "end_timecode": "00:02:34.067",
+      "start_frame": 4597,
+      "end_frame": 4622,
       "duration_sec": 0.834,
       "avg_confidence": 0.7649,
       "peak_confidence": 0.7949,
@@ -2228,22 +2595,22 @@
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0041_start.jpg",
-        "mid": "previews/bevt_0041_mid.jpg",
-        "end": "previews/bevt_0041_end.jpg"
+        "start": "previews/bevt_0052_start.jpg",
+        "mid": "previews/bevt_0052_mid.jpg",
+        "end": "previews/bevt_0052_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0042",
+      "event_id": "bevt_0053",
       "track_id": 282,
       "tier": "review",
-      "start_time": 112.112,
-      "end_time": 113.447,
-      "start_timecode": "00:01:52.111",
-      "end_timecode": "00:01:53.447",
-      "start_frame": 3360,
-      "end_frame": 3400,
-      "duration_sec": 1.335,
+      "start_time": 112.2,
+      "end_time": 113.5,
+      "start_timecode": "00:01:52.200",
+      "end_timecode": "00:01:53.500",
+      "start_frame": 3366,
+      "end_frame": 3405,
+      "duration_sec": 1.3,
       "avg_confidence": 0.8302,
       "peak_confidence": 0.8696,
       "detection_count": 5,
@@ -2309,22 +2676,22 @@
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0042_start.jpg",
-        "mid": "previews/bevt_0042_mid.jpg",
-        "end": "previews/bevt_0042_end.jpg"
+        "start": "previews/bevt_0053_start.jpg",
+        "mid": "previews/bevt_0053_mid.jpg",
+        "end": "previews/bevt_0053_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0044",
+      "event_id": "bevt_0055",
       "track_id": 309,
       "tier": "review",
-      "start_time": 130.797,
-      "end_time": 132.299,
-      "start_timecode": "00:02:10.796",
-      "end_timecode": "00:02:12.299",
-      "start_frame": 3920,
-      "end_frame": 3965,
-      "duration_sec": 1.502,
+      "start_time": 130.867,
+      "end_time": 132.367,
+      "start_timecode": "00:02:10.866",
+      "end_timecode": "00:02:12.366",
+      "start_frame": 3926,
+      "end_frame": 3971,
+      "duration_sec": 1.5,
       "avg_confidence": 0.6748,
       "peak_confidence": 0.7827,
       "detection_count": 3,
@@ -2368,22 +2735,22 @@
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0044_start.jpg",
-        "mid": "previews/bevt_0044_mid.jpg",
-        "end": "previews/bevt_0044_end.jpg"
+        "start": "previews/bevt_0055_start.jpg",
+        "mid": "previews/bevt_0055_mid.jpg",
+        "end": "previews/bevt_0055_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0045",
+      "event_id": "bevt_0056",
       "track_id": 314,
       "tier": "review",
-      "start_time": 141.141,
-      "end_time": 150.15,
-      "start_timecode": "00:02:21.140",
-      "end_timecode": "00:02:30.150",
-      "start_frame": 4230,
-      "end_frame": 4500,
-      "duration_sec": 9.009,
+      "start_time": 141.233,
+      "end_time": 150.2,
+      "start_timecode": "00:02:21.233",
+      "end_timecode": "00:02:30.199",
+      "start_frame": 4237,
+      "end_frame": 4506,
+      "duration_sec": 8.967,
       "avg_confidence": 0.7191,
       "peak_confidence": 0.79,
       "detection_count": 6,
@@ -2462,22 +2829,22 @@
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0045_start.jpg",
-        "mid": "previews/bevt_0045_mid.jpg",
-        "end": "previews/bevt_0045_end.jpg"
+        "start": "previews/bevt_0056_start.jpg",
+        "mid": "previews/bevt_0056_mid.jpg",
+        "end": "previews/bevt_0056_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0046",
+      "event_id": "bevt_0057",
       "track_id": 343,
       "tier": "review",
-      "start_time": 163.997,
-      "end_time": 165.332,
-      "start_timecode": "00:02:43.997",
-      "end_timecode": "00:02:45.331",
-      "start_frame": 4915,
-      "end_frame": 4955,
-      "duration_sec": 1.335,
+      "start_time": 164.067,
+      "end_time": 165.4,
+      "start_timecode": "00:02:44.067",
+      "end_timecode": "00:02:45.400",
+      "start_frame": 4922,
+      "end_frame": 4962,
+      "duration_sec": 1.333,
       "avg_confidence": 0.708,
       "peak_confidence": 0.7881,
       "detection_count": 5,
@@ -2544,22 +2911,22 @@
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0046_start.jpg",
-        "mid": "previews/bevt_0046_mid.jpg",
-        "end": "previews/bevt_0046_end.jpg"
+        "start": "previews/bevt_0057_start.jpg",
+        "mid": "previews/bevt_0057_mid.jpg",
+        "end": "previews/bevt_0057_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0047",
+      "event_id": "bevt_0058",
       "track_id": 319,
       "tier": "review",
-      "start_time": 144.978,
-      "end_time": 145.979,
-      "start_timecode": "00:02:24.978",
-      "end_timecode": "00:02:25.979",
-      "start_frame": 4345,
-      "end_frame": 4375,
-      "duration_sec": 1.001,
+      "start_time": 145.067,
+      "end_time": 146.033,
+      "start_timecode": "00:02:25.067",
+      "end_timecode": "00:02:26.032",
+      "start_frame": 4352,
+      "end_frame": 4381,
+      "duration_sec": 0.966,
       "avg_confidence": 0.735,
       "peak_confidence": 0.8003,
       "detection_count": 3,
@@ -2603,22 +2970,22 @@
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0047_start.jpg",
-        "mid": "previews/bevt_0047_mid.jpg",
-        "end": "previews/bevt_0047_end.jpg"
+        "start": "previews/bevt_0058_start.jpg",
+        "mid": "previews/bevt_0058_mid.jpg",
+        "end": "previews/bevt_0058_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0051",
+      "event_id": "bevt_0063",
       "track_id": 470,
       "tier": "review",
-      "start_time": 197.697,
-      "end_time": 198.865,
-      "start_timecode": "00:03:17.697",
-      "end_timecode": "00:03:18.865",
-      "start_frame": 5925,
-      "end_frame": 5960,
-      "duration_sec": 1.168,
+      "start_time": 197.767,
+      "end_time": 198.933,
+      "start_timecode": "00:03:17.766",
+      "end_timecode": "00:03:18.932",
+      "start_frame": 5933,
+      "end_frame": 5968,
+      "duration_sec": 1.166,
       "avg_confidence": 0.7751,
       "peak_confidence": 0.8145,
       "detection_count": 4,
@@ -2674,22 +3041,22 @@
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0051_start.jpg",
-        "mid": "previews/bevt_0051_mid.jpg",
-        "end": "previews/bevt_0051_end.jpg"
+        "start": "previews/bevt_0063_start.jpg",
+        "mid": "previews/bevt_0063_mid.jpg",
+        "end": "previews/bevt_0063_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0052",
+      "event_id": "bevt_0064",
       "track_id": 342,
       "tier": "review",
-      "start_time": 160.494,
-      "end_time": 176.009,
-      "start_timecode": "00:02:40.493",
-      "end_timecode": "00:02:56.008",
-      "start_frame": 4810,
-      "end_frame": 5275,
-      "duration_sec": 15.515,
+      "start_time": 160.567,
+      "end_time": 176.067,
+      "start_timecode": "00:02:40.567",
+      "end_timecode": "00:02:56.067",
+      "start_frame": 4817,
+      "end_frame": 5282,
+      "duration_sec": 15.5,
       "avg_confidence": 0.7124,
       "peak_confidence": 0.8198,
       "detection_count": 57,
@@ -3327,25 +3694,25 @@
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0052_start.jpg",
-        "mid": "previews/bevt_0052_mid.jpg",
-        "end": "previews/bevt_0052_end.jpg"
+        "start": "previews/bevt_0064_start.jpg",
+        "mid": "previews/bevt_0064_mid.jpg",
+        "end": "previews/bevt_0064_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0053",
+      "event_id": "bevt_0065",
       "track_id": 345,
       "tier": "review",
-      "start_time": 170.337,
-      "end_time": 185.685,
-      "start_timecode": "00:02:50.336",
-      "end_timecode": "00:03:05.685",
-      "start_frame": 5105,
-      "end_frame": 5565,
-      "duration_sec": 15.348,
-      "avg_confidence": 0.6873,
-      "peak_confidence": 0.7793,
-      "detection_count": 20,
+      "start_time": 170.433,
+      "end_time": 178.067,
+      "start_timecode": "00:02:50.432",
+      "end_timecode": "00:02:58.067",
+      "start_frame": 5113,
+      "end_frame": 5342,
+      "duration_sec": 7.634,
+      "avg_confidence": 0.6845,
+      "peak_confidence": 0.7637,
+      "detection_count": 18,
       "trajectory": [
         {
           "t": 170.671,
@@ -3544,7 +3911,36 @@
             732.8
           ],
           "conf": 0.6909
-        },
+        }
+      ],
+      "rule_hints": [
+        "workzone_low",
+        "edge_clip",
+        "identity_stitch:2",
+        "cross_presence_span"
+      ],
+      "review_status": "pending",
+      "previews": {
+        "start": "previews/bevt_0065_start.jpg",
+        "mid": "previews/bevt_0065_mid.jpg",
+        "end": "previews/bevt_0065_end.jpg"
+      }
+    },
+    {
+      "event_id": "bevt_0066",
+      "track_id": 374,
+      "tier": "review",
+      "start_time": 184.933,
+      "end_time": 185.767,
+      "start_timecode": "00:03:04.932",
+      "end_timecode": "00:03:05.766",
+      "start_frame": 5548,
+      "end_frame": 5573,
+      "duration_sec": 0.834,
+      "avg_confidence": 0.7122,
+      "peak_confidence": 0.7793,
+      "detection_count": 2,
+      "trajectory": [
         {
           "t": 185.185,
           "frame": 5550,
@@ -3569,27 +3965,26 @@
         }
       ],
       "rule_hints": [
-        "identity_stitch:2",
-        "cross_presence_span"
+        "identity_stitch:2"
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0053_start.jpg",
-        "mid": "previews/bevt_0053_mid.jpg",
-        "end": "previews/bevt_0053_end.jpg"
+        "start": "previews/bevt_0066_start.jpg",
+        "mid": "previews/bevt_0066_mid.jpg",
+        "end": "previews/bevt_0066_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0054",
+      "event_id": "bevt_0067",
       "track_id": 351,
       "tier": "review",
-      "start_time": 176.51,
-      "end_time": 177.844,
-      "start_timecode": "00:02:56.509",
-      "end_timecode": "00:02:57.843",
-      "start_frame": 5290,
-      "end_frame": 5330,
-      "duration_sec": 1.334,
+      "start_time": 176.6,
+      "end_time": 177.9,
+      "start_timecode": "00:02:56.599",
+      "end_timecode": "00:02:57.900",
+      "start_frame": 5298,
+      "end_frame": 5337,
+      "duration_sec": 1.3,
       "avg_confidence": 0.7067,
       "peak_confidence": 0.7695,
       "detection_count": 5,
@@ -3655,22 +4050,22 @@
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0054_start.jpg",
-        "mid": "previews/bevt_0054_mid.jpg",
-        "end": "previews/bevt_0054_end.jpg"
+        "start": "previews/bevt_0067_start.jpg",
+        "mid": "previews/bevt_0067_mid.jpg",
+        "end": "previews/bevt_0067_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0055",
+      "event_id": "bevt_0068",
       "track_id": 359,
       "tier": "review",
-      "start_time": 180.68,
-      "end_time": 181.848,
-      "start_timecode": "00:03:00.680",
-      "end_timecode": "00:03:01.848",
-      "start_frame": 5415,
-      "end_frame": 5450,
-      "duration_sec": 1.168,
+      "start_time": 180.767,
+      "end_time": 181.9,
+      "start_timecode": "00:03:00.766",
+      "end_timecode": "00:03:01.900",
+      "start_frame": 5423,
+      "end_frame": 5457,
+      "duration_sec": 1.133,
       "avg_confidence": 0.8343,
       "peak_confidence": 0.8481,
       "detection_count": 4,
@@ -3725,22 +4120,22 @@
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0055_start.jpg",
-        "mid": "previews/bevt_0055_mid.jpg",
-        "end": "previews/bevt_0055_end.jpg"
+        "start": "previews/bevt_0068_start.jpg",
+        "mid": "previews/bevt_0068_mid.jpg",
+        "end": "previews/bevt_0068_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0056",
+      "event_id": "bevt_0069",
       "track_id": 417,
       "tier": "review",
-      "start_time": 186.853,
-      "end_time": 189.523,
-      "start_timecode": "00:03:06.853",
-      "end_timecode": "00:03:09.522",
-      "start_frame": 5600,
-      "end_frame": 5680,
-      "duration_sec": 2.67,
+      "start_time": 186.933,
+      "end_time": 189.6,
+      "start_timecode": "00:03:06.932",
+      "end_timecode": "00:03:09.599",
+      "start_frame": 5608,
+      "end_frame": 5688,
+      "duration_sec": 2.667,
       "avg_confidence": 0.7929,
       "peak_confidence": 0.8228,
       "detection_count": 4,
@@ -3793,22 +4188,22 @@
       "rule_hints": [],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0056_start.jpg",
-        "mid": "previews/bevt_0056_mid.jpg",
-        "end": "previews/bevt_0056_end.jpg"
+        "start": "previews/bevt_0069_start.jpg",
+        "mid": "previews/bevt_0069_mid.jpg",
+        "end": "previews/bevt_0069_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0057",
+      "event_id": "bevt_0070",
       "track_id": 418,
       "tier": "review",
-      "start_time": 187.02,
-      "end_time": 187.688,
-      "start_timecode": "00:03:07.020",
-      "end_timecode": "00:03:07.687",
-      "start_frame": 5605,
-      "end_frame": 5625,
-      "duration_sec": 0.668,
+      "start_time": 187.1,
+      "end_time": 187.767,
+      "start_timecode": "00:03:07.099",
+      "end_timecode": "00:03:07.766",
+      "start_frame": 5613,
+      "end_frame": 5633,
+      "duration_sec": 0.667,
       "avg_confidence": 0.8066,
       "peak_confidence": 0.8066,
       "detection_count": 1,
@@ -3828,22 +4223,22 @@
       "rule_hints": [],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0057_start.jpg",
-        "mid": "previews/bevt_0057_mid.jpg",
-        "end": "previews/bevt_0057_end.jpg"
+        "start": "previews/bevt_0070_start.jpg",
+        "mid": "previews/bevt_0070_mid.jpg",
+        "end": "previews/bevt_0070_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0058",
+      "event_id": "bevt_0071",
       "track_id": 432,
       "tier": "review",
-      "start_time": 188.021,
-      "end_time": 189.356,
-      "start_timecode": "00:03:08.020",
-      "end_timecode": "00:03:09.355",
-      "start_frame": 5635,
-      "end_frame": 5675,
-      "duration_sec": 1.335,
+      "start_time": 188.1,
+      "end_time": 189.433,
+      "start_timecode": "00:03:08.099",
+      "end_timecode": "00:03:09.432",
+      "start_frame": 5643,
+      "end_frame": 5683,
+      "duration_sec": 1.333,
       "avg_confidence": 0.7993,
       "peak_confidence": 0.8105,
       "detection_count": 5,
@@ -3907,25 +4302,25 @@
       "rule_hints": [],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0058_start.jpg",
-        "mid": "previews/bevt_0058_mid.jpg",
-        "end": "previews/bevt_0058_end.jpg"
+        "start": "previews/bevt_0071_start.jpg",
+        "mid": "previews/bevt_0071_mid.jpg",
+        "end": "previews/bevt_0071_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0059",
+      "event_id": "bevt_0072",
       "track_id": 466,
       "tier": "review",
-      "start_time": 196.863,
-      "end_time": 202.869,
-      "start_timecode": "00:03:16.862",
-      "end_timecode": "00:03:22.868",
-      "start_frame": 5900,
-      "end_frame": 6080,
-      "duration_sec": 6.006,
-      "avg_confidence": 0.7754,
+      "start_time": 196.933,
+      "end_time": 198.933,
+      "start_timecode": "00:03:16.932",
+      "end_timecode": "00:03:18.932",
+      "start_frame": 5908,
+      "end_frame": 5968,
+      "duration_sec": 2.0,
+      "avg_confidence": 0.8015,
       "peak_confidence": 0.8154,
-      "detection_count": 16,
+      "detection_count": 9,
       "trajectory": [
         {
           "t": 197.197,
@@ -4025,7 +4420,33 @@
             57.8
           ],
           "conf": 0.8066
-        },
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:2"
+      ],
+      "review_status": "pending",
+      "previews": {
+        "start": "previews/bevt_0072_start.jpg",
+        "mid": "previews/bevt_0072_mid.jpg",
+        "end": "previews/bevt_0072_end.jpg"
+      }
+    },
+    {
+      "event_id": "bevt_0073",
+      "track_id": 487,
+      "tier": "review",
+      "start_time": 201.3,
+      "end_time": 202.933,
+      "start_timecode": "00:03:21.300",
+      "end_timecode": "00:03:22.932",
+      "start_frame": 6039,
+      "end_frame": 6088,
+      "duration_sec": 1.633,
+      "avg_confidence": 0.7418,
+      "peak_confidence": 0.7905,
+      "detection_count": 7,
+      "trajectory": [
         {
           "t": 201.535,
           "frame": 6040,
@@ -4105,27 +4526,26 @@
         }
       ],
       "rule_hints": [
-        "identity_stitch:2",
-        "cross_presence_span"
+        "identity_stitch:2"
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0059_start.jpg",
-        "mid": "previews/bevt_0059_mid.jpg",
-        "end": "previews/bevt_0059_end.jpg"
+        "start": "previews/bevt_0073_start.jpg",
+        "mid": "previews/bevt_0073_mid.jpg",
+        "end": "previews/bevt_0073_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0061",
+      "event_id": "bevt_0075",
       "track_id": 486,
       "tier": "review",
-      "start_time": 201.201,
-      "end_time": 203.537,
-      "start_timecode": "00:03:21.200",
-      "end_timecode": "00:03:23.537",
-      "start_frame": 6030,
-      "end_frame": 6100,
-      "duration_sec": 2.336,
+      "start_time": 201.3,
+      "end_time": 203.6,
+      "start_timecode": "00:03:21.300",
+      "end_timecode": "00:03:23.599",
+      "start_frame": 6039,
+      "end_frame": 6108,
+      "duration_sec": 2.3,
       "avg_confidence": 0.7608,
       "peak_confidence": 0.7988,
       "detection_count": 11,
@@ -4255,22 +4675,22 @@
       "rule_hints": [],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0061_start.jpg",
-        "mid": "previews/bevt_0061_mid.jpg",
-        "end": "previews/bevt_0061_end.jpg"
+        "start": "previews/bevt_0075_start.jpg",
+        "mid": "previews/bevt_0075_mid.jpg",
+        "end": "previews/bevt_0075_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0065",
+      "event_id": "bevt_0079",
       "track_id": 498,
       "tier": "review",
-      "start_time": 212.045,
-      "end_time": 212.713,
-      "start_timecode": "00:03:32.044",
-      "end_timecode": "00:03:32.712",
-      "start_frame": 6355,
-      "end_frame": 6375,
-      "duration_sec": 0.668,
+      "start_time": 212.133,
+      "end_time": 212.767,
+      "start_timecode": "00:03:32.133",
+      "end_timecode": "00:03:32.766",
+      "start_frame": 6364,
+      "end_frame": 6383,
+      "duration_sec": 0.634,
       "avg_confidence": 0.7759,
       "peak_confidence": 0.7759,
       "detection_count": 1,
@@ -4290,25 +4710,25 @@
       "rule_hints": [],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0065_start.jpg",
-        "mid": "previews/bevt_0065_mid.jpg",
-        "end": "previews/bevt_0065_end.jpg"
+        "start": "previews/bevt_0079_start.jpg",
+        "mid": "previews/bevt_0079_mid.jpg",
+        "end": "previews/bevt_0079_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0066",
+      "event_id": "bevt_0080",
       "track_id": 536,
       "tier": "review",
-      "start_time": 227.894,
-      "end_time": 232.065,
-      "start_timecode": "00:03:47.894",
-      "end_timecode": "00:03:52.064",
-      "start_frame": 6830,
-      "end_frame": 6955,
-      "duration_sec": 4.171,
-      "avg_confidence": 0.676,
+      "start_time": 227.967,
+      "end_time": 229.633,
+      "start_timecode": "00:03:47.967",
+      "end_timecode": "00:03:49.633",
+      "start_frame": 6839,
+      "end_frame": 6889,
+      "duration_sec": 1.666,
+      "avg_confidence": 0.6929,
       "peak_confidence": 0.8062,
-      "detection_count": 10,
+      "detection_count": 7,
       "trajectory": [
         {
           "t": 228.228,
@@ -4386,63 +4806,29 @@
             632.2
           ],
           "conf": 0.6704
-        },
-        {
-          "t": 230.23,
-          "frame": 6900,
-          "bbox": [
-            1532.8,
-            515.8,
-            1721.0,
-            657.2
-          ],
-          "conf": 0.731
-        },
-        {
-          "t": 231.565,
-          "frame": 6940,
-          "bbox": [
-            1618.8,
-            680.4,
-            1935.6,
-            854.4
-          ],
-          "conf": 0.4609
-        },
-        {
-          "t": 231.732,
-          "frame": 6945,
-          "bbox": [
-            1609.6,
-            647.7,
-            2004.5,
-            866.7
-          ],
-          "conf": 0.7178
         }
       ],
       "rule_hints": [
-        "identity_stitch:3",
-        "cross_presence_span"
+        "identity_stitch:3"
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0066_start.jpg",
-        "mid": "previews/bevt_0066_mid.jpg",
-        "end": "previews/bevt_0066_end.jpg"
+        "start": "previews/bevt_0080_start.jpg",
+        "mid": "previews/bevt_0080_mid.jpg",
+        "end": "previews/bevt_0080_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0068",
+      "event_id": "bevt_0085",
       "track_id": 550,
       "tier": "review",
-      "start_time": 235.736,
-      "end_time": 237.237,
-      "start_timecode": "00:03:55.735",
-      "end_timecode": "00:03:57.236",
-      "start_frame": 7065,
-      "end_frame": 7110,
-      "duration_sec": 1.501,
+      "start_time": 235.833,
+      "end_time": 237.3,
+      "start_timecode": "00:03:55.832",
+      "end_timecode": "00:03:57.300",
+      "start_frame": 7075,
+      "end_frame": 7119,
+      "duration_sec": 1.467,
       "avg_confidence": 0.8074,
       "peak_confidence": 0.8457,
       "detection_count": 6,
@@ -4517,22 +4903,115 @@
       "rule_hints": [],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0068_start.jpg",
-        "mid": "previews/bevt_0068_mid.jpg",
-        "end": "previews/bevt_0068_end.jpg"
+        "start": "previews/bevt_0085_start.jpg",
+        "mid": "previews/bevt_0085_mid.jpg",
+        "end": "previews/bevt_0085_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0070",
+      "event_id": "bevt_0087",
+      "track_id": 600,
+      "tier": "review",
+      "start_time": 254.333,
+      "end_time": 255.833,
+      "start_timecode": "00:04:14.332",
+      "end_timecode": "00:04:15.832",
+      "start_frame": 7630,
+      "end_frame": 7675,
+      "duration_sec": 1.5,
+      "avg_confidence": 0.7469,
+      "peak_confidence": 0.8647,
+      "detection_count": 6,
+      "trajectory": [
+        {
+          "t": 254.588,
+          "frame": 7630,
+          "bbox": [
+            540.9,
+            0.2,
+            646.5,
+            49.0
+          ],
+          "conf": 0.5591
+        },
+        {
+          "t": 254.755,
+          "frame": 7635,
+          "bbox": [
+            538.3,
+            0.0,
+            642.5,
+            48.1
+          ],
+          "conf": 0.563
+        },
+        {
+          "t": 254.921,
+          "frame": 7640,
+          "bbox": [
+            524.6,
+            0.5,
+            645.8,
+            56.4
+          ],
+          "conf": 0.7808
+        },
+        {
+          "t": 255.088,
+          "frame": 7645,
+          "bbox": [
+            507.7,
+            1.1,
+            673.1,
+            78.5
+          ],
+          "conf": 0.8516
+        },
+        {
+          "t": 255.255,
+          "frame": 7650,
+          "bbox": [
+            478.5,
+            6.9,
+            707.8,
+            117.0
+          ],
+          "conf": 0.8623
+        },
+        {
+          "t": 255.422,
+          "frame": 7655,
+          "bbox": [
+            461.0,
+            34.2,
+            733.7,
+            169.3
+          ],
+          "conf": 0.8647
+        }
+      ],
+      "rule_hints": [
+        "aspect_ratio",
+        "identity_stitch:3"
+      ],
+      "review_status": "pending",
+      "previews": {
+        "start": "previews/bevt_0087_start.jpg",
+        "mid": "previews/bevt_0087_mid.jpg",
+        "end": "previews/bevt_0087_end.jpg"
+      }
+    },
+    {
+      "event_id": "bevt_0089",
       "track_id": 585,
       "tier": "review",
-      "start_time": 248.081,
-      "end_time": 250.25,
-      "start_timecode": "00:04:08.080",
-      "end_timecode": "00:04:10.250",
-      "start_frame": 7435,
-      "end_frame": 7500,
-      "duration_sec": 2.169,
+      "start_time": 248.167,
+      "end_time": 250.3,
+      "start_timecode": "00:04:08.167",
+      "end_timecode": "00:04:10.300",
+      "start_frame": 7445,
+      "end_frame": 7509,
+      "duration_sec": 2.133,
       "avg_confidence": 0.7882,
       "peak_confidence": 0.8452,
       "detection_count": 10,
@@ -4651,25 +5130,25 @@
       "rule_hints": [],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0070_start.jpg",
-        "mid": "previews/bevt_0070_mid.jpg",
-        "end": "previews/bevt_0070_end.jpg"
+        "start": "previews/bevt_0089_start.jpg",
+        "mid": "previews/bevt_0089_mid.jpg",
+        "end": "previews/bevt_0089_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0072",
+      "event_id": "bevt_0091",
       "track_id": 608,
       "tier": "review",
-      "start_time": 261.428,
-      "end_time": 266.266,
-      "start_timecode": "00:04:21.427",
-      "end_timecode": "00:04:26.266",
-      "start_frame": 7835,
-      "end_frame": 7980,
-      "duration_sec": 4.838,
-      "avg_confidence": 0.7121,
+      "start_time": 261.5,
+      "end_time": 264.333,
+      "start_timecode": "00:04:21.500",
+      "end_timecode": "00:04:24.333",
+      "start_frame": 7845,
+      "end_frame": 7930,
+      "duration_sec": 2.833,
+      "avg_confidence": 0.7241,
       "peak_confidence": 0.8384,
-      "detection_count": 19,
+      "detection_count": 13,
       "trajectory": [
         {
           "t": 261.762,
@@ -4813,7 +5292,33 @@
             424.6
           ],
           "conf": 0.7881
-        },
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:3"
+      ],
+      "review_status": "pending",
+      "previews": {
+        "start": "previews/bevt_0091_start.jpg",
+        "mid": "previews/bevt_0091_mid.jpg",
+        "end": "previews/bevt_0091_end.jpg"
+      }
+    },
+    {
+      "event_id": "bevt_0092",
+      "track_id": 609,
+      "tier": "review",
+      "start_time": 264.0,
+      "end_time": 265.5,
+      "start_timecode": "00:04:24.000",
+      "end_timecode": "00:04:25.500",
+      "start_frame": 7920,
+      "end_frame": 7965,
+      "duration_sec": 1.5,
+      "avg_confidence": 0.6779,
+      "peak_confidence": 0.8315,
+      "detection_count": 5,
+      "trajectory": [
         {
           "t": 264.264,
           "frame": 7920,
@@ -4868,41 +5373,29 @@
             616.9
           ],
           "conf": 0.4026
-        },
-        {
-          "t": 265.932,
-          "frame": 7970,
-          "bbox": [
-            1794.5,
-            466.8,
-            1941.7,
-            585.5
-          ],
-          "conf": 0.728
         }
       ],
       "rule_hints": [
-        "identity_stitch:3",
-        "cross_presence_span"
+        "identity_stitch:3"
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0072_start.jpg",
-        "mid": "previews/bevt_0072_mid.jpg",
-        "end": "previews/bevt_0072_end.jpg"
+        "start": "previews/bevt_0092_start.jpg",
+        "mid": "previews/bevt_0092_mid.jpg",
+        "end": "previews/bevt_0092_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0074",
+      "event_id": "bevt_0096",
       "track_id": 617,
       "tier": "review",
-      "start_time": 270.604,
-      "end_time": 277.444,
-      "start_timecode": "00:04:30.603",
-      "end_timecode": "00:04:37.444",
-      "start_frame": 8110,
-      "end_frame": 8315,
-      "duration_sec": 6.84,
+      "start_time": 270.7,
+      "end_time": 277.5,
+      "start_timecode": "00:04:30.699",
+      "end_timecode": "00:04:37.500",
+      "start_frame": 8121,
+      "end_frame": 8325,
+      "duration_sec": 6.8,
       "avg_confidence": 0.6605,
       "peak_confidence": 0.7827,
       "detection_count": 35,
@@ -5298,22 +5791,22 @@
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0074_start.jpg",
-        "mid": "previews/bevt_0074_mid.jpg",
-        "end": "previews/bevt_0074_end.jpg"
+        "start": "previews/bevt_0096_start.jpg",
+        "mid": "previews/bevt_0096_mid.jpg",
+        "end": "previews/bevt_0096_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0077",
+      "event_id": "bevt_0099",
       "track_id": 633,
       "tier": "review",
-      "start_time": 281.281,
-      "end_time": 284.951,
-      "start_timecode": "00:04:41.281",
-      "end_timecode": "00:04:44.951",
-      "start_frame": 8430,
-      "end_frame": 8540,
-      "duration_sec": 3.67,
+      "start_time": 281.367,
+      "end_time": 285.033,
+      "start_timecode": "00:04:41.367",
+      "end_timecode": "00:04:45.033",
+      "start_frame": 8441,
+      "end_frame": 8551,
+      "duration_sec": 3.666,
       "avg_confidence": 0.7584,
       "peak_confidence": 0.7734,
       "detection_count": 19,
@@ -5533,25 +6026,25 @@
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0077_start.jpg",
-        "mid": "previews/bevt_0077_mid.jpg",
-        "end": "previews/bevt_0077_end.jpg"
+        "start": "previews/bevt_0099_start.jpg",
+        "mid": "previews/bevt_0099_mid.jpg",
+        "end": "previews/bevt_0099_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0080",
+      "event_id": "bevt_0103",
       "track_id": 659,
       "tier": "review",
-      "start_time": 289.79,
-      "end_time": 291.291,
-      "start_timecode": "00:04:49.790",
-      "end_timecode": "00:04:51.290",
-      "start_frame": 8685,
-      "end_frame": 8730,
-      "duration_sec": 1.501,
-      "avg_confidence": 0.7783,
+      "start_time": 289.867,
+      "end_time": 290.533,
+      "start_timecode": "00:04:49.867",
+      "end_timecode": "00:04:50.533",
+      "start_frame": 8696,
+      "end_frame": 8716,
+      "duration_sec": 0.666,
+      "avg_confidence": 0.7983,
       "peak_confidence": 0.7983,
-      "detection_count": 3,
+      "detection_count": 1,
       "trajectory": [
         {
           "t": 290.123,
@@ -5563,7 +6056,33 @@
             157.9
           ],
           "conf": 0.7983
-        },
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:2"
+      ],
+      "review_status": "pending",
+      "previews": {
+        "start": "previews/bevt_0103_start.jpg",
+        "mid": "previews/bevt_0103_mid.jpg",
+        "end": "previews/bevt_0103_end.jpg"
+      }
+    },
+    {
+      "event_id": "bevt_0104",
+      "track_id": 662,
+      "tier": "review",
+      "start_time": 290.533,
+      "end_time": 291.367,
+      "start_timecode": "00:04:50.533",
+      "end_timecode": "00:04:51.367",
+      "start_frame": 8716,
+      "end_frame": 8741,
+      "duration_sec": 0.834,
+      "avg_confidence": 0.7683,
+      "peak_confidence": 0.7695,
+      "detection_count": 2,
+      "trajectory": [
         {
           "t": 290.791,
           "frame": 8715,
@@ -5588,26 +6107,25 @@
         }
       ],
       "rule_hints": [
-        "identity_stitch:2",
-        "cross_presence_span"
+        "identity_stitch:2"
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0080_start.jpg",
-        "mid": "previews/bevt_0080_mid.jpg",
-        "end": "previews/bevt_0080_end.jpg"
+        "start": "previews/bevt_0104_start.jpg",
+        "mid": "previews/bevt_0104_mid.jpg",
+        "end": "previews/bevt_0104_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0081",
+      "event_id": "bevt_0105",
       "track_id": 681,
       "tier": "review",
-      "start_time": 293.126,
-      "end_time": 293.793,
-      "start_timecode": "00:04:53.125",
-      "end_timecode": "00:04:53.793",
-      "start_frame": 8785,
-      "end_frame": 8805,
+      "start_time": 293.2,
+      "end_time": 293.867,
+      "start_timecode": "00:04:53.199",
+      "end_timecode": "00:04:53.867",
+      "start_frame": 8796,
+      "end_frame": 8816,
       "duration_sec": 0.667,
       "avg_confidence": 0.8145,
       "peak_confidence": 0.8145,
@@ -5631,22 +6149,22 @@
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0081_start.jpg",
-        "mid": "previews/bevt_0081_mid.jpg",
-        "end": "previews/bevt_0081_end.jpg"
+        "start": "previews/bevt_0105_start.jpg",
+        "mid": "previews/bevt_0105_mid.jpg",
+        "end": "previews/bevt_0105_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0084",
+      "event_id": "bevt_0109",
       "track_id": 724,
       "tier": "review",
-      "start_time": 319.82,
-      "end_time": 321.822,
-      "start_timecode": "00:05:19.819",
-      "end_timecode": "00:05:21.822",
-      "start_frame": 9585,
-      "end_frame": 9645,
-      "duration_sec": 2.002,
+      "start_time": 319.9,
+      "end_time": 321.9,
+      "start_timecode": "00:05:19.899",
+      "end_timecode": "00:05:21.899",
+      "start_frame": 9597,
+      "end_frame": 9657,
+      "duration_sec": 2.0,
       "avg_confidence": 0.6928,
       "peak_confidence": 0.7607,
       "detection_count": 9,
@@ -5754,22 +6272,22 @@
       "rule_hints": [],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0084_start.jpg",
-        "mid": "previews/bevt_0084_mid.jpg",
-        "end": "previews/bevt_0084_end.jpg"
+        "start": "previews/bevt_0109_start.jpg",
+        "mid": "previews/bevt_0109_mid.jpg",
+        "end": "previews/bevt_0109_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0085",
+      "event_id": "bevt_0110",
       "track_id": 730,
       "tier": "review",
-      "start_time": 324.658,
-      "end_time": 327.661,
-      "start_timecode": "00:05:24.658",
-      "end_timecode": "00:05:27.661",
-      "start_frame": 9730,
-      "end_frame": 9820,
-      "duration_sec": 3.003,
+      "start_time": 324.733,
+      "end_time": 327.733,
+      "start_timecode": "00:05:24.733",
+      "end_timecode": "00:05:27.733",
+      "start_frame": 9742,
+      "end_frame": 9832,
+      "duration_sec": 3.0,
       "avg_confidence": 0.8023,
       "peak_confidence": 0.8442,
       "detection_count": 15,
@@ -5945,22 +6463,22 @@
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0085_start.jpg",
-        "mid": "previews/bevt_0085_mid.jpg",
-        "end": "previews/bevt_0085_end.jpg"
+        "start": "previews/bevt_0110_start.jpg",
+        "mid": "previews/bevt_0110_mid.jpg",
+        "end": "previews/bevt_0110_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0087",
+      "event_id": "bevt_0112",
       "track_id": 731,
       "tier": "review",
-      "start_time": 345.178,
-      "end_time": 347.347,
-      "start_timecode": "00:05:45.177",
-      "end_timecode": "00:05:47.346",
-      "start_frame": 10345,
-      "end_frame": 10410,
-      "duration_sec": 2.169,
+      "start_time": 345.267,
+      "end_time": 347.4,
+      "start_timecode": "00:05:45.266",
+      "end_timecode": "00:05:47.399",
+      "start_frame": 10358,
+      "end_frame": 10422,
+      "duration_sec": 2.133,
       "avg_confidence": 0.6254,
       "peak_confidence": 0.7515,
       "detection_count": 3,
@@ -6002,25 +6520,25 @@
       "rule_hints": [],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0087_start.jpg",
-        "mid": "previews/bevt_0087_mid.jpg",
-        "end": "previews/bevt_0087_end.jpg"
+        "start": "previews/bevt_0112_start.jpg",
+        "mid": "previews/bevt_0112_mid.jpg",
+        "end": "previews/bevt_0112_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0092",
+      "event_id": "bevt_0121",
       "track_id": 797,
       "tier": "review",
-      "start_time": 390.39,
-      "end_time": 399.065,
-      "start_timecode": "00:06:30.389",
-      "end_timecode": "00:06:39.064",
-      "start_frame": 11700,
-      "end_frame": 11960,
-      "duration_sec": 8.675,
-      "avg_confidence": 0.679,
+      "start_time": 390.467,
+      "end_time": 393.467,
+      "start_timecode": "00:06:30.466",
+      "end_timecode": "00:06:33.466",
+      "start_frame": 11714,
+      "end_frame": 11804,
+      "duration_sec": 3.0,
+      "avg_confidence": 0.7415,
       "peak_confidence": 0.7812,
-      "detection_count": 22,
+      "detection_count": 15,
       "trajectory": [
         {
           "t": 390.724,
@@ -6186,107 +6704,29 @@
             33.4
           ],
           "conf": 0.541
-        },
-        {
-          "t": 396.563,
-          "frame": 11885,
-          "bbox": [
-            453.9,
-            15.6,
-            478.2,
-            43.0
-          ],
-          "conf": 0.6655
-        },
-        {
-          "t": 396.73,
-          "frame": 11890,
-          "bbox": [
-            454.6,
-            14.2,
-            480.6,
-            43.6
-          ],
-          "conf": 0.457
-        },
-        {
-          "t": 397.23,
-          "frame": 11905,
-          "bbox": [
-            456.0,
-            14.0,
-            480.9,
-            41.9
-          ],
-          "conf": 0.4707
-        },
-        {
-          "t": 398.064,
-          "frame": 11930,
-          "bbox": [
-            475.2,
-            18.4,
-            499.8,
-            46.5
-          ],
-          "conf": 0.7178
-        },
-        {
-          "t": 398.231,
-          "frame": 11935,
-          "bbox": [
-            478.6,
-            17.9,
-            502.3,
-            45.0
-          ],
-          "conf": 0.5283
-        },
-        {
-          "t": 398.565,
-          "frame": 11945,
-          "bbox": [
-            483.7,
-            19.5,
-            506.0,
-            45.0
-          ],
-          "conf": 0.4417
-        },
-        {
-          "t": 398.732,
-          "frame": 11950,
-          "bbox": [
-            486.7,
-            21.1,
-            507.6,
-            45.0
-          ],
-          "conf": 0.5352
         }
       ],
       "rule_hints": [
-        "identity_stitch:3",
-        "cross_presence_span"
+        "identity_stitch:3"
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0092_start.jpg",
-        "mid": "previews/bevt_0092_mid.jpg",
-        "end": "previews/bevt_0092_end.jpg"
+        "start": "previews/bevt_0121_start.jpg",
+        "mid": "previews/bevt_0121_mid.jpg",
+        "end": "previews/bevt_0121_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0095",
+      "event_id": "bevt_0126",
       "track_id": 806,
       "tier": "review",
-      "start_time": 393.059,
-      "end_time": 402.235,
-      "start_timecode": "00:06:33.059",
-      "end_timecode": "00:06:42.235",
-      "start_frame": 11780,
-      "end_frame": 12055,
-      "duration_sec": 9.176,
+      "start_time": 393.133,
+      "end_time": 402.3,
+      "start_timecode": "00:06:33.132",
+      "end_timecode": "00:06:42.300",
+      "start_frame": 11794,
+      "end_frame": 12069,
+      "duration_sec": 9.167,
       "avg_confidence": 0.7783,
       "peak_confidence": 0.8228,
       "detection_count": 52,
@@ -6867,22 +7307,22 @@
       "rule_hints": [],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0095_start.jpg",
-        "mid": "previews/bevt_0095_mid.jpg",
-        "end": "previews/bevt_0095_end.jpg"
+        "start": "previews/bevt_0126_start.jpg",
+        "mid": "previews/bevt_0126_mid.jpg",
+        "end": "previews/bevt_0126_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0098",
+      "event_id": "bevt_0129",
       "track_id": 844,
       "tier": "review",
-      "start_time": 402.569,
-      "end_time": 403.236,
-      "start_timecode": "00:06:42.569",
-      "end_timecode": "00:06:43.235",
-      "start_frame": 12065,
-      "end_frame": 12085,
-      "duration_sec": 0.667,
+      "start_time": 402.667,
+      "end_time": 403.3,
+      "start_timecode": "00:06:42.666",
+      "end_timecode": "00:06:43.300",
+      "start_frame": 12080,
+      "end_frame": 12099,
+      "duration_sec": 0.633,
       "avg_confidence": 0.8232,
       "peak_confidence": 0.8232,
       "detection_count": 1,
@@ -6902,22 +7342,22 @@
       "rule_hints": [],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0098_start.jpg",
-        "mid": "previews/bevt_0098_mid.jpg",
-        "end": "previews/bevt_0098_end.jpg"
+        "start": "previews/bevt_0129_start.jpg",
+        "mid": "previews/bevt_0129_mid.jpg",
+        "end": "previews/bevt_0129_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0099",
+      "event_id": "bevt_0130",
       "track_id": 845,
       "tier": "review",
-      "start_time": 402.569,
-      "end_time": 403.236,
-      "start_timecode": "00:06:42.569",
-      "end_timecode": "00:06:43.235",
-      "start_frame": 12065,
-      "end_frame": 12085,
-      "duration_sec": 0.667,
+      "start_time": 402.667,
+      "end_time": 403.3,
+      "start_timecode": "00:06:42.666",
+      "end_timecode": "00:06:43.300",
+      "start_frame": 12080,
+      "end_frame": 12099,
+      "duration_sec": 0.633,
       "avg_confidence": 0.7656,
       "peak_confidence": 0.7656,
       "detection_count": 1,
@@ -6939,103 +7379,26 @@
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0099_start.jpg",
-        "mid": "previews/bevt_0099_mid.jpg",
-        "end": "previews/bevt_0099_end.jpg"
+        "start": "previews/bevt_0130_start.jpg",
+        "mid": "previews/bevt_0130_mid.jpg",
+        "end": "previews/bevt_0130_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0100",
-      "track_id": 920,
+      "event_id": "bevt_0132",
+      "track_id": 924,
       "tier": "review",
-      "start_time": 430.597,
-      "end_time": 446.78,
-      "start_timecode": "00:07:10.596",
-      "end_timecode": "00:07:26.779",
-      "start_frame": 12905,
-      "end_frame": 13390,
-      "duration_sec": 16.183,
-      "avg_confidence": 0.7065,
+      "start_time": 432.333,
+      "end_time": 441.167,
+      "start_timecode": "00:07:12.333",
+      "end_timecode": "00:07:21.166",
+      "start_frame": 12970,
+      "end_frame": 13235,
+      "duration_sec": 8.834,
+      "avg_confidence": 0.7644,
       "peak_confidence": 0.8091,
-      "detection_count": 68,
+      "detection_count": 31,
       "trajectory": [
-        {
-          "t": 430.93,
-          "frame": 12915,
-          "bbox": [
-            462.3,
-            30.1,
-            481.3,
-            57.9
-          ],
-          "conf": 0.6152
-        },
-        {
-          "t": 431.097,
-          "frame": 12920,
-          "bbox": [
-            462.5,
-            29.8,
-            481.0,
-            56.9
-          ],
-          "conf": 0.6133
-        },
-        {
-          "t": 431.264,
-          "frame": 12925,
-          "bbox": [
-            463.3,
-            30.0,
-            480.8,
-            55.3
-          ],
-          "conf": 0.6768
-        },
-        {
-          "t": 431.431,
-          "frame": 12930,
-          "bbox": [
-            463.8,
-            29.0,
-            482.2,
-            55.4
-          ],
-          "conf": 0.6699
-        },
-        {
-          "t": 431.598,
-          "frame": 12935,
-          "bbox": [
-            465.9,
-            30.0,
-            484.4,
-            56.2
-          ],
-          "conf": 0.7129
-        },
-        {
-          "t": 431.765,
-          "frame": 12940,
-          "bbox": [
-            469.0,
-            29.1,
-            488.6,
-            56.8
-          ],
-          "conf": 0.7456
-        },
-        {
-          "t": 431.932,
-          "frame": 12945,
-          "bbox": [
-            477.2,
-            28.3,
-            498.2,
-            57.7
-          ],
-          "conf": 0.7432
-        },
         {
           "t": 432.599,
           "frame": 12965,
@@ -7376,7 +7739,34 @@
             24.5
           ],
           "conf": 0.5991
-        },
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:5",
+        "cross_presence_span"
+      ],
+      "review_status": "pending",
+      "previews": {
+        "start": "previews/bevt_0132_start.jpg",
+        "mid": "previews/bevt_0132_mid.jpg",
+        "end": "previews/bevt_0132_end.jpg"
+      }
+    },
+    {
+      "event_id": "bevt_0133",
+      "track_id": 939,
+      "tier": "review",
+      "start_time": 441.2,
+      "end_time": 443.333,
+      "start_timecode": "00:07:21.199",
+      "end_timecode": "00:07:23.333",
+      "start_frame": 13236,
+      "end_frame": 13300,
+      "duration_sec": 2.133,
+      "avg_confidence": 0.7186,
+      "peak_confidence": 0.7773,
+      "detection_count": 10,
+      "trajectory": [
         {
           "t": 441.441,
           "frame": 13230,
@@ -7486,276 +7876,34 @@
             24.2
           ],
           "conf": 0.7773
-        },
-        {
-          "t": 443.276,
-          "frame": 13285,
-          "bbox": [
-            636.5,
-            1.2,
-            662.4,
-            27.5
-          ],
-          "conf": 0.7358
-        },
-        {
-          "t": 443.443,
-          "frame": 13290,
-          "bbox": [
-            642.5,
-            1.2,
-            667.9,
-            27.1
-          ],
-          "conf": 0.6934
-        },
-        {
-          "t": 443.61,
-          "frame": 13295,
-          "bbox": [
-            645.6,
-            0.9,
-            671.2,
-            27.0
-          ],
-          "conf": 0.6934
-        },
-        {
-          "t": 443.777,
-          "frame": 13300,
-          "bbox": [
-            648.9,
-            0.6,
-            673.9,
-            25.8
-          ],
-          "conf": 0.6396
-        },
-        {
-          "t": 443.944,
-          "frame": 13305,
-          "bbox": [
-            647.7,
-            0.3,
-            671.8,
-            24.4
-          ],
-          "conf": 0.7202
-        },
-        {
-          "t": 444.11,
-          "frame": 13310,
-          "bbox": [
-            648.1,
-            0.2,
-            671.7,
-            23.7
-          ],
-          "conf": 0.7163
-        },
-        {
-          "t": 444.277,
-          "frame": 13315,
-          "bbox": [
-            648.5,
-            0.3,
-            671.7,
-            23.2
-          ],
-          "conf": 0.7153
-        },
-        {
-          "t": 444.444,
-          "frame": 13320,
-          "bbox": [
-            647.0,
-            0.2,
-            669.5,
-            22.3
-          ],
-          "conf": 0.6909
-        },
-        {
-          "t": 444.611,
-          "frame": 13325,
-          "bbox": [
-            644.8,
-            0.4,
-            666.1,
-            20.8
-          ],
-          "conf": 0.5869
-        },
-        {
-          "t": 444.778,
-          "frame": 13330,
-          "bbox": [
-            642.6,
-            0.4,
-            664.1,
-            20.5
-          ],
-          "conf": 0.625
-        },
-        {
-          "t": 444.945,
-          "frame": 13335,
-          "bbox": [
-            641.5,
-            0.1,
-            662.7,
-            19.4
-          ],
-          "conf": 0.6738
-        },
-        {
-          "t": 445.111,
-          "frame": 13340,
-          "bbox": [
-            642.0,
-            0.1,
-            662.5,
-            17.9
-          ],
-          "conf": 0.6152
-        },
-        {
-          "t": 445.278,
-          "frame": 13345,
-          "bbox": [
-            643.4,
-            0.1,
-            663.4,
-            17.1
-          ],
-          "conf": 0.5767
-        },
-        {
-          "t": 445.445,
-          "frame": 13350,
-          "bbox": [
-            645.2,
-            0.2,
-            666.1,
-            17.2
-          ],
-          "conf": 0.5859
-        },
-        {
-          "t": 445.612,
-          "frame": 13355,
-          "bbox": [
-            644.8,
-            0.1,
-            665.9,
-            16.6
-          ],
-          "conf": 0.5957
-        },
-        {
-          "t": 445.779,
-          "frame": 13360,
-          "bbox": [
-            643.8,
-            -0.0,
-            665.7,
-            16.5
-          ],
-          "conf": 0.625
-        },
-        {
-          "t": 445.945,
-          "frame": 13365,
-          "bbox": [
-            642.6,
-            0.2,
-            663.9,
-            15.4
-          ],
-          "conf": 0.564
-        },
-        {
-          "t": 446.112,
-          "frame": 13370,
-          "bbox": [
-            643.1,
-            0.3,
-            664.4,
-            14.6
-          ],
-          "conf": 0.5068
-        },
-        {
-          "t": 446.279,
-          "frame": 13375,
-          "bbox": [
-            643.7,
-            0.2,
-            664.0,
-            12.9
-          ],
-          "conf": 0.3821
-        },
-        {
-          "t": 446.446,
-          "frame": 13380,
-          "bbox": [
-            644.1,
-            0.3,
-            663.3,
-            11.5
-          ],
-          "conf": 0.4377
         }
       ],
       "rule_hints": [
-        "identity_stitch:5",
-        "cross_presence_span"
+        "edge_clip",
+        "identity_stitch:5"
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0100_start.jpg",
-        "mid": "previews/bevt_0100_mid.jpg",
-        "end": "previews/bevt_0100_end.jpg"
+        "start": "previews/bevt_0133_start.jpg",
+        "mid": "previews/bevt_0133_mid.jpg",
+        "end": "previews/bevt_0133_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0102",
-      "track_id": 890,
+      "event_id": "bevt_0137",
+      "track_id": 899,
       "tier": "review",
-      "start_time": 424.257,
-      "end_time": 448.281,
-      "start_timecode": "00:07:04.257",
-      "end_timecode": "00:07:28.281",
-      "start_frame": 12715,
-      "end_frame": 13435,
-      "duration_sec": 24.024,
-      "avg_confidence": 0.759,
-      "peak_confidence": 0.8169,
-      "detection_count": 98,
+      "start_time": 427.5,
+      "end_time": 429.5,
+      "start_timecode": "00:07:07.500",
+      "end_timecode": "00:07:09.500",
+      "start_frame": 12825,
+      "end_frame": 12885,
+      "duration_sec": 2.0,
+      "avg_confidence": 0.7852,
+      "peak_confidence": 0.8027,
+      "detection_count": 2,
       "trajectory": [
-        {
-          "t": 424.591,
-          "frame": 12725,
-          "bbox": [
-            1069.4,
-            83.6,
-            1128.4,
-            174.8
-          ],
-          "conf": 0.6636
-        },
-        {
-          "t": 424.758,
-          "frame": 12730,
-          "bbox": [
-            1077.1,
-            88.6,
-            1138.1,
-            183.3
-          ],
-          "conf": 0.4961
-        },
         {
           "t": 427.761,
           "frame": 12820,
@@ -7777,7 +7925,33 @@
             242.6
           ],
           "conf": 0.8027
-        },
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:4"
+      ],
+      "review_status": "pending",
+      "previews": {
+        "start": "previews/bevt_0137_start.jpg",
+        "mid": "previews/bevt_0137_mid.jpg",
+        "end": "previews/bevt_0137_end.jpg"
+      }
+    },
+    {
+      "event_id": "bevt_0138",
+      "track_id": 911,
+      "tier": "review",
+      "start_time": 429.167,
+      "end_time": 448.333,
+      "start_timecode": "00:07:09.166",
+      "end_timecode": "00:07:28.333",
+      "start_frame": 12875,
+      "end_frame": 13450,
+      "duration_sec": 19.166,
+      "avg_confidence": 0.7622,
+      "peak_confidence": 0.8169,
+      "detection_count": 94,
+      "trajectory": [
         {
           "t": 429.429,
           "frame": 12870,
@@ -8814,27 +8988,26 @@
         }
       ],
       "rule_hints": [
-        "identity_stitch:4",
-        "cross_presence_span"
+        "identity_stitch:4"
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0102_start.jpg",
-        "mid": "previews/bevt_0102_mid.jpg",
-        "end": "previews/bevt_0102_end.jpg"
+        "start": "previews/bevt_0138_start.jpg",
+        "mid": "previews/bevt_0138_mid.jpg",
+        "end": "previews/bevt_0138_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0103",
+      "event_id": "bevt_0139",
       "track_id": 855,
       "tier": "review",
-      "start_time": 408.742,
-      "end_time": 409.576,
-      "start_timecode": "00:06:48.742",
-      "end_timecode": "00:06:49.576",
-      "start_frame": 12250,
-      "end_frame": 12275,
-      "duration_sec": 0.834,
+      "start_time": 408.833,
+      "end_time": 409.633,
+      "start_timecode": "00:06:48.833",
+      "end_timecode": "00:06:49.632",
+      "start_frame": 12265,
+      "end_frame": 12289,
+      "duration_sec": 0.8,
       "avg_confidence": 0.823,
       "peak_confidence": 0.8252,
       "detection_count": 2,
@@ -8865,22 +9038,22 @@
       "rule_hints": [],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0103_start.jpg",
-        "mid": "previews/bevt_0103_mid.jpg",
-        "end": "previews/bevt_0103_end.jpg"
+        "start": "previews/bevt_0139_start.jpg",
+        "mid": "previews/bevt_0139_mid.jpg",
+        "end": "previews/bevt_0139_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0104",
+      "event_id": "bevt_0140",
       "track_id": 860,
       "tier": "review",
-      "start_time": 414.581,
-      "end_time": 416.082,
-      "start_timecode": "00:06:54.581",
-      "end_timecode": "00:06:56.081",
-      "start_frame": 12425,
-      "end_frame": 12470,
-      "duration_sec": 1.501,
+      "start_time": 414.667,
+      "end_time": 416.133,
+      "start_timecode": "00:06:54.666",
+      "end_timecode": "00:06:56.132",
+      "start_frame": 12440,
+      "end_frame": 12484,
+      "duration_sec": 1.466,
       "avg_confidence": 0.6887,
       "peak_confidence": 0.7866,
       "detection_count": 2,
@@ -8913,48 +9086,26 @@
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0104_start.jpg",
-        "mid": "previews/bevt_0104_mid.jpg",
-        "end": "previews/bevt_0104_end.jpg"
+        "start": "previews/bevt_0140_start.jpg",
+        "mid": "previews/bevt_0140_mid.jpg",
+        "end": "previews/bevt_0140_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0105",
-      "track_id": 873,
+      "event_id": "bevt_0142",
+      "track_id": 884,
       "tier": "review",
-      "start_time": 418.918,
-      "end_time": 423.757,
-      "start_timecode": "00:06:58.918",
-      "end_timecode": "00:07:03.757",
-      "start_frame": 12555,
-      "end_frame": 12700,
-      "duration_sec": 4.839,
-      "avg_confidence": 0.7222,
+      "start_time": 423.0,
+      "end_time": 423.833,
+      "start_timecode": "00:07:03.000",
+      "end_timecode": "00:07:03.833",
+      "start_frame": 12690,
+      "end_frame": 12715,
+      "duration_sec": 0.833,
+      "avg_confidence": 0.753,
       "peak_confidence": 0.7788,
-      "detection_count": 4,
+      "detection_count": 2,
       "trajectory": [
-        {
-          "t": 419.252,
-          "frame": 12565,
-          "bbox": [
-            1676.2,
-            12.9,
-            1907.0,
-            173.0
-          ],
-          "conf": 0.6372
-        },
-        {
-          "t": 419.419,
-          "frame": 12570,
-          "bbox": [
-            1672.9,
-            29.9,
-            1913.9,
-            197.1
-          ],
-          "conf": 0.7456
-        },
         {
           "t": 423.256,
           "frame": 12685,
@@ -8979,27 +9130,26 @@
         }
       ],
       "rule_hints": [
-        "identity_stitch:2",
-        "cross_presence_span"
+        "identity_stitch:2"
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0105_start.jpg",
-        "mid": "previews/bevt_0105_mid.jpg",
-        "end": "previews/bevt_0105_end.jpg"
+        "start": "previews/bevt_0142_start.jpg",
+        "mid": "previews/bevt_0142_mid.jpg",
+        "end": "previews/bevt_0142_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0106",
+      "event_id": "bevt_0143",
       "track_id": 918,
       "tier": "review",
-      "start_time": 429.429,
-      "end_time": 436.102,
-      "start_timecode": "00:07:09.428",
-      "end_timecode": "00:07:16.101",
-      "start_frame": 12870,
-      "end_frame": 13070,
-      "duration_sec": 6.673,
+      "start_time": 429.5,
+      "end_time": 436.167,
+      "start_timecode": "00:07:09.500",
+      "end_timecode": "00:07:16.166",
+      "start_frame": 12885,
+      "end_frame": 13085,
+      "duration_sec": 6.667,
       "avg_confidence": 0.6798,
       "peak_confidence": 0.7773,
       "detection_count": 37,
@@ -9418,114 +9568,26 @@
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0106_start.jpg",
-        "mid": "previews/bevt_0106_mid.jpg",
-        "end": "previews/bevt_0106_end.jpg"
+        "start": "previews/bevt_0143_start.jpg",
+        "mid": "previews/bevt_0143_mid.jpg",
+        "end": "previews/bevt_0143_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0109",
-      "track_id": 923,
+      "event_id": "bevt_0148",
+      "track_id": 926,
       "tier": "review",
-      "start_time": 432.098,
-      "end_time": 438.605,
-      "start_timecode": "00:07:12.098",
-      "end_timecode": "00:07:18.605",
-      "start_frame": 12950,
-      "end_frame": 13145,
-      "duration_sec": 6.507,
-      "avg_confidence": 0.5758,
+      "start_time": 433.667,
+      "end_time": 438.667,
+      "start_timecode": "00:07:13.666",
+      "end_timecode": "00:07:18.666",
+      "start_frame": 13010,
+      "end_frame": 13160,
+      "duration_sec": 5.0,
+      "avg_confidence": 0.5755,
       "peak_confidence": 0.7661,
-      "detection_count": 33,
+      "detection_count": 25,
       "trajectory": [
-        {
-          "t": 432.432,
-          "frame": 12960,
-          "bbox": [
-            435.4,
-            50.7,
-            464.3,
-            78.7
-          ],
-          "conf": 0.731
-        },
-        {
-          "t": 432.599,
-          "frame": 12965,
-          "bbox": [
-            434.4,
-            50.4,
-            461.0,
-            76.0
-          ],
-          "conf": 0.7163
-        },
-        {
-          "t": 432.766,
-          "frame": 12970,
-          "bbox": [
-            430.6,
-            48.7,
-            455.5,
-            72.6
-          ],
-          "conf": 0.5146
-        },
-        {
-          "t": 432.933,
-          "frame": 12975,
-          "bbox": [
-            425.3,
-            46.2,
-            448.9,
-            68.7
-          ],
-          "conf": 0.3513
-        },
-        {
-          "t": 433.099,
-          "frame": 12980,
-          "bbox": [
-            418.7,
-            45.6,
-            443.7,
-            69.2
-          ],
-          "conf": 0.5928
-        },
-        {
-          "t": 433.266,
-          "frame": 12985,
-          "bbox": [
-            414.0,
-            47.6,
-            439.7,
-            72.0
-          ],
-          "conf": 0.5728
-        },
-        {
-          "t": 433.433,
-          "frame": 12990,
-          "bbox": [
-            411.4,
-            47.1,
-            435.4,
-            69.6
-          ],
-          "conf": 0.542
-        },
-        {
-          "t": 433.6,
-          "frame": 12995,
-          "bbox": [
-            412.9,
-            44.3,
-            435.8,
-            65.5
-          ],
-          "conf": 0.5928
-        },
         {
           "t": 433.933,
           "frame": 13005,
@@ -9803,27 +9865,26 @@
         }
       ],
       "rule_hints": [
-        "identity_stitch:2",
-        "cross_presence_span"
+        "identity_stitch:2"
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0109_start.jpg",
-        "mid": "previews/bevt_0109_mid.jpg",
-        "end": "previews/bevt_0109_end.jpg"
+        "start": "previews/bevt_0148_start.jpg",
+        "mid": "previews/bevt_0148_mid.jpg",
+        "end": "previews/bevt_0148_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0111",
+      "event_id": "bevt_0150",
       "track_id": 936,
       "tier": "review",
-      "start_time": 440.44,
-      "end_time": 445.779,
-      "start_timecode": "00:07:20.439",
-      "end_timecode": "00:07:25.778",
-      "start_frame": 13200,
-      "end_frame": 13360,
-      "duration_sec": 5.339,
+      "start_time": 440.533,
+      "end_time": 445.833,
+      "start_timecode": "00:07:20.533",
+      "end_timecode": "00:07:25.833",
+      "start_frame": 13216,
+      "end_frame": 13375,
+      "duration_sec": 5.3,
       "avg_confidence": 0.5788,
       "peak_confidence": 0.7656,
       "detection_count": 28,
@@ -10142,25 +10203,25 @@
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0111_start.jpg",
-        "mid": "previews/bevt_0111_mid.jpg",
-        "end": "previews/bevt_0111_end.jpg"
+        "start": "previews/bevt_0150_start.jpg",
+        "mid": "previews/bevt_0150_mid.jpg",
+        "end": "previews/bevt_0150_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0113",
+      "event_id": "bevt_0152",
       "track_id": 966,
       "tier": "review",
-      "start_time": 449.95,
-      "end_time": 481.815,
-      "start_timecode": "00:07:29.949",
-      "end_timecode": "00:08:01.814",
-      "start_frame": 13485,
-      "end_frame": 14440,
-      "duration_sec": 31.865,
-      "avg_confidence": 0.7553,
+      "start_time": 450.033,
+      "end_time": 479.867,
+      "start_timecode": "00:07:30.033",
+      "end_timecode": "00:07:59.867",
+      "start_frame": 13501,
+      "end_frame": 14396,
+      "duration_sec": 29.834,
+      "avg_confidence": 0.7547,
       "peak_confidence": 0.8218,
-      "detection_count": 163,
+      "detection_count": 160,
       "trajectory": [
         {
           "t": 450.283,
@@ -11921,7 +11982,33 @@
             216.4
           ],
           "conf": 0.7656
-        },
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:4"
+      ],
+      "review_status": "pending",
+      "previews": {
+        "start": "previews/bevt_0152_start.jpg",
+        "mid": "previews/bevt_0152_mid.jpg",
+        "end": "previews/bevt_0152_end.jpg"
+      }
+    },
+    {
+      "event_id": "bevt_0153",
+      "track_id": 1044,
+      "tier": "review",
+      "start_time": 480.9,
+      "end_time": 481.867,
+      "start_timecode": "00:08:00.899",
+      "end_timecode": "00:08:01.867",
+      "start_frame": 14427,
+      "end_frame": 14456,
+      "duration_sec": 0.967,
+      "avg_confidence": 0.7897,
+      "peak_confidence": 0.7993,
+      "detection_count": 3,
+      "trajectory": [
         {
           "t": 481.147,
           "frame": 14420,
@@ -11957,30 +12044,29 @@
         }
       ],
       "rule_hints": [
-        "identity_stitch:4",
-        "cross_presence_span"
+        "identity_stitch:4"
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0113_start.jpg",
-        "mid": "previews/bevt_0113_mid.jpg",
-        "end": "previews/bevt_0113_end.jpg"
+        "start": "previews/bevt_0153_start.jpg",
+        "mid": "previews/bevt_0153_mid.jpg",
+        "end": "previews/bevt_0153_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0114",
+      "event_id": "bevt_0154",
       "track_id": 1076,
       "tier": "review",
-      "start_time": 501.835,
-      "end_time": 532.866,
-      "start_timecode": "00:08:21.834",
-      "end_timecode": "00:08:52.865",
-      "start_frame": 15040,
-      "end_frame": 15970,
-      "duration_sec": 31.031,
-      "avg_confidence": 0.7441,
+      "start_time": 501.933,
+      "end_time": 531.267,
+      "start_timecode": "00:08:21.932",
+      "end_timecode": "00:08:51.267",
+      "start_frame": 15058,
+      "end_frame": 15938,
+      "duration_sec": 29.334,
+      "avg_confidence": 0.7438,
       "peak_confidence": 0.8042,
-      "detection_count": 175,
+      "detection_count": 173,
       "trajectory": [
         {
           "t": 502.168,
@@ -13884,7 +13970,33 @@
             193.9
           ],
           "conf": 0.6094
-        },
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:4"
+      ],
+      "review_status": "pending",
+      "previews": {
+        "start": "previews/bevt_0154_start.jpg",
+        "mid": "previews/bevt_0154_mid.jpg",
+        "end": "previews/bevt_0154_end.jpg"
+      }
+    },
+    {
+      "event_id": "bevt_0155",
+      "track_id": 1101,
+      "tier": "review",
+      "start_time": 532.1,
+      "end_time": 532.933,
+      "start_timecode": "00:08:52.100",
+      "end_timecode": "00:08:52.932",
+      "start_frame": 15963,
+      "end_frame": 15988,
+      "duration_sec": 0.833,
+      "avg_confidence": 0.7679,
+      "peak_confidence": 0.772,
+      "detection_count": 2,
+      "trajectory": [
         {
           "t": 532.365,
           "frame": 15955,
@@ -13909,30 +14021,29 @@
         }
       ],
       "rule_hints": [
-        "identity_stitch:4",
-        "cross_presence_span"
+        "identity_stitch:4"
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0114_start.jpg",
-        "mid": "previews/bevt_0114_mid.jpg",
-        "end": "previews/bevt_0114_end.jpg"
+        "start": "previews/bevt_0155_start.jpg",
+        "mid": "previews/bevt_0155_mid.jpg",
+        "end": "previews/bevt_0155_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0115",
+      "event_id": "bevt_0156",
       "track_id": 980,
       "tier": "review",
-      "start_time": 450.784,
-      "end_time": 455.956,
-      "start_timecode": "00:07:30.783",
-      "end_timecode": "00:07:35.956",
-      "start_frame": 13510,
-      "end_frame": 13665,
-      "duration_sec": 5.172,
-      "avg_confidence": 0.7883,
+      "start_time": 450.867,
+      "end_time": 452.367,
+      "start_timecode": "00:07:30.867",
+      "end_timecode": "00:07:32.367",
+      "start_frame": 13526,
+      "end_frame": 13571,
+      "duration_sec": 1.5,
+      "avg_confidence": 0.8098,
       "peak_confidence": 0.8193,
-      "detection_count": 27,
+      "detection_count": 6,
       "trajectory": [
         {
           "t": 451.117,
@@ -13999,7 +14110,33 @@
             76.2
           ],
           "conf": 0.8154
-        },
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:2"
+      ],
+      "review_status": "pending",
+      "previews": {
+        "start": "previews/bevt_0156_start.jpg",
+        "mid": "previews/bevt_0156_mid.jpg",
+        "end": "previews/bevt_0156_end.jpg"
+      }
+    },
+    {
+      "event_id": "bevt_0157",
+      "track_id": 989,
+      "tier": "review",
+      "start_time": 452.033,
+      "end_time": 456.033,
+      "start_timecode": "00:07:32.033",
+      "end_timecode": "00:07:36.033",
+      "start_frame": 13561,
+      "end_frame": 13681,
+      "duration_sec": 4.0,
+      "avg_confidence": 0.7822,
+      "peak_confidence": 0.8164,
+      "detection_count": 21,
+      "trajectory": [
         {
           "t": 452.285,
           "frame": 13555,
@@ -14233,27 +14370,26 @@
         }
       ],
       "rule_hints": [
-        "identity_stitch:2",
-        "cross_presence_span"
+        "identity_stitch:2"
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0115_start.jpg",
-        "mid": "previews/bevt_0115_mid.jpg",
-        "end": "previews/bevt_0115_end.jpg"
+        "start": "previews/bevt_0157_start.jpg",
+        "mid": "previews/bevt_0157_mid.jpg",
+        "end": "previews/bevt_0157_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0117",
+      "event_id": "bevt_0159",
       "track_id": 991,
       "tier": "review",
-      "start_time": 452.452,
-      "end_time": 478.478,
-      "start_timecode": "00:07:32.451",
-      "end_timecode": "00:07:58.478",
-      "start_frame": 13560,
-      "end_frame": 14340,
-      "duration_sec": 26.026,
+      "start_time": 452.533,
+      "end_time": 478.533,
+      "start_timecode": "00:07:32.533",
+      "end_timecode": "00:07:58.533",
+      "start_frame": 13576,
+      "end_frame": 14356,
+      "duration_sec": 26.0,
       "avg_confidence": 0.6663,
       "peak_confidence": 0.7993,
       "detection_count": 111,
@@ -15486,22 +15622,22 @@
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0117_start.jpg",
-        "mid": "previews/bevt_0117_mid.jpg",
-        "end": "previews/bevt_0117_end.jpg"
+        "start": "previews/bevt_0159_start.jpg",
+        "mid": "previews/bevt_0159_mid.jpg",
+        "end": "previews/bevt_0159_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0119",
+      "event_id": "bevt_0161",
       "track_id": 992,
       "tier": "review",
-      "start_time": 452.952,
-      "end_time": 455.455,
-      "start_timecode": "00:07:32.951",
-      "end_timecode": "00:07:35.454",
-      "start_frame": 13575,
-      "end_frame": 13650,
-      "duration_sec": 2.503,
+      "start_time": 453.033,
+      "end_time": 455.533,
+      "start_timecode": "00:07:33.033",
+      "end_timecode": "00:07:35.533",
+      "start_frame": 13591,
+      "end_frame": 13666,
+      "duration_sec": 2.5,
       "avg_confidence": 0.6616,
       "peak_confidence": 0.75,
       "detection_count": 5,
@@ -15565,22 +15701,22 @@
       "rule_hints": [],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0119_start.jpg",
-        "mid": "previews/bevt_0119_mid.jpg",
-        "end": "previews/bevt_0119_end.jpg"
+        "start": "previews/bevt_0161_start.jpg",
+        "mid": "previews/bevt_0161_mid.jpg",
+        "end": "previews/bevt_0161_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0120",
+      "event_id": "bevt_0162",
       "track_id": 997,
       "tier": "review",
-      "start_time": 455.288,
-      "end_time": 464.631,
-      "start_timecode": "00:07:35.288",
-      "end_timecode": "00:07:44.630",
-      "start_frame": 13645,
-      "end_frame": 13925,
-      "duration_sec": 9.343,
+      "start_time": 455.367,
+      "end_time": 464.7,
+      "start_timecode": "00:07:35.367",
+      "end_timecode": "00:07:44.699",
+      "start_frame": 13661,
+      "end_frame": 13941,
+      "duration_sec": 9.333,
       "avg_confidence": 0.7113,
       "peak_confidence": 0.7744,
       "detection_count": 20,
@@ -15811,25 +15947,25 @@
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0120_start.jpg",
-        "mid": "previews/bevt_0120_mid.jpg",
-        "end": "previews/bevt_0120_end.jpg"
+        "start": "previews/bevt_0162_start.jpg",
+        "mid": "previews/bevt_0162_mid.jpg",
+        "end": "previews/bevt_0162_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0121",
+      "event_id": "bevt_0163",
       "track_id": 1000,
       "tier": "review",
-      "start_time": 455.789,
-      "end_time": 477.644,
-      "start_timecode": "00:07:35.788",
-      "end_timecode": "00:07:57.644",
-      "start_frame": 13660,
-      "end_frame": 14315,
-      "duration_sec": 21.855,
-      "avg_confidence": 0.7046,
+      "start_time": 455.867,
+      "end_time": 469.533,
+      "start_timecode": "00:07:35.867",
+      "end_timecode": "00:07:49.533",
+      "start_frame": 13676,
+      "end_frame": 14086,
+      "duration_sec": 13.666,
+      "avg_confidence": 0.7191,
       "peak_confidence": 0.7861,
-      "detection_count": 107,
+      "detection_count": 61,
       "trajectory": [
         {
           "t": 456.122,
@@ -16501,7 +16637,33 @@
             42.6
           ],
           "conf": 0.5908
-        },
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:2"
+      ],
+      "review_status": "pending",
+      "previews": {
+        "start": "previews/bevt_0163_start.jpg",
+        "mid": "previews/bevt_0163_mid.jpg",
+        "end": "previews/bevt_0163_end.jpg"
+      }
+    },
+    {
+      "event_id": "bevt_0164",
+      "track_id": 1034,
+      "tier": "review",
+      "start_time": 469.4,
+      "end_time": 477.7,
+      "start_timecode": "00:07:49.399",
+      "end_timecode": "00:07:57.699",
+      "start_frame": 14082,
+      "end_frame": 14331,
+      "duration_sec": 8.3,
+      "avg_confidence": 0.6853,
+      "peak_confidence": 0.7637,
+      "detection_count": 46,
+      "trajectory": [
         {
           "t": 469.636,
           "frame": 14075,
@@ -17010,30 +17172,29 @@
         }
       ],
       "rule_hints": [
-        "identity_stitch:2",
-        "cross_presence_span"
+        "identity_stitch:2"
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0121_start.jpg",
-        "mid": "previews/bevt_0121_mid.jpg",
-        "end": "previews/bevt_0121_end.jpg"
+        "start": "previews/bevt_0164_start.jpg",
+        "mid": "previews/bevt_0164_mid.jpg",
+        "end": "previews/bevt_0164_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0127",
+      "event_id": "bevt_0170",
       "track_id": 1028,
       "tier": "review",
-      "start_time": 466.8,
-      "end_time": 477.31,
-      "start_timecode": "00:07:46.800",
-      "end_timecode": "00:07:57.310",
-      "start_frame": 13990,
-      "end_frame": 14305,
-      "duration_sec": 10.51,
-      "avg_confidence": 0.623,
+      "start_time": 466.867,
+      "end_time": 473.033,
+      "start_timecode": "00:07:46.867",
+      "end_timecode": "00:07:53.033",
+      "start_frame": 14006,
+      "end_frame": 14191,
+      "duration_sec": 6.166,
+      "avg_confidence": 0.6726,
       "peak_confidence": 0.7822,
-      "detection_count": 28,
+      "detection_count": 20,
       "trajectory": [
         {
           "t": 467.133,
@@ -17254,118 +17415,29 @@
             16.6
           ],
           "conf": 0.4524
-        },
-        {
-          "t": 474.808,
-          "frame": 14230,
-          "bbox": [
-            774.6,
-            2.1,
-            795.0,
-            18.6
-          ],
-          "conf": 0.4341
-        },
-        {
-          "t": 475.976,
-          "frame": 14265,
-          "bbox": [
-            786.8,
-            2.9,
-            808.3,
-            19.4
-          ],
-          "conf": 0.4243
-        },
-        {
-          "t": 476.142,
-          "frame": 14270,
-          "bbox": [
-            784.7,
-            1.7,
-            806.4,
-            18.4
-          ],
-          "conf": 0.5908
-        },
-        {
-          "t": 476.309,
-          "frame": 14275,
-          "bbox": [
-            781.5,
-            1.7,
-            803.6,
-            18.7
-          ],
-          "conf": 0.6069
-        },
-        {
-          "t": 476.476,
-          "frame": 14280,
-          "bbox": [
-            778.9,
-            2.2,
-            801.2,
-            19.4
-          ],
-          "conf": 0.6133
-        },
-        {
-          "t": 476.643,
-          "frame": 14285,
-          "bbox": [
-            779.1,
-            2.4,
-            801.5,
-            19.8
-          ],
-          "conf": 0.4941
-        },
-        {
-          "t": 476.81,
-          "frame": 14290,
-          "bbox": [
-            781.2,
-            2.9,
-            803.1,
-            19.9
-          ],
-          "conf": 0.4561
-        },
-        {
-          "t": 476.976,
-          "frame": 14295,
-          "bbox": [
-            781.8,
-            2.6,
-            803.9,
-            19.8
-          ],
-          "conf": 0.3721
         }
       ],
       "rule_hints": [
-        "identity_stitch:3",
-        "cross_presence_span"
+        "identity_stitch:3"
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0127_start.jpg",
-        "mid": "previews/bevt_0127_mid.jpg",
-        "end": "previews/bevt_0127_end.jpg"
+        "start": "previews/bevt_0170_start.jpg",
+        "mid": "previews/bevt_0170_mid.jpg",
+        "end": "previews/bevt_0170_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0128",
+      "event_id": "bevt_0173",
       "track_id": 1030,
       "tier": "review",
-      "start_time": 467.133,
-      "end_time": 467.968,
-      "start_timecode": "00:07:47.132",
-      "end_timecode": "00:07:47.968",
-      "start_frame": 14000,
-      "end_frame": 14025,
-      "duration_sec": 0.835,
+      "start_time": 467.233,
+      "end_time": 468.033,
+      "start_timecode": "00:07:47.233",
+      "end_timecode": "00:07:48.033",
+      "start_frame": 14017,
+      "end_frame": 14041,
+      "duration_sec": 0.8,
       "avg_confidence": 0.7698,
       "peak_confidence": 0.7759,
       "detection_count": 2,
@@ -17396,22 +17468,22 @@
       "rule_hints": [],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0128_start.jpg",
-        "mid": "previews/bevt_0128_mid.jpg",
-        "end": "previews/bevt_0128_end.jpg"
+        "start": "previews/bevt_0173_start.jpg",
+        "mid": "previews/bevt_0173_mid.jpg",
+        "end": "previews/bevt_0173_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0129",
+      "event_id": "bevt_0174",
       "track_id": 1053,
       "tier": "review",
-      "start_time": 483.316,
-      "end_time": 497.831,
-      "start_timecode": "00:08:03.315",
-      "end_timecode": "00:08:17.831",
-      "start_frame": 14485,
-      "end_frame": 14920,
-      "duration_sec": 14.515,
+      "start_time": 483.4,
+      "end_time": 497.9,
+      "start_timecode": "00:08:03.399",
+      "end_timecode": "00:08:17.899",
+      "start_frame": 14502,
+      "end_frame": 14937,
+      "duration_sec": 14.5,
       "avg_confidence": 0.7849,
       "peak_confidence": 0.8223,
       "detection_count": 84,
@@ -18344,22 +18416,22 @@
       "rule_hints": [],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0129_start.jpg",
-        "mid": "previews/bevt_0129_mid.jpg",
-        "end": "previews/bevt_0129_end.jpg"
+        "start": "previews/bevt_0174_start.jpg",
+        "mid": "previews/bevt_0174_mid.jpg",
+        "end": "previews/bevt_0174_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0130",
+      "event_id": "bevt_0175",
       "track_id": 1067,
       "tier": "review",
-      "start_time": 499.833,
-      "end_time": 500.667,
-      "start_timecode": "00:08:19.833",
-      "end_timecode": "00:08:20.666",
-      "start_frame": 14980,
-      "end_frame": 15005,
-      "duration_sec": 0.834,
+      "start_time": 499.9,
+      "end_time": 500.733,
+      "start_timecode": "00:08:19.899",
+      "end_timecode": "00:08:20.733",
+      "start_frame": 14997,
+      "end_frame": 15022,
+      "duration_sec": 0.833,
       "avg_confidence": 0.7288,
       "peak_confidence": 0.7559,
       "detection_count": 2,
@@ -18390,22 +18462,22 @@
       "rule_hints": [],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0130_start.jpg",
-        "mid": "previews/bevt_0130_mid.jpg",
-        "end": "previews/bevt_0130_end.jpg"
+        "start": "previews/bevt_0175_start.jpg",
+        "mid": "previews/bevt_0175_mid.jpg",
+        "end": "previews/bevt_0175_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0132",
+      "event_id": "bevt_0177",
       "track_id": 1107,
       "tier": "review",
-      "start_time": 533.366,
-      "end_time": 534.2,
-      "start_timecode": "00:08:53.365",
-      "end_timecode": "00:08:54.200",
-      "start_frame": 15985,
-      "end_frame": 16010,
-      "duration_sec": 0.834,
+      "start_time": 533.467,
+      "end_time": 534.267,
+      "start_timecode": "00:08:53.466",
+      "end_timecode": "00:08:54.267",
+      "start_frame": 16004,
+      "end_frame": 16028,
+      "duration_sec": 0.8,
       "avg_confidence": 0.7769,
       "peak_confidence": 0.7812,
       "detection_count": 2,
@@ -18436,25 +18508,25 @@
       "rule_hints": [],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0132_start.jpg",
-        "mid": "previews/bevt_0132_mid.jpg",
-        "end": "previews/bevt_0132_end.jpg"
+        "start": "previews/bevt_0177_start.jpg",
+        "mid": "previews/bevt_0177_mid.jpg",
+        "end": "previews/bevt_0177_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0133",
+      "event_id": "bevt_0178",
       "track_id": 1115,
       "tier": "review",
-      "start_time": 535.034,
-      "end_time": 551.551,
-      "start_timecode": "00:08:55.033",
-      "end_timecode": "00:09:11.551",
-      "start_frame": 16035,
-      "end_frame": 16530,
-      "duration_sec": 16.517,
-      "avg_confidence": 0.7704,
-      "peak_confidence": 0.8193,
-      "detection_count": 54,
+      "start_time": 535.133,
+      "end_time": 546.933,
+      "start_timecode": "00:08:55.133",
+      "end_timecode": "00:09:06.932",
+      "start_frame": 16054,
+      "end_frame": 16408,
+      "duration_sec": 11.8,
+      "avg_confidence": 0.7765,
+      "peak_confidence": 0.8154,
+      "detection_count": 27,
       "trajectory": [
         {
           "t": 535.368,
@@ -18752,7 +18824,34 @@
             253.8
           ],
           "conf": 0.7832
-        },
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:2",
+        "cross_presence_span"
+      ],
+      "review_status": "pending",
+      "previews": {
+        "start": "previews/bevt_0178_start.jpg",
+        "mid": "previews/bevt_0178_mid.jpg",
+        "end": "previews/bevt_0178_end.jpg"
+      }
+    },
+    {
+      "event_id": "bevt_0179",
+      "track_id": 1149,
+      "tier": "review",
+      "start_time": 546.633,
+      "end_time": 551.633,
+      "start_timecode": "00:09:06.633",
+      "end_timecode": "00:09:11.633",
+      "start_frame": 16399,
+      "end_frame": 16549,
+      "duration_sec": 5.0,
+      "avg_confidence": 0.7643,
+      "peak_confidence": 0.8193,
+      "detection_count": 27,
+      "trajectory": [
         {
           "t": 546.88,
           "frame": 16390,
@@ -19052,27 +19151,26 @@
         }
       ],
       "rule_hints": [
-        "identity_stitch:2",
-        "cross_presence_span"
+        "identity_stitch:2"
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0133_start.jpg",
-        "mid": "previews/bevt_0133_mid.jpg",
-        "end": "previews/bevt_0133_end.jpg"
+        "start": "previews/bevt_0179_start.jpg",
+        "mid": "previews/bevt_0179_mid.jpg",
+        "end": "previews/bevt_0179_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0134",
+      "event_id": "bevt_0180",
       "track_id": 1128,
       "tier": "review",
-      "start_time": 539.873,
-      "end_time": 541.374,
-      "start_timecode": "00:08:59.873",
-      "end_timecode": "00:09:01.374",
-      "start_frame": 16180,
-      "end_frame": 16225,
-      "duration_sec": 1.501,
+      "start_time": 539.967,
+      "end_time": 541.433,
+      "start_timecode": "00:08:59.966",
+      "end_timecode": "00:09:01.432",
+      "start_frame": 16199,
+      "end_frame": 16243,
+      "duration_sec": 1.466,
       "avg_confidence": 0.734,
       "peak_confidence": 0.7866,
       "detection_count": 6,
@@ -19147,22 +19245,22 @@
       "rule_hints": [],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0134_start.jpg",
-        "mid": "previews/bevt_0134_mid.jpg",
-        "end": "previews/bevt_0134_end.jpg"
+        "start": "previews/bevt_0180_start.jpg",
+        "mid": "previews/bevt_0180_mid.jpg",
+        "end": "previews/bevt_0180_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0135",
+      "event_id": "bevt_0181",
       "track_id": 1148,
       "tier": "review",
-      "start_time": 544.878,
-      "end_time": 551.551,
-      "start_timecode": "00:09:04.878",
-      "end_timecode": "00:09:11.551",
-      "start_frame": 16330,
-      "end_frame": 16530,
-      "duration_sec": 6.673,
+      "start_time": 544.967,
+      "end_time": 551.633,
+      "start_timecode": "00:09:04.966",
+      "end_timecode": "00:09:11.633",
+      "start_frame": 16349,
+      "end_frame": 16549,
+      "duration_sec": 6.666,
       "avg_confidence": 0.692,
       "peak_confidence": 0.8052,
       "detection_count": 37,
@@ -19578,22 +19676,22 @@
       "rule_hints": [],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0135_start.jpg",
-        "mid": "previews/bevt_0135_mid.jpg",
-        "end": "previews/bevt_0135_end.jpg"
+        "start": "previews/bevt_0181_start.jpg",
+        "mid": "previews/bevt_0181_mid.jpg",
+        "end": "previews/bevt_0181_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0136",
+      "event_id": "bevt_0182",
       "track_id": 1155,
       "tier": "review",
-      "start_time": 552.218,
-      "end_time": 557.557,
-      "start_timecode": "00:09:12.217",
-      "end_timecode": "00:09:17.557",
-      "start_frame": 16550,
-      "end_frame": 16710,
-      "duration_sec": 5.339,
+      "start_time": 552.3,
+      "end_time": 557.633,
+      "start_timecode": "00:09:12.299",
+      "end_timecode": "00:09:17.633",
+      "start_frame": 16569,
+      "end_frame": 16729,
+      "duration_sec": 5.333,
       "avg_confidence": 0.7687,
       "peak_confidence": 0.835,
       "detection_count": 9,
@@ -19701,22 +19799,22 @@
       "rule_hints": [],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0136_start.jpg",
-        "mid": "previews/bevt_0136_mid.jpg",
-        "end": "previews/bevt_0136_end.jpg"
+        "start": "previews/bevt_0182_start.jpg",
+        "mid": "previews/bevt_0182_mid.jpg",
+        "end": "previews/bevt_0182_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0137",
+      "event_id": "bevt_0183",
       "track_id": 1163,
       "tier": "review",
-      "start_time": 554.888,
-      "end_time": 557.223,
-      "start_timecode": "00:09:14.888",
-      "end_timecode": "00:09:17.222",
-      "start_frame": 16630,
-      "end_frame": 16700,
-      "duration_sec": 2.335,
+      "start_time": 554.967,
+      "end_time": 557.3,
+      "start_timecode": "00:09:14.966",
+      "end_timecode": "00:09:17.299",
+      "start_frame": 16649,
+      "end_frame": 16719,
+      "duration_sec": 2.333,
       "avg_confidence": 0.8007,
       "peak_confidence": 0.8208,
       "detection_count": 11,
@@ -19846,22 +19944,22 @@
       "rule_hints": [],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0137_start.jpg",
-        "mid": "previews/bevt_0137_mid.jpg",
-        "end": "previews/bevt_0137_end.jpg"
+        "start": "previews/bevt_0183_start.jpg",
+        "mid": "previews/bevt_0183_mid.jpg",
+        "end": "previews/bevt_0183_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0138",
+      "event_id": "bevt_0184",
       "track_id": 1194,
       "tier": "review",
-      "start_time": 561.227,
-      "end_time": 564.564,
-      "start_timecode": "00:09:21.226",
-      "end_timecode": "00:09:24.563",
-      "start_frame": 16820,
-      "end_frame": 16920,
-      "duration_sec": 3.337,
+      "start_time": 561.3,
+      "end_time": 564.633,
+      "start_timecode": "00:09:21.299",
+      "end_timecode": "00:09:24.633",
+      "start_frame": 16839,
+      "end_frame": 16939,
+      "duration_sec": 3.333,
       "avg_confidence": 0.7711,
       "peak_confidence": 0.8257,
       "detection_count": 17,
@@ -20057,22 +20155,22 @@
       "rule_hints": [],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0138_start.jpg",
-        "mid": "previews/bevt_0138_mid.jpg",
-        "end": "previews/bevt_0138_end.jpg"
+        "start": "previews/bevt_0184_start.jpg",
+        "mid": "previews/bevt_0184_mid.jpg",
+        "end": "previews/bevt_0184_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0139",
+      "event_id": "bevt_0185",
       "track_id": 1196,
       "tier": "review",
-      "start_time": 561.561,
-      "end_time": 564.564,
-      "start_timecode": "00:09:21.561",
-      "end_timecode": "00:09:24.563",
-      "start_frame": 16830,
-      "end_frame": 16920,
-      "duration_sec": 3.003,
+      "start_time": 561.633,
+      "end_time": 564.633,
+      "start_timecode": "00:09:21.633",
+      "end_timecode": "00:09:24.633",
+      "start_frame": 16849,
+      "end_frame": 16939,
+      "duration_sec": 3.0,
       "avg_confidence": 0.7791,
       "peak_confidence": 0.8018,
       "detection_count": 15,
@@ -20246,25 +20344,25 @@
       "rule_hints": [],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0139_start.jpg",
-        "mid": "previews/bevt_0139_mid.jpg",
-        "end": "previews/bevt_0139_end.jpg"
+        "start": "previews/bevt_0185_start.jpg",
+        "mid": "previews/bevt_0185_mid.jpg",
+        "end": "previews/bevt_0185_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0140",
+      "event_id": "bevt_0186",
       "track_id": 1211,
       "tier": "review",
-      "start_time": 568.902,
-      "end_time": 581.247,
-      "start_timecode": "00:09:28.902",
-      "end_timecode": "00:09:41.246",
-      "start_frame": 17050,
-      "end_frame": 17420,
-      "duration_sec": 12.345,
-      "avg_confidence": 0.647,
+      "start_time": 569.0,
+      "end_time": 569.967,
+      "start_timecode": "00:09:29.000",
+      "end_timecode": "00:09:29.966",
+      "start_frame": 17070,
+      "end_frame": 17099,
+      "duration_sec": 0.967,
+      "avg_confidence": 0.7721,
       "peak_confidence": 0.7773,
-      "detection_count": 10,
+      "detection_count": 3,
       "trajectory": [
         {
           "t": 569.235,
@@ -20298,107 +20396,29 @@
             328.7
           ],
           "conf": 0.7695
-        },
-        {
-          "t": 574.24,
-          "frame": 17210,
-          "bbox": [
-            428.3,
-            315.0,
-            1217.5,
-            1075.8
-          ],
-          "conf": 0.4775
-        },
-        {
-          "t": 574.407,
-          "frame": 17215,
-          "bbox": [
-            464.0,
-            293.5,
-            1273.3,
-            1074.4
-          ],
-          "conf": 0.4922
-        },
-        {
-          "t": 574.574,
-          "frame": 17220,
-          "bbox": [
-            479.0,
-            280.2,
-            1290.7,
-            1064.8
-          ],
-          "conf": 0.5107
-        },
-        {
-          "t": 574.908,
-          "frame": 17230,
-          "bbox": [
-            587.3,
-            280.5,
-            1383.3,
-            1049.0
-          ],
-          "conf": 0.5498
-        },
-        {
-          "t": 577.744,
-          "frame": 17315,
-          "bbox": [
-            1572.5,
-            476.1,
-            1708.9,
-            567.6
-          ],
-          "conf": 0.6704
-        },
-        {
-          "t": 578.411,
-          "frame": 17335,
-          "bbox": [
-            1674.2,
-            702.9,
-            1894.0,
-            861.6
-          ],
-          "conf": 0.7202
-        },
-        {
-          "t": 580.914,
-          "frame": 17410,
-          "bbox": [
-            1695.0,
-            746.4,
-            1886.8,
-            884.7
-          ],
-          "conf": 0.7324
         }
       ],
       "rule_hints": [
-        "identity_stitch:4",
-        "cross_presence_span"
+        "identity_stitch:4"
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0140_start.jpg",
-        "mid": "previews/bevt_0140_mid.jpg",
-        "end": "previews/bevt_0140_end.jpg"
+        "start": "previews/bevt_0186_start.jpg",
+        "mid": "previews/bevt_0186_mid.jpg",
+        "end": "previews/bevt_0186_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0141",
+      "event_id": "bevt_0190",
       "track_id": 1218,
       "tier": "review",
-      "start_time": 570.403,
-      "end_time": 571.071,
-      "start_timecode": "00:09:30.403",
-      "end_timecode": "00:09:31.071",
-      "start_frame": 17095,
-      "end_frame": 17115,
-      "duration_sec": 0.668,
+      "start_time": 570.5,
+      "end_time": 571.133,
+      "start_timecode": "00:09:30.500",
+      "end_timecode": "00:09:31.133",
+      "start_frame": 17115,
+      "end_frame": 17134,
+      "duration_sec": 0.633,
       "avg_confidence": 0.8018,
       "peak_confidence": 0.8018,
       "detection_count": 1,
@@ -20420,21 +20440,21 @@
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0141_start.jpg",
-        "mid": "previews/bevt_0141_mid.jpg",
-        "end": "previews/bevt_0141_end.jpg"
+        "start": "previews/bevt_0190_start.jpg",
+        "mid": "previews/bevt_0190_mid.jpg",
+        "end": "previews/bevt_0190_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0142",
+      "event_id": "bevt_0191",
       "track_id": 1368,
       "tier": "review",
-      "start_time": 625.959,
-      "end_time": 627.126,
-      "start_timecode": "00:10:25.958",
-      "end_timecode": "00:10:27.125",
-      "start_frame": 18760,
-      "end_frame": 18795,
+      "start_time": 626.033,
+      "end_time": 627.2,
+      "start_timecode": "00:10:26.033",
+      "end_timecode": "00:10:27.200",
+      "start_frame": 18781,
+      "end_frame": 18816,
       "duration_sec": 1.167,
       "avg_confidence": 0.8318,
       "peak_confidence": 0.8389,
@@ -20490,22 +20510,22 @@
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0142_start.jpg",
-        "mid": "previews/bevt_0142_mid.jpg",
-        "end": "previews/bevt_0142_end.jpg"
+        "start": "previews/bevt_0191_start.jpg",
+        "mid": "previews/bevt_0191_mid.jpg",
+        "end": "previews/bevt_0191_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0143",
+      "event_id": "bevt_0192",
       "track_id": 1219,
       "tier": "review",
-      "start_time": 570.403,
-      "end_time": 571.071,
-      "start_timecode": "00:09:30.403",
-      "end_timecode": "00:09:31.071",
-      "start_frame": 17095,
-      "end_frame": 17115,
-      "duration_sec": 0.668,
+      "start_time": 570.5,
+      "end_time": 571.133,
+      "start_timecode": "00:09:30.500",
+      "end_timecode": "00:09:31.133",
+      "start_frame": 17115,
+      "end_frame": 17134,
+      "duration_sec": 0.633,
       "avg_confidence": 0.7583,
       "peak_confidence": 0.7583,
       "detection_count": 1,
@@ -20527,22 +20547,22 @@
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0143_start.jpg",
-        "mid": "previews/bevt_0143_mid.jpg",
-        "end": "previews/bevt_0143_end.jpg"
+        "start": "previews/bevt_0192_start.jpg",
+        "mid": "previews/bevt_0192_mid.jpg",
+        "end": "previews/bevt_0192_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0144",
+      "event_id": "bevt_0193",
       "track_id": 1330,
       "tier": "review",
-      "start_time": 619.619,
-      "end_time": 623.289,
-      "start_timecode": "00:10:19.619",
-      "end_timecode": "00:10:23.288",
-      "start_frame": 18570,
-      "end_frame": 18680,
-      "duration_sec": 3.67,
+      "start_time": 619.7,
+      "end_time": 623.367,
+      "start_timecode": "00:10:19.700",
+      "end_timecode": "00:10:23.366",
+      "start_frame": 18591,
+      "end_frame": 18701,
+      "duration_sec": 3.667,
       "avg_confidence": 0.7814,
       "peak_confidence": 0.8027,
       "detection_count": 19,
@@ -20762,25 +20782,25 @@
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0144_start.jpg",
-        "mid": "previews/bevt_0144_mid.jpg",
-        "end": "previews/bevt_0144_end.jpg"
+        "start": "previews/bevt_0193_start.jpg",
+        "mid": "previews/bevt_0193_mid.jpg",
+        "end": "previews/bevt_0193_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0145",
+      "event_id": "bevt_0194",
       "track_id": 1245,
       "tier": "review",
-      "start_time": 581.081,
-      "end_time": 598.431,
-      "start_timecode": "00:09:41.081",
-      "end_timecode": "00:09:58.431",
-      "start_frame": 17415,
-      "end_frame": 17935,
-      "duration_sec": 17.35,
-      "avg_confidence": 0.6701,
+      "start_time": 581.167,
+      "end_time": 584.133,
+      "start_timecode": "00:09:41.167",
+      "end_timecode": "00:09:44.133",
+      "start_frame": 17435,
+      "end_frame": 17524,
+      "duration_sec": 2.966,
+      "avg_confidence": 0.7249,
       "peak_confidence": 0.8081,
-      "detection_count": 41,
+      "detection_count": 12,
       "trajectory": [
         {
           "t": 581.414,
@@ -20913,7 +20933,35 @@
             876.3
           ],
           "conf": 0.7637
-        },
+        }
+      ],
+      "rule_hints": [
+        "workzone_low",
+        "edge_clip",
+        "identity_stitch:3"
+      ],
+      "review_status": "pending",
+      "previews": {
+        "start": "previews/bevt_0194_start.jpg",
+        "mid": "previews/bevt_0194_mid.jpg",
+        "end": "previews/bevt_0194_end.jpg"
+      }
+    },
+    {
+      "event_id": "bevt_0195",
+      "track_id": 1250,
+      "tier": "review",
+      "start_time": 585.167,
+      "end_time": 586.833,
+      "start_timecode": "00:09:45.167",
+      "end_timecode": "00:09:46.832",
+      "start_frame": 17555,
+      "end_frame": 17605,
+      "duration_sec": 1.666,
+      "avg_confidence": 0.6957,
+      "peak_confidence": 0.7827,
+      "detection_count": 7,
+      "trajectory": [
         {
           "t": 585.418,
           "frame": 17545,
@@ -20990,7 +21038,34 @@
             728.2
           ],
           "conf": 0.6943
-        },
+        }
+      ],
+      "rule_hints": [
+        "workzone_low",
+        "identity_stitch:3"
+      ],
+      "review_status": "pending",
+      "previews": {
+        "start": "previews/bevt_0195_start.jpg",
+        "mid": "previews/bevt_0195_mid.jpg",
+        "end": "previews/bevt_0195_end.jpg"
+      }
+    },
+    {
+      "event_id": "bevt_0196",
+      "track_id": 1255,
+      "tier": "review",
+      "start_time": 586.667,
+      "end_time": 598.5,
+      "start_timecode": "00:09:46.667",
+      "end_timecode": "00:09:58.500",
+      "start_frame": 17600,
+      "end_frame": 17955,
+      "duration_sec": 11.833,
+      "avg_confidence": 0.6321,
+      "peak_confidence": 0.7734,
+      "detection_count": 22,
+      "trajectory": [
         {
           "t": 586.92,
           "frame": 17590,
@@ -21235,29 +21310,27 @@
         }
       ],
       "rule_hints": [
-        "workzone_low",
-        "edge_clip",
         "identity_stitch:3",
         "cross_presence_span"
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0145_start.jpg",
-        "mid": "previews/bevt_0145_mid.jpg",
-        "end": "previews/bevt_0145_end.jpg"
+        "start": "previews/bevt_0196_start.jpg",
+        "mid": "previews/bevt_0196_mid.jpg",
+        "end": "previews/bevt_0196_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0146",
+      "event_id": "bevt_0197",
       "track_id": 1248,
       "tier": "review",
-      "start_time": 581.414,
-      "end_time": 585.919,
-      "start_timecode": "00:09:41.413",
-      "end_timecode": "00:09:45.918",
-      "start_frame": 17425,
-      "end_frame": 17560,
-      "duration_sec": 4.505,
+      "start_time": 581.5,
+      "end_time": 586.0,
+      "start_timecode": "00:09:41.500",
+      "end_timecode": "00:09:46.000",
+      "start_frame": 17445,
+      "end_frame": 17580,
+      "duration_sec": 4.5,
       "avg_confidence": 0.7664,
       "peak_confidence": 0.8169,
       "detection_count": 24,
@@ -21532,25 +21605,25 @@
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0146_start.jpg",
-        "mid": "previews/bevt_0146_mid.jpg",
-        "end": "previews/bevt_0146_end.jpg"
+        "start": "previews/bevt_0197_start.jpg",
+        "mid": "previews/bevt_0197_mid.jpg",
+        "end": "previews/bevt_0197_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0147",
+      "event_id": "bevt_0198",
       "track_id": 1254,
       "tier": "review",
-      "start_time": 586.086,
-      "end_time": 605.939,
-      "start_timecode": "00:09:46.086",
-      "end_timecode": "00:10:05.938",
-      "start_frame": 17565,
-      "end_frame": 18160,
-      "duration_sec": 19.853,
-      "avg_confidence": 0.7478,
-      "peak_confidence": 0.8447,
-      "detection_count": 113,
+      "start_time": 586.167,
+      "end_time": 596.333,
+      "start_timecode": "00:09:46.167",
+      "end_timecode": "00:09:56.332",
+      "start_frame": 17585,
+      "end_frame": 17890,
+      "duration_sec": 10.166,
+      "avg_confidence": 0.7728,
+      "peak_confidence": 0.8389,
+      "detection_count": 58,
       "trajectory": [
         {
           "t": 586.419,
@@ -22189,7 +22262,33 @@
             162.9
           ],
           "conf": 0.8267
-        },
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:4"
+      ],
+      "review_status": "pending",
+      "previews": {
+        "start": "previews/bevt_0198_start.jpg",
+        "mid": "previews/bevt_0198_mid.jpg",
+        "end": "previews/bevt_0198_end.jpg"
+      }
+    },
+    {
+      "event_id": "bevt_0199",
+      "track_id": 1260,
+      "tier": "review",
+      "start_time": 596.167,
+      "end_time": 600.5,
+      "start_timecode": "00:09:56.167",
+      "end_timecode": "00:10:00.500",
+      "start_frame": 17885,
+      "end_frame": 18015,
+      "duration_sec": 4.333,
+      "avg_confidence": 0.7873,
+      "peak_confidence": 0.8447,
+      "detection_count": 23,
+      "trajectory": [
         {
           "t": 596.429,
           "frame": 17875,
@@ -22442,7 +22541,34 @@
             27.5
           ],
           "conf": 0.5518
-        },
+        }
+      ],
+      "rule_hints": [
+        "edge_clip",
+        "identity_stitch:4"
+      ],
+      "review_status": "pending",
+      "previews": {
+        "start": "previews/bevt_0199_start.jpg",
+        "mid": "previews/bevt_0199_mid.jpg",
+        "end": "previews/bevt_0199_end.jpg"
+      }
+    },
+    {
+      "event_id": "bevt_0200",
+      "track_id": 1264,
+      "tier": "review",
+      "start_time": 600.167,
+      "end_time": 606.0,
+      "start_timecode": "00:10:00.167",
+      "end_timecode": "00:10:06.000",
+      "start_frame": 18005,
+      "end_frame": 18180,
+      "duration_sec": 5.833,
+      "avg_confidence": 0.6742,
+      "peak_confidence": 0.8364,
+      "detection_count": 32,
+      "trajectory": [
         {
           "t": 600.433,
           "frame": 17995,
@@ -22798,97 +22924,30 @@
       ],
       "rule_hints": [
         "edge_clip",
-        "identity_stitch:4",
-        "cross_presence_span"
+        "identity_stitch:4"
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0147_start.jpg",
-        "mid": "previews/bevt_0147_mid.jpg",
-        "end": "previews/bevt_0147_end.jpg"
+        "start": "previews/bevt_0200_start.jpg",
+        "mid": "previews/bevt_0200_mid.jpg",
+        "end": "previews/bevt_0200_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0148",
-      "track_id": 1262,
+      "event_id": "bevt_0202",
+      "track_id": 1272,
       "tier": "review",
-      "start_time": 599.766,
-      "end_time": 608.942,
-      "start_timecode": "00:09:59.765",
-      "end_timecode": "00:10:08.942",
-      "start_frame": 17975,
-      "end_frame": 18250,
-      "duration_sec": 9.176,
-      "avg_confidence": 0.6533,
+      "start_time": 606.033,
+      "end_time": 607.167,
+      "start_timecode": "00:10:06.033",
+      "end_timecode": "00:10:07.167",
+      "start_frame": 18181,
+      "end_frame": 18215,
+      "duration_sec": 1.134,
+      "avg_confidence": 0.7051,
       "peak_confidence": 0.7622,
-      "detection_count": 11,
+      "detection_count": 4,
       "trajectory": [
-        {
-          "t": 600.1,
-          "frame": 17985,
-          "bbox": [
-            1614.6,
-            567.6,
-            1836.6,
-            729.9
-          ],
-          "conf": 0.7026
-        },
-        {
-          "t": 600.266,
-          "frame": 17990,
-          "bbox": [
-            1567.7,
-            542.7,
-            1805.7,
-            717.0
-          ],
-          "conf": 0.5391
-        },
-        {
-          "t": 600.433,
-          "frame": 17995,
-          "bbox": [
-            1520.1,
-            518.3,
-            1750.7,
-            687.6
-          ],
-          "conf": 0.6343
-        },
-        {
-          "t": 600.6,
-          "frame": 18000,
-          "bbox": [
-            1449.9,
-            494.4,
-            1697.1,
-            678.9
-          ],
-          "conf": 0.7285
-        },
-        {
-          "t": 600.767,
-          "frame": 18005,
-          "bbox": [
-            1415.2,
-            487.5,
-            1655.6,
-            670.6
-          ],
-          "conf": 0.6724
-        },
-        {
-          "t": 600.934,
-          "frame": 18010,
-          "bbox": [
-            1412.6,
-            487.8,
-            1647.7,
-            671.0
-          ],
-          "conf": 0.6875
-        },
         {
           "t": 606.272,
           "frame": 18170,
@@ -22932,44 +22991,32 @@
             656.0
           ],
           "conf": 0.5747
-        },
-        {
-          "t": 608.608,
-          "frame": 18240,
-          "bbox": [
-            1181.1,
-            65.4,
-            1913.7,
-            875.7
-          ],
-          "conf": 0.4016
         }
       ],
       "rule_hints": [
-        "identity_stitch:5",
-        "cross_presence_span"
+        "identity_stitch:5"
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0148_start.jpg",
-        "mid": "previews/bevt_0148_mid.jpg",
-        "end": "previews/bevt_0148_end.jpg"
+        "start": "previews/bevt_0202_start.jpg",
+        "mid": "previews/bevt_0202_mid.jpg",
+        "end": "previews/bevt_0202_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0149",
+      "event_id": "bevt_0204",
       "track_id": 1334,
       "tier": "review",
-      "start_time": 619.953,
-      "end_time": 622.789,
-      "start_timecode": "00:10:19.952",
-      "end_timecode": "00:10:22.788",
-      "start_frame": 18580,
-      "end_frame": 18665,
-      "duration_sec": 2.836,
-      "avg_confidence": 0.7472,
-      "peak_confidence": 0.8066,
-      "detection_count": 11,
+      "start_time": 620.033,
+      "end_time": 621.7,
+      "start_timecode": "00:10:20.033",
+      "end_timecode": "00:10:21.700",
+      "start_frame": 18601,
+      "end_frame": 18651,
+      "duration_sec": 1.667,
+      "avg_confidence": 0.7268,
+      "peak_confidence": 0.7739,
+      "detection_count": 7,
       "trajectory": [
         {
           "t": 620.286,
@@ -23047,7 +23094,33 @@
             61.5
           ],
           "conf": 0.7563
-        },
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:5"
+      ],
+      "review_status": "pending",
+      "previews": {
+        "start": "previews/bevt_0204_start.jpg",
+        "mid": "previews/bevt_0204_mid.jpg",
+        "end": "previews/bevt_0204_end.jpg"
+      }
+    },
+    {
+      "event_id": "bevt_0205",
+      "track_id": 1339,
+      "tier": "review",
+      "start_time": 621.7,
+      "end_time": 622.867,
+      "start_timecode": "00:10:21.700",
+      "end_timecode": "00:10:22.866",
+      "start_frame": 18651,
+      "end_frame": 18686,
+      "duration_sec": 1.167,
+      "avg_confidence": 0.783,
+      "peak_confidence": 0.8066,
+      "detection_count": 4,
+      "trajectory": [
         {
           "t": 621.955,
           "frame": 18640,
@@ -23094,27 +23167,26 @@
         }
       ],
       "rule_hints": [
-        "identity_stitch:5",
-        "cross_presence_span"
+        "identity_stitch:5"
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0149_start.jpg",
-        "mid": "previews/bevt_0149_mid.jpg",
-        "end": "previews/bevt_0149_end.jpg"
+        "start": "previews/bevt_0205_start.jpg",
+        "mid": "previews/bevt_0205_mid.jpg",
+        "end": "previews/bevt_0205_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0152",
+      "event_id": "bevt_0208",
       "track_id": 1323,
       "tier": "review",
-      "start_time": 618.952,
-      "end_time": 623.123,
-      "start_timecode": "00:10:18.951",
-      "end_timecode": "00:10:23.123",
-      "start_frame": 18550,
-      "end_frame": 18675,
-      "duration_sec": 4.171,
+      "start_time": 619.033,
+      "end_time": 623.2,
+      "start_timecode": "00:10:19.033",
+      "end_timecode": "00:10:23.200",
+      "start_frame": 18571,
+      "end_frame": 18696,
+      "duration_sec": 4.167,
       "avg_confidence": 0.7788,
       "peak_confidence": 0.8257,
       "detection_count": 22,
@@ -23367,22 +23439,22 @@
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0152_start.jpg",
-        "mid": "previews/bevt_0152_mid.jpg",
-        "end": "previews/bevt_0152_end.jpg"
+        "start": "previews/bevt_0208_start.jpg",
+        "mid": "previews/bevt_0208_mid.jpg",
+        "end": "previews/bevt_0208_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0153",
+      "event_id": "bevt_0209",
       "track_id": 1277,
       "tier": "review",
-      "start_time": 609.943,
-      "end_time": 610.777,
-      "start_timecode": "00:10:09.942",
-      "end_timecode": "00:10:10.777",
-      "start_frame": 18280,
-      "end_frame": 18305,
-      "duration_sec": 0.834,
+      "start_time": 610.033,
+      "end_time": 610.833,
+      "start_timecode": "00:10:10.033",
+      "end_timecode": "00:10:10.832",
+      "start_frame": 18301,
+      "end_frame": 18325,
+      "duration_sec": 0.8,
       "avg_confidence": 0.8362,
       "peak_confidence": 0.8472,
       "detection_count": 2,
@@ -23413,48 +23485,26 @@
       "rule_hints": [],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0153_start.jpg",
-        "mid": "previews/bevt_0153_mid.jpg",
-        "end": "previews/bevt_0153_end.jpg"
+        "start": "previews/bevt_0209_start.jpg",
+        "mid": "previews/bevt_0209_mid.jpg",
+        "end": "previews/bevt_0209_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0155",
-      "track_id": 1332,
+      "event_id": "bevt_0212",
+      "track_id": 1336,
       "tier": "review",
-      "start_time": 619.619,
-      "end_time": 622.789,
-      "start_timecode": "00:10:19.619",
-      "end_timecode": "00:10:22.788",
-      "start_frame": 18570,
-      "end_frame": 18665,
-      "duration_sec": 3.17,
-      "avg_confidence": 0.6458,
+      "start_time": 620.367,
+      "end_time": 622.867,
+      "start_timecode": "00:10:20.366",
+      "end_timecode": "00:10:22.866",
+      "start_frame": 18611,
+      "end_frame": 18686,
+      "duration_sec": 2.5,
+      "avg_confidence": 0.6422,
       "peak_confidence": 0.7798,
-      "detection_count": 13,
+      "detection_count": 11,
       "trajectory": [
-        {
-          "t": 619.953,
-          "frame": 18580,
-          "bbox": [
-            541.2,
-            66.6,
-            566.7,
-            88.3
-          ],
-          "conf": 0.7041
-        },
-        {
-          "t": 620.12,
-          "frame": 18585,
-          "bbox": [
-            547.6,
-            66.2,
-            572.3,
-            87.2
-          ],
-          "conf": 0.627
-        },
         {
           "t": 620.62,
           "frame": 18600,
@@ -23578,27 +23628,129 @@
         }
       ],
       "rule_hints": [
-        "identity_stitch:2",
-        "cross_presence_span"
+        "identity_stitch:2"
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0155_start.jpg",
-        "mid": "previews/bevt_0155_mid.jpg",
-        "end": "previews/bevt_0155_end.jpg"
+        "start": "previews/bevt_0212_start.jpg",
+        "mid": "previews/bevt_0212_mid.jpg",
+        "end": "previews/bevt_0212_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0157",
+      "event_id": "bevt_0214",
+      "track_id": 1370,
+      "tier": "review",
+      "start_time": 627.033,
+      "end_time": 628.7,
+      "start_timecode": "00:10:27.033",
+      "end_timecode": "00:10:28.700",
+      "start_frame": 18811,
+      "end_frame": 18861,
+      "duration_sec": 1.667,
+      "avg_confidence": 0.7596,
+      "peak_confidence": 0.793,
+      "detection_count": 7,
+      "trajectory": [
+        {
+          "t": 627.293,
+          "frame": 18800,
+          "bbox": [
+            850.9,
+            177.2,
+            1013.9,
+            394.3
+          ],
+          "conf": 0.7676
+        },
+        {
+          "t": 627.46,
+          "frame": 18805,
+          "bbox": [
+            846.6,
+            182.7,
+            990.8,
+            374.1
+          ],
+          "conf": 0.7871
+        },
+        {
+          "t": 627.627,
+          "frame": 18810,
+          "bbox": [
+            827.0,
+            184.6,
+            957.0,
+            356.3
+          ],
+          "conf": 0.7324
+        },
+        {
+          "t": 627.794,
+          "frame": 18815,
+          "bbox": [
+            793.4,
+            185.3,
+            912.4,
+            341.0
+          ],
+          "conf": 0.793
+        },
+        {
+          "t": 627.961,
+          "frame": 18820,
+          "bbox": [
+            742.8,
+            171.3,
+            873.1,
+            341.3
+          ],
+          "conf": 0.7852
+        },
+        {
+          "t": 628.128,
+          "frame": 18825,
+          "bbox": [
+            706.1,
+            165.9,
+            852.3,
+            356.3
+          ],
+          "conf": 0.771
+        },
+        {
+          "t": 628.294,
+          "frame": 18830,
+          "bbox": [
+            703.7,
+            197.9,
+            859.7,
+            400.2
+          ],
+          "conf": 0.6807
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:2"
+      ],
+      "review_status": "pending",
+      "previews": {
+        "start": "previews/bevt_0214_start.jpg",
+        "mid": "previews/bevt_0214_mid.jpg",
+        "end": "previews/bevt_0214_end.jpg"
+      }
+    },
+    {
+      "event_id": "bevt_0215",
       "track_id": 1390,
       "tier": "review",
-      "start_time": 632.465,
-      "end_time": 633.633,
-      "start_timecode": "00:10:32.465",
-      "end_timecode": "00:10:33.633",
-      "start_frame": 18955,
-      "end_frame": 18990,
-      "duration_sec": 1.168,
+      "start_time": 632.533,
+      "end_time": 633.7,
+      "start_timecode": "00:10:32.533",
+      "end_timecode": "00:10:33.700",
+      "start_frame": 18976,
+      "end_frame": 19011,
+      "duration_sec": 1.167,
       "avg_confidence": 0.7802,
       "peak_confidence": 0.8174,
       "detection_count": 4,
@@ -23651,22 +23803,22 @@
       "rule_hints": [],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0157_start.jpg",
-        "mid": "previews/bevt_0157_mid.jpg",
-        "end": "previews/bevt_0157_end.jpg"
+        "start": "previews/bevt_0215_start.jpg",
+        "mid": "previews/bevt_0215_mid.jpg",
+        "end": "previews/bevt_0215_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0158",
+      "event_id": "bevt_0216",
       "track_id": 1391,
       "tier": "review",
-      "start_time": 632.632,
-      "end_time": 633.8,
-      "start_timecode": "00:10:32.631",
-      "end_timecode": "00:10:33.799",
-      "start_frame": 18960,
-      "end_frame": 18995,
-      "duration_sec": 1.168,
+      "start_time": 632.7,
+      "end_time": 633.867,
+      "start_timecode": "00:10:32.700",
+      "end_timecode": "00:10:33.866",
+      "start_frame": 18981,
+      "end_frame": 19016,
+      "duration_sec": 1.167,
       "avg_confidence": 0.799,
       "peak_confidence": 0.8418,
       "detection_count": 4,
@@ -23719,37 +23871,26 @@
       "rule_hints": [],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0158_start.jpg",
-        "mid": "previews/bevt_0158_mid.jpg",
-        "end": "previews/bevt_0158_end.jpg"
+        "start": "previews/bevt_0216_start.jpg",
+        "mid": "previews/bevt_0216_mid.jpg",
+        "end": "previews/bevt_0216_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0159",
-      "track_id": 1401,
+      "event_id": "bevt_0218",
+      "track_id": 1432,
       "tier": "review",
-      "start_time": 633.967,
-      "end_time": 641.307,
-      "start_timecode": "00:10:33.966",
-      "end_timecode": "00:10:41.307",
-      "start_frame": 19000,
-      "end_frame": 19220,
-      "duration_sec": 7.34,
-      "avg_confidence": 0.6195,
+      "start_time": 639.9,
+      "end_time": 641.367,
+      "start_timecode": "00:10:39.899",
+      "end_timecode": "00:10:41.366",
+      "start_frame": 19197,
+      "end_frame": 19241,
+      "duration_sec": 1.467,
+      "avg_confidence": 0.5991,
       "peak_confidence": 0.7871,
-      "detection_count": 7,
+      "detection_count": 6,
       "trajectory": [
-        {
-          "t": 634.3,
-          "frame": 19010,
-          "bbox": [
-            1402.7,
-            438.3,
-            1630.6,
-            636.3
-          ],
-          "conf": 0.7422
-        },
         {
           "t": 640.139,
           "frame": 19185,
@@ -23820,27 +23961,145 @@
       "rule_hints": [
         "workzone_low",
         "edge_clip",
-        "identity_stitch:2",
-        "cross_presence_span"
+        "identity_stitch:2"
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0159_start.jpg",
-        "mid": "previews/bevt_0159_mid.jpg",
-        "end": "previews/bevt_0159_end.jpg"
+        "start": "previews/bevt_0218_start.jpg",
+        "mid": "previews/bevt_0218_mid.jpg",
+        "end": "previews/bevt_0218_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0161",
+      "event_id": "bevt_0220",
+      "track_id": 1424,
+      "tier": "review",
+      "start_time": 637.233,
+      "end_time": 637.867,
+      "start_timecode": "00:10:37.232",
+      "end_timecode": "00:10:37.866",
+      "start_frame": 19117,
+      "end_frame": 19136,
+      "duration_sec": 0.634,
+      "avg_confidence": 0.7891,
+      "peak_confidence": 0.7891,
+      "detection_count": 1,
+      "trajectory": [
+        {
+          "t": 637.47,
+          "frame": 19105,
+          "bbox": [
+            1203.3,
+            90.2,
+            1297.2,
+            181.4
+          ],
+          "conf": 0.7891
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:3"
+      ],
+      "review_status": "pending",
+      "previews": {
+        "start": "previews/bevt_0220_start.jpg",
+        "mid": "previews/bevt_0220_mid.jpg",
+        "end": "previews/bevt_0220_end.jpg"
+      }
+    },
+    {
+      "event_id": "bevt_0221",
+      "track_id": 1426,
+      "tier": "review",
+      "start_time": 637.567,
+      "end_time": 638.867,
+      "start_timecode": "00:10:37.567",
+      "end_timecode": "00:10:38.866",
+      "start_frame": 19127,
+      "end_frame": 19166,
+      "duration_sec": 1.3,
+      "avg_confidence": 0.8081,
+      "peak_confidence": 0.8267,
+      "detection_count": 5,
+      "trajectory": [
+        {
+          "t": 637.804,
+          "frame": 19115,
+          "bbox": [
+            1149.8,
+            30.2,
+            1237.9,
+            124.7
+          ],
+          "conf": 0.8091
+        },
+        {
+          "t": 637.971,
+          "frame": 19120,
+          "bbox": [
+            1127.6,
+            19.9,
+            1213.3,
+            111.7
+          ],
+          "conf": 0.8032
+        },
+        {
+          "t": 638.138,
+          "frame": 19125,
+          "bbox": [
+            1089.8,
+            11.0,
+            1169.4,
+            96.0
+          ],
+          "conf": 0.8237
+        },
+        {
+          "t": 638.304,
+          "frame": 19130,
+          "bbox": [
+            1049.0,
+            3.7,
+            1117.4,
+            76.1
+          ],
+          "conf": 0.8267
+        },
+        {
+          "t": 638.471,
+          "frame": 19135,
+          "bbox": [
+            1000.5,
+            -0.5,
+            1052.2,
+            52.6
+          ],
+          "conf": 0.7778
+        }
+      ],
+      "rule_hints": [
+        "edge_clip",
+        "identity_stitch:3"
+      ],
+      "review_status": "pending",
+      "previews": {
+        "start": "previews/bevt_0221_start.jpg",
+        "mid": "previews/bevt_0221_mid.jpg",
+        "end": "previews/bevt_0221_end.jpg"
+      }
+    },
+    {
+      "event_id": "bevt_0222",
       "track_id": 1423,
       "tier": "review",
-      "start_time": 636.803,
-      "end_time": 637.47,
-      "start_timecode": "00:10:36.802",
-      "end_timecode": "00:10:37.470",
-      "start_frame": 19085,
-      "end_frame": 19105,
-      "duration_sec": 0.667,
+      "start_time": 636.9,
+      "end_time": 637.533,
+      "start_timecode": "00:10:36.899",
+      "end_timecode": "00:10:37.533",
+      "start_frame": 19107,
+      "end_frame": 19126,
+      "duration_sec": 0.633,
       "avg_confidence": 0.7534,
       "peak_confidence": 0.7534,
       "detection_count": 1,
@@ -23860,22 +24119,22 @@
       "rule_hints": [],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0161_start.jpg",
-        "mid": "previews/bevt_0161_mid.jpg",
-        "end": "previews/bevt_0161_end.jpg"
+        "start": "previews/bevt_0222_start.jpg",
+        "mid": "previews/bevt_0222_mid.jpg",
+        "end": "previews/bevt_0222_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0162",
+      "event_id": "bevt_0223",
       "track_id": 1436,
       "tier": "review",
-      "start_time": 641.808,
-      "end_time": 642.976,
-      "start_timecode": "00:10:41.807",
-      "end_timecode": "00:10:42.975",
-      "start_frame": 19235,
-      "end_frame": 19270,
-      "duration_sec": 1.168,
+      "start_time": 641.9,
+      "end_time": 643.033,
+      "start_timecode": "00:10:41.899",
+      "end_timecode": "00:10:43.033",
+      "start_frame": 19257,
+      "end_frame": 19291,
+      "duration_sec": 1.133,
       "avg_confidence": 0.7175,
       "peak_confidence": 0.8442,
       "detection_count": 4,
@@ -23930,22 +24189,22 @@
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0162_start.jpg",
-        "mid": "previews/bevt_0162_mid.jpg",
-        "end": "previews/bevt_0162_end.jpg"
+        "start": "previews/bevt_0223_start.jpg",
+        "mid": "previews/bevt_0223_mid.jpg",
+        "end": "previews/bevt_0223_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0164",
+      "event_id": "bevt_0225",
       "track_id": 1442,
       "tier": "review",
-      "start_time": 652.318,
-      "end_time": 661.16,
-      "start_timecode": "00:10:52.317",
-      "end_timecode": "00:11:01.159",
-      "start_frame": 19550,
-      "end_frame": 19815,
-      "duration_sec": 8.842,
+      "start_time": 652.4,
+      "end_time": 661.233,
+      "start_timecode": "00:10:52.399",
+      "end_timecode": "00:11:01.232",
+      "start_frame": 19572,
+      "end_frame": 19837,
+      "duration_sec": 8.833,
       "avg_confidence": 0.6727,
       "peak_confidence": 0.8237,
       "detection_count": 36,
@@ -24353,22 +24612,22 @@
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0164_start.jpg",
-        "mid": "previews/bevt_0164_mid.jpg",
-        "end": "previews/bevt_0164_end.jpg"
+        "start": "previews/bevt_0225_start.jpg",
+        "mid": "previews/bevt_0225_mid.jpg",
+        "end": "previews/bevt_0225_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0165",
+      "event_id": "bevt_0226",
       "track_id": 1468,
       "tier": "review",
-      "start_time": 679.846,
-      "end_time": 682.182,
-      "start_timecode": "00:11:19.846",
-      "end_timecode": "00:11:22.182",
-      "start_frame": 20375,
-      "end_frame": 20445,
-      "duration_sec": 2.336,
+      "start_time": 679.933,
+      "end_time": 682.233,
+      "start_timecode": "00:11:19.932",
+      "end_timecode": "00:11:22.232",
+      "start_frame": 20398,
+      "end_frame": 20467,
+      "duration_sec": 2.3,
       "avg_confidence": 0.7681,
       "peak_confidence": 0.8013,
       "detection_count": 3,
@@ -24410,22 +24669,22 @@
       "rule_hints": [],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0165_start.jpg",
-        "mid": "previews/bevt_0165_mid.jpg",
-        "end": "previews/bevt_0165_end.jpg"
+        "start": "previews/bevt_0226_start.jpg",
+        "mid": "previews/bevt_0226_mid.jpg",
+        "end": "previews/bevt_0226_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0166",
+      "event_id": "bevt_0227",
       "track_id": 1472,
       "tier": "review",
-      "start_time": 680.847,
-      "end_time": 681.848,
-      "start_timecode": "00:11:20.846",
-      "end_timecode": "00:11:21.847",
-      "start_frame": 20405,
-      "end_frame": 20435,
-      "duration_sec": 1.001,
+      "start_time": 680.933,
+      "end_time": 681.9,
+      "start_timecode": "00:11:20.932",
+      "end_timecode": "00:11:21.899",
+      "start_frame": 20428,
+      "end_frame": 20457,
+      "duration_sec": 0.967,
       "avg_confidence": 0.7578,
       "peak_confidence": 0.7842,
       "detection_count": 3,
@@ -24467,25 +24726,25 @@
       "rule_hints": [],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0166_start.jpg",
-        "mid": "previews/bevt_0166_mid.jpg",
-        "end": "previews/bevt_0166_end.jpg"
+        "start": "previews/bevt_0227_start.jpg",
+        "mid": "previews/bevt_0227_mid.jpg",
+        "end": "previews/bevt_0227_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0168",
+      "event_id": "bevt_0229",
       "track_id": 1509,
       "tier": "review",
-      "start_time": 728.394,
-      "end_time": 733.399,
-      "start_timecode": "00:12:08.394",
-      "end_timecode": "00:12:13.399",
-      "start_frame": 21830,
-      "end_frame": 21980,
-      "duration_sec": 5.005,
-      "avg_confidence": 0.747,
+      "start_time": 728.467,
+      "end_time": 729.967,
+      "start_timecode": "00:12:08.466",
+      "end_timecode": "00:12:09.966",
+      "start_frame": 21854,
+      "end_frame": 21899,
+      "duration_sec": 1.5,
+      "avg_confidence": 0.7854,
       "peak_confidence": 0.8687,
-      "detection_count": 24,
+      "detection_count": 6,
       "trajectory": [
         {
           "t": 728.728,
@@ -24552,7 +24811,34 @@
             140.0
           ],
           "conf": 0.8413
-        },
+        }
+      ],
+      "rule_hints": [
+        "aspect_ratio",
+        "identity_stitch:3"
+      ],
+      "review_status": "pending",
+      "previews": {
+        "start": "previews/bevt_0229_start.jpg",
+        "mid": "previews/bevt_0229_mid.jpg",
+        "end": "previews/bevt_0229_end.jpg"
+      }
+    },
+    {
+      "event_id": "bevt_0230",
+      "track_id": 1511,
+      "tier": "review",
+      "start_time": 729.633,
+      "end_time": 731.8,
+      "start_timecode": "00:12:09.633",
+      "end_timecode": "00:12:11.799",
+      "start_frame": 21889,
+      "end_frame": 21954,
+      "duration_sec": 2.167,
+      "avg_confidence": 0.7224,
+      "peak_confidence": 0.8374,
+      "detection_count": 10,
+      "trajectory": [
         {
           "t": 729.896,
           "frame": 21875,
@@ -24662,7 +24948,33 @@
             711.9
           ],
           "conf": 0.7334
-        },
+        }
+      ],
+      "rule_hints": [
+        "identity_stitch:3"
+      ],
+      "review_status": "pending",
+      "previews": {
+        "start": "previews/bevt_0230_start.jpg",
+        "mid": "previews/bevt_0230_mid.jpg",
+        "end": "previews/bevt_0230_end.jpg"
+      }
+    },
+    {
+      "event_id": "bevt_0231",
+      "track_id": 1513,
+      "tier": "review",
+      "start_time": 731.633,
+      "end_time": 733.467,
+      "start_timecode": "00:12:11.633",
+      "end_timecode": "00:12:13.466",
+      "start_frame": 21949,
+      "end_frame": 22004,
+      "duration_sec": 1.834,
+      "avg_confidence": 0.7489,
+      "peak_confidence": 0.8115,
+      "detection_count": 8,
+      "trajectory": [
         {
           "t": 731.898,
           "frame": 21935,
@@ -24753,28 +25065,26 @@
         }
       ],
       "rule_hints": [
-        "aspect_ratio",
-        "identity_stitch:3",
-        "cross_presence_span"
+        "identity_stitch:3"
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0168_start.jpg",
-        "mid": "previews/bevt_0168_mid.jpg",
-        "end": "previews/bevt_0168_end.jpg"
+        "start": "previews/bevt_0231_start.jpg",
+        "mid": "previews/bevt_0231_mid.jpg",
+        "end": "previews/bevt_0231_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0169",
+      "event_id": "bevt_0232",
       "track_id": 1539,
       "tier": "review",
-      "start_time": 738.905,
-      "end_time": 739.572,
-      "start_timecode": "00:12:18.904",
-      "end_timecode": "00:12:19.572",
-      "start_frame": 22145,
-      "end_frame": 22165,
-      "duration_sec": 0.667,
+      "start_time": 739.0,
+      "end_time": 739.633,
+      "start_timecode": "00:12:19.000",
+      "end_timecode": "00:12:19.633",
+      "start_frame": 22170,
+      "end_frame": 22189,
+      "duration_sec": 0.633,
       "avg_confidence": 0.8447,
       "peak_confidence": 0.8447,
       "detection_count": 1,
@@ -24794,22 +25104,22 @@
       "rule_hints": [],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0169_start.jpg",
-        "mid": "previews/bevt_0169_mid.jpg",
-        "end": "previews/bevt_0169_end.jpg"
+        "start": "previews/bevt_0232_start.jpg",
+        "mid": "previews/bevt_0232_mid.jpg",
+        "end": "previews/bevt_0232_end.jpg"
       }
     },
     {
-      "event_id": "bevt_0170",
+      "event_id": "bevt_0233",
       "track_id": 1546,
       "tier": "review",
-      "start_time": 739.906,
-      "end_time": 740.573,
-      "start_timecode": "00:12:19.905",
-      "end_timecode": "00:12:20.572",
-      "start_frame": 22175,
-      "end_frame": 22195,
-      "duration_sec": 0.667,
+      "start_time": 740.0,
+      "end_time": 740.633,
+      "start_timecode": "00:12:20.000",
+      "end_timecode": "00:12:20.633",
+      "start_frame": 22200,
+      "end_frame": 22219,
+      "duration_sec": 0.633,
       "avg_confidence": 0.8218,
       "peak_confidence": 0.8218,
       "detection_count": 1,
@@ -24831,9 +25141,9 @@
       ],
       "review_status": "pending",
       "previews": {
-        "start": "previews/bevt_0170_start.jpg",
-        "mid": "previews/bevt_0170_mid.jpg",
-        "end": "previews/bevt_0170_end.jpg"
+        "start": "previews/bevt_0233_start.jpg",
+        "mid": "previews/bevt_0233_mid.jpg",
+        "end": "previews/bevt_0233_end.jpg"
       }
     }
   ]
