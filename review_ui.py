@@ -54,7 +54,15 @@ def load_decisions(output_dir: str) -> dict[str, str]:
     with open(path, encoding="utf-8") as f:
         data = json.load(f)
     if isinstance(data, dict) and data and not isinstance(next(iter(data.values())), dict):
-        return {str(k): str(v) for k, v in data.items()}
+        meta_keys = {
+            "events", "summary", "video", "review_dir", "started_at", "updated_at",
+            "total_review_events", "decided_count",
+        }
+        return {
+            str(k): str(v)
+            for k, v in data.items()
+            if str(k) not in meta_keys and (str(k).startswith("bevt_") or str(k).startswith("evt_"))
+        }
     if isinstance(data, dict) and "events" in data:
         out: dict[str, str] = {}
         for e in data["events"]:
@@ -82,6 +90,28 @@ def save_decisions(
 
 
 def load_events(output_dir: str) -> tuple[list[dict], str]:
+    pending_path = os.path.join(output_dir, "pending_events.json")
+    if os.path.isfile(pending_path):
+        with open(pending_path, encoding="utf-8") as f:
+            pending_doc = json.load(f)
+        video = pending_doc.get("video", "")
+        events: list[dict] = []
+        for ev in pending_doc.get("events") or []:
+            events.append({
+                "event_id": ev["event_id"],
+                "track_id": ev.get("track_id"),
+                "start_time": ev["start_time"],
+                "end_time": ev["end_time"],
+                "start_timecode": ev.get("start_timecode"),
+                "end_timecode": ev.get("end_timecode"),
+                "duration_sec": ev.get("duration_sec"),
+                "frame_count": ev.get("detection_count"),
+                "peak_confidence": ev.get("peak_confidence"),
+                "avg_confidence": ev.get("avg_confidence"),
+                "previews": ev.get("previews"),
+            })
+        return events, video
+
     behavior_path = os.path.join(output_dir, "behavior_events.json")
     if os.path.isfile(behavior_path):
         with open(behavior_path, encoding="utf-8") as f:
@@ -186,7 +216,21 @@ def next_pending_index(events: list[dict], decisions: dict[str, str], start: int
     return None
 
 
-def media_paths(output_dir: str, event_id: str) -> tuple[str | None, str | None]:
+def media_paths(output_dir: str, event_id: str, ev: dict | None = None) -> tuple[str | None, str | None]:
+    if ev and ev.get("previews"):
+        for key in ("mid", "start", "end"):
+            rel = ev["previews"].get(key)
+            if rel:
+                path = os.path.join(output_dir, rel.replace("/", os.sep))
+                if os.path.isfile(path):
+                    return path, None
+
+    previews_dir = os.path.join(output_dir, "previews")
+    for name in (f"{event_id}_mid.jpg", f"{event_id}_start.jpg", f"{event_id}_end.jpg"):
+        path = os.path.join(previews_dir, name)
+        if os.path.isfile(path):
+            return path, None
+
     sheet = os.path.join(output_dir, "event_contact_sheet", f"{event_id}.jpg")
     gif = os.path.join(output_dir, "event_gifs", f"{event_id}.gif")
     contact = sheet if os.path.isfile(sheet) else None
@@ -376,7 +420,7 @@ def render_event_panel(
     quality: dict | None = None,
 ) -> None:
     eid = ev["event_id"]
-    contact, gif_path = media_paths(output_dir, eid)
+    contact, gif_path = media_paths(output_dir, eid, ev)
 
     st.markdown(render_event_metadata_html(ev, quality), unsafe_allow_html=True)
 

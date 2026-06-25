@@ -24,6 +24,34 @@ def parse_args():
     return p.parse_args()
 
 
+def parse_review_decisions(confirmed: dict) -> dict[str, str]:
+    """Support review_ui flat map and legacy confirmed template."""
+    meta_keys = {
+        "events", "summary", "video", "review_dir", "started_at", "updated_at",
+        "total_review_events", "decided_count",
+    }
+    events = confirmed.get("events")
+    if isinstance(events, list) and events and isinstance(events[0], dict):
+        out: dict[str, str] = {}
+        for e in events:
+            eid = e.get("event_id")
+            if not eid:
+                continue
+            status = e.get("status", "")
+            if status == "confirmed_face":
+                out[eid] = "accepted"
+            elif status == "rejected_fp":
+                out[eid] = "rejected"
+            elif status:
+                out[eid] = status
+        return out
+    return {
+        str(k): str(v)
+        for k, v in confirmed.items()
+        if str(k) not in meta_keys and str(k).startswith("bevt_")
+    }
+
+
 def load_confirmed(review_dir: str) -> dict:
     path = os.path.join(review_dir, "confirmed_events.json")
     if not os.path.isfile(path):
@@ -55,18 +83,28 @@ def run_confirm(args) -> int:
     meta = get_video_meta(video_path)
 
     auto_events = [e for e in face_data["events"] if e.get("tier") == TIER_AUTO]
-    confirmed_map = {e["event_id"]: e for e in confirmed.get("events", []) if e.get("status")}
+    decisions = parse_review_decisions(confirmed)
 
     review_confirmed = []
+    review_rejected = 0
     for ev in face_data["events"]:
         if ev.get("tier") != "review":
             continue
-        dec = confirmed_map.get(ev["event_id"])
-        if dec and dec.get("status") == "confirmed_face":
+        eid = ev["event_id"]
+        decision = decisions.get(eid)
+        if decision == "rejected":
+            review_rejected += 1
+            continue
+        if decision in (None, "skipped"):
+            decision = "accepted"
+        if decision == "accepted":
             review_confirmed.append(ev)
 
     all_mask_events = auto_events + review_confirmed
-    print(f"[确认] Auto={len(auto_events)} + Review确认={len(review_confirmed)} → 共 {len(all_mask_events)} 个打码 event")
+    print(
+        f"[确认] Auto={len(auto_events)} + Review确认={len(review_confirmed)}"
+        f" (reject={review_rejected}) → 共 {len(all_mask_events)} 个打码 event"
+    )
 
     if not all_mask_events:
         shutil.copy2(draft, final)

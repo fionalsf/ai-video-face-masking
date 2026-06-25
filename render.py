@@ -34,10 +34,90 @@ def resolve_encoder(encoder: str) -> str:
     return "libx264"
 
 
+def _bbox_to_cxcywh(bbox: list[float]) -> tuple[float, float, float, float]:
+    x1, y1, x2, y2 = bbox
+    w = x2 - x1
+    h = y2 - y1
+    cx = (x1 + x2) / 2.0
+    cy = (y1 + y2) / 2.0
+    return cx, cy, w, h
+
+
+def _cxcywh_to_bbox(cx: float, cy: float, w: float, h: float) -> list[float]:
+    hw = w / 2.0
+    hh = h / 2.0
+    return [cx - hw, cy - hh, cx + hw, cy + hh]
+
+
+def _ema_cxcywh_sequence(
+    frame_to_cxcywh: dict[int, tuple[float, float, float, float]],
+    alpha: float,
+) -> dict[int, tuple[float, float, float, float]]:
+    frames = sorted(frame_to_cxcywh.keys())
+    if len(frames) <= 1:
+        return frame_to_cxcywh
+    result: dict[int, tuple[float, float, float, float]] = {}
+    prev = frame_to_cxcywh[frames[0]]
+    result[frames[0]] = prev
+    for f in frames[1:]:
+        cur = frame_to_cxcywh[f]
+        smoothed = tuple(
+            alpha * cur[i] + (1.0 - alpha) * prev[i]
+            for i in range(4)
+        )
+        result[f] = smoothed
+        prev = smoothed
+    return result
+
+
+def _postprocess_bbox_sequence(
+    frame_to_bbox: dict[int, list[float]],
+    *,
+    enable_smoothing: bool = False,
+    smoothing_alpha: float = 0.7,
+) -> dict[int, list[float]]:
+    if not enable_smoothing or len(frame_to_bbox) <= 1:
+        return frame_to_bbox
+    cxcywh = {f: _bbox_to_cxcywh(bbox) for f, bbox in frame_to_bbox.items()}
+    smoothed = _ema_cxcywh_sequence(cxcywh, smoothing_alpha)
+    return {f: _cxcywh_to_bbox(*v) for f, v in smoothed.items()}
+
+
+def _build_event_render(
+    traj: list[dict],
+    total_frames: int,
+    extend_frames: int,
+) -> dict[int, list[float]]:
+    event_render: dict[int, list[float]] = {}
+    for pt in traj:
+        event_render[pt["frame"]] = list(pt["bbox"])
+    for i in range(len(traj) - 1):
+        f0, b0 = traj[i]["frame"], np.asarray(traj[i]["bbox"], dtype=np.float64)
+        f1, b1 = traj[i + 1]["frame"], np.asarray(traj[i + 1]["bbox"], dtype=np.float64)
+        gap = f1 - f0
+        if gap <= 1:
+            continue
+        for f in range(f0 + 1, f1):
+            t = (f - f0) / gap
+            event_render[f] = (b0 + (b1 - b0) * t).tolist()
+    f_first = traj[0]["frame"]
+    b_first = traj[0]["bbox"]
+    for f in range(max(0, f_first - extend_frames), f_first):
+        event_render[f] = list(b_first)
+    f_last = traj[-1]["frame"]
+    b_last = traj[-1]["bbox"]
+    end = total_frames if total_frames > 0 else f_last + extend_frames + 1
+    for f in range(f_last + 1, min(end, f_last + 1 + extend_frames)):
+        event_render[f] = list(b_last)
+    return event_render
+
+
 def events_to_render(
     events: list[dict],
     total_frames: int,
     extend_frames: int = 3,
+    enable_smoothing: bool = False,
+    smoothing_alpha: float = 0.7,
 ) -> dict[int, list[list[float]]]:
     """Convert event list (with trajectory) to frame -> bboxes render dict."""
     render: dict[int, list] = defaultdict(list)
@@ -46,26 +126,14 @@ def events_to_render(
         traj = ev.get("trajectory") or []
         if not traj:
             continue
-        for i, pt in enumerate(traj):
-            render[pt["frame"]].append(list(pt["bbox"]))
-        for i in range(len(traj) - 1):
-            f0, b0 = traj[i]["frame"], np.asarray(traj[i]["bbox"], dtype=np.float64)
-            f1, b1 = traj[i + 1]["frame"], np.asarray(traj[i + 1]["bbox"], dtype=np.float64)
-            gap = f1 - f0
-            if gap <= 1:
-                continue
-            for f in range(f0 + 1, f1):
-                t = (f - f0) / gap
-                render[f].append((b0 + (b1 - b0) * t).tolist())
-        f_first = traj[0]["frame"]
-        b_first = traj[0]["bbox"]
-        for f in range(max(0, f_first - extend_frames), f_first):
-            render[f].append(list(b_first))
-        f_last = traj[-1]["frame"]
-        b_last = traj[-1]["bbox"]
-        end = total_frames if total_frames > 0 else f_last + extend_frames + 1
-        for f in range(f_last + 1, min(end, f_last + 1 + extend_frames)):
-            render[f].append(list(b_last))
+        event_render = _build_event_render(traj, total_frames, extend_frames)
+        event_render = _postprocess_bbox_sequence(
+            event_render,
+            enable_smoothing=enable_smoothing,
+            smoothing_alpha=smoothing_alpha,
+        )
+        for f, bbox in event_render.items():
+            render[f].append(bbox)
 
     return dict(render)
 
