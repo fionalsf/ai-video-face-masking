@@ -64,9 +64,9 @@ BEHAVIOR_EVENTS_NAME = "behavior_events.json"
 
 DEFAULT_BEHAVIOR_GAP_SEC = 8.0
 
-BEHAVIOR_BUILDER_LAYER = "identity_behavior_builder_v1"
+BEHAVIOR_BUILDER_LAYER = "identity_behavior_builder_v1.2"  # V1.2 track_id拆分
 
-BEHAVIOR_SEMANTIC = "identity cluster 内的时间连续行为段"
+BEHAVIOR_SEMANTIC = "identity cluster 内的时间连续行为段（track_id 变更处强制切段）"
 
 
 
@@ -94,6 +94,8 @@ def chunk_identity_detections(
 
 ) -> list[list[dict]]:
 
+    """V1.2 track_id拆分：identity stitch 合并的多 track 在 track_id 变更处强制切段。"""
+
     if not detections:
 
         return []
@@ -108,7 +110,9 @@ def chunk_identity_detections(
 
         gap = float(det["t"]) - float(prev["t"])
 
-        if gap > behavior_gap_sec or not _det_bbox_continuous(prev, det):
+        track_changed = int(det["track_id"]) != int(prev["track_id"])
+
+        if gap > behavior_gap_sec or not _det_bbox_continuous(prev, det) or track_changed:
 
             chunks.append([det])
 
@@ -212,7 +216,7 @@ def build_identity_behavior_events(
 
         chunks = chunk_identity_detections(dets, behavior_gap_sec=behavior_gap_sec)
 
-        source_track_ids = sorted({int(d["track_id"]) for d in dets})
+        cluster_track_ids = sorted(int(t) for t in track_ids)
 
 
 
@@ -221,6 +225,8 @@ def build_identity_behavior_events(
             event_num += 1
 
             primary_track = int(chunk[0]["track_id"])
+
+            chunk_track_ids = sorted({int(d["track_id"]) for d in chunk})
 
             face_ev = _make_event(
 
@@ -264,15 +270,15 @@ def build_identity_behavior_events(
 
 
 
-            cross_track = len(source_track_ids) > 1
+            cross_track = len(chunk_track_ids) > 1
 
             cross_presence = len(pres_ids) > 1
 
             hints = list(face_ev.rule_hints)
 
-            if cross_track:
+            if len(cluster_track_ids) > 1:
 
-                hints.append(f"identity_stitch:{len(source_track_ids)}")
+                hints.append(f"identity_stitch:{len(cluster_track_ids)}")
 
             if cross_presence:
 
@@ -324,7 +330,7 @@ def build_identity_behavior_events(
 
                 "identity_id": identity_id,
 
-                "source_track_ids": source_track_ids,
+                "source_track_ids": chunk_track_ids,
 
                 "primary_track_id": primary_track,
 
@@ -399,6 +405,8 @@ def build_identity_behavior_events(
             "event_unit": "identity_id",
 
             "track_id_as_event_unit": False,
+
+            "split_on_track_id_change": True,  # V1.2 track_id拆分
 
         },
 
