@@ -11,3 +11,14 @@ models/*.pt
 output_validation_track_split/_*.py
 output_validation_track_split/bbox_*/
 output_validation_track_split/review_*/
+output*/
+output_*/
+*_output/
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.csv
+*.xlsx
+*.onnx
+*.engine
