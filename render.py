@@ -267,9 +267,18 @@ def render_masked_output(
     output_video: str,
     events: list[dict],
     meta: dict,
+    extend_frames: int = 3,
+    enable_smoothing: bool = False,
+    smoothing_alpha: float = 0.7,
     **kwargs,
 ) -> None:
-    render = events_to_render(events, meta["frames"])
+    render = events_to_render(
+        events,
+        meta["frames"],
+        extend_frames=extend_frames,
+        enable_smoothing=enable_smoothing,
+        smoothing_alpha=smoothing_alpha,
+    )
     if not render:
         shutil.copy2(input_video, output_video)
         return
