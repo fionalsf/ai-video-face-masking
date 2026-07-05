@@ -24,11 +24,15 @@ from event_quality import (
 from review_stats import REPORT_NAME, STATISTICS_NAME, load_review_report, update_review_report
 
 STATUS_ACCEPTED = "accepted"
+STATUS_ACCEPTED_FIRST_HALF = "accepted_first_half"
+STATUS_ACCEPTED_SECOND_HALF = "accepted_second_half"
 STATUS_REJECTED = "rejected"
 STATUS_SKIPPED = "skipped"
-FINAL_STATUSES = {STATUS_ACCEPTED, STATUS_REJECTED}
+ACCEPT_STATUSES = {STATUS_ACCEPTED, STATUS_ACCEPTED_FIRST_HALF, STATUS_ACCEPTED_SECOND_HALF}
+FINAL_STATUSES = ACCEPT_STATUSES | {STATUS_REJECTED}
 
 PREVIEW_MAX_HEIGHT_PX = 360
+SIDEBAR_WINDOW = 8
 
 
 def parse_output_dir() -> str:
@@ -56,12 +60,13 @@ def load_decisions(output_dir: str) -> dict[str, str]:
     if isinstance(data, dict) and data and not isinstance(next(iter(data.values())), dict):
         meta_keys = {
             "events", "summary", "video", "review_dir", "started_at", "updated_at",
-            "total_review_events", "decided_count",
+            "total_review_events", "decided_count", "schema", "decision_unit",
         }
         return {
             str(k): str(v)
             for k, v in data.items()
-            if str(k) not in meta_keys and (str(k).startswith("bevt_") or str(k).startswith("evt_"))
+            if str(k) not in meta_keys
+            and (str(k).startswith("bevt_") or str(k).startswith("evt_") or str(k).startswith("mask_"))
         }
     if isinstance(data, dict) and "events" in data:
         out: dict[str, str] = {}
@@ -82,10 +87,22 @@ def save_decisions(
     decisions: dict[str, str],
     events: list[dict] | None = None,
     video: str = "",
+    update_report: bool = False,
 ) -> None:
+    meta = {
+        "schema": "mask_review_decisions.v2",
+        "updated_at": time.strftime("%Y-%m-%dT%H:%M:%S"),
+        "decision_unit": "mask_timeline_proposal",
+        "total_review_events": len(events) if events is not None else None,
+        "decided_count": len(decisions),
+    }
+    payload = {
+        **{k: v for k, v in meta.items() if v is not None},
+        **dict(sorted(decisions.items())),
+    }
     with open(confirmed_path(output_dir), "w", encoding="utf-8") as f:
-        json.dump(dict(sorted(decisions.items())), f, ensure_ascii=False, indent=2)
-    if events is not None:
+        json.dump(payload, f, ensure_ascii=False, indent=2)
+    if update_report and events is not None:
         update_review_report(output_dir, video, events, decisions)
 
 
@@ -99,16 +116,20 @@ def load_events(output_dir: str) -> tuple[list[dict], str]:
         for ev in pending_doc.get("events") or []:
             events.append({
                 "event_id": ev["event_id"],
+                "source_event_id": ev.get("source_event_id"),
+                "source_tier": ev.get("source_tier"),
                 "track_id": ev.get("track_id"),
                 "start_time": ev["start_time"],
                 "end_time": ev["end_time"],
                 "start_timecode": ev.get("start_timecode"),
                 "end_timecode": ev.get("end_timecode"),
                 "duration_sec": ev.get("duration_sec"),
-                "frame_count": ev.get("detection_count"),
+                "frame_count": ev.get("frame_count") or ev.get("detection_count"),
                 "peak_confidence": ev.get("peak_confidence"),
                 "avg_confidence": ev.get("avg_confidence"),
                 "previews": ev.get("previews"),
+                "contact_sheet": ev.get("contact_sheet"),
+                "requires_explicit_accept": ev.get("requires_explicit_accept"),
             })
         return events, video
 
@@ -191,7 +212,7 @@ def load_events(output_dir: str) -> tuple[list[dict], str]:
 
 def count_stats(events: list[dict], decisions: dict[str, str]) -> dict[str, int | float]:
     total = len(events)
-    accepted = sum(1 for e in events if decisions.get(e["event_id"]) == STATUS_ACCEPTED)
+    accepted = sum(1 for e in events if decisions.get(e["event_id"]) in ACCEPT_STATUSES)
     rejected = sum(1 for e in events if decisions.get(e["event_id"]) == STATUS_REJECTED)
     skipped = sum(1 for e in events if decisions.get(e["event_id"]) == STATUS_SKIPPED)
     return {
@@ -216,6 +237,16 @@ def next_pending_index(events: list[dict], decisions: dict[str, str], start: int
     return None
 
 
+def prev_pending_index(events: list[dict], decisions: dict[str, str], start: int) -> int | None:
+    for j in range(start, -1, -1):
+        if decisions.get(events[j]["event_id"]) not in FINAL_STATUSES:
+            return j
+    for j in range(len(events) - 1, start, -1):
+        if decisions.get(events[j]["event_id"]) not in FINAL_STATUSES:
+            return j
+    return None
+
+
 def media_paths(output_dir: str, event_id: str, ev: dict | None = None) -> tuple[str | None, str | None]:
     if ev and ev.get("previews"):
         for key in ("mid", "start", "end"):
@@ -224,6 +255,10 @@ def media_paths(output_dir: str, event_id: str, ev: dict | None = None) -> tuple
                 path = os.path.join(output_dir, rel.replace("/", os.sep))
                 if os.path.isfile(path):
                     return path, None
+    if ev and ev.get("contact_sheet"):
+        path = os.path.join(output_dir, str(ev["contact_sheet"]).replace("/", os.sep))
+        if os.path.isfile(path):
+            return path, None
 
     previews_dir = os.path.join(output_dir, "previews")
     for name in (f"{event_id}_mid.jpg", f"{event_id}_start.jpg", f"{event_id}_end.jpg"):
@@ -244,6 +279,8 @@ def media_paths(output_dir: str, event_id: str, ev: dict | None = None) -> tuple
 def status_icon(status: str | None) -> str:
     return {
         STATUS_ACCEPTED: "✅",
+        STATUS_ACCEPTED_FIRST_HALF: "◐",
+        STATUS_ACCEPTED_SECOND_HALF: "◑",
         STATUS_REJECTED: "❌",
         STATUS_SKIPPED: "⏭",
     }.get(status or "", "⬜")
@@ -454,9 +491,16 @@ def render_event_panel(
 
 def render_decision_banner(current: str | None) -> None:
     if not current:
+        st.markdown(
+            '<p style="margin:0.1rem 0 0.25rem;font-size:0.88rem;color:#f59e0b;">'
+            "Decision: <b>unreviewed</b> - click Accept or Reject to save</p>",
+            unsafe_allow_html=True,
+        )
         return
     colors = {
         STATUS_ACCEPTED: "#22c55e",
+        STATUS_ACCEPTED_FIRST_HALF: "#22c55e",
+        STATUS_ACCEPTED_SECOND_HALF: "#22c55e",
         STATUS_REJECTED: "#ef4444",
         STATUS_SKIPPED: "#38bdf8",
     }
@@ -495,8 +539,6 @@ def main():
     if "auto_advance" not in st.session_state:
         st.session_state.auto_advance = True
     if "report_bootstrapped" not in st.session_state:
-        if st.session_state.decisions:
-            update_review_report(OUTPUT_DIR, video_path, all_events, st.session_state.decisions)
         st.session_state.report_bootstrapped = True
 
     decisions = st.session_state.decisions
@@ -530,16 +572,48 @@ def main():
             )
             if report.get("review_finished_at"):
                 st.caption(f"Review finished at {report['review_finished_at']}")
+        if st.button("Refresh saved report", use_container_width=False):
+            update_review_report(OUTPUT_DIR, video_path, all_events, decisions)
+            st.rerun()
 
     with st.sidebar:
         st.header("Event List")
-        st.caption("Click any event to view / re-edit")
+        st.caption("Fast window view; use jump for far events")
         st.session_state.auto_advance = st.checkbox(
             "Auto-advance after decision",
             value=st.session_state.auto_advance,
             help="When off, stay on current event after Accept/Reject/Skip (useful when correcting).",
         )
-        for i, ev in enumerate(all_events):
+        nav_a, nav_b = st.columns(2)
+        with nav_a:
+            if st.button("Prev pending", use_container_width=True):
+                target = prev_pending_index(all_events, decisions, st.session_state.view_idx - 1)
+                if target is not None:
+                    st.session_state.view_idx = target
+                    st.rerun()
+        with nav_b:
+            if st.button("Next pending", use_container_width=True):
+                target = next_pending_index(all_events, decisions, st.session_state.view_idx + 1)
+                if target is not None:
+                    st.session_state.view_idx = target
+                    st.rerun()
+
+        jump_value = st.number_input(
+            "Jump to #",
+            min_value=1,
+            max_value=len(all_events),
+            value=st.session_state.view_idx + 1,
+            step=1,
+        )
+        if st.button("Go", use_container_width=True):
+            st.session_state.view_idx = int(jump_value) - 1
+            st.rerun()
+
+        start_i = max(0, st.session_state.view_idx - SIDEBAR_WINDOW)
+        end_i = min(len(all_events), st.session_state.view_idx + SIDEBAR_WINDOW + 1)
+        st.caption(f"Showing {start_i + 1}-{end_i} of {len(all_events)}")
+        for i in range(start_i, end_i):
+            ev = all_events[i]
             eid = ev["event_id"]
             stt = decisions.get(eid)
             is_current = st.session_state.view_idx == i
@@ -576,7 +650,7 @@ def main():
 
     suggest_reject = bool(ev_quality and ev_quality.get("suggest_reject"))
     current = decisions.get(eid)
-    btn1, btn2, btn3, btn4, btn5 = st.columns([1, 1, 1, 1, 2])
+    btn1, btn2, btn3, btn4, btn5, btn6 = st.columns([1, 1, 1, 1, 1, 2])
 
     def decide(status: str):
         was_final = decisions.get(eid) in FINAL_STATUSES
@@ -596,9 +670,9 @@ def main():
         st.rerun()
 
     with btn1:
-        accept_primary = current == STATUS_ACCEPTED or (not current and not suggest_reject)
+        accept_primary = current == STATUS_ACCEPTED
         if st.button(
-            "✅ Accept (A)",
+            "✅ Accept all (A)",
             type="primary" if accept_primary else "secondary",
             use_container_width=True,
             key="review_accept",
@@ -606,13 +680,29 @@ def main():
             decide(STATUS_ACCEPTED)
     with btn2:
         if st.button(
+            "◐ 1st half",
+            type="primary" if current == STATUS_ACCEPTED_FIRST_HALF else "secondary",
+            use_container_width=True,
+            key="review_accept_first_half",
+        ):
+            decide(STATUS_ACCEPTED_FIRST_HALF)
+    with btn3:
+        if st.button(
+            "◑ 2nd half",
+            type="primary" if current == STATUS_ACCEPTED_SECOND_HALF else "secondary",
+            use_container_width=True,
+            key="review_accept_second_half",
+        ):
+            decide(STATUS_ACCEPTED_SECOND_HALF)
+    with btn4:
+        if st.button(
             "❌ Reject (R)",
             type="primary" if current == STATUS_REJECTED or (not current and suggest_reject) else "secondary",
             use_container_width=True,
             key="review_reject",
         ):
             decide(STATUS_REJECTED)
-    with btn3:
+    with btn5:
         if st.button(
             "⏭ Skip (S)",
             type="primary" if current == STATUS_SKIPPED else "secondary",
@@ -620,7 +710,7 @@ def main():
             key="review_skip",
         ):
             decide(STATUS_SKIPPED)
-    with btn4:
+    with btn6:
         if st.button(
             "↩ Clear",
             use_container_width=True,
@@ -628,9 +718,8 @@ def main():
             key="review_clear",
         ):
             clear_decision()
-    with btn5:
-        st.caption("**A/R/S** decide · **←/→** navigate · sidebar click to re-open any event")
-        st.caption(f"Auto-save → `{CONFIRMED_NAME}` + `{REPORT_NAME}`")
+        st.caption("Use half buttons for mixed proposals")
+        st.caption(f"Auto-save -> `{CONFIRMED_NAME}`")
 
     render_decision_banner(current)
     render_event_panel(OUTPUT_DIR, ev, ev_quality)

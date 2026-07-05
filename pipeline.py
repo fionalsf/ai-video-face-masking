@@ -10,6 +10,7 @@ import sys
 import time
 
 from audit_log import write_audit_log
+from edge_review_candidates import build_edge_review_candidates
 from event_builder import TIER_AUTO, TIER_LOW_CONF, TIER_REVIEW, build_events, events_by_tier
 from event_merge import save_segmentation_events
 from export_events import export_review_pack, write_confirmed_events_template
@@ -19,6 +20,13 @@ from identity_behavior_builder import (
 )
 from identity_stitching import run_identity_stitching
 from low_conf_log import write_low_conf_stats
+from low_conf_promote import promote_low_conf_review_candidates
+from mask_timeline import (
+    build_mask_timeline,
+    export_mask_review_pack,
+    save_mask_timeline,
+    write_mask_confirmed_template,
+)
 from render import render_masked_output
 from tracker import run_detect_track
 from video_meta import get_video_meta, safe_video_stem
@@ -34,6 +42,11 @@ MODE_PRESETS = {
         "mosaic_block": 22,
         "render_extend_frames": 3,
         "mask_review": False,
+        "motion_compensate": False,
+        "motion_max_gap": 45,
+        "motion_singleton_frames": 12,
+        "edge_partial_face": False,
+        "timeline_review": True,
     },
     "preview": {
         "interval": 5,
@@ -43,6 +56,11 @@ MODE_PRESETS = {
         "mosaic_block": 18,
         "render_extend_frames": 10,
         "mask_review": True,
+        "motion_compensate": True,
+        "motion_max_gap": 60,
+        "motion_singleton_frames": 30,
+        "edge_partial_face": True,
+        "timeline_review": True,
     },
     "production": {
         "interval": 2,
@@ -52,6 +70,11 @@ MODE_PRESETS = {
         "mosaic_block": 22,
         "render_extend_frames": 12,
         "mask_review": True,
+        "motion_compensate": True,
+        "motion_max_gap": 45,
+        "motion_singleton_frames": 30,
+        "edge_partial_face": True,
+        "timeline_review": True,
     },
     "privacy": {
         "interval": 1,
@@ -61,6 +84,11 @@ MODE_PRESETS = {
         "mosaic_block": 18,
         "render_extend_frames": 18,
         "mask_review": True,
+        "motion_compensate": True,
+        "motion_max_gap": 45,
+        "motion_singleton_frames": 45,
+        "edge_partial_face": True,
+        "timeline_review": True,
     },
 }
 
@@ -86,12 +114,23 @@ def parse_args():
     p.add_argument("--expand", type=float, default=None)
     p.add_argument("--mosaic-block", type=int, default=None)
     p.add_argument("--render-extend-frames", type=int, default=None)
+    p.add_argument("--motion-comp", dest="motion_compensate", action="store_true", help="Use optical-flow motion compensation while rendering masks.")
+    p.add_argument("--no-motion-comp", dest="motion_compensate", action="store_false", help="Disable optical-flow motion compensation.")
+    p.set_defaults(motion_compensate=None)
+    p.add_argument("--motion-max-gap", type=int, default=None, help="Max keyframe gap for optical-flow interpolation.")
+    p.add_argument("--motion-singleton-frames", type=int, default=None, help="Frames to track before/after one-point events.")
+    p.add_argument("--motion-min-points", type=int, default=4, help="Minimum optical-flow points needed to accept tracking.")
+    p.add_argument("--motion-anchor", type=float, default=0.18, help="Blend optical-flow boxes back toward detection keyframes.")
+    p.add_argument("--edge-partial-face", dest="edge_partial_face", action="store_true", help="Mask large partial skin-face regions touching left/right frame edges.")
+    p.add_argument("--no-edge-partial-face", dest="edge_partial_face", action="store_false", help="Disable partial edge-face fallback.")
+    p.set_defaults(edge_partial_face=None)
     p.add_argument("--mask-review", action="store_true", help="Render Review-tier events too.")
     p.add_argument("--mask-lowconf", action="store_true", help="Render LowConf-tier events too.")
     p.add_argument("--reuse-tracks", action="store_true", help="Reuse tracked_detections.json when present.")
     p.add_argument("--no-review-pack", action="store_true", help="Skip exporting review thumbnails.")
     p.add_argument("--encoder", default="auto")
     p.add_argument("--skip-render", action="store_true", help="Skip Auto-tier render (debug)")
+    p.add_argument("--review-only", action="store_true", help="Export review pack and metadata without rendering masked_draft.mp4.")
     return p.parse_args()
 
 
@@ -110,6 +149,25 @@ def resolve_runtime_args(args) -> dict:
         ),
         "mask_review": args.mask_review or preset["mask_review"],
         "mask_lowconf": args.mask_lowconf,
+        "motion_compensate": (
+            args.motion_compensate
+            if args.motion_compensate is not None
+            else preset["motion_compensate"]
+        ),
+        "motion_max_gap": args.motion_max_gap if args.motion_max_gap is not None else preset["motion_max_gap"],
+        "motion_singleton_frames": (
+            args.motion_singleton_frames
+            if args.motion_singleton_frames is not None
+            else preset["motion_singleton_frames"]
+        ),
+        "motion_min_points": args.motion_min_points,
+        "motion_anchor": args.motion_anchor,
+        "edge_partial_face": (
+            args.edge_partial_face
+            if args.edge_partial_face is not None
+            else preset["edge_partial_face"]
+        ),
+        "timeline_review": bool(preset.get("timeline_review", True)),
     }
 
 
@@ -166,7 +224,8 @@ def run_pipeline(args) -> int:
     print(
         f"[mode] {args.mode} | interval={runtime['interval']} conf={runtime['conf']} "
         f"imgsz={runtime['imgsz']} mask_review={runtime['mask_review']} "
-        f"mask_lowconf={runtime['mask_lowconf']}"
+        f"mask_lowconf={runtime['mask_lowconf']} motion_comp={runtime['motion_compensate']} "
+        f"edge_partial={runtime['edge_partial_face']}"
     )
 
     print("[1/5] Detection + Tracking...")
@@ -220,6 +279,23 @@ def run_pipeline(args) -> int:
     )
 
     events = [behavior_event_to_face_event(ev) for ev in behavior_stats["behavior_events"]]
+    edge_review_ev = []
+    if runtime["edge_partial_face"]:
+        edge_review_ev = build_edge_review_candidates(
+            video_path,
+            meta,
+            events,
+            stride=max(1, runtime["interval"]),
+            min_hits=2,
+        )
+        if edge_review_ev:
+            print(f"      edge partial-face review candidates: {len(edge_review_ev)}")
+            events.extend(edge_review_ev)
+
+    low_conf_promoted = promote_low_conf_review_candidates(video_path, events, meta, runtime)
+    if low_conf_promoted:
+        print(f"      low-confidence face review candidates: {low_conf_promoted}")
+
     tiers = events_by_tier(events)
     auto_ev = tiers[TIER_AUTO]
     review_ev = tiers[TIER_REVIEW]
@@ -241,11 +317,44 @@ def run_pipeline(args) -> int:
             "events": [e.to_dict() for e in events],
         }, f, ensure_ascii=False, indent=2)
 
+    event_dicts = [e.to_dict() for e in events]
+    mask_timeline = build_mask_timeline(video_path, event_dicts, meta, runtime)
+    mask_timeline_path = save_mask_timeline(out_dir, mask_timeline)
+    timeline_review_pending = sum(
+        1 for p in mask_timeline.get("proposals", [])
+        if p.get("source_tier") != TIER_AUTO
+    )
+    print(
+        f"[Timeline] frozen mask proposals: {mask_timeline['proposal_count']} "
+        f"review_pending={timeline_review_pending} entries={mask_timeline['entry_count']} "
+        f"-> {mask_timeline_path}"
+    )
+
     write_low_conf_stats(out_dir, video_path, low_ev)
     write_audit_log(out_dir, video_path, auto_ev)
 
+    if timeline_review_pending and not args.no_review_pack:
+        if runtime.get("timeline_review", True):
+            export_mask_review_pack(
+                mask_timeline,
+                review_dir,
+                expand=float(runtime.get("expand") or 0.20),
+            )
+            review_pending_path = os.path.join(review_dir, "pending_events.json")
+            with open(review_pending_path, encoding="utf-8") as f:
+                review_pending = json.load(f)
+            write_mask_confirmed_template(review_dir, review_pending.get("events") or [])
+        else:
+            export_review_pack(video_path, review_dir, review_ev)
+            write_confirmed_events_template(review_dir, video_path)
+        print(f"[Review] {timeline_review_pending} mask proposals pending -> {review_dir}")
+    elif timeline_review_pending:
+        print(f"[Review] {timeline_review_pending} mask proposals pending; review pack skipped")
+    else:
+        print("[Review] No events need review")
+
     draft_path = os.path.join(out_dir, "masked_draft.mp4")
-    if not args.skip_render:
+    if not args.skip_render and not args.review_only:
         render_dicts = [e.to_dict() for e in render_ev]
         if render_dicts:
             print(
@@ -258,6 +367,12 @@ def run_pipeline(args) -> int:
                 expand=runtime["expand"],
                 mosaic_block=runtime["mosaic_block"],
                 extend_frames=runtime["render_extend_frames"],
+                motion_compensate=runtime["motion_compensate"],
+                motion_max_gap=runtime["motion_max_gap"],
+                motion_singleton_frames=runtime["motion_singleton_frames"],
+                motion_min_points=runtime["motion_min_points"],
+                motion_anchor=runtime["motion_anchor"],
+                refine_face_boxes=bool(runtime.get("refine_face_boxes", True)),
                 encoder=args.encoder,
             )
         else:
@@ -265,16 +380,8 @@ def run_pipeline(args) -> int:
             shutil.copy2(video_path, draft_path)
             print("[Render] No selected events; copied source as masked_draft.mp4")
     else:
-        print("[Render] --skip-render: skipped")
-
-    if review_ev and not args.no_review_pack:
-        export_review_pack(video_path, review_dir, review_ev)
-        write_confirmed_events_template(review_dir, video_path)
-        print(f"[Review] {len(review_ev)} events pending -> {review_dir}")
-    elif review_ev:
-        print(f"[Review] {len(review_ev)} events pending; review pack skipped")
-    else:
-        print("[Review] No events need review")
+        reason = "--review-only" if args.review_only else "--skip-render"
+        print(f"[Render] {reason}: skipped")
 
     report = {
         "video": video_path,
@@ -284,10 +391,13 @@ def run_pipeline(args) -> int:
         "events_total": len(events),
         "auto_masked": len(auto_ev),
         "pending_review": len(review_ev),
+        "pending_mask_review": timeline_review_pending,
         "low_conf_logged": len(low_ev),
         "rendered_events": len(render_ev),
         "rendered_review": runtime["mask_review"],
         "rendered_low_conf": runtime["mask_lowconf"],
+        "edge_review_candidates": len(edge_review_ev),
+        "low_conf_review_candidates": low_conf_promoted,
         "builder_stats": builder_stats,
         "stitch_stats": {
             "track_count": stitch_stats["track_count"],
@@ -302,23 +412,27 @@ def run_pipeline(args) -> int:
         "production_events": "behavior_events.json",
         "output_dir": out_dir,
         "masked_draft": draft_path,
-        "review_dir": review_dir if review_ev else None,
-        "delivery_ready": len(review_ev) == 0 or runtime["mask_review"],
-        "morning_action": "none" if not review_ev else f"streamlit run review_ui.py -- --review-dir {review_dir}",
+        "review_dir": review_dir if timeline_review_pending else None,
+        "mask_timeline": mask_timeline_path,
+        "review_unit": "mask_timeline_proposal" if runtime.get("timeline_review", True) else "face_event",
+        "delivery_ready": timeline_review_pending == 0,
+        "morning_action": "none" if not timeline_review_pending else f"streamlit run review_ui.py -- --review-dir {review_dir}",
     }
     report_path = os.path.join(out_dir, "review_report.json")
     with open(report_path, "w", encoding="utf-8") as f:
         json.dump(report, f, ensure_ascii=False, indent=2)
 
-    if report["delivery_ready"]:
+    if report["delivery_ready"] and os.path.isfile(draft_path):
         final_path = os.path.join(out_dir, "final.mp4")
         import shutil
         shutil.copy2(draft_path, final_path)
         print("[done] No Review events; final.mp4 ready")
+    elif timeline_review_pending:
+        print("[done] Review events pending; use masked_draft.mp4 for preview and run confirm.py after review")
 
     print(f"\n[done] Output: {out_dir}")
     print("  identity_clusters.json | behavior_events.json | review_report.json")
-    if review_ev:
+    if timeline_review_pending:
         print(f'  Morning: streamlit run review_ui.py -- --review-dir "{review_dir}"')
     return 0
 
