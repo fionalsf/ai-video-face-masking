@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import json
 import os
+import subprocess
 import sys
 import time
 from pathlib import Path
@@ -21,6 +22,7 @@ from event_quality import (
     load_event_quality,
     quality_by_event_id,
 )
+from mask_timeline import generate_mask_review_contact_sheet
 from review_stats import REPORT_NAME, STATISTICS_NAME, load_review_report, update_review_report
 
 STATUS_ACCEPTED = "accepted"
@@ -33,6 +35,8 @@ FINAL_STATUSES = ACCEPT_STATUSES | {STATUS_REJECTED}
 
 PREVIEW_MAX_HEIGHT_PX = 360
 SIDEBAR_WINDOW = 8
+PREFETCH_STATUS_NAME = "preview_prefetch_status.json"
+PREFETCH_LOCK_NAME = "preview_prefetch.lock"
 
 
 def parse_output_dir() -> str:
@@ -270,10 +274,151 @@ def media_paths(output_dir: str, event_id: str, ev: dict | None = None) -> tuple
     gif = os.path.join(output_dir, "event_gifs", f"{event_id}.gif")
     contact = sheet if os.path.isfile(sheet) else None
     if contact is None:
+        contact = ensure_lazy_contact_sheet(output_dir, event_id)
+    if contact is None:
         preview = os.path.join(output_dir, "event_previews", f"{event_id}.jpg")
         contact = preview if os.path.isfile(preview) else None
     gif_path = gif if os.path.isfile(gif) else None
     return contact, gif_path
+
+
+def _pending_doc_path(output_dir: str) -> str:
+    return os.path.join(output_dir, "pending_events.json")
+
+
+@st.cache_data(show_spinner=False)
+def _load_json_cached(path: str, mtime: float) -> dict:
+    del mtime
+    with open(path, encoding="utf-8-sig") as f:
+        return json.load(f)
+
+
+def _load_pending_doc(output_dir: str) -> dict:
+    path = _pending_doc_path(output_dir)
+    if not os.path.isfile(path):
+        return {}
+    return _load_json_cached(path, os.path.getmtime(path))
+
+
+def _resolve_timeline_path(output_dir: str) -> str | None:
+    pending = _load_pending_doc(output_dir)
+    rel = pending.get("timeline") or "mask_timeline.json"
+    candidates = []
+    if os.path.isabs(str(rel)):
+        candidates.append(str(rel))
+    else:
+        candidates.append(os.path.join(output_dir, str(rel)))
+        candidates.append(os.path.join(os.path.dirname(output_dir), str(rel)))
+    for path in candidates:
+        if os.path.isfile(path):
+            return path
+    return None
+
+
+def _load_review_timeline(output_dir: str) -> dict | None:
+    path = _resolve_timeline_path(output_dir)
+    if not path:
+        return None
+    return _load_json_cached(path, os.path.getmtime(path))
+
+
+def ensure_lazy_contact_sheet(output_dir: str, event_id: str) -> str | None:
+    sheet = os.path.join(output_dir, "event_contact_sheet", f"{event_id}.jpg")
+    if os.path.isfile(sheet):
+        return sheet
+    timeline = _load_review_timeline(output_dir)
+    if not timeline:
+        return None
+    with st.spinner("Generating preview..."):
+        return generate_mask_review_contact_sheet(timeline, output_dir, event_id)
+
+
+def _prefetch_status_path(output_dir: str) -> str:
+    return os.path.join(output_dir, PREFETCH_STATUS_NAME)
+
+
+def load_prefetch_status(output_dir: str) -> dict:
+    path = _prefetch_status_path(output_dir)
+    if not os.path.isfile(path):
+        return {}
+    try:
+        with open(path, encoding="utf-8-sig") as f:
+            return json.load(f)
+    except (OSError, json.JSONDecodeError):
+        return {}
+
+
+def _prefetch_lock_active(output_dir: str, stale_sec: int = 21600) -> bool:
+    path = os.path.join(output_dir, PREFETCH_LOCK_NAME)
+    if not os.path.isfile(path):
+        return False
+    try:
+        return (time.time() - os.path.getmtime(path)) < stale_sec
+    except OSError:
+        return True
+
+
+def start_background_preview_prefetch(output_dir: str, start_index: int) -> None:
+    session_key = f"preview_prefetch_started::{output_dir}"
+    if st.session_state.get(session_key):
+        return
+    if _prefetch_lock_active(output_dir):
+        st.session_state[session_key] = True
+        return
+
+    pending = _load_pending_doc(output_dir)
+    events = pending.get("events") or []
+    if not events:
+        return
+    status = load_prefetch_status(output_dir)
+    if status.get("state") == "complete":
+        sheet_dir = os.path.join(output_dir, "event_contact_sheet")
+        generated = len([name for name in os.listdir(sheet_dir)]) if os.path.isdir(sheet_dir) else 0
+        if generated >= len(events):
+            st.session_state[session_key] = True
+            return
+
+    script = os.path.join(os.path.dirname(os.path.abspath(__file__)), "prefetch_review_previews.py")
+    if not os.path.isfile(script):
+        return
+    cmd = [
+        sys.executable,
+        script,
+        "--review-dir",
+        output_dir,
+        "--start-index",
+        str(max(0, int(start_index))),
+    ]
+    try:
+        kwargs = {
+            "cwd": os.path.dirname(script),
+            "stdout": subprocess.DEVNULL,
+            "stderr": subprocess.DEVNULL,
+            "stdin": subprocess.DEVNULL,
+            "close_fds": True,
+        }
+        if os.name == "nt":
+            kwargs["creationflags"] = subprocess.CREATE_NO_WINDOW
+        subprocess.Popen(cmd, **kwargs)
+        st.session_state[session_key] = True
+    except OSError:
+        return
+
+
+def render_prefetch_status(output_dir: str) -> None:
+    status = load_prefetch_status(output_dir)
+    if not status:
+        st.caption("Preview prefetch: starting")
+        return
+    state = status.get("state", "unknown")
+    total = int(status.get("total") or 0)
+    done = int(status.get("done") or 0)
+    skipped = int(status.get("skipped") or 0)
+    completed = min(total, done + skipped)
+    if total > 0:
+        st.caption(f"Preview prefetch: {state} {completed}/{total}")
+    else:
+        st.caption(f"Preview prefetch: {state}")
 
 
 def status_icon(status: str | None) -> str:
@@ -544,6 +689,7 @@ def main():
     decisions = st.session_state.decisions
     stats = count_stats(all_events, decisions)
     st.session_state.view_idx = min(st.session_state.view_idx, len(all_events) - 1)
+    start_background_preview_prefetch(OUTPUT_DIR, st.session_state.view_idx + 1)
 
     video_name = os.path.basename(video_path) if video_path else Path(OUTPUT_DIR).name
 
@@ -579,6 +725,7 @@ def main():
     with st.sidebar:
         st.header("Event List")
         st.caption("Fast window view; use jump for far events")
+        render_prefetch_status(OUTPUT_DIR)
         st.session_state.auto_advance = st.checkbox(
             "Auto-advance after decision",
             value=st.session_state.auto_advance,

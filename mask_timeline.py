@@ -489,7 +489,8 @@ def _apply_mosaic(frame: np.ndarray, bbox: list[float], expand: float = 0.20) ->
     sw, sh = max(1, rw // 12), max(1, rh // 12)
     small = cv2.resize(roi, (sw, sh), interpolation=cv2.INTER_NEAREST)
     frame[iy1:iy2, ix1:ix2] = cv2.resize(small, (rw, rh), interpolation=cv2.INTER_NEAREST)
-    cv2.rectangle(frame, (ix1, iy1), (ix2, iy2), (0, 0, 255), 2)
+    border = max(8, int(round(min(w, h) * 0.012)))
+    cv2.rectangle(frame, (ix1, iy1), (ix2, iy2), (0, 0, 255), border)
 
 
 def _imwrite_jpg(path: str, img, quality: int = 88) -> bool:
@@ -499,6 +500,106 @@ def _imwrite_jpg(path: str, img, quality: int = 88) -> bool:
     with open(path, "wb") as f:
         f.write(buf.tobytes())
     return True
+
+
+def _build_preview_sheet(
+    timeline: dict,
+    proposal_id: str,
+    *,
+    expand: float = 0.20,
+    max_samples: int = 4,
+    target_w: int = 420,
+) -> np.ndarray | None:
+    video_path = timeline["video"]
+    proposal = next(
+        (p for p in timeline.get("proposals", []) if str(p.get("proposal_id")) == str(proposal_id)),
+        None,
+    )
+    if proposal is None:
+        return None
+
+    entries = sorted(
+        (
+            e for e in timeline.get("entries", [])
+            if str(e.get("proposal_id")) == str(proposal_id)
+        ),
+        key=lambda e: int(e["frame"]),
+    )
+    if not entries:
+        return None
+
+    sample_indices = np.linspace(0, len(entries) - 1, min(max_samples, len(entries)), dtype=int)
+    sample_frames: list[dict] = []
+    seen_frames: set[int] = set()
+    for sample_i in sample_indices:
+        entry = entries[int(sample_i)]
+        frame_idx = int(entry["frame"])
+        if frame_idx in seen_frames:
+            continue
+        seen_frames.add(frame_idx)
+        sample_frames.append(entry)
+
+    tiles = []
+    cap = cv2.VideoCapture(video_path)
+    try:
+        for entry in sample_frames:
+            frame = _read_frame(cap, int(entry["frame"]))
+            if frame is None:
+                continue
+            _apply_mosaic(frame, entry["bbox"], expand=expand)
+            label = f"{proposal_id}  {float(entry.get('timestamp') or 0.0):.2f}s"
+            cv2.putText(
+                frame,
+                label,
+                (12, 32),
+                cv2.FONT_HERSHEY_SIMPLEX,
+                0.85,
+                (0, 0, 255),
+                2,
+                cv2.LINE_AA,
+            )
+            h, w = frame.shape[:2]
+            target_h = max(1, int(round(h * target_w / w)))
+            tiles.append(cv2.resize(frame, (target_w, target_h), interpolation=cv2.INTER_AREA))
+    finally:
+        cap.release()
+
+    if not tiles:
+        return None
+
+    rows = []
+    for i in range(0, len(tiles), 2):
+        row_tiles = tiles[i:i + 2]
+        if len(row_tiles) == 1:
+            row_tiles.append(np.zeros_like(row_tiles[0]))
+        rows.append(np.hstack(row_tiles))
+    return np.vstack(rows)
+
+
+def generate_mask_review_contact_sheet(
+    timeline: dict,
+    review_dir: str,
+    proposal_id: str,
+    *,
+    expand: float = 0.20,
+    max_samples: int = 4,
+    force: bool = False,
+) -> str | None:
+    sheet_dir = os.path.join(review_dir, "event_contact_sheet")
+    os.makedirs(sheet_dir, exist_ok=True)
+    path = os.path.join(sheet_dir, f"{proposal_id}.jpg")
+    if os.path.isfile(path) and not force:
+        return path
+
+    sheet = _build_preview_sheet(
+        timeline,
+        proposal_id,
+        expand=expand,
+        max_samples=max_samples,
+    )
+    if sheet is None:
+        return None
+    return path if _imwrite_jpg(path, sheet) else None
 
 
 def _main_review_filter(proposal: dict) -> tuple[bool, str]:
@@ -529,10 +630,10 @@ def export_mask_review_pack(
     *,
     expand: float = 0.20,
     max_samples: int = 4,
+    lazy_previews: bool = True,
 ) -> str:
     os.makedirs(review_dir, exist_ok=True)
     sheet_dir = os.path.join(review_dir, "event_contact_sheet")
-    os.makedirs(sheet_dir, exist_ok=True)
 
     video_path = timeline["video"]
     entries_by_proposal: dict[str, list[dict]] = defaultdict(list)
@@ -550,84 +651,30 @@ def export_mask_review_pack(
             review_proposals.append(row)
         else:
             suppressed.append(row)
-    task_by_frame: dict[int, list[dict]] = defaultdict(list)
-    for proposal in review_proposals:
-        pid = proposal["proposal_id"]
-        entries = sorted(entries_by_proposal.get(pid, []), key=lambda e: int(e["frame"]))
-        if not entries:
-            continue
-        sample_indices = np.linspace(0, len(entries) - 1, min(max_samples, len(entries)), dtype=int)
-        seen_frames: set[int] = set()
-        for sample_i in sample_indices:
-            entry = entries[int(sample_i)]
-            frame_idx = int(entry["frame"])
-            if frame_idx in seen_frames:
-                continue
-            seen_frames.add(frame_idx)
-            task_by_frame[frame_idx].append({"proposal": proposal, "entry": entry})
-
-    tiles_by_pid: dict[str, list[np.ndarray]] = defaultdict(list)
-    if task_by_frame:
-        cap = cv2.VideoCapture(video_path)
-        try:
-            min_frame = min(task_by_frame)
-            max_frame = max(task_by_frame)
-            cap.set(cv2.CAP_PROP_POS_FRAMES, min_frame)
-            frame_idx = min_frame
-            while frame_idx <= max_frame:
-                ok = cap.grab()
-                if not ok:
-                    break
-                tasks = task_by_frame.get(frame_idx)
-                if tasks:
-                    ok, frame = cap.retrieve()
-                    if not ok or frame is None:
-                        break
-                    for task in tasks:
-                        proposal = task["proposal"]
-                        entry = task["entry"]
-                        tile = frame.copy()
-                        _apply_mosaic(tile, entry["bbox"], expand=expand)
-                        label = f"{proposal['proposal_id']}  {entry['timestamp']:.2f}s"
-                        cv2.putText(
-                            tile,
-                            label,
-                            (12, 32),
-                            cv2.FONT_HERSHEY_SIMPLEX,
-                            0.85,
-                            (0, 0, 255),
-                            2,
-                            cv2.LINE_AA,
-                        )
-                        target_w = 420
-                        h, w = tile.shape[:2]
-                        target_h = max(1, int(round(h * target_w / w)))
-                        small = cv2.resize(tile, (target_w, target_h), interpolation=cv2.INTER_AREA)
-                        tiles_by_pid[proposal["proposal_id"]].append(small)
-                frame_idx += 1
-        finally:
-            cap.release()
 
     pending = []
     for proposal in review_proposals:
         pid = proposal["proposal_id"]
-        resized = tiles_by_pid.get(pid) or []
-        if not resized:
+        entries = entries_by_proposal.get(pid) or []
+        if not entries:
             continue
-        rows = []
-        for i in range(0, len(resized), 2):
-            row_tiles = resized[i:i + 2]
-            if len(row_tiles) == 1:
-                row_tiles.append(np.zeros_like(row_tiles[0]))
-            rows.append(np.hstack(row_tiles))
-        sheet = np.vstack(rows)
         fname = f"{pid}.jpg"
-        _imwrite_jpg(os.path.join(sheet_dir, fname), sheet)
+        if not lazy_previews:
+            os.makedirs(sheet_dir, exist_ok=True)
+            generate_mask_review_contact_sheet(
+                timeline,
+                review_dir,
+                pid,
+                expand=expand,
+                max_samples=max_samples,
+                force=True,
+            )
         pending.append({
             **proposal,
             "event_id": pid,
             "previews": None,
             "contact_sheet": os.path.join("event_contact_sheet", fname).replace("\\", "/"),
+            "preview_mode": "lazy" if lazy_previews else "eager",
         })
 
     payload = {
@@ -641,6 +688,7 @@ def export_mask_review_pack(
             "edge_partial_min_duration_sec": MAIN_REVIEW_EDGE_MIN_DURATION,
             "low_conf_min_peak": MAIN_REVIEW_LOW_CONF_MIN_PEAK,
             "low_conf_edge_min_peak": MAIN_REVIEW_LOW_CONF_EDGE_MIN_PEAK,
+            "lazy_previews": lazy_previews,
         },
         "events": pending,
     }

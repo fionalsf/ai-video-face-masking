@@ -21,6 +21,11 @@ def parse_args():
     p = argparse.ArgumentParser(description="Export v2 mask proposal review pack from face_events.json")
     p.add_argument("--output-dir", required=True, help="Pipeline output directory containing face_events.json")
     p.add_argument("--expand", type=float, default=None, help="Preview mosaic expansion ratio")
+    p.add_argument(
+        "--eager-previews",
+        action="store_true",
+        help="Generate all contact sheets immediately instead of lazy UI generation",
+    )
     return p.parse_args()
 
 
@@ -55,6 +60,7 @@ def main() -> int:
         timeline,
         review_dir,
         expand=float(args.expand if args.expand is not None else runtime.get("expand") or 0.20),
+        lazy_previews=not args.eager_previews,
     )
     with open(pending_path, encoding="utf-8-sig") as f:
         pending = json.load(f)

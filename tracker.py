@@ -5,6 +5,7 @@ from __future__ import annotations
 from collections import defaultdict
 from types import SimpleNamespace
 
+import cv2
 import numpy as np
 from tqdm import tqdm
 from ultralytics import YOLO
@@ -30,26 +31,58 @@ def gpu_sparse_detect(
     """Return sparse[frame_idx] = [(bbox, conf), ...]."""
     sparse: dict[int, list] = defaultdict(list)
     interval = max(1, interval)
-    results = model.predict(
-        source=video_path,
-        stream=True,
-        conf=conf,
-        imgsz=imgsz,
-        device=device,
-        half=device != "cpu",
-        vid_stride=interval,
-        verbose=False,
-    )
     total = (meta["frames"] + interval - 1) // interval if meta["frames"] > 0 else None
-    for proc_idx, r in enumerate(tqdm(results, total=total, unit="f", desc="GPU detect")):
-        frame_idx = proc_idx * interval
-        if r.boxes is None or len(r.boxes) == 0:
-            continue
-        xyxy = r.boxes.xyxy.cpu().numpy()
-        confs = r.boxes.conf.cpu().numpy() if r.boxes.conf is not None else None
-        for j in range(len(xyxy)):
-            c = float(confs[j]) if confs is not None else 1.0
-            sparse[frame_idx].append((xyxy[j].tolist(), c))
+
+    def consume_batch(frames: list[np.ndarray], frame_indices: list[int]) -> None:
+        if not frames:
+            return
+        results = model.predict(
+            source=frames,
+            stream=False,
+            conf=conf,
+            imgsz=imgsz,
+            device=device,
+            half=device != "cpu",
+            verbose=False,
+        )
+        for frame_idx, r in zip(frame_indices, results):
+            if r.boxes is None or len(r.boxes) == 0:
+                continue
+            xyxy = r.boxes.xyxy.cpu().numpy()
+            confs = r.boxes.conf.cpu().numpy() if r.boxes.conf is not None else None
+            for j in range(len(xyxy)):
+                c = float(confs[j]) if confs is not None else 1.0
+                sparse[int(frame_idx)].append((xyxy[j].tolist(), c))
+
+    batch_size = 1
+    cap = cv2.VideoCapture(video_path)
+    if not cap.isOpened():
+        raise RuntimeError(f"Unable to open video: {video_path}")
+
+    frames: list[np.ndarray] = []
+    frame_indices: list[int] = []
+    pbar = tqdm(total=total, unit="f", desc="GPU detect")
+    try:
+        frame_idx = 0
+        while True:
+            ok, frame = cap.read()
+            if not ok:
+                break
+            if frame_idx % interval == 0:
+                frames.append(frame)
+                frame_indices.append(frame_idx)
+                if len(frames) >= batch_size:
+                    consume_batch(frames, frame_indices)
+                    pbar.update(len(frames))
+                    frames.clear()
+                    frame_indices.clear()
+            frame_idx += 1
+        if frames:
+            consume_batch(frames, frame_indices)
+            pbar.update(len(frames))
+    finally:
+        pbar.close()
+        cap.release()
     return sparse
 
 

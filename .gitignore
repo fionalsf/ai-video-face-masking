@@ -15,6 +15,7 @@ output*/
 output_*/
 *_output/
 v2_*_outputs/
+v3_*_outputs/
 *.jpg
 *.jpeg
 *.png
