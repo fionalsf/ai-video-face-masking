@@ -728,6 +728,8 @@ def render_video(
     encoder: str = "auto",
     edge_partial_face: bool = False,
     refine_face_boxes: bool = False,
+    mask_scale_divisor: int = 8,
+    filter_threads: int = 1,
 ) -> None:
     ffmpeg = shutil.which("ffmpeg")
     if ffmpeg is None:
@@ -735,7 +737,8 @@ def render_video(
 
     w, h = meta["width"], meta["height"]
     total = meta["frames"]
-    mw, mh = max(2, w // 4), max(2, h // 4)
+    mask_scale_divisor = max(4, int(mask_scale_divisor or 8))
+    mw, mh = max(2, w // mask_scale_divisor), max(2, h // mask_scale_divisor)
     sx, sy = mw / w, mh / h
     block = max(2, mosaic_block)
     dw, dh = max(1, w // block), max(1, h // block)
@@ -747,15 +750,17 @@ def render_video(
         f"[pixf][mask]alphamerge[pixa];"
         f"[base][pixa]overlay=format=auto[out]"
     )
+    filter_threads = max(1, int(filter_threads or 1))
     cmd = [
-        ffmpeg, "-y", "-loglevel", "error", "-threads", "2", "-filter_threads", "1",
+        ffmpeg, "-y", "-loglevel", "error", "-threads", "2", "-filter_threads", str(filter_threads),
         "-i", input_video,
         "-f", "rawvideo", "-pix_fmt", "gray", "-s", f"{mw}x{mh}",
         "-r", meta["fps_str"], "-thread_queue_size", "64", "-i", "-",
-        "-filter_complex", fc, "-map", "[out]", "-c:v", enc,
+        "-filter_complex", fc, "-map", "[out]",
     ]
+    cmd += ["-c:v", enc]
     if "nvenc" in enc:
-        cmd += ["-preset", "p4", "-b:v", bitrate]
+        cmd += ["-preset", "p1", "-b:v", bitrate]
     else:
         cmd += ["-preset", "veryfast", "-b:v", bitrate]
     cmd.append(output_video)
@@ -766,10 +771,10 @@ def render_video(
     last_det = (max(render) + 1) if render else 0
     cap = max(total, last_det) + 10 if total > 0 else 10**9
     frame_idx = 0
+    zero_mask_bytes = bytes(mw * mh)
     pbar = tqdm(total=total if total > 0 else None, unit="f", desc="渲染")
     try:
         while frame_idx < cap:
-            mask = np.zeros((mh, mw), np.uint8)
             boxes = list(render.get(frame_idx, []))
             if frame_iter is not None:
                 try:
@@ -781,21 +786,26 @@ def render_video(
                         boxes = [_refine_face_bbox_with_skin(frame, box) for box in boxes]
                     if edge_partial_face:
                         boxes.extend(_edge_partial_face_boxes(frame))
-            for box in boxes:
-                x1, y1, x2, y2 = box
-                bw, bh = x2 - x1, y2 - y1
-                ex1 = int(round((x1 - bw * expand) * sx))
-                ey1 = int(round((y1 - bh * expand) * sy))
-                ex2 = int(round((x2 + bw * expand) * sx))
-                ey2 = int(round((y2 + bh * expand) * sy))
-                ex1 = max(0, min(mw - 1, ex1))
-                ey1 = max(0, min(mh - 1, ey1))
-                ex2 = max(0, min(mw, ex2))
-                ey2 = max(0, min(mh, ey2))
-                if ex2 > ex1 and ey2 > ey1:
-                    mask[ey1:ey2, ex1:ex2] = 255
+            if boxes:
+                mask = np.zeros((mh, mw), np.uint8)
+                for box in boxes:
+                    x1, y1, x2, y2 = box
+                    bw, bh = x2 - x1, y2 - y1
+                    ex1 = int(round((x1 - bw * expand) * sx))
+                    ey1 = int(round((y1 - bh * expand) * sy))
+                    ex2 = int(round((x2 + bw * expand) * sx))
+                    ey2 = int(round((y2 + bh * expand) * sy))
+                    ex1 = max(0, min(mw - 1, ex1))
+                    ey1 = max(0, min(mh - 1, ey1))
+                    ex2 = max(0, min(mw, ex2))
+                    ey2 = max(0, min(mh, ey2))
+                    if ex2 > ex1 and ey2 > ey1:
+                        mask[ey1:ey2, ex1:ex2] = 255
+                payload = mask.tobytes()
+            else:
+                payload = zero_mask_bytes
             try:
-                proc.stdin.write(mask.tobytes())
+                proc.stdin.write(payload)
             except (BrokenPipeError, OSError):
                 break
             frame_idx += 1

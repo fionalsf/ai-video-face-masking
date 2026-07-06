@@ -23,6 +23,7 @@ MAX_EDGE_GAP_COMPUTE_SEC = 600.0
 MAX_SUCCESSOR_CANDIDATES = 25
 DEFAULT_HSV_APPEARANCE_ASSIGN_MIN = 0.88
 DEFAULT_ARCFACE_APPEARANCE_ASSIGN_MIN = 0.45
+HSV_ASSIGNMENT_GAP_MAX_SEC = 90.0
 BIG_COST = 1e6
 
 
@@ -219,6 +220,22 @@ def _is_mutual_best_predecessor(
     return best_i == i
 
 
+def _best_predecessors(weight: np.ndarray, n: int) -> list[int]:
+    best: list[int] = [-1] * n
+    for j in range(n):
+        best_i = -1
+        best_w = -1.0
+        for i in range(n):
+            if i == j:
+                continue
+            w = float(weight[i, j])
+            if w > best_w:
+                best_w = w
+                best_i = i
+        best[j] = best_i
+    return best
+
+
 def global_identity_matching(
     profiles: dict[int, Any],
     embedder: AppearanceEmbedder,
@@ -236,6 +253,7 @@ def global_identity_matching(
             DEFAULT_ARCFACE_APPEARANCE_ASSIGN_MIN if embedder.is_arcface
             else DEFAULT_HSV_APPEARANCE_ASSIGN_MIN
         )
+    edge_gap_compute_sec = MAX_EDGE_GAP_COMPUTE_SEC if embedder.is_arcface else HSV_ASSIGNMENT_GAP_MAX_SEC
 
     track_ids = sorted(profiles)
     n = len(track_ids)
@@ -251,7 +269,7 @@ def global_identity_matching(
                 continue
             if nxt.start_time < prev.end_time - 0.05:
                 continue
-            if nxt.start_time - prev.end_time > MAX_EDGE_GAP_COMPUTE_SEC:
+            if nxt.start_time - prev.end_time > edge_gap_compute_sec:
                 break
             feats = compute_edge_features(prev, nxt, embedder, temporal_tau=temporal_tau)
             if feats is None:
@@ -267,6 +285,11 @@ def global_identity_matching(
     assign = _hungarian_assignment(cost)
     assigned_edges: list[dict[str, Any]] = []
     merge_decisions: list[dict[str, Any]] = []
+    edge_lookup = {
+        (int(e["from_track_id"]), int(e["to_track_id"])): e
+        for e in all_edges
+    }
+    best_pred = _best_predecessors(weight, n)
 
     for i in range(n):
         j = int(assign[i])
@@ -274,10 +297,7 @@ def global_identity_matching(
             continue
         w = float(weight[i, j])
         prev_tid, nxt_tid = track_ids[i], track_ids[j]
-        edge_record = next(
-            (e for e in all_edges if e["from_track_id"] == prev_tid and e["to_track_id"] == nxt_tid),
-            None,
-        )
+        edge_record = edge_lookup.get((prev_tid, nxt_tid))
         if edge_record is None:
             continue
         app = float(edge_record.get("appearance_score") or 0)
@@ -289,7 +309,7 @@ def global_identity_matching(
             accepted = (
                 w >= assignment_score_min
                 and app >= appearance_assign_min
-                and _is_mutual_best_predecessor(i, j, weight, n)
+                and best_pred[j] == i
             )
         else:
             # HSV lacks discrimination; lean on spatial/motion/temporal locality
@@ -297,8 +317,8 @@ def global_identity_matching(
                 w >= assignment_score_min
                 and spatial >= 0.45
                 and motion >= 0.30
-                and gap <= 90.0
-                and _is_mutual_best_predecessor(i, j, weight, n)
+                and gap <= HSV_ASSIGNMENT_GAP_MAX_SEC
+                and best_pred[j] == i
             )
         edge_record["assigned"] = accepted
         edge_record["assignment_method"] = "hungarian_global_matching"
@@ -316,7 +336,7 @@ def global_identity_matching(
             "reason": (
                 "global_optimal_match" if accepted
                 else "below_combined_threshold" if w < assignment_score_min
-                else "not_mutual_best_predecessor" if not _is_mutual_best_predecessor(i, j, weight, n)
+                else "not_mutual_best_predecessor" if best_pred[j] != i
                 else "hsv_spatial_motion_gap_filter" if not embedder.is_arcface
                 else "below_appearance_threshold"
             ),

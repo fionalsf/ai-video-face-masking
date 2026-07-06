@@ -24,6 +24,10 @@ def parse_args():
     p.add_argument("--expand", type=float, default=None)
     p.add_argument("--mosaic-block", type=int, default=22)
     p.add_argument("--encoder", default="auto")
+    p.add_argument("--mask-scale-divisor", type=int, default=8)
+    p.add_argument("--filter-threads", type=int, default=1)
+    p.add_argument("--final-name", default="final.mp4", help="Output video filename inside --output-dir.")
+    p.add_argument("--no-audio", action="store_true", help="Skip audio mux for faster render tests.")
     return p.parse_args()
 
 
@@ -288,9 +292,10 @@ def review_requires_explicit_accept(ev: dict, meta: dict | None = None) -> bool:
 
 
 def run_confirm(args) -> int:
+    confirm_started = time.perf_counter()
     out_dir = os.path.abspath(args.output_dir)
     review_dir = os.path.join(out_dir, "review")
-    final = os.path.join(out_dir, "final.mp4")
+    final = os.path.join(out_dir, args.final_name)
     report_path = os.path.join(out_dir, "review_report.json")
 
     confirmed = load_confirmed(review_dir)
@@ -319,6 +324,7 @@ def run_confirm(args) -> int:
         if not render:
             shutil.copy2(video_path, final)
         else:
+            render_started = time.perf_counter()
             tmp = final + ".tmp.mp4"
             render_video(
                 video_path,
@@ -329,8 +335,14 @@ def run_confirm(args) -> int:
                 mosaic_block=args.mosaic_block,
                 encoder=args.encoder,
                 refine_face_boxes=False,
+                mask_scale_divisor=args.mask_scale_divisor,
+                filter_threads=args.filter_threads,
             )
-            mux_audio(tmp, video_path, final)
+            if args.no_audio:
+                os.replace(tmp, final)
+            else:
+                mux_audio(tmp, video_path, final)
+            timeline_stats["render_wall_sec"] = round(time.perf_counter() - render_started, 3)
 
         if os.path.isfile(report_path):
             with open(report_path, encoding="utf-8") as f:
@@ -343,6 +355,7 @@ def run_confirm(args) -> int:
             "final_video": final,
             "confirm_mode": "mask_timeline_v2",
             "timeline_confirm_stats": timeline_stats,
+            "confirm_total_sec": round(time.perf_counter() - confirm_started, 3),
             "review_summary": confirmed.get("summary", {}) if isinstance(confirmed, dict) else {},
         })
         with open(report_path, "w", encoding="utf-8") as f:
@@ -405,8 +418,13 @@ def run_confirm(args) -> int:
         tmp = final + ".tmp.mp4"
         render_video(video_path, tmp, render, meta, expand=expand,
                      mosaic_block=args.mosaic_block, encoder=args.encoder,
-                     refine_face_boxes=bool(runtime.get("refine_face_boxes", True)))
-        mux_audio(tmp, video_path, final)
+                     refine_face_boxes=bool(runtime.get("refine_face_boxes", True)),
+                     mask_scale_divisor=args.mask_scale_divisor,
+                     filter_threads=args.filter_threads)
+        if args.no_audio:
+            os.replace(tmp, final)
+        else:
+            mux_audio(tmp, video_path, final)
 
     if os.path.isfile(report_path):
         with open(report_path, encoding="utf-8") as f:

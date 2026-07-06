@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from collections import defaultdict
 from types import SimpleNamespace
+import time
 
 import cv2
 import numpy as np
@@ -27,24 +28,39 @@ def gpu_sparse_detect(
     conf: float,
     imgsz: int,
     interval: int,
+    batch_size: int = 4,
 ) -> dict[int, list[tuple[list[float], float]]]:
     """Return sparse[frame_idx] = [(bbox, conf), ...]."""
     sparse: dict[int, list] = defaultdict(list)
     interval = max(1, interval)
+    batch_size = max(1, int(batch_size))
     total = (meta["frames"] + interval - 1) // interval if meta["frames"] > 0 else None
+    predict_sec = 0.0
 
     def consume_batch(frames: list[np.ndarray], frame_indices: list[int]) -> None:
+        nonlocal predict_sec
         if not frames:
             return
-        results = model.predict(
-            source=frames,
-            stream=False,
-            conf=conf,
-            imgsz=imgsz,
-            device=device,
-            half=device != "cpu",
-            verbose=False,
-        )
+        started = time.perf_counter()
+        try:
+            results = model.predict(
+                source=frames,
+                stream=False,
+                conf=conf,
+                imgsz=imgsz,
+                device=device,
+                half=device != "cpu",
+                verbose=False,
+            )
+        except (MemoryError, RuntimeError) as exc:
+            if len(frames) <= 1:
+                raise
+            mid = len(frames) // 2
+            print(f"[detect] batch fallback {len(frames)} -> {mid}+{len(frames) - mid}: {type(exc).__name__}")
+            consume_batch(frames[:mid], frame_indices[:mid])
+            consume_batch(frames[mid:], frame_indices[mid:])
+            return
+        predict_sec += time.perf_counter() - started
         for frame_idx, r in zip(frame_indices, results):
             if r.boxes is None or len(r.boxes) == 0:
                 continue
@@ -54,7 +70,6 @@ def gpu_sparse_detect(
                 c = float(confs[j]) if confs is not None else 1.0
                 sparse[int(frame_idx)].append((xyxy[j].tolist(), c))
 
-    batch_size = 1
     cap = cv2.VideoCapture(video_path)
     if not cap.isOpened():
         raise RuntimeError(f"Unable to open video: {video_path}")
@@ -65,10 +80,10 @@ def gpu_sparse_detect(
     try:
         frame_idx = 0
         while True:
-            ok, frame = cap.read()
-            if not ok:
-                break
             if frame_idx % interval == 0:
+                ok, frame = cap.read()
+                if not ok:
+                    break
                 frames.append(frame)
                 frame_indices.append(frame_idx)
                 if len(frames) >= batch_size:
@@ -76,6 +91,10 @@ def gpu_sparse_detect(
                     pbar.update(len(frames))
                     frames.clear()
                     frame_indices.clear()
+            else:
+                ok = cap.grab()
+                if not ok:
+                    break
             frame_idx += 1
         if frames:
             consume_batch(frames, frame_indices)
@@ -83,6 +102,7 @@ def gpu_sparse_detect(
     finally:
         pbar.close()
         cap.release()
+    print(f"[detect timing] reader=opencv-grab predict={predict_sec:.1f}s")
     return sparse
 
 
@@ -124,6 +144,7 @@ def cpu_byte_track(
     tracker = BYTETracker(targs)
     per_frame: dict[int, list] = {}
 
+    started = time.perf_counter()
     for frame_idx in sorted(sparse_dets):
         items = sparse_dets[frame_idx]
         boxes = [b for b, _ in items]
@@ -141,6 +162,7 @@ def cpu_byte_track(
                 x1, y1, x2, y2, tid, score = row[:6]
                 out.append((int(tid), [x1, y1, x2, y2], float(score)))
         per_frame[frame_idx] = out
+    print(f"[track timing] bytetrack={time.perf_counter() - started:.1f}s")
     return per_frame
 
 
@@ -152,14 +174,15 @@ def run_detect_track(
     conf: float = 0.35,
     imgsz: int = 1280,
     interval: int = 5,
+    batch_size: int = 4,
 ) -> list[dict]:
-    """Full detect+track → flat detection list."""
+    """Full detect+track -> flat detection list."""
     device = resolve_device(device)
     model = YOLO(model_path)
     fps = meta["fps"] or 25.0
 
-    print(f"[1/2] GPU 稀疏检测（interval={interval}, conf={conf}）...")
-    sparse = gpu_sparse_detect(model, video_path, meta, device, conf, imgsz, interval)
+    print(f"[1/2] GPU 稀疏检测（interval={interval}, conf={conf}, batch={batch_size}）...")
+    sparse = gpu_sparse_detect(model, video_path, meta, device, conf, imgsz, interval, batch_size=batch_size)
     n_raw = sum(len(v) for v in sparse.values())
     print(f"[2/2] CPU ByteTrack（{len(sparse)} 帧, {n_raw} 框）...")
     per_frame = cpu_byte_track(sparse)

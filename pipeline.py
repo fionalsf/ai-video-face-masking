@@ -108,11 +108,14 @@ def parse_args():
     p.add_argument("--model", default="models/face.pt", help="YOLO-face weights")
     p.add_argument("--device", default="0", help="GPU id or cpu")
     p.add_argument("--imgsz", type=int, default=None)
+    p.add_argument("--detect-batch", type=int, default=4, help="GPU detection batch size; auto-falls back on memory errors.")
     p.add_argument("--event-gap", type=float, default=1.0, help="Presence segmentation gap (seconds)")
     p.add_argument("--stitch-gap", type=float, default=60.0, help="Temporal soft prior tau for identity graph (sec)")
     p.add_argument("--behavior-gap", type=float, default=8.0, help="Behavior split gap within identity (seconds)")
     p.add_argument("--expand", type=float, default=None)
     p.add_argument("--mosaic-block", type=int, default=None)
+    p.add_argument("--mask-scale-divisor", type=int, default=8, help="Mask pipe resolution divisor for ffmpeg overlay; larger is faster.")
+    p.add_argument("--filter-threads", type=int, default=1, help="FFmpeg filter thread count for mosaic overlay render.")
     p.add_argument("--render-extend-frames", type=int, default=None)
     p.add_argument("--motion-comp", dest="motion_compensate", action="store_true", help="Use optical-flow motion compensation while rendering masks.")
     p.add_argument("--no-motion-comp", dest="motion_compensate", action="store_false", help="Disable optical-flow motion compensation.")
@@ -138,10 +141,13 @@ def resolve_runtime_args(args) -> dict:
     preset = MODE_PRESETS[args.mode]
     return {
         "interval": args.interval if args.interval is not None else preset["interval"],
+        "detect_batch": max(1, int(args.detect_batch or 1)),
         "conf": args.conf if args.conf is not None else preset["conf"],
         "imgsz": args.imgsz if args.imgsz is not None else preset["imgsz"],
         "expand": args.expand if args.expand is not None else preset["expand"],
         "mosaic_block": args.mosaic_block if args.mosaic_block is not None else preset["mosaic_block"],
+        "mask_scale_divisor": max(4, int(args.mask_scale_divisor or 8)),
+        "filter_threads": max(1, int(args.filter_threads or 1)),
         "render_extend_frames": (
             args.render_extend_frames
             if args.render_extend_frames is not None
@@ -186,6 +192,7 @@ def load_or_run_detect_track(args, runtime: dict, video_path: str, meta: dict, o
         conf=runtime["conf"],
         imgsz=runtime["imgsz"],
         interval=runtime["interval"],
+        batch_size=runtime["detect_batch"],
     )
     with open(tracked_path, "w", encoding="utf-8") as f:
         json.dump(detections, f, ensure_ascii=False, indent=2)
@@ -202,6 +209,12 @@ def select_render_events(auto_ev, review_ev, low_ev, runtime: dict) -> list:
 
 
 def run_pipeline(args) -> int:
+    pipeline_started = time.perf_counter()
+    stage_times: dict[str, float] = {}
+
+    def mark_stage(name: str, started: float) -> None:
+        stage_times[name] = round(time.perf_counter() - started, 3)
+
     video_path = os.path.abspath(args.input)
     if not os.path.isfile(video_path):
         print(f"[error] Video not found: {video_path}", file=sys.stderr)
@@ -223,15 +236,19 @@ def run_pipeline(args) -> int:
     )
     print(
         f"[mode] {args.mode} | interval={runtime['interval']} conf={runtime['conf']} "
-        f"imgsz={runtime['imgsz']} mask_review={runtime['mask_review']} "
+        f"imgsz={runtime['imgsz']} detect_batch={runtime['detect_batch']} "
+        f"mask_review={runtime['mask_review']} "
         f"mask_lowconf={runtime['mask_lowconf']} motion_comp={runtime['motion_compensate']} "
         f"edge_partial={runtime['edge_partial_face']}"
     )
 
     print("[1/5] Detection + Tracking...")
+    stage_started = time.perf_counter()
     detections = load_or_run_detect_track(args, runtime, video_path, meta, out_dir)
+    mark_stage("detect_track_sec", stage_started)
 
     print("[2/5] Presence segmentation (Scheme C, debug artifacts)...")
+    stage_started = time.perf_counter()
     builder_stats: dict = {}
     segmentation_events = build_events(
         detections, gap_sec=args.event_gap,
@@ -246,8 +263,10 @@ def run_pipeline(args) -> int:
         segmentation_events, out_dir, video=video_path, fps=float(meta["fps"]),
     )
     print(f"      segmentation events (non-production): {len(segmentation_events)}")
+    mark_stage("presence_segmentation_sec", stage_started)
 
     print("[3/5] Identity stitching...")
+    stage_started = time.perf_counter()
     stitch_stats = run_identity_stitching(
         detections,
         output_dir=out_dir,
@@ -259,8 +278,10 @@ def run_pipeline(args) -> int:
         f" | appearance={stitch_stats['appearance_method']}"
         f" | links={stitch_stats['linked_edge_count']}"
     )
+    mark_stage("identity_stitching_sec", stage_started)
 
     print("[4/5] Identity behavior event builder (production)...")
+    stage_started = time.perf_counter()
     behavior_stats = build_identity_behavior_events(
         detections,
         stitch_stats["clusters"],
@@ -277,7 +298,9 @@ def run_pipeline(args) -> int:
         f"      behavior events: {behavior_stats['behavior_event_count']}"
         f" | target_30_80={behavior_stats['target_in_range']}"
     )
+    mark_stage("behavior_builder_sec", stage_started)
 
+    stage_started = time.perf_counter()
     events = [behavior_event_to_face_event(ev) for ev in behavior_stats["behavior_events"]]
     edge_review_ev = []
     if runtime["edge_partial_face"]:
@@ -295,6 +318,7 @@ def run_pipeline(args) -> int:
     low_conf_promoted = promote_low_conf_review_candidates(video_path, events, meta, runtime)
     if low_conf_promoted:
         print(f"      low-confidence face review candidates: {low_conf_promoted}")
+    mark_stage("candidate_promotion_sec", stage_started)
 
     tiers = events_by_tier(events)
     auto_ev = tiers[TIER_AUTO]
@@ -318,8 +342,10 @@ def run_pipeline(args) -> int:
         }, f, ensure_ascii=False, indent=2)
 
     event_dicts = [e.to_dict() for e in events]
+    stage_started = time.perf_counter()
     mask_timeline = build_mask_timeline(video_path, event_dicts, meta, runtime)
     mask_timeline_path = save_mask_timeline(out_dir, mask_timeline)
+    mark_stage("mask_timeline_sec", stage_started)
     timeline_review_pending = sum(
         1 for p in mask_timeline.get("proposals", [])
         if p.get("source_tier") != TIER_AUTO
@@ -334,6 +360,7 @@ def run_pipeline(args) -> int:
     write_audit_log(out_dir, video_path, auto_ev)
 
     if timeline_review_pending and not args.no_review_pack:
+        stage_started = time.perf_counter()
         if runtime.get("timeline_review", True):
             export_mask_review_pack(
                 mask_timeline,
@@ -348,6 +375,7 @@ def run_pipeline(args) -> int:
             export_review_pack(video_path, review_dir, review_ev)
             write_confirmed_events_template(review_dir, video_path)
         print(f"[Review] {timeline_review_pending} mask proposals pending -> {review_dir}")
+        mark_stage("review_pack_sec", stage_started)
     elif timeline_review_pending:
         print(f"[Review] {timeline_review_pending} mask proposals pending; review pack skipped")
     else:
@@ -355,6 +383,7 @@ def run_pipeline(args) -> int:
 
     draft_path = os.path.join(out_dir, "masked_draft.mp4")
     if not args.skip_render and not args.review_only:
+        stage_started = time.perf_counter()
         render_dicts = [e.to_dict() for e in render_ev]
         if render_dicts:
             print(
@@ -366,6 +395,8 @@ def run_pipeline(args) -> int:
                 video_path, draft_path, render_dicts, meta,
                 expand=runtime["expand"],
                 mosaic_block=runtime["mosaic_block"],
+                mask_scale_divisor=runtime["mask_scale_divisor"],
+                filter_threads=runtime["filter_threads"],
                 extend_frames=runtime["render_extend_frames"],
                 motion_compensate=runtime["motion_compensate"],
                 motion_max_gap=runtime["motion_max_gap"],
@@ -379,6 +410,7 @@ def run_pipeline(args) -> int:
             import shutil
             shutil.copy2(video_path, draft_path)
             print("[Render] No selected events; copied source as masked_draft.mp4")
+        mark_stage("draft_render_sec", stage_started)
     else:
         reason = "--review-only" if args.review_only else "--skip-render"
         print(f"[Render] {reason}: skipped")
@@ -388,6 +420,10 @@ def run_pipeline(args) -> int:
         "processed_at": time.strftime("%Y-%m-%dT%H:%M:%S"),
         "mode": args.mode,
         "runtime": runtime,
+        "stage_times": {
+            **stage_times,
+            "total_pipeline_sec": round(time.perf_counter() - pipeline_started, 3),
+        },
         "events_total": len(events),
         "auto_masked": len(auto_ev),
         "pending_review": len(review_ev),
@@ -403,6 +439,8 @@ def run_pipeline(args) -> int:
             "track_count": stitch_stats["track_count"],
             "identity_cluster_count": stitch_stats["identity_cluster_count"],
             "appearance_method": stitch_stats["appearance_method"],
+            "profile_embeddings": stitch_stats.get("profile_embeddings"),
+            "stage_times": stitch_stats.get("stage_times"),
         },
         "behavior_stats": {
             "behavior_event_count": behavior_stats["behavior_event_count"],
