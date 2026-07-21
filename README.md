@@ -1,242 +1,155 @@
-# new_da_ma — Event-Based 工厂人脸打码
+# AI Video Face Masking
 
-夜间无人值守批处理 + 早上 Streamlit Review UI 确认。
+面向工业视频的本地化人脸检测、人工审核与隐私遮罩流水线。系统以事件为单位压缩审核工作量，支持局部时间范围修正，并通过 CUDA 硬件解码与智能渲染缩短长视频处理时间。
 
-## 安装
+当前稳定版本：`4.0.0`
 
-```powershell
-cd "D:\work\制造业视频数据\new_da_ma"
-pip install -r requirements.txt
-pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
-conda install -c conda-forge ffmpeg -y
-```
+## 核心能力
 
-模型：`models/face.pt`（见 `models/README.md`）
+- 本地人脸检测、跟踪、事件聚合与马赛克遮罩。
+- Streamlit 人工审核界面，支持接受、拒绝、跳过及局部范围修正。
+- NVIDIA HEVC 硬件解码；生产推荐 `cuda-full` 模式。
+- 智能渲染：无须遮罩的 GOP 片段直接复制，仅重编码遮罩片段。
+- 完整审计数据与传统渲染回退路径。
+- Torch 为默认生产推理后端；ONNX 与 TensorRT 可用于独立评测。
 
-## Auto Tuning — 参数自动推荐
+## 已验证性能
 
-根据 Phase-1 `detection_summary.json`（视频统计 + 检测密度 + confidence 直方图）推荐 pipeline 参数：
+在 37 分 05 秒、1920×1080、29.97 fps 的 HEVC 工业视频上：
 
-```powershell
-python auto_tuning.py --detection-dir "output/detection/test456"
-python auto_tuning.py --detection-dir "output/detection/test456" --write
-```
+| 阶段 | 优化前 | v4.0.0 | 缩短 |
+| --- | ---: | ---: | ---: |
+| 审核数据生成 | 20 分 15.5 秒 | 13 分 32.5 秒 | 33.2% |
+| 最终成片渲染 | 约 28 分 46 秒 | 3 分 53 秒 | 约 86.5% |
 
-输出字段：
+性能结果取决于视频编码、GOP 结构、GPU、驱动和遮罩覆盖率。详细记录见 [发布说明](RELEASE_NOTES.md)。
 
-| 字段 | 说明 |
-|------|------|
-| `recommended_conf` | YOLO 置信度阈值 |
-| `recommended_event_gap` | Event 切分间隔（秒） |
-| `recommended_padding` | `pre/post_padding_sec` 与对应帧数 |
-| `recommended_mosaic_level` | 渲染马赛克强度 |
+## 系统要求
 
-`--write` 会额外写入 `tuning_recommendations.json`（含 rationale）。
+- Windows 10/11
+- Python 3.10 或更高版本
+- NVIDIA GPU（硬件加速模式需要 NVDEC/NVENC）
+- FFmpeg，且硬件模式需包含 `hevc_cuvid` 与 `hevc_nvenc`
+- CUDA 可用的 PyTorch 环境
+- 人脸检测模型 `models/face.pt`
 
-## 夜间批处理
-
-```powershell
-python batch.py -i "D:/视频/待处理" -o "D:/打码输出" --device 0
-```
-
-## 单视频
+基础依赖：
 
 ```powershell
-python pipeline.py -i "D:/视频/test123.mp4" -o output --device 0
+python -m pip install -r requirements.txt
 ```
 
-输出：`output/test123/`
-- `masked_draft.mp4` — Auto（peak≥0.85）已打码
-- `review/pending_events.json` — Review 档待确认
-- `audit.log` / `low_conf_stats.json`
-- `review_report.json`
-
-## 早上 Review UI（Event 审核 v1）
+可选加速依赖：
 
 ```powershell
-streamlit run review_ui.py -- --output-dir "output/detection/test456"
+python -m pip install --extra-index-url https://pypi.nvidia.com/ -r requirements-accel.txt
 ```
 
-数据来源：`event_summary.json` + `event_contact_sheet/` + `event_gifs/`  
-实时保存：`confirmed_events.json`（`{"evt_0001": "accepted", ...}`）
+请根据本机 CUDA 与驱动版本安装匹配的 PyTorch。模型文件的获取与使用要求见 `models/README.md`（如仓库发行包中提供）。
 
-快捷键：**A** Accept · **R** Reject · **S** Skip · **←/→** 切换 Event
+## 快速开始
 
-每次保存决策时同步更新 `review_report.json`（含 accept/reject/skip 比例与分析指标）。
-
-## Review Statistics（审核统计）
-
-审核过程中顶部栏实时显示 **Total / Accepted / Rejected / Skipped / Remaining** 及百分比。
-
-审核结束后 `review_report.json` 示例：
-
-```json
-{
-  "video": "test456.mp4",
-  "total_events": 10,
-  "accepted": 9,
-  "rejected": 1,
-  "skipped": 0,
-  "accept_rate": 90.0,
-  "reject_rate": 10.0,
-  "skip_rate": 0.0,
-  "review_finished_at": "2026-06-21 14:30:21",
-  "analysis": {
-    "accepted_avg_peak_confidence": 0.7526,
-    "rejected_avg_peak_confidence": 0.8085,
-    "accepted_avg_duration_sec": 0.9444,
-    "rejected_avg_duration_sec": 2.0,
-    "accepted_avg_frame_count": 6.11,
-    "rejected_avg_frame_count": 12.0
-  }
-}
-```
-
-也可单独刷新统计：
+### 1. 生成审核数据
 
 ```powershell
-python -c "from review_ui import load_events, load_decisions; from review_stats import update_review_report; od='output/detection/test456'; e,v=load_events(od); update_review_report(od,v,e,load_decisions(od))"
+python pipeline.py `
+  -i "D:\path\to\input.MP4" `
+  -o ".\production_outputs" `
+  --mode fast_review `
+  --review-only `
+  --infer-backend torch `
+  --decode-backend cuda-full `
+  --detect-isolated `
+  --detect-batch 4 `
+  --interval 3 `
+  --imgsz 1280
 ```
 
-## Timeline Generator（打码时间轴）
+不具备 NVIDIA HEVC 硬解条件时，将 `--decode-backend` 改为 `opencv`。
 
-根据 `confirmed_events.json`（仅 Accepted）+ `tracked_detections.json` 生成连续 bbox 时间轴。**不调用 ffmpeg，不生成视频。**
+### 2. 启动审核 UI
 
 ```powershell
-python timeline_generator.py --output-dir "output/detection/test456"
+streamlit run review_ui.py -- --review-dir ".\production_outputs\<video-name>\review"
 ```
 
-输出 `timeline.json`：每条 entry 含 `frame`、`timestamp`、`track_id`、`bbox`、`confidence`（可选）、`event_id`。检测帧之间的间隔使用线性插值；Event 边界额外扩展 **temporal padding**（默认 `detect_interval × 2` 帧，约 0.33s@30fps），首尾帧用首/末检测 bbox 填充，避免稀疏采样导致的 2~3 帧漏打码。
+常用操作：
 
-## Timeline Debug UI
+- `A`：接受整个提案。
+- `R`：拒绝整个提案。
+- `S`：暂时跳过。
+- `E`：展开局部时间范围修正，仅接受选中的一个或多个范围。
+
+审核决定会持续写入 JSON 文件，可中断后继续。
+
+### 3. 生成最终成片
 
 ```powershell
-streamlit run timeline_debug_ui.py -- --output-dir "output/detection/test456"
+python confirm.py `
+  --output-dir ".\production_outputs\<video-name>" `
+  --smart-render `
+  --final-name final.mp4
 ```
 
-支持 Overview / By Event / By Time / By Frame 查看，确认 Timeline 正确后再进入 Render 模块。
+交付前需要完整解码验证时，添加 `--smart-render-full-validation`。如果输入编码或运行环境不适合智能渲染，移除 `--smart-render` 即可使用传统全片渲染。
 
-## Timeline Preview Overlay（整段视频 bbox 验证）
+## 处理流程
 
-读取 `timeline.json`，**不打码**，在整段视频上绘制绿色 bbox + Event/Track/Frame/Timecode，用于验证轨迹是否正确。
+```text
+输入视频
+  -> 检测与跟踪
+  -> 事件聚合与审核预览
+  -> 人工审核（全部或局部范围）
+  -> 遮罩时间轴
+  -> 智能渲染 / 传统渲染
+  -> 最终视频与审计结果
+```
+
+核心入口：
+
+| 文件 | 用途 |
+| --- | --- |
+| `pipeline.py` | 检测、跟踪、事件与审核数据生成 |
+| `review_ui.py` | Streamlit 人工审核界面 |
+| `confirm.py` | 应用审核结果并生成最终成片 |
+| `smart_render.py` | GOP 分段、流复制与按需重编码 |
+| `render.py` | 传统全片马赛克渲染 |
+
+## 目录结构
+
+```text
+docs/engineering/     性能优化、可行性与实测记录
+models/               本地模型文件与说明
+tests/                自动化测试
+tools/benchmarks/     性能评测与实验工具
+tools/exports/        模型导出工具
+```
+
+运行数据、视频、模型权重和 benchmark 产物默认不应提交到 Git。
+
+## 验证
 
 ```powershell
-python timeline_preview.py --video test456.mp4 --timeline output/detection/test456/timeline.json
+python -m py_compile pipeline.py confirm.py review_ui.py smart_render.py
+python -m unittest discover -s tests
 ```
 
-默认输出：`output/debug/timeline_preview.mp4`
+生产发布前还应使用目标机器和代表性视频完成：审核抽检、音视频流检查、首中尾解码以及隐私覆盖验证。
 
-验证要点：
-- bbox 是否跟随人脸移动
-- 是否存在漂移或帧间跳跃
-- Event 起止时间是否正确
-- Rejected Event 不应出现（timeline 仅含 Accepted）
+## 隐私与安全
 
-Timeline 验证通过后，Render 模块将直接复用 `timeline.json`，不再重新计算 bbox。
+- 优先在受控本地环境中处理原始视频。
+- 不要将输入视频、抽帧、模型权重、审核产物或运行日志提交到公共仓库。
+- 输出视频必须经过人工抽检；自动检测结果不能替代最终隐私审核。
+- 对外分发前应清理路径、人员信息、现场标识及其他敏感元数据。
 
-## Render — Timeline 马赛克执行器
+## 文档
 
-严格只读 `timeline.json`，**block pixelation 马赛克**（无 Gaussian blur）。Render 是执行器，不是智能模块。
+- [v4.0.0 发布说明](RELEASE_NOTES.md)
+- [变更记录](CHANGELOG.md)
+- [系统架构](ARCHITECTURE.md)
+- [工程验证资料](docs/engineering/)
 
-| 模式 | 说明 | 默认输出 |
-|------|------|----------|
-| `overlay` | 仅绘制 bbox（调试） | `output/render/overlay.mp4` |
-| `preview` | 马赛克，审核验证 | `output/render/preview_mosaic.mp4` |
-| `final` | 马赛克，最终交付 | `output/render/final_mosaic.mp4` |
+## 许可证
 
-```powershell
-# 调试：bbox overlay
-python render_overlay.py --video test456.mp4 --timeline output/detection/test456/timeline.json --mode overlay
-
-# 审核：马赛克预览
-python render_overlay.py --video test456.mp4 --timeline output/detection/test456/timeline.json --mode preview
-
-# 最终输出（隐私推荐 extreme）
-python render_overlay.py --video test456.mp4 --timeline output/detection/test456/timeline.json --mode final --mosaic_level extreme
-```
-
-马赛克强度 `--mosaic_level`（preview/final 模式）：
-
-| 级别 | downscale | 说明 |
-|------|-----------|------|
-| `low` | 0.3 | 轻度 |
-| `medium` | 0.15 | 中等 |
-| `high` | 0.08 | 默认 |
-| `extreme` | 0.03 | 隐私推荐，人脸轮廓不可识别 |
-
-算法：打码前 bbox 扩展 20%（`expand_ratio=0.2`），ROI 按 downscale 比例缩小再放大，**全程 `cv2.INTER_NEAREST`**（禁止 linear/cubic）。
-
-调试开关（overlay 默认全开，preview/final 默认全关）：
-
-```powershell
-python render_overlay.py ... --mode preview --show_bbox --show_event_id
-```
-
-## 合并交付（旧 pipeline）
-
-```powershell
-python confirm.py --output-dir "output/test123"
-```
-
-输出 `final.mp4`
-
-## 三档策略
-
-| 档位 | peak_conf | 行为 |
-|------|-----------|------|
-| Auto | ≥ 0.85 | 自动打码 + audit.log |
-| Review | 0.75 ~ 0.85 | 3 关键帧 + UI 确认 |
-| LowConf | < 0.75 | 仅 low_conf_stats.json |
-
-## 阶段一：Detection Validation（检测验证）
-
-仅 YOLO-face 检测，不含 tracking / event / review / render。
-
-```powershell
-python detect.py --video "D:/视频/test123.mp4" --device 0
-```
-
-输出目录：`output/detection/test123/`
-
-| 文件 | 说明 |
-|------|------|
-| `detections.json` | 所有有人脸的采样帧及 bbox |
-| `detection_summary.json` | 统计 + confidence_histogram |
-| `review_images/` | 每张检测截图，如 `frame_000660_conf_0.720.jpg` |
-
-验证目标：真实人脸召回、手部/工具误检、各 confidence 区间误检率。
-
-## 阶段二：Tracking + Event 验证
-
-基于阶段一 `detections.json`，不重新检测、不打码、无 UI。
-
-```powershell
-python validate_track_event.py --detection-dir "output/detection/test123"
-```
-
-输出（同目录）：
-
-| 文件 | 说明 |
-|------|------|
-| `track_summary.json` | Track 总数、每条 duration/detection 数、最长/最短 |
-| `event_summary.json` | Event 总数、每条 duration/frame 数、最长/最短、压缩比 |
-| `event_preview.json` | 每个 event 的 peak/avg conf + 中间帧截图路径 |
-| `event_previews/` | 代表截图（middle frame + bbox） |
-
-Event 时间范围在首尾检测点基础上扩展 temporal padding（`pre/post = detect_interval × 2` 帧，或默认 0.25s / 0.4s），`start_time ≥ 0`，不改变 trajectory 与 `event_gap` 切分逻辑。
-| `tracked_detections.json` | ByteTrack 后的带 track_id 检测列表 |
-
-## Event 可视化验证（Contact Sheet）
-
-不修改 Detection / Tracking / Event Builder，用于验证每个 Event 是否代表连续人脸出现。
-
-```powershell
-python event_contact_sheet.py --detection-dir "output/detection/test456"
-```
-
-输出：`output/detection/test456/event_contact_sheet/` + `event_gifs/`
-- `evt_0001.jpg` … 每个 Event 的时间序 contact sheet（≤9 帧全出，>9 帧均匀抽 9 张）
-- `event_gifs/evt_XXXX.gif` — duration **> 2s** 的 Event 自动生成 **4fps** GIF（可调 `--gif-fps`）
-- `summary.html` — 每 Event 一行元数据 + 缩略图，点击看原图
-
-## 阶段三：Event Pipeline（夜间打码）
+本仓库尚未包含许可证文件。项目所有者需在正式商业分发前确定闭源商业授权、开源授权或双重授权方案；在此之前，不应仅凭仓库可访问性推定获得复制、再分发或商业使用许可。

@@ -1,0 +1,8 @@
+# Optional acceleration environment.
+# Current tested Windows path: Python 3.13 + torch cu126 DLLs + ONNX Runtime GPU 1.20.2.
+onnx>=1.16.0
+onnxruntime-gpu==1.20.2
+tensorrt-cu12==10.13.3.9
+
+# TensorRT wheels are hosted by NVIDIA. Install with:
+# python -m pip install --extra-index-url https://pypi.nvidia.com/ -r requirements-accel.txt

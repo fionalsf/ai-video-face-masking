@@ -19,6 +19,7 @@ from gap_analysis import group_by_track
 from identity_graph_matching import (
     DEFAULT_ASSIGNMENT_SCORE_MIN,
     DEFAULT_TEMPORAL_TAU_SEC,
+    HSV_ASSIGNMENT_GAP_MAX_SEC,
     build_cluster_rows,
     global_identity_matching,
 )
@@ -86,7 +87,11 @@ def _segment_velocity(a: dict, b: dict) -> tuple[float, float]:
     return ((cx_b - cx_a) / dt, (cy_b - cy_a) / dt)
 
 
-def build_track_profiles(tracked: list[dict]) -> dict[int, TrackProfile]:
+def build_track_profiles(
+    tracked: list[dict],
+    *,
+    use_detection_embeddings: bool = True,
+) -> dict[int, TrackProfile]:
     by_track = group_by_track(tracked)
     profiles: dict[int, TrackProfile] = {}
     for track_id, seq in by_track.items():
@@ -96,7 +101,7 @@ def build_track_profiles(tracked: list[dict]) -> dict[int, TrackProfile]:
         fb, lb = list(first["bbox"]), list(last["bbox"])
         exit_v = _segment_velocity(seq[-2], seq[-1]) if len(seq) >= 2 else (0.0, 0.0)
         entry_v = _segment_velocity(seq[0], seq[1]) if len(seq) >= 2 else (0.0, 0.0)
-        profiles[int(track_id)] = TrackProfile(
+        profile = TrackProfile(
             track_id=int(track_id),
             start_time=float(first["t"]),
             end_time=float(last["t"]),
@@ -113,6 +118,11 @@ def build_track_profiles(tracked: list[dict]) -> dict[int, TrackProfile]:
             entry_velocity=entry_v,
             sample_frame=int(peak["frame"]),
         )
+        if use_detection_embeddings:
+            embedding = peak.get("embedding")
+            if isinstance(embedding, list) and embedding:
+                profile.embedding = [float(v) for v in embedding]
+        profiles[int(track_id)] = profile
     return profiles
 
 
@@ -136,10 +146,14 @@ def enrich_embeddings(
     by_track = group_by_track(tracked)
     frame_to_bbox: dict[int, list[tuple[int, list[float]]]] = {}
     for tid, prof in profiles.items():
+        if prof.embedding:
+            continue
         seq = by_track[tid]
         peak = max(seq, key=lambda d: float(d["conf"]))
         frame = int(peak["frame"])
         frame_to_bbox.setdefault(frame, []).append((tid, list(peak["bbox"])))
+    if not frame_to_bbox:
+        return
 
     cap = cv2.VideoCapture(video_path)
     if not cap.isOpened():
@@ -165,6 +179,7 @@ def run_identity_stitching(
     video: str | None = None,
     temporal_tau: float = DEFAULT_TEMPORAL_TAU_SEC,
     assignment_score_min: float = DEFAULT_ASSIGNMENT_SCORE_MIN,
+    enrich_appearance: bool = True,
     arcface_model: str | None = None,
     # legacy CLI alias
     max_gap_sec: float | None = None,
@@ -174,18 +189,31 @@ def run_identity_stitching(
         temporal_tau = max_gap_sec
     _ = appearance_min  # soft scoring only; kept for API compat
 
+    stage_times: dict[str, float] = {}
     embedder = AppearanceEmbedder(model_path=arcface_model)
-    profiles = build_track_profiles(tracked)
-    enrich_embeddings(profiles, tracked, video, embedder)
+    started = time.perf_counter()
+    profiles = build_track_profiles(
+        tracked,
+        use_detection_embeddings=enrich_appearance and not embedder.is_arcface,
+    )
+    stage_times["profile_build_sec"] = round(time.perf_counter() - started, 3)
+    started = time.perf_counter()
+    if enrich_appearance:
+        enrich_embeddings(profiles, tracked, video, embedder)
+    stage_times["embedding_enrich_sec"] = round(time.perf_counter() - started, 3)
 
+    started = time.perf_counter()
     all_edges, merge_decisions, clusters = global_identity_matching(
         profiles,
         embedder,
         temporal_tau=temporal_tau,
         assignment_score_min=assignment_score_min,
     )
+    stage_times["graph_matching_sec"] = round(time.perf_counter() - started, 3)
+    started = time.perf_counter()
     assigned_edges = [e for e in all_edges if e.get("assigned")]
     cluster_rows = build_cluster_rows(clusters, profiles, assigned_edges, merge_decisions)
+    stage_times["cluster_rows_sec"] = round(time.perf_counter() - started, 3)
 
     parameters = {
         "assignment_method": "hungarian_global_matching",
@@ -197,9 +225,10 @@ def run_identity_stitching(
         "hsv_fallback_filters": {
             "spatial_min": 0.45,
             "motion_min": 0.30,
-            "gap_max_sec": 90.0,
+            "gap_max_sec": HSV_ASSIGNMENT_GAP_MAX_SEC,
         },
         "appearance_method": embedder.method,
+        "appearance_enrich_enabled": enrich_appearance,
         "feature_weights": {
             "appearance": 0.55,
             "motion": 0.15,
@@ -249,6 +278,9 @@ def run_identity_stitching(
         "linked_edge_count": len(assigned_edges),
         "edge_count": len(all_edges),
         "appearance_method": embedder.method,
+        "appearance_enrich_enabled": enrich_appearance,
+        "profile_embeddings": sum(1 for p in profiles.values() if p.embedding),
+        "stage_times": stage_times,
         "clusters": cluster_rows,
         "cluster_map": {row["identity_id"]: row["track_ids"] for row in cluster_rows},
         "parameters": parameters,
@@ -287,6 +319,7 @@ def main() -> int:
                    help="Temporal soft prior tau (seconds, exponential decay)")
     p.add_argument("--assignment-min", type=float, default=DEFAULT_ASSIGNMENT_SCORE_MIN)
     p.add_argument("--appearance-min", type=float, default=None, help="Deprecated; unused in graph matching")
+    p.add_argument("--fast-identity", action="store_true", help="Skip full-video appearance embedding enrichment.")
     p.add_argument("--arcface-model", default=None)
     args = p.parse_args()
 
@@ -309,6 +342,7 @@ def main() -> int:
         video=video,
         temporal_tau=args.stitch_gap,
         assignment_score_min=args.assignment_min,
+        enrich_appearance=not args.fast_identity,
         arcface_model=args.arcface_model,
     )
     print(f"[graph] {stats.get('identity_graph_path')}")

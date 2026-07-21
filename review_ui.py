@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import json
 import os
+import subprocess
 import sys
 import time
 from pathlib import Path
@@ -21,14 +22,26 @@ from event_quality import (
     load_event_quality,
     quality_by_event_id,
 )
+from mask_timeline import generate_mask_review_contact_sheet
 from review_stats import REPORT_NAME, STATISTICS_NAME, load_review_report, update_review_report
 
 STATUS_ACCEPTED = "accepted"
+STATUS_ACCEPTED_RANGES = "accepted_ranges"
+STATUS_ACCEPTED_FIRST_HALF = "accepted_first_half"
+STATUS_ACCEPTED_SECOND_HALF = "accepted_second_half"
 STATUS_REJECTED = "rejected"
 STATUS_SKIPPED = "skipped"
-FINAL_STATUSES = {STATUS_ACCEPTED, STATUS_REJECTED}
+ACCEPT_STATUSES = {
+    STATUS_ACCEPTED, STATUS_ACCEPTED_RANGES,
+    STATUS_ACCEPTED_FIRST_HALF, STATUS_ACCEPTED_SECOND_HALF,
+}
+FINAL_STATUSES = ACCEPT_STATUSES | {STATUS_REJECTED}
 
 PREVIEW_MAX_HEIGHT_PX = 360
+SIDEBAR_WINDOW = 8
+PREFETCH_STATUS_NAME = "preview_prefetch_status.json"
+PREFETCH_LOCK_NAME = "preview_prefetch.lock"
+TIMING_NAME = "review_timing.json"
 
 
 def parse_output_dir() -> str:
@@ -47,7 +60,36 @@ def confirmed_path(output_dir: str) -> str:
     return os.path.join(output_dir, CONFIRMED_NAME)
 
 
-def load_decisions(output_dir: str) -> dict[str, str]:
+def decision_status(decision) -> str | None:
+    if isinstance(decision, dict):
+        return str(decision.get("status") or "") or None
+    return str(decision) if decision else None
+
+
+def decision_ranges(decision) -> list[list[float]]:
+    if not isinstance(decision, dict) or decision_status(decision) != STATUS_ACCEPTED_RANGES:
+        return []
+    ranges = []
+    for item in decision.get("ranges") or []:
+        if isinstance(item, (list, tuple)) and len(item) == 2 and float(item[1]) > float(item[0]):
+            ranges.append([round(float(item[0]), 3), round(float(item[1]), 3)])
+    return ranges
+
+
+def merge_time_ranges(ranges: list[list[float]]) -> list[list[float]]:
+    merged: list[list[float]] = []
+    for start, end in sorted(ranges, key=lambda item: float(item[0])):
+        start, end = round(float(start), 3), round(float(end), 3)
+        if end <= start:
+            continue
+        if not merged or start > merged[-1][1] + 0.001:
+            merged.append([start, end])
+        else:
+            merged[-1][1] = max(merged[-1][1], end)
+    return merged
+
+
+def load_decisions(output_dir: str) -> dict[str, str | dict]:
     path = confirmed_path(output_dir)
     if not os.path.isfile(path):
         return {}
@@ -56,12 +98,13 @@ def load_decisions(output_dir: str) -> dict[str, str]:
     if isinstance(data, dict) and data and not isinstance(next(iter(data.values())), dict):
         meta_keys = {
             "events", "summary", "video", "review_dir", "started_at", "updated_at",
-            "total_review_events", "decided_count",
+            "total_review_events", "decided_count", "schema", "decision_unit",
         }
         return {
-            str(k): str(v)
+            str(k): v if isinstance(v, dict) else str(v)
             for k, v in data.items()
-            if str(k) not in meta_keys and (str(k).startswith("bevt_") or str(k).startswith("evt_"))
+            if str(k) not in meta_keys
+            and (str(k).startswith("bevt_") or str(k).startswith("evt_") or str(k).startswith("mask_"))
         }
     if isinstance(data, dict) and "events" in data:
         out: dict[str, str] = {}
@@ -79,14 +122,80 @@ def load_decisions(output_dir: str) -> dict[str, str]:
 
 def save_decisions(
     output_dir: str,
-    decisions: dict[str, str],
+    decisions: dict[str, str | dict],
     events: list[dict] | None = None,
     video: str = "",
+    update_report: bool = False,
 ) -> None:
+    meta = {
+        "schema": "mask_review_decisions.v2",
+        "updated_at": time.strftime("%Y-%m-%dT%H:%M:%S"),
+        "decision_unit": "mask_timeline_proposal",
+        "total_review_events": len(events) if events is not None else None,
+        "decided_count": len(decisions),
+    }
+    payload = {
+        **{k: v for k, v in meta.items() if v is not None},
+        **dict(sorted(decisions.items())),
+    }
     with open(confirmed_path(output_dir), "w", encoding="utf-8") as f:
-        json.dump(dict(sorted(decisions.items())), f, ensure_ascii=False, indent=2)
-    if events is not None:
+        json.dump(payload, f, ensure_ascii=False, indent=2)
+    if update_report and events is not None:
         update_review_report(output_dir, video, events, decisions)
+
+
+def timing_path(output_dir: str) -> str:
+    return os.path.join(output_dir, TIMING_NAME)
+
+
+def load_review_timing(output_dir: str) -> dict:
+    path = timing_path(output_dir)
+    if not os.path.isfile(path):
+        return {}
+    try:
+        with open(path, encoding="utf-8") as f:
+            return json.load(f)
+    except (OSError, json.JSONDecodeError):
+        return {}
+
+
+def start_review_timing(output_dir: str, decided_count: int, total: int) -> dict:
+    now = time.time()
+    timing = {
+        "schema": "review_timing.v1",
+        "started_at": time.strftime("%Y-%m-%dT%H:%M:%S"),
+        "started_at_epoch": now,
+        "starting_decided_count": int(decided_count),
+        "current_decided_count": int(decided_count),
+        "total_review_events": int(total),
+        "elapsed_sec": 0.0,
+        "finished_at": None,
+    }
+    with open(timing_path(output_dir), "w", encoding="utf-8") as f:
+        json.dump(timing, f, ensure_ascii=False, indent=2)
+    return timing
+
+
+def update_review_timing(output_dir: str, decided_count: int, total: int) -> dict:
+    timing = load_review_timing(output_dir)
+    if not timing or timing.get("finished_at"):
+        return timing
+    elapsed = max(0.0, time.time() - float(timing.get("started_at_epoch") or time.time()))
+    timing["current_decided_count"] = int(decided_count)
+    timing["total_review_events"] = int(total)
+    timing["elapsed_sec"] = round(elapsed, 3)
+    if decided_count >= total:
+        timing["finished_at"] = time.strftime("%Y-%m-%dT%H:%M:%S")
+    with open(timing_path(output_dir), "w", encoding="utf-8") as f:
+        json.dump(timing, f, ensure_ascii=False, indent=2)
+    return timing
+
+
+def format_elapsed(seconds: float) -> str:
+    seconds = max(0, int(round(seconds)))
+    hours, rem = divmod(seconds, 3600)
+    minutes, secs = divmod(rem, 60)
+    return f"{hours:02d}:{minutes:02d}:{secs:02d}"
 
 
 def load_events(output_dir: str) -> tuple[list[dict], str]:
@@ -99,16 +208,20 @@ def load_events(output_dir: str) -> tuple[list[dict], str]:
         for ev in pending_doc.get("events") or []:
             events.append({
                 "event_id": ev["event_id"],
+                "source_event_id": ev.get("source_event_id"),
+                "source_tier": ev.get("source_tier"),
                 "track_id": ev.get("track_id"),
                 "start_time": ev["start_time"],
                 "end_time": ev["end_time"],
                 "start_timecode": ev.get("start_timecode"),
                 "end_timecode": ev.get("end_timecode"),
                 "duration_sec": ev.get("duration_sec"),
-                "frame_count": ev.get("detection_count"),
+                "frame_count": ev.get("frame_count") or ev.get("detection_count"),
                 "peak_confidence": ev.get("peak_confidence"),
                 "avg_confidence": ev.get("avg_confidence"),
                 "previews": ev.get("previews"),
+                "contact_sheet": ev.get("contact_sheet"),
+                "requires_explicit_accept": ev.get("requires_explicit_accept"),
             })
         return events, video
 
@@ -189,11 +302,11 @@ def load_events(output_dir: str) -> tuple[list[dict], str]:
     return events, video
 
 
-def count_stats(events: list[dict], decisions: dict[str, str]) -> dict[str, int | float]:
+def count_stats(events: list[dict], decisions: dict[str, str | dict]) -> dict[str, int | float]:
     total = len(events)
-    accepted = sum(1 for e in events if decisions.get(e["event_id"]) == STATUS_ACCEPTED)
-    rejected = sum(1 for e in events if decisions.get(e["event_id"]) == STATUS_REJECTED)
-    skipped = sum(1 for e in events if decisions.get(e["event_id"]) == STATUS_SKIPPED)
+    accepted = sum(1 for e in events if decision_status(decisions.get(e["event_id"])) in ACCEPT_STATUSES)
+    rejected = sum(1 for e in events if decision_status(decisions.get(e["event_id"])) == STATUS_REJECTED)
+    skipped = sum(1 for e in events if decision_status(decisions.get(e["event_id"])) == STATUS_SKIPPED)
     return {
         "total": total,
         "accepted": accepted,
@@ -206,12 +319,22 @@ def count_stats(events: list[dict], decisions: dict[str, str]) -> dict[str, int 
     }
 
 
-def next_pending_index(events: list[dict], decisions: dict[str, str], start: int) -> int | None:
+def next_pending_index(events: list[dict], decisions: dict[str, str | dict], start: int) -> int | None:
     for j in range(start, len(events)):
-        if decisions.get(events[j]["event_id"]) not in FINAL_STATUSES:
+        if decision_status(decisions.get(events[j]["event_id"])) not in FINAL_STATUSES:
             return j
     for j in range(0, start):
-        if decisions.get(events[j]["event_id"]) not in FINAL_STATUSES:
+        if decision_status(decisions.get(events[j]["event_id"])) not in FINAL_STATUSES:
+            return j
+    return None
+
+
+def prev_pending_index(events: list[dict], decisions: dict[str, str | dict], start: int) -> int | None:
+    for j in range(start, -1, -1):
+        if decision_status(decisions.get(events[j]["event_id"])) not in FINAL_STATUSES:
+            return j
+    for j in range(len(events) - 1, start, -1):
+        if decision_status(decisions.get(events[j]["event_id"])) not in FINAL_STATUSES:
             return j
     return None
 
@@ -224,6 +347,10 @@ def media_paths(output_dir: str, event_id: str, ev: dict | None = None) -> tuple
                 path = os.path.join(output_dir, rel.replace("/", os.sep))
                 if os.path.isfile(path):
                     return path, None
+    if ev and ev.get("contact_sheet"):
+        path = os.path.join(output_dir, str(ev["contact_sheet"]).replace("/", os.sep))
+        if os.path.isfile(path):
+            return path, None
 
     previews_dir = os.path.join(output_dir, "previews")
     for name in (f"{event_id}_mid.jpg", f"{event_id}_start.jpg", f"{event_id}_end.jpg"):
@@ -235,15 +362,160 @@ def media_paths(output_dir: str, event_id: str, ev: dict | None = None) -> tuple
     gif = os.path.join(output_dir, "event_gifs", f"{event_id}.gif")
     contact = sheet if os.path.isfile(sheet) else None
     if contact is None:
+        contact = ensure_lazy_contact_sheet(output_dir, event_id)
+    if contact is None:
         preview = os.path.join(output_dir, "event_previews", f"{event_id}.jpg")
         contact = preview if os.path.isfile(preview) else None
     gif_path = gif if os.path.isfile(gif) else None
     return contact, gif_path
 
 
-def status_icon(status: str | None) -> str:
+def _pending_doc_path(output_dir: str) -> str:
+    return os.path.join(output_dir, "pending_events.json")
+
+
+@st.cache_data(show_spinner=False)
+def _load_json_cached(path: str, mtime: float) -> dict:
+    del mtime
+    with open(path, encoding="utf-8-sig") as f:
+        return json.load(f)
+
+
+def _load_pending_doc(output_dir: str) -> dict:
+    path = _pending_doc_path(output_dir)
+    if not os.path.isfile(path):
+        return {}
+    return _load_json_cached(path, os.path.getmtime(path))
+
+
+def _resolve_timeline_path(output_dir: str) -> str | None:
+    pending = _load_pending_doc(output_dir)
+    rel = pending.get("timeline") or "mask_timeline.json"
+    candidates = []
+    if os.path.isabs(str(rel)):
+        candidates.append(str(rel))
+    else:
+        candidates.append(os.path.join(output_dir, str(rel)))
+        candidates.append(os.path.join(os.path.dirname(output_dir), str(rel)))
+    for path in candidates:
+        if os.path.isfile(path):
+            return path
+    return None
+
+
+def _load_review_timeline(output_dir: str) -> dict | None:
+    path = _resolve_timeline_path(output_dir)
+    if not path:
+        return None
+    return _load_json_cached(path, os.path.getmtime(path))
+
+
+def ensure_lazy_contact_sheet(output_dir: str, event_id: str) -> str | None:
+    sheet = os.path.join(output_dir, "event_contact_sheet", f"{event_id}.jpg")
+    if os.path.isfile(sheet):
+        return sheet
+    timeline = _load_review_timeline(output_dir)
+    if not timeline:
+        return None
+    with st.spinner("Generating preview..."):
+        return generate_mask_review_contact_sheet(timeline, output_dir, event_id)
+
+
+def _prefetch_status_path(output_dir: str) -> str:
+    return os.path.join(output_dir, PREFETCH_STATUS_NAME)
+
+
+def load_prefetch_status(output_dir: str) -> dict:
+    path = _prefetch_status_path(output_dir)
+    if not os.path.isfile(path):
+        return {}
+    try:
+        with open(path, encoding="utf-8-sig") as f:
+            return json.load(f)
+    except (OSError, json.JSONDecodeError):
+        return {}
+
+
+def _prefetch_lock_active(output_dir: str, stale_sec: int = 21600) -> bool:
+    path = os.path.join(output_dir, PREFETCH_LOCK_NAME)
+    if not os.path.isfile(path):
+        return False
+    try:
+        return (time.time() - os.path.getmtime(path)) < stale_sec
+    except OSError:
+        return True
+
+
+def start_background_preview_prefetch(output_dir: str, start_index: int) -> None:
+    session_key = f"preview_prefetch_started::{output_dir}"
+    if st.session_state.get(session_key):
+        return
+    if _prefetch_lock_active(output_dir):
+        st.session_state[session_key] = True
+        return
+
+    pending = _load_pending_doc(output_dir)
+    events = pending.get("events") or []
+    if not events:
+        return
+    status = load_prefetch_status(output_dir)
+    if status.get("state") == "complete":
+        sheet_dir = os.path.join(output_dir, "event_contact_sheet")
+        generated = len([name for name in os.listdir(sheet_dir)]) if os.path.isdir(sheet_dir) else 0
+        if generated >= len(events):
+            st.session_state[session_key] = True
+            return
+
+    script = os.path.join(os.path.dirname(os.path.abspath(__file__)), "prefetch_review_previews.py")
+    if not os.path.isfile(script):
+        return
+    cmd = [
+        sys.executable,
+        script,
+        "--review-dir",
+        output_dir,
+        "--start-index",
+        str(max(0, int(start_index))),
+    ]
+    try:
+        kwargs = {
+            "cwd": os.path.dirname(script),
+            "stdout": subprocess.DEVNULL,
+            "stderr": subprocess.DEVNULL,
+            "stdin": subprocess.DEVNULL,
+            "close_fds": True,
+        }
+        if os.name == "nt":
+            kwargs["creationflags"] = subprocess.CREATE_NO_WINDOW
+        subprocess.Popen(cmd, **kwargs)
+        st.session_state[session_key] = True
+    except OSError:
+        return
+
+
+def render_prefetch_status(output_dir: str) -> None:
+    status = load_prefetch_status(output_dir)
+    if not status:
+        st.caption("Preview prefetch: starting")
+        return
+    state = status.get("state", "unknown")
+    total = int(status.get("total") or 0)
+    done = int(status.get("done") or 0)
+    skipped = int(status.get("skipped") or 0)
+    completed = min(total, done + skipped)
+    if total > 0:
+        st.caption(f"Preview prefetch: {state} {completed}/{total}")
+    else:
+        st.caption(f"Preview prefetch: {state}")
+
+
+def status_icon(status) -> str:
+    status = decision_status(status)
     return {
         STATUS_ACCEPTED: "✅",
+        STATUS_ACCEPTED_RANGES: "✅",
+        STATUS_ACCEPTED_FIRST_HALF: "◐",
+        STATUS_ACCEPTED_SECOND_HALF: "◑",
         STATUS_REJECTED: "❌",
         STATUS_SKIPPED: "⏭",
     }.get(status or "", "⬜")
@@ -259,6 +531,7 @@ def render_keyboard_listener():
             const k = e.key.toLowerCase();
             const targets = {
                 a: "Accept", r: "Reject", s: "Skip",
+                e: "Local adjust",
                 arrowleft: "Prev", arrowright: "Next",
             };
             const needle = targets[k];
@@ -452,18 +725,30 @@ def render_event_panel(
             )
 
 
-def render_decision_banner(current: str | None) -> None:
-    if not current:
+def render_decision_banner(current) -> None:
+    current_status = decision_status(current)
+    if not current_status:
+        st.markdown(
+            '<p style="margin:0.1rem 0 0.25rem;font-size:0.88rem;color:#f59e0b;">'
+            "Decision: <b>unreviewed</b> - click Accept or Reject to save</p>",
+            unsafe_allow_html=True,
+        )
         return
     colors = {
         STATUS_ACCEPTED: "#22c55e",
+        STATUS_ACCEPTED_RANGES: "#22c55e",
+        STATUS_ACCEPTED_FIRST_HALF: "#22c55e",
+        STATUS_ACCEPTED_SECOND_HALF: "#22c55e",
         STATUS_REJECTED: "#ef4444",
         STATUS_SKIPPED: "#38bdf8",
     }
-    color = colors.get(current, "#94a3b8")
+    color = colors.get(current_status, "#94a3b8")
+    label = current_status
+    if current_status == STATUS_ACCEPTED_RANGES:
+        label = f"accepted_ranges ({len(decision_ranges(current))})"
     st.markdown(
         f'<p style="margin:0.1rem 0 0.25rem;font-size:0.88rem;color:{color};">'
-        f"Decision: <b>{current}</b> — click buttons above to change</p>",
+        f"Decision: <b>{label}</b> — click buttons above to change</p>",
         unsafe_allow_html=True,
     )
 
@@ -495,13 +780,12 @@ def main():
     if "auto_advance" not in st.session_state:
         st.session_state.auto_advance = True
     if "report_bootstrapped" not in st.session_state:
-        if st.session_state.decisions:
-            update_review_report(OUTPUT_DIR, video_path, all_events, st.session_state.decisions)
         st.session_state.report_bootstrapped = True
 
     decisions = st.session_state.decisions
     stats = count_stats(all_events, decisions)
     st.session_state.view_idx = min(st.session_state.view_idx, len(all_events) - 1)
+    start_background_preview_prefetch(OUTPUT_DIR, st.session_state.view_idx + 1)
 
     video_name = os.path.basename(video_path) if video_path else Path(OUTPUT_DIR).name
 
@@ -520,6 +804,28 @@ def main():
             f"Accept {stats['accept_pct']}% · Reject {stats['reject_pct']}% · "
             f"Skip {stats['skip_pct']}% · {'done' if not stats['remaining'] else 'need A/R'}"
         )
+        timing = load_review_timing(OUTPUT_DIR)
+        final_decided = int(stats["total"] - stats["remaining"])
+        if timing:
+            elapsed = float(timing.get("elapsed_sec") or 0.0)
+            if not timing.get("finished_at"):
+                elapsed = max(
+                    elapsed,
+                    time.time() - float(timing.get("started_at_epoch") or time.time()),
+                )
+            reviewed_in_session = max(
+                0,
+                final_decided - int(timing.get("starting_decided_count") or 0),
+            )
+            avg_sec = elapsed / reviewed_in_session if reviewed_in_session else 0.0
+            st.info(
+                f"Timing: {format_elapsed(elapsed)} · session decisions {reviewed_in_session} · "
+                f"average {avg_sec:.1f}s/event"
+            )
+        if st.button("⏱ Start timing from current progress", use_container_width=False):
+            start_review_timing(OUTPUT_DIR, final_decided, len(all_events))
+            st.rerun()
+
         report = load_review_report(OUTPUT_DIR)
         if report:
             a = report.get("analysis", {})
@@ -530,16 +836,49 @@ def main():
             )
             if report.get("review_finished_at"):
                 st.caption(f"Review finished at {report['review_finished_at']}")
+        if st.button("Refresh saved report", use_container_width=False):
+            update_review_report(OUTPUT_DIR, video_path, all_events, decisions)
+            st.rerun()
 
     with st.sidebar:
         st.header("Event List")
-        st.caption("Click any event to view / re-edit")
+        st.caption("Fast window view; use jump for far events")
+        render_prefetch_status(OUTPUT_DIR)
         st.session_state.auto_advance = st.checkbox(
             "Auto-advance after decision",
             value=st.session_state.auto_advance,
             help="When off, stay on current event after Accept/Reject/Skip (useful when correcting).",
         )
-        for i, ev in enumerate(all_events):
+        nav_a, nav_b = st.columns(2)
+        with nav_a:
+            if st.button("Prev pending", use_container_width=True):
+                target = prev_pending_index(all_events, decisions, st.session_state.view_idx - 1)
+                if target is not None:
+                    st.session_state.view_idx = target
+                    st.rerun()
+        with nav_b:
+            if st.button("Next pending", use_container_width=True):
+                target = next_pending_index(all_events, decisions, st.session_state.view_idx + 1)
+                if target is not None:
+                    st.session_state.view_idx = target
+                    st.rerun()
+
+        jump_value = st.number_input(
+            "Jump to #",
+            min_value=1,
+            max_value=len(all_events),
+            value=st.session_state.view_idx + 1,
+            step=1,
+        )
+        if st.button("Go", use_container_width=True):
+            st.session_state.view_idx = int(jump_value) - 1
+            st.rerun()
+
+        start_i = max(0, st.session_state.view_idx - SIDEBAR_WINDOW)
+        end_i = min(len(all_events), st.session_state.view_idx + SIDEBAR_WINDOW + 1)
+        st.caption(f"Showing {start_i + 1}-{end_i} of {len(all_events)}")
+        for i in range(start_i, end_i):
+            ev = all_events[i]
             eid = ev["event_id"]
             stt = decisions.get(eid)
             is_current = st.session_state.view_idx == i
@@ -576,29 +915,44 @@ def main():
 
     suggest_reject = bool(ev_quality and ev_quality.get("suggest_reject"))
     current = decisions.get(eid)
-    btn1, btn2, btn3, btn4, btn5 = st.columns([1, 1, 1, 1, 2])
+    current_status = decision_status(current)
+    btn1, btn2, btn3, btn4, btn5 = st.columns([1.2, 1.2, 1, 1, 1])
 
-    def decide(status: str):
-        was_final = decisions.get(eid) in FINAL_STATUSES
-        decisions[eid] = status
+    def decide(decision, *, force_advance: bool = False):
+        was_final = decision_status(decisions.get(eid)) in FINAL_STATUSES
+        decisions[eid] = decision
         st.session_state.decisions = decisions
         save_decisions(OUTPUT_DIR, decisions, all_events, video_path)
-        if st.session_state.auto_advance and not was_final:
+        updated_stats = count_stats(all_events, decisions)
+        update_review_timing(
+            OUTPUT_DIR,
+            int(updated_stats["total"] - updated_stats["remaining"]),
+            len(all_events),
+        )
+        if st.session_state.auto_advance and (force_advance or not was_final):
             nxt = next_pending_index(all_events, decisions, st.session_state.view_idx + 1)
             if nxt is not None:
                 st.session_state.view_idx = nxt
+        if decision_status(decision) != STATUS_ACCEPTED_RANGES:
+            st.session_state.pop("range_editor_eid", None)
         st.rerun()
 
     def clear_decision():
         decisions.pop(eid, None)
         st.session_state.decisions = decisions
         save_decisions(OUTPUT_DIR, decisions, all_events, video_path)
+        updated_stats = count_stats(all_events, decisions)
+        update_review_timing(
+            OUTPUT_DIR,
+            int(updated_stats["total"] - updated_stats["remaining"]),
+            len(all_events),
+        )
         st.rerun()
 
     with btn1:
-        accept_primary = current == STATUS_ACCEPTED or (not current and not suggest_reject)
+        accept_primary = current_status == STATUS_ACCEPTED
         if st.button(
-            "✅ Accept (A)",
+            "✅ Accept all (A)",
             type="primary" if accept_primary else "secondary",
             use_container_width=True,
             key="review_accept",
@@ -606,21 +960,29 @@ def main():
             decide(STATUS_ACCEPTED)
     with btn2:
         if st.button(
+            "✂ Local adjust (E)",
+            type="primary" if current_status == STATUS_ACCEPTED_RANGES else "secondary",
+            use_container_width=True,
+            key="review_local_adjust",
+        ):
+            st.session_state.range_editor_eid = eid
+    with btn3:
+        if st.button(
             "❌ Reject (R)",
-            type="primary" if current == STATUS_REJECTED or (not current and suggest_reject) else "secondary",
+            type="primary" if current_status == STATUS_REJECTED or (not current_status and suggest_reject) else "secondary",
             use_container_width=True,
             key="review_reject",
         ):
             decide(STATUS_REJECTED)
-    with btn3:
+    with btn4:
         if st.button(
             "⏭ Skip (S)",
-            type="primary" if current == STATUS_SKIPPED else "secondary",
+            type="primary" if current_status == STATUS_SKIPPED else "secondary",
             use_container_width=True,
             key="review_skip",
         ):
             decide(STATUS_SKIPPED)
-    with btn4:
+    with btn5:
         if st.button(
             "↩ Clear",
             use_container_width=True,
@@ -628,9 +990,70 @@ def main():
             key="review_clear",
         ):
             clear_decision()
-    with btn5:
-        st.caption("**A/R/S** decide · **←/→** navigate · sidebar click to re-open any event")
-        st.caption(f"Auto-save → `{CONFIRMED_NAME}` + `{REPORT_NAME}`")
+
+    st.caption(f"Most events: A/R/S. Use Local adjust only for mixed proposals. Auto-save → `{CONFIRMED_NAME}`")
+
+    if st.session_state.get("range_editor_eid") == eid:
+        start_time = float(ev.get("start_time") or 0.0)
+        end_time = float(ev.get("end_time") or start_time)
+        duration = max(0.001, end_time - start_time)
+        existing_ranges = decision_ranges(current)
+        default_range = (
+            tuple(existing_ranges[0])
+            if existing_ranges
+            else (round(start_time, 3), round(end_time, 3))
+        )
+        step = max(0.001, round(duration / 200.0, 3))
+        selected_range = st.slider(
+            "Drag both ends to keep only the real-face range",
+            min_value=round(start_time, 3),
+            max_value=round(end_time, 3),
+            value=default_range,
+            step=step,
+            key=f"review_range_slider::{eid}",
+        )
+        selected_range = [round(float(selected_range[0]), 3), round(float(selected_range[1]), 3)]
+        st.info(
+            f"Selected {selected_range[0]:.3f}s–{selected_range[1]:.3f}s of source video "
+            f"({selected_range[1] - selected_range[0]:.3f}s)"
+        )
+        if existing_ranges:
+            st.success(
+                "Saved ranges: "
+                + "; ".join(f"{a:.3f}s–{b:.3f}s" for a, b in existing_ranges)
+            )
+
+        range_a, range_b, range_c, range_d = st.columns([1.4, 1.2, 1.2, 1])
+        with range_a:
+            if st.button("✅ Save range & next", type="primary", use_container_width=True):
+                decide(
+                    {"status": STATUS_ACCEPTED_RANGES, "ranges": [selected_range]},
+                    force_advance=True,
+                )
+        with range_b:
+            if st.button("＋ Add another range", use_container_width=True):
+                merged = merge_time_ranges([*existing_ranges, selected_range])
+                decisions[eid] = {"status": STATUS_ACCEPTED_RANGES, "ranges": merged}
+                st.session_state.decisions = decisions
+                save_decisions(OUTPUT_DIR, decisions, all_events, video_path)
+                updated_stats = count_stats(all_events, decisions)
+                update_review_timing(
+                    OUTPUT_DIR,
+                    int(updated_stats["total"] - updated_stats["remaining"]),
+                    len(all_events),
+                )
+                st.rerun()
+        with range_c:
+            if st.button(
+                "✅ Finish & next",
+                use_container_width=True,
+                disabled=not existing_ranges,
+            ):
+                decide(current, force_advance=True)
+        with range_d:
+            if st.button("Cancel", use_container_width=True):
+                st.session_state.pop("range_editor_eid", None)
+                st.rerun()
 
     render_decision_banner(current)
     render_event_panel(OUTPUT_DIR, ev, ev_quality)
