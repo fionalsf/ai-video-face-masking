@@ -730,6 +730,7 @@ def render_video(
     refine_face_boxes: bool = False,
     mask_scale_divisor: int = 8,
     filter_threads: int = 1,
+    limit_output_frames: bool = False,
 ) -> None:
     ffmpeg = shutil.which("ffmpeg")
     if ffmpeg is None:
@@ -763,6 +764,8 @@ def render_video(
         cmd += ["-preset", "p1", "-b:v", bitrate]
     else:
         cmd += ["-preset", "veryfast", "-b:v", bitrate]
+    if limit_output_frames and total > 0:
+        cmd += ["-frames:v", str(total)]
     cmd.append(output_video)
 
     print(f"[渲染] ffmpeg + {enc}，遮罩帧 {len(render)}...")

@@ -17,14 +17,24 @@ from event_quality import (
 )
 
 STATUS_ACCEPTED = "accepted"
+STATUS_ACCEPTED_RANGES = "accepted_ranges"
 STATUS_ACCEPTED_FIRST_HALF = "accepted_first_half"
 STATUS_ACCEPTED_SECOND_HALF = "accepted_second_half"
 STATUS_REJECTED = "rejected"
 STATUS_SKIPPED = "skipped"
-ACCEPT_STATUSES = {STATUS_ACCEPTED, STATUS_ACCEPTED_FIRST_HALF, STATUS_ACCEPTED_SECOND_HALF}
+ACCEPT_STATUSES = {
+    STATUS_ACCEPTED, STATUS_ACCEPTED_RANGES,
+    STATUS_ACCEPTED_FIRST_HALF, STATUS_ACCEPTED_SECOND_HALF,
+}
 
 REPORT_NAME = "review_report.json"
 STATISTICS_NAME = "review_statistics.json"
+
+
+def _decision_status(decision) -> str | None:
+    if isinstance(decision, dict):
+        return str(decision.get("status") or "") or None
+    return str(decision) if decision else None
 
 
 def _pct(n: int, total: int) -> float:
@@ -50,7 +60,7 @@ def build_quality_gate_stats(
         q = quality_map.get(eid, {}).get("quality")
         if q in counts:
             counts[q] += 1
-        decision = decisions.get(eid)
+        decision = _decision_status(decisions.get(eid))
         if q in by_quality:
             if decision in ACCEPT_STATUSES:
                 by_quality[q]["accepted"] += 1
@@ -70,13 +80,13 @@ def build_review_report(
     quality_map: dict[str, dict] | None = None,
 ) -> dict:
     total = len(events)
-    accepted_n = sum(1 for e in events if decisions.get(e["event_id"]) in ACCEPT_STATUSES)
-    rejected_n = sum(1 for e in events if decisions.get(e["event_id"]) == STATUS_REJECTED)
-    skipped_n = sum(1 for e in events if decisions.get(e["event_id"]) == STATUS_SKIPPED)
+    accepted_n = sum(1 for e in events if _decision_status(decisions.get(e["event_id"])) in ACCEPT_STATUSES)
+    rejected_n = sum(1 for e in events if _decision_status(decisions.get(e["event_id"])) == STATUS_REJECTED)
+    skipped_n = sum(1 for e in events if _decision_status(decisions.get(e["event_id"])) == STATUS_SKIPPED)
     remaining = total - accepted_n - rejected_n
 
-    accepted = [e for e in events if decisions.get(e["event_id"]) in ACCEPT_STATUSES]
-    rejected = [e for e in events if decisions.get(e["event_id"]) == STATUS_REJECTED]
+    accepted = [e for e in events if _decision_status(decisions.get(e["event_id"])) in ACCEPT_STATUSES]
+    rejected = [e for e in events if _decision_status(decisions.get(e["event_id"])) == STATUS_REJECTED]
 
     report = {
         "video": os.path.basename(video) if video else "",

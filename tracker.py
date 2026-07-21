@@ -3,32 +3,34 @@
 from __future__ import annotations
 
 from collections import defaultdict
+import shutil
+import subprocess
 from types import SimpleNamespace
 import time
 
 import cv2
 import numpy as np
 from tqdm import tqdm
-from ultralytics import YOLO
+
+from detect_backends import DetectionBackend, create_detection_backend
 
 
 def resolve_device(device: str) -> str:
     import torch
     if device != "cpu" and not torch.cuda.is_available():
-        print("[提示] 未检测到 CUDA，改用 CPU。")
+        print("[detect] CUDA unavailable; falling back to CPU.")
         return "cpu"
     return device
 
 
 def gpu_sparse_detect(
-    model: YOLO,
+    backend: DetectionBackend,
     video_path: str,
     meta: dict,
-    device: str,
-    conf: float,
-    imgsz: int,
     interval: int,
     batch_size: int = 4,
+    decode_backend: str = "opencv",
+    imgsz: int = 1280,
 ) -> dict[int, list[tuple[list[float], float]]]:
     """Return sparse[frame_idx] = [(bbox, conf), ...]."""
     sparse: dict[int, list] = defaultdict(list)
@@ -37,72 +39,120 @@ def gpu_sparse_detect(
     total = (meta["frames"] + interval - 1) // interval if meta["frames"] > 0 else None
     predict_sec = 0.0
 
-    def consume_batch(frames: list[np.ndarray], frame_indices: list[int]) -> None:
+    def consume_batch(
+        frames: list[np.ndarray],
+        frame_indices: list[int],
+        scale_x: float = 1.0,
+        scale_y: float = 1.0,
+    ) -> None:
         nonlocal predict_sec
         if not frames:
             return
         started = time.perf_counter()
         try:
-            results = model.predict(
-                source=frames,
-                stream=False,
-                conf=conf,
-                imgsz=imgsz,
-                device=device,
-                half=device != "cpu",
-                verbose=False,
-            )
+            results = backend.predict_batch(frames)
         except (MemoryError, RuntimeError) as exc:
             if len(frames) <= 1:
                 raise
             mid = len(frames) // 2
             print(f"[detect] batch fallback {len(frames)} -> {mid}+{len(frames) - mid}: {type(exc).__name__}")
-            consume_batch(frames[:mid], frame_indices[:mid])
-            consume_batch(frames[mid:], frame_indices[mid:])
+            consume_batch(frames[:mid], frame_indices[:mid], scale_x, scale_y)
+            consume_batch(frames[mid:], frame_indices[mid:], scale_x, scale_y)
             return
         predict_sec += time.perf_counter() - started
-        for frame_idx, r in zip(frame_indices, results):
-            if r.boxes is None or len(r.boxes) == 0:
-                continue
-            xyxy = r.boxes.xyxy.cpu().numpy()
-            confs = r.boxes.conf.cpu().numpy() if r.boxes.conf is not None else None
-            for j in range(len(xyxy)):
-                c = float(confs[j]) if confs is not None else 1.0
-                sparse[int(frame_idx)].append((xyxy[j].tolist(), c))
+        for frame_idx, detections in zip(frame_indices, results):
+            for bbox, c in detections:
+                x1, y1, x2, y2 = bbox
+                mapped = [x1 * scale_x, y1 * scale_y, x2 * scale_x, y2 * scale_y]
+                sparse[int(frame_idx)].append((mapped, float(c)))
 
-    cap = cv2.VideoCapture(video_path)
-    if not cap.isOpened():
-        raise RuntimeError(f"Unable to open video: {video_path}")
-
-    frames: list[np.ndarray] = []
-    frame_indices: list[int] = []
-    pbar = tqdm(total=total, unit="f", desc="GPU detect")
-    try:
-        frame_idx = 0
-        while True:
-            if frame_idx % interval == 0:
-                ok, frame = cap.read()
-                if not ok:
+    def read_ffmpeg_cuda() -> None:
+        ffmpeg = shutil.which("ffmpeg")
+        if not ffmpeg:
+            raise RuntimeError("ffmpeg was not found on PATH")
+        src_w, src_h = int(meta["width"]), int(meta["height"])
+        resize_scale = (
+            1.0
+            if decode_backend == "cuda-full"
+            else min(1.0, float(imgsz) / max(src_w, src_h))
+        )
+        out_w = max(2, int(round(src_w * resize_scale / 2.0)) * 2)
+        out_h = max(2, int(round(src_h * resize_scale / 2.0)) * 2)
+        frame_bytes = out_w * out_h * 3
+        vf = f"select=not(mod(n\\,{interval})),scale={out_w}:{out_h}:flags=bilinear"
+        cmd = [
+            ffmpeg, "-hide_banner", "-loglevel", "error",
+            "-hwaccel", "cuda", "-c:v", "hevc_cuvid", "-i", video_path,
+            "-an", "-vf", vf, "-fps_mode", "vfr",
+            "-pix_fmt", "bgr24", "-f", "rawvideo", "pipe:1",
+        ]
+        proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        assert proc.stdout is not None
+        frames: list[np.ndarray] = []
+        frame_indices: list[int] = []
+        try:
+            for frame_idx in range(0, max(0, int(meta["frames"])), interval):
+                raw = proc.stdout.read(frame_bytes)
+                if len(raw) != frame_bytes:
                     break
-                frames.append(frame)
+                frames.append(np.frombuffer(raw, dtype=np.uint8).reshape(out_h, out_w, 3))
                 frame_indices.append(frame_idx)
                 if len(frames) >= batch_size:
-                    consume_batch(frames, frame_indices)
+                    consume_batch(frames, frame_indices, src_w / out_w, src_h / out_h)
                     pbar.update(len(frames))
                     frames.clear()
                     frame_indices.clear()
-            else:
-                ok = cap.grab()
-                if not ok:
-                    break
-            frame_idx += 1
-        if frames:
-            consume_batch(frames, frame_indices)
-            pbar.update(len(frames))
+            if frames:
+                consume_batch(frames, frame_indices, src_w / out_w, src_h / out_h)
+                pbar.update(len(frames))
+            proc.stdout.close()
+            stderr = proc.stderr.read().decode("utf-8", errors="replace") if proc.stderr else ""
+            returncode = proc.wait()
+            if returncode != 0:
+                raise RuntimeError(f"ffmpeg CUDA decode failed ({returncode}): {stderr.strip()}")
+        finally:
+            if proc.poll() is None:
+                proc.kill()
+                proc.wait()
+
+    pbar = tqdm(total=total, unit="f", desc="GPU detect")
+    try:
+        if decode_backend in {"cuda", "cuda-full"}:
+            read_ffmpeg_cuda()
+        else:
+            cap = cv2.VideoCapture(video_path)
+            if not cap.isOpened():
+                raise RuntimeError(f"Unable to open video: {video_path}")
+            frames: list[np.ndarray] = []
+            frame_indices: list[int] = []
+            try:
+                frame_idx = 0
+                while True:
+                    if frame_idx % interval == 0:
+                        ok, frame = cap.read()
+                        if not ok:
+                            break
+                        frames.append(frame)
+                        frame_indices.append(frame_idx)
+                        if len(frames) >= batch_size:
+                            consume_batch(frames, frame_indices)
+                            pbar.update(len(frames))
+                            frames.clear()
+                            frame_indices.clear()
+                    else:
+                        ok = cap.grab()
+                        if not ok:
+                            break
+                    frame_idx += 1
+                if frames:
+                    consume_batch(frames, frame_indices)
+                    pbar.update(len(frames))
+            finally:
+                cap.release()
     finally:
         pbar.close()
-        cap.release()
-    print(f"[detect timing] reader=opencv-grab predict={predict_sec:.1f}s")
+    reader_name = "ffmpeg-cuda-hevc" if decode_backend in {"cuda", "cuda-full"} else "opencv-grab"
+    print(f"[detect timing] backend={backend.name} reader={reader_name} predict={predict_sec:.1f}s")
     return sparse
 
 
@@ -175,18 +225,27 @@ def run_detect_track(
     imgsz: int = 1280,
     interval: int = 5,
     batch_size: int = 4,
+    infer_backend: str = "torch",
+    onnx_model_path: str | None = None,
+    decode_backend: str = "opencv",
 ) -> list[dict]:
     """Full detect+track -> flat detection list."""
     device = resolve_device(device)
-    model = YOLO(model_path)
+    backend = create_detection_backend(infer_backend, model_path, onnx_model_path, device, conf, imgsz)
     fps = meta["fps"] or 25.0
 
-    print(f"[1/2] GPU 稀疏检测（interval={interval}, conf={conf}, batch={batch_size}）...")
-    sparse = gpu_sparse_detect(model, video_path, meta, device, conf, imgsz, interval, batch_size=batch_size)
+    print(
+        f"[1/2] sparse detect "
+        f"(backend={backend.name}, interval={interval}, conf={conf}, batch={batch_size})..."
+    )
+    sparse = gpu_sparse_detect(
+        backend, video_path, meta, interval,
+        batch_size=batch_size, decode_backend=decode_backend, imgsz=imgsz,
+    )
     n_raw = sum(len(v) for v in sparse.values())
-    print(f"[2/2] CPU ByteTrack（{len(sparse)} 帧, {n_raw} 框）...")
+    print(f"[2/2] CPU ByteTrack ({len(sparse)} frames, {n_raw} boxes)...")
     per_frame = cpu_byte_track(sparse)
-    del model
+    backend.close()
 
     detections = []
     for frame_idx in sorted(per_frame):

@@ -28,10 +28,18 @@ def parse_args():
     p.add_argument("--filter-threads", type=int, default=1)
     p.add_argument("--final-name", default="final.mp4", help="Output video filename inside --output-dir.")
     p.add_argument("--no-audio", action="store_true", help="Skip audio mux for faster render tests.")
+    p.add_argument("--smart-render", action="store_true",
+                   help="Use opt-in GOP-aware hybrid rendering for reviewed HEVC timelines.")
+    p.add_argument("--smart-render-strict", action="store_true",
+                   help="Fail instead of falling back to full rendering if smart rendering fails.")
+    p.add_argument("--smart-render-keep-work", action="store_true",
+                   help="Keep smart-render TS segments and concat intermediates for debugging.")
+    p.add_argument("--smart-render-full-validation", action="store_true",
+                   help="Decode the entire smart-render output; slow, intended for qualification runs.")
     return p.parse_args()
 
 
-def parse_review_decisions(confirmed: dict) -> dict[str, str]:
+def parse_review_decisions(confirmed: dict) -> dict[str, str | dict]:
     """Support review_ui flat map and legacy confirmed template."""
     meta_keys = {
         "events", "summary", "video", "review_dir", "started_at", "updated_at",
@@ -39,7 +47,7 @@ def parse_review_decisions(confirmed: dict) -> dict[str, str]:
     }
     events = confirmed.get("events")
     if isinstance(events, list) and events and isinstance(events[0], dict):
-        out: dict[str, str] = {}
+        out: dict[str, str | dict] = {}
         for e in events:
             eid = e.get("event_id")
             if not eid:
@@ -49,11 +57,13 @@ def parse_review_decisions(confirmed: dict) -> dict[str, str]:
                 out[eid] = "accepted"
             elif status == "rejected_fp":
                 out[eid] = "rejected"
+            elif status == "accepted_ranges" and e.get("ranges"):
+                out[eid] = {"status": status, "ranges": e["ranges"]}
             elif status:
                 out[eid] = status
         return out
     return {
-        str(k): str(v)
+        str(k): v if isinstance(v, dict) else str(v)
         for k, v in confirmed.items()
         if str(k) not in meta_keys
         and (str(k).startswith("bevt_") or str(k).startswith("evt_") or str(k).startswith("mask_"))
@@ -325,23 +335,58 @@ def run_confirm(args) -> int:
             shutil.copy2(video_path, final)
         else:
             render_started = time.perf_counter()
-            tmp = final + ".tmp.mp4"
-            render_video(
-                video_path,
-                tmp,
-                render,
-                meta,
-                expand=expand,
-                mosaic_block=args.mosaic_block,
-                encoder=args.encoder,
-                refine_face_boxes=False,
-                mask_scale_divisor=args.mask_scale_divisor,
-                filter_threads=args.filter_threads,
-            )
-            if args.no_audio:
-                os.replace(tmp, final)
+            smart_report = None
+            smart_error = None
+            if args.smart_render:
+                try:
+                    from smart_render_prototype import render_reviewed_output_smart
+
+                    smart_report = render_reviewed_output_smart(
+                        out_dir,
+                        final,
+                        video=video_path,
+                        encoder=args.encoder,
+                        expand=expand,
+                        mosaic_block=args.mosaic_block,
+                        mask_scale_divisor=args.mask_scale_divisor,
+                        filter_threads=args.filter_threads,
+                        no_audio=args.no_audio,
+                        cleanup_work=not args.smart_render_keep_work,
+                        full_decode_validation=args.smart_render_full_validation,
+                    )
+                    if not smart_report["validation"]["passed"]:
+                        raise RuntimeError("smart-render validation did not pass")
+                except Exception as exc:
+                    smart_error = str(exc)
+                    if args.smart_render_strict:
+                        raise
+                    print(f"[smart-render] failed, falling back to full render: {exc}")
+
+            if not args.smart_render or smart_report is None:
+                tmp = final + ".tmp.mp4"
+                render_video(
+                    video_path,
+                    tmp,
+                    render,
+                    meta,
+                    expand=expand,
+                    mosaic_block=args.mosaic_block,
+                    encoder=args.encoder,
+                    refine_face_boxes=False,
+                    mask_scale_divisor=args.mask_scale_divisor,
+                    filter_threads=args.filter_threads,
+                )
+                if args.no_audio:
+                    os.replace(tmp, final)
+                else:
+                    mux_audio(tmp, video_path, final)
+                timeline_stats["render_mode"] = "full"
             else:
-                mux_audio(tmp, video_path, final)
+                timeline_stats["render_mode"] = "smart"
+                timeline_stats["smart_render_validation"] = smart_report["validation"]
+                timeline_stats["smart_render_segment_count"] = smart_report["segment_count"]
+            if smart_error:
+                timeline_stats["smart_render_error"] = smart_error
             timeline_stats["render_wall_sec"] = round(time.perf_counter() - render_started, 3)
 
         if os.path.isfile(report_path):

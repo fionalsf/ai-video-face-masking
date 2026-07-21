@@ -26,17 +26,22 @@ from mask_timeline import generate_mask_review_contact_sheet
 from review_stats import REPORT_NAME, STATISTICS_NAME, load_review_report, update_review_report
 
 STATUS_ACCEPTED = "accepted"
+STATUS_ACCEPTED_RANGES = "accepted_ranges"
 STATUS_ACCEPTED_FIRST_HALF = "accepted_first_half"
 STATUS_ACCEPTED_SECOND_HALF = "accepted_second_half"
 STATUS_REJECTED = "rejected"
 STATUS_SKIPPED = "skipped"
-ACCEPT_STATUSES = {STATUS_ACCEPTED, STATUS_ACCEPTED_FIRST_HALF, STATUS_ACCEPTED_SECOND_HALF}
+ACCEPT_STATUSES = {
+    STATUS_ACCEPTED, STATUS_ACCEPTED_RANGES,
+    STATUS_ACCEPTED_FIRST_HALF, STATUS_ACCEPTED_SECOND_HALF,
+}
 FINAL_STATUSES = ACCEPT_STATUSES | {STATUS_REJECTED}
 
 PREVIEW_MAX_HEIGHT_PX = 360
 SIDEBAR_WINDOW = 8
 PREFETCH_STATUS_NAME = "preview_prefetch_status.json"
 PREFETCH_LOCK_NAME = "preview_prefetch.lock"
+TIMING_NAME = "review_timing.json"
 
 
 def parse_output_dir() -> str:
@@ -55,7 +60,36 @@ def confirmed_path(output_dir: str) -> str:
     return os.path.join(output_dir, CONFIRMED_NAME)
 
 
-def load_decisions(output_dir: str) -> dict[str, str]:
+def decision_status(decision) -> str | None:
+    if isinstance(decision, dict):
+        return str(decision.get("status") or "") or None
+    return str(decision) if decision else None
+
+
+def decision_ranges(decision) -> list[list[float]]:
+    if not isinstance(decision, dict) or decision_status(decision) != STATUS_ACCEPTED_RANGES:
+        return []
+    ranges = []
+    for item in decision.get("ranges") or []:
+        if isinstance(item, (list, tuple)) and len(item) == 2 and float(item[1]) > float(item[0]):
+            ranges.append([round(float(item[0]), 3), round(float(item[1]), 3)])
+    return ranges
+
+
+def merge_time_ranges(ranges: list[list[float]]) -> list[list[float]]:
+    merged: list[list[float]] = []
+    for start, end in sorted(ranges, key=lambda item: float(item[0])):
+        start, end = round(float(start), 3), round(float(end), 3)
+        if end <= start:
+            continue
+        if not merged or start > merged[-1][1] + 0.001:
+            merged.append([start, end])
+        else:
+            merged[-1][1] = max(merged[-1][1], end)
+    return merged
+
+
+def load_decisions(output_dir: str) -> dict[str, str | dict]:
     path = confirmed_path(output_dir)
     if not os.path.isfile(path):
         return {}
@@ -67,7 +101,7 @@ def load_decisions(output_dir: str) -> dict[str, str]:
             "total_review_events", "decided_count", "schema", "decision_unit",
         }
         return {
-            str(k): str(v)
+            str(k): v if isinstance(v, dict) else str(v)
             for k, v in data.items()
             if str(k) not in meta_keys
             and (str(k).startswith("bevt_") or str(k).startswith("evt_") or str(k).startswith("mask_"))
@@ -88,7 +122,7 @@ def load_decisions(output_dir: str) -> dict[str, str]:
 
 def save_decisions(
     output_dir: str,
-    decisions: dict[str, str],
+    decisions: dict[str, str | dict],
     events: list[dict] | None = None,
     video: str = "",
     update_report: bool = False,
@@ -108,6 +142,60 @@ def save_decisions(
         json.dump(payload, f, ensure_ascii=False, indent=2)
     if update_report and events is not None:
         update_review_report(output_dir, video, events, decisions)
+
+
+def timing_path(output_dir: str) -> str:
+    return os.path.join(output_dir, TIMING_NAME)
+
+
+def load_review_timing(output_dir: str) -> dict:
+    path = timing_path(output_dir)
+    if not os.path.isfile(path):
+        return {}
+    try:
+        with open(path, encoding="utf-8") as f:
+            return json.load(f)
+    except (OSError, json.JSONDecodeError):
+        return {}
+
+
+def start_review_timing(output_dir: str, decided_count: int, total: int) -> dict:
+    now = time.time()
+    timing = {
+        "schema": "review_timing.v1",
+        "started_at": time.strftime("%Y-%m-%dT%H:%M:%S"),
+        "started_at_epoch": now,
+        "starting_decided_count": int(decided_count),
+        "current_decided_count": int(decided_count),
+        "total_review_events": int(total),
+        "elapsed_sec": 0.0,
+        "finished_at": None,
+    }
+    with open(timing_path(output_dir), "w", encoding="utf-8") as f:
+        json.dump(timing, f, ensure_ascii=False, indent=2)
+    return timing
+
+
+def update_review_timing(output_dir: str, decided_count: int, total: int) -> dict:
+    timing = load_review_timing(output_dir)
+    if not timing or timing.get("finished_at"):
+        return timing
+    elapsed = max(0.0, time.time() - float(timing.get("started_at_epoch") or time.time()))
+    timing["current_decided_count"] = int(decided_count)
+    timing["total_review_events"] = int(total)
+    timing["elapsed_sec"] = round(elapsed, 3)
+    if decided_count >= total:
+        timing["finished_at"] = time.strftime("%Y-%m-%dT%H:%M:%S")
+    with open(timing_path(output_dir), "w", encoding="utf-8") as f:
+        json.dump(timing, f, ensure_ascii=False, indent=2)
+    return timing
+
+
+def format_elapsed(seconds: float) -> str:
+    seconds = max(0, int(round(seconds)))
+    hours, rem = divmod(seconds, 3600)
+    minutes, secs = divmod(rem, 60)
+    return f"{hours:02d}:{minutes:02d}:{secs:02d}"
 
 
 def load_events(output_dir: str) -> tuple[list[dict], str]:
@@ -214,11 +302,11 @@ def load_events(output_dir: str) -> tuple[list[dict], str]:
     return events, video
 
 
-def count_stats(events: list[dict], decisions: dict[str, str]) -> dict[str, int | float]:
+def count_stats(events: list[dict], decisions: dict[str, str | dict]) -> dict[str, int | float]:
     total = len(events)
-    accepted = sum(1 for e in events if decisions.get(e["event_id"]) in ACCEPT_STATUSES)
-    rejected = sum(1 for e in events if decisions.get(e["event_id"]) == STATUS_REJECTED)
-    skipped = sum(1 for e in events if decisions.get(e["event_id"]) == STATUS_SKIPPED)
+    accepted = sum(1 for e in events if decision_status(decisions.get(e["event_id"])) in ACCEPT_STATUSES)
+    rejected = sum(1 for e in events if decision_status(decisions.get(e["event_id"])) == STATUS_REJECTED)
+    skipped = sum(1 for e in events if decision_status(decisions.get(e["event_id"])) == STATUS_SKIPPED)
     return {
         "total": total,
         "accepted": accepted,
@@ -231,22 +319,22 @@ def count_stats(events: list[dict], decisions: dict[str, str]) -> dict[str, int 
     }
 
 
-def next_pending_index(events: list[dict], decisions: dict[str, str], start: int) -> int | None:
+def next_pending_index(events: list[dict], decisions: dict[str, str | dict], start: int) -> int | None:
     for j in range(start, len(events)):
-        if decisions.get(events[j]["event_id"]) not in FINAL_STATUSES:
+        if decision_status(decisions.get(events[j]["event_id"])) not in FINAL_STATUSES:
             return j
     for j in range(0, start):
-        if decisions.get(events[j]["event_id"]) not in FINAL_STATUSES:
+        if decision_status(decisions.get(events[j]["event_id"])) not in FINAL_STATUSES:
             return j
     return None
 
 
-def prev_pending_index(events: list[dict], decisions: dict[str, str], start: int) -> int | None:
+def prev_pending_index(events: list[dict], decisions: dict[str, str | dict], start: int) -> int | None:
     for j in range(start, -1, -1):
-        if decisions.get(events[j]["event_id"]) not in FINAL_STATUSES:
+        if decision_status(decisions.get(events[j]["event_id"])) not in FINAL_STATUSES:
             return j
     for j in range(len(events) - 1, start, -1):
-        if decisions.get(events[j]["event_id"]) not in FINAL_STATUSES:
+        if decision_status(decisions.get(events[j]["event_id"])) not in FINAL_STATUSES:
             return j
     return None
 
@@ -421,9 +509,11 @@ def render_prefetch_status(output_dir: str) -> None:
         st.caption(f"Preview prefetch: {state}")
 
 
-def status_icon(status: str | None) -> str:
+def status_icon(status) -> str:
+    status = decision_status(status)
     return {
         STATUS_ACCEPTED: "✅",
+        STATUS_ACCEPTED_RANGES: "✅",
         STATUS_ACCEPTED_FIRST_HALF: "◐",
         STATUS_ACCEPTED_SECOND_HALF: "◑",
         STATUS_REJECTED: "❌",
@@ -441,6 +531,7 @@ def render_keyboard_listener():
             const k = e.key.toLowerCase();
             const targets = {
                 a: "Accept", r: "Reject", s: "Skip",
+                e: "Local adjust",
                 arrowleft: "Prev", arrowright: "Next",
             };
             const needle = targets[k];
@@ -634,8 +725,9 @@ def render_event_panel(
             )
 
 
-def render_decision_banner(current: str | None) -> None:
-    if not current:
+def render_decision_banner(current) -> None:
+    current_status = decision_status(current)
+    if not current_status:
         st.markdown(
             '<p style="margin:0.1rem 0 0.25rem;font-size:0.88rem;color:#f59e0b;">'
             "Decision: <b>unreviewed</b> - click Accept or Reject to save</p>",
@@ -644,15 +736,19 @@ def render_decision_banner(current: str | None) -> None:
         return
     colors = {
         STATUS_ACCEPTED: "#22c55e",
+        STATUS_ACCEPTED_RANGES: "#22c55e",
         STATUS_ACCEPTED_FIRST_HALF: "#22c55e",
         STATUS_ACCEPTED_SECOND_HALF: "#22c55e",
         STATUS_REJECTED: "#ef4444",
         STATUS_SKIPPED: "#38bdf8",
     }
-    color = colors.get(current, "#94a3b8")
+    color = colors.get(current_status, "#94a3b8")
+    label = current_status
+    if current_status == STATUS_ACCEPTED_RANGES:
+        label = f"accepted_ranges ({len(decision_ranges(current))})"
     st.markdown(
         f'<p style="margin:0.1rem 0 0.25rem;font-size:0.88rem;color:{color};">'
-        f"Decision: <b>{current}</b> — click buttons above to change</p>",
+        f"Decision: <b>{label}</b> — click buttons above to change</p>",
         unsafe_allow_html=True,
     )
 
@@ -708,6 +804,28 @@ def main():
             f"Accept {stats['accept_pct']}% · Reject {stats['reject_pct']}% · "
             f"Skip {stats['skip_pct']}% · {'done' if not stats['remaining'] else 'need A/R'}"
         )
+        timing = load_review_timing(OUTPUT_DIR)
+        final_decided = int(stats["total"] - stats["remaining"])
+        if timing:
+            elapsed = float(timing.get("elapsed_sec") or 0.0)
+            if not timing.get("finished_at"):
+                elapsed = max(
+                    elapsed,
+                    time.time() - float(timing.get("started_at_epoch") or time.time()),
+                )
+            reviewed_in_session = max(
+                0,
+                final_decided - int(timing.get("starting_decided_count") or 0),
+            )
+            avg_sec = elapsed / reviewed_in_session if reviewed_in_session else 0.0
+            st.info(
+                f"Timing: {format_elapsed(elapsed)} · session decisions {reviewed_in_session} · "
+                f"average {avg_sec:.1f}s/event"
+            )
+        if st.button("⏱ Start timing from current progress", use_container_width=False):
+            start_review_timing(OUTPUT_DIR, final_decided, len(all_events))
+            st.rerun()
+
         report = load_review_report(OUTPUT_DIR)
         if report:
             a = report.get("analysis", {})
@@ -797,27 +915,42 @@ def main():
 
     suggest_reject = bool(ev_quality and ev_quality.get("suggest_reject"))
     current = decisions.get(eid)
-    btn1, btn2, btn3, btn4, btn5, btn6 = st.columns([1, 1, 1, 1, 1, 2])
+    current_status = decision_status(current)
+    btn1, btn2, btn3, btn4, btn5 = st.columns([1.2, 1.2, 1, 1, 1])
 
-    def decide(status: str):
-        was_final = decisions.get(eid) in FINAL_STATUSES
-        decisions[eid] = status
+    def decide(decision, *, force_advance: bool = False):
+        was_final = decision_status(decisions.get(eid)) in FINAL_STATUSES
+        decisions[eid] = decision
         st.session_state.decisions = decisions
         save_decisions(OUTPUT_DIR, decisions, all_events, video_path)
-        if st.session_state.auto_advance and not was_final:
+        updated_stats = count_stats(all_events, decisions)
+        update_review_timing(
+            OUTPUT_DIR,
+            int(updated_stats["total"] - updated_stats["remaining"]),
+            len(all_events),
+        )
+        if st.session_state.auto_advance and (force_advance or not was_final):
             nxt = next_pending_index(all_events, decisions, st.session_state.view_idx + 1)
             if nxt is not None:
                 st.session_state.view_idx = nxt
+        if decision_status(decision) != STATUS_ACCEPTED_RANGES:
+            st.session_state.pop("range_editor_eid", None)
         st.rerun()
 
     def clear_decision():
         decisions.pop(eid, None)
         st.session_state.decisions = decisions
         save_decisions(OUTPUT_DIR, decisions, all_events, video_path)
+        updated_stats = count_stats(all_events, decisions)
+        update_review_timing(
+            OUTPUT_DIR,
+            int(updated_stats["total"] - updated_stats["remaining"]),
+            len(all_events),
+        )
         st.rerun()
 
     with btn1:
-        accept_primary = current == STATUS_ACCEPTED
+        accept_primary = current_status == STATUS_ACCEPTED
         if st.button(
             "✅ Accept all (A)",
             type="primary" if accept_primary else "secondary",
@@ -827,37 +960,29 @@ def main():
             decide(STATUS_ACCEPTED)
     with btn2:
         if st.button(
-            "◐ 1st half",
-            type="primary" if current == STATUS_ACCEPTED_FIRST_HALF else "secondary",
+            "✂ Local adjust (E)",
+            type="primary" if current_status == STATUS_ACCEPTED_RANGES else "secondary",
             use_container_width=True,
-            key="review_accept_first_half",
+            key="review_local_adjust",
         ):
-            decide(STATUS_ACCEPTED_FIRST_HALF)
+            st.session_state.range_editor_eid = eid
     with btn3:
         if st.button(
-            "◑ 2nd half",
-            type="primary" if current == STATUS_ACCEPTED_SECOND_HALF else "secondary",
-            use_container_width=True,
-            key="review_accept_second_half",
-        ):
-            decide(STATUS_ACCEPTED_SECOND_HALF)
-    with btn4:
-        if st.button(
             "❌ Reject (R)",
-            type="primary" if current == STATUS_REJECTED or (not current and suggest_reject) else "secondary",
+            type="primary" if current_status == STATUS_REJECTED or (not current_status and suggest_reject) else "secondary",
             use_container_width=True,
             key="review_reject",
         ):
             decide(STATUS_REJECTED)
-    with btn5:
+    with btn4:
         if st.button(
             "⏭ Skip (S)",
-            type="primary" if current == STATUS_SKIPPED else "secondary",
+            type="primary" if current_status == STATUS_SKIPPED else "secondary",
             use_container_width=True,
             key="review_skip",
         ):
             decide(STATUS_SKIPPED)
-    with btn6:
+    with btn5:
         if st.button(
             "↩ Clear",
             use_container_width=True,
@@ -865,8 +990,70 @@ def main():
             key="review_clear",
         ):
             clear_decision()
-        st.caption("Use half buttons for mixed proposals")
-        st.caption(f"Auto-save -> `{CONFIRMED_NAME}`")
+
+    st.caption(f"Most events: A/R/S. Use Local adjust only for mixed proposals. Auto-save → `{CONFIRMED_NAME}`")
+
+    if st.session_state.get("range_editor_eid") == eid:
+        start_time = float(ev.get("start_time") or 0.0)
+        end_time = float(ev.get("end_time") or start_time)
+        duration = max(0.001, end_time - start_time)
+        existing_ranges = decision_ranges(current)
+        default_range = (
+            tuple(existing_ranges[0])
+            if existing_ranges
+            else (round(start_time, 3), round(end_time, 3))
+        )
+        step = max(0.001, round(duration / 200.0, 3))
+        selected_range = st.slider(
+            "Drag both ends to keep only the real-face range",
+            min_value=round(start_time, 3),
+            max_value=round(end_time, 3),
+            value=default_range,
+            step=step,
+            key=f"review_range_slider::{eid}",
+        )
+        selected_range = [round(float(selected_range[0]), 3), round(float(selected_range[1]), 3)]
+        st.info(
+            f"Selected {selected_range[0]:.3f}s–{selected_range[1]:.3f}s of source video "
+            f"({selected_range[1] - selected_range[0]:.3f}s)"
+        )
+        if existing_ranges:
+            st.success(
+                "Saved ranges: "
+                + "; ".join(f"{a:.3f}s–{b:.3f}s" for a, b in existing_ranges)
+            )
+
+        range_a, range_b, range_c, range_d = st.columns([1.4, 1.2, 1.2, 1])
+        with range_a:
+            if st.button("✅ Save range & next", type="primary", use_container_width=True):
+                decide(
+                    {"status": STATUS_ACCEPTED_RANGES, "ranges": [selected_range]},
+                    force_advance=True,
+                )
+        with range_b:
+            if st.button("＋ Add another range", use_container_width=True):
+                merged = merge_time_ranges([*existing_ranges, selected_range])
+                decisions[eid] = {"status": STATUS_ACCEPTED_RANGES, "ranges": merged}
+                st.session_state.decisions = decisions
+                save_decisions(OUTPUT_DIR, decisions, all_events, video_path)
+                updated_stats = count_stats(all_events, decisions)
+                update_review_timing(
+                    OUTPUT_DIR,
+                    int(updated_stats["total"] - updated_stats["remaining"]),
+                    len(all_events),
+                )
+                st.rerun()
+        with range_c:
+            if st.button(
+                "✅ Finish & next",
+                use_container_width=True,
+                disabled=not existing_ranges,
+            ):
+                decide(current, force_advance=True)
+        with range_d:
+            if st.button("Cancel", use_container_width=True):
+                st.session_state.pop("range_editor_eid", None)
+                st.rerun()
 
     render_decision_banner(current)
     render_event_panel(OUTPUT_DIR, ev, ev_quality)

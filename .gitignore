@@ -16,6 +16,11 @@ output_*/
 *_output/
 v2_*_outputs/
 v3_*_outputs/
+v4_*_outputs/
+v5_*_outputs/
+benchmark_review_*/
+DETECTION_ACCEL*.json
+smart_render_*/
 *.jpg
 *.jpeg
 *.png
@@ -24,3 +29,4 @@ v3_*_outputs/
 *.xlsx
 *.onnx
 *.engine
+models/.trt_cache/

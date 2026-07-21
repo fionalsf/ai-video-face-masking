@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import subprocess
 import sys
 import time
 
@@ -46,6 +47,9 @@ MODE_PRESETS = {
         "motion_max_gap": 45,
         "motion_singleton_frames": 12,
         "edge_partial_face": False,
+        "edge_review_scan": False,
+        "low_conf_standalone": True,
+        "fast_identity": False,
         "timeline_review": True,
     },
     "preview": {
@@ -60,6 +64,9 @@ MODE_PRESETS = {
         "motion_max_gap": 60,
         "motion_singleton_frames": 30,
         "edge_partial_face": True,
+        "edge_review_scan": True,
+        "low_conf_standalone": True,
+        "fast_identity": False,
         "timeline_review": True,
     },
     "production": {
@@ -74,6 +81,26 @@ MODE_PRESETS = {
         "motion_max_gap": 45,
         "motion_singleton_frames": 30,
         "edge_partial_face": True,
+        "edge_review_scan": True,
+        "low_conf_standalone": True,
+        "fast_identity": False,
+        "timeline_review": True,
+    },
+    "fast_review": {
+        "interval": 3,
+        "conf": 0.23,
+        "imgsz": 1280,
+        "expand": 0.26,
+        "mosaic_block": 22,
+        "render_extend_frames": 14,
+        "mask_review": True,
+        "motion_compensate": True,
+        "motion_max_gap": 60,
+        "motion_singleton_frames": 36,
+        "edge_partial_face": True,
+        "edge_review_scan": False,
+        "low_conf_standalone": False,
+        "fast_identity": True,
         "timeline_review": True,
     },
     "privacy": {
@@ -88,6 +115,9 @@ MODE_PRESETS = {
         "motion_max_gap": 45,
         "motion_singleton_frames": 45,
         "edge_partial_face": True,
+        "edge_review_scan": True,
+        "low_conf_standalone": True,
+        "fast_identity": False,
         "timeline_review": True,
     },
 }
@@ -106,9 +136,27 @@ def parse_args():
     p.add_argument("--interval", type=int, default=None, help="Detection stride (frames)")
     p.add_argument("--conf", type=float, default=None, help="Detection confidence threshold")
     p.add_argument("--model", default="models/face.pt", help="YOLO-face weights")
+    p.add_argument(
+        "--infer-backend",
+        choices=["auto", "torch", "onnx", "tensorrt"],
+        default="torch",
+        help="Detection inference backend. torch/auto keep stable v3 behavior; onnx/tensorrt are explicit acceleration tests.",
+    )
+    p.add_argument("--onnx-model", default="models/face.onnx", help="ONNX model path for --infer-backend onnx/auto")
     p.add_argument("--device", default="0", help="GPU id or cpu")
+    p.add_argument(
+        "--decode-backend",
+        choices=["opencv", "cuda", "cuda-full"],
+        default="opencv",
+        help="Video decode backend; cuda uses NVIDIA HEVC hardware decode with pre-scaling, cuda-full preserves source resolution.",
+    )
     p.add_argument("--imgsz", type=int, default=None)
     p.add_argument("--detect-batch", type=int, default=4, help="GPU detection batch size; auto-falls back on memory errors.")
+    p.add_argument(
+        "--detect-isolated",
+        action="store_true",
+        help="Run detect+track in a subprocess so inference runtimes release memory before review stages.",
+    )
     p.add_argument("--event-gap", type=float, default=1.0, help="Presence segmentation gap (seconds)")
     p.add_argument("--stitch-gap", type=float, default=60.0, help="Temporal soft prior tau for identity graph (sec)")
     p.add_argument("--behavior-gap", type=float, default=8.0, help="Behavior split gap within identity (seconds)")
@@ -127,6 +175,15 @@ def parse_args():
     p.add_argument("--edge-partial-face", dest="edge_partial_face", action="store_true", help="Mask large partial skin-face regions touching left/right frame edges.")
     p.add_argument("--no-edge-partial-face", dest="edge_partial_face", action="store_false", help="Disable partial edge-face fallback.")
     p.set_defaults(edge_partial_face=None)
+    p.add_argument("--edge-review-scan", dest="edge_review_scan", action="store_true", help="Scan video for extra edge partial-face Review candidates.")
+    p.add_argument("--no-edge-review-scan", dest="edge_review_scan", action="store_false", help="Skip extra edge partial-face Review candidate scan.")
+    p.set_defaults(edge_review_scan=None)
+    p.add_argument("--low-conf-standalone", dest="low_conf_standalone", action="store_true", help="Promote standalone low-confidence edge clips into Review.")
+    p.add_argument("--no-low-conf-standalone", dest="low_conf_standalone", action="store_false", help="Skip standalone low-confidence promotion scan.")
+    p.set_defaults(low_conf_standalone=None)
+    p.add_argument("--fast-identity", dest="fast_identity", action="store_true", help="Skip full-video appearance embedding enrichment for faster review generation.")
+    p.add_argument("--full-identity", dest="fast_identity", action="store_false", help="Use full appearance embedding enrichment during identity stitching.")
+    p.set_defaults(fast_identity=None)
     p.add_argument("--mask-review", action="store_true", help="Render Review-tier events too.")
     p.add_argument("--mask-lowconf", action="store_true", help="Render LowConf-tier events too.")
     p.add_argument("--reuse-tracks", action="store_true", help="Reuse tracked_detections.json when present.")
@@ -173,6 +230,21 @@ def resolve_runtime_args(args) -> dict:
             if args.edge_partial_face is not None
             else preset["edge_partial_face"]
         ),
+        "edge_review_scan": (
+            args.edge_review_scan
+            if args.edge_review_scan is not None
+            else preset.get("edge_review_scan", preset["edge_partial_face"])
+        ),
+        "low_conf_standalone": (
+            args.low_conf_standalone
+            if args.low_conf_standalone is not None
+            else preset.get("low_conf_standalone", True)
+        ),
+        "fast_identity": (
+            args.fast_identity
+            if args.fast_identity is not None
+            else preset.get("fast_identity", False)
+        ),
         "timeline_review": bool(preset.get("timeline_review", True)),
     }
 
@@ -181,6 +253,37 @@ def load_or_run_detect_track(args, runtime: dict, video_path: str, meta: dict, o
     tracked_path = os.path.join(out_dir, "tracked_detections.json")
     if args.reuse_tracks and os.path.isfile(tracked_path):
         print(f"[cache] Reusing tracked detections: {tracked_path}")
+        with open(tracked_path, encoding="utf-8") as f:
+            return json.load(f)
+
+    if args.detect_isolated:
+        worker_cfg_path = os.path.join(out_dir, "detect_worker_config.json")
+        worker_report_path = os.path.join(out_dir, "detect_worker_report.json")
+        worker_cfg = {
+            "video_path": video_path,
+            "model_path": os.path.abspath(args.model),
+            "meta": meta,
+            "device": args.device,
+            "conf": runtime["conf"],
+            "imgsz": runtime["imgsz"],
+            "interval": runtime["interval"],
+            "batch_size": runtime["detect_batch"],
+            "infer_backend": args.infer_backend,
+            "decode_backend": args.decode_backend,
+            "onnx_model_path": os.path.abspath(args.onnx_model) if args.onnx_model else None,
+            "output_path": tracked_path,
+            "report_path": worker_report_path,
+        }
+        with open(worker_cfg_path, "w", encoding="utf-8") as f:
+            json.dump(worker_cfg, f, ensure_ascii=False, indent=2)
+        worker_script = os.path.join(os.path.dirname(__file__), "detect_track_worker.py")
+        print(f"[detect] isolated worker -> {tracked_path}")
+        completed = subprocess.run(
+            [sys.executable, worker_script, "--config", worker_cfg_path],
+            cwd=os.path.dirname(__file__),
+        )
+        if completed.returncode != 0:
+            raise RuntimeError(f"Detect worker failed with exit code {completed.returncode}")
         with open(tracked_path, encoding="utf-8") as f:
             return json.load(f)
 
@@ -193,6 +296,9 @@ def load_or_run_detect_track(args, runtime: dict, video_path: str, meta: dict, o
         imgsz=runtime["imgsz"],
         interval=runtime["interval"],
         batch_size=runtime["detect_batch"],
+        infer_backend=args.infer_backend,
+        onnx_model_path=args.onnx_model,
+        decode_backend=args.decode_backend,
     )
     with open(tracked_path, "w", encoding="utf-8") as f:
         json.dump(detections, f, ensure_ascii=False, indent=2)
@@ -237,9 +343,10 @@ def run_pipeline(args) -> int:
     print(
         f"[mode] {args.mode} | interval={runtime['interval']} conf={runtime['conf']} "
         f"imgsz={runtime['imgsz']} detect_batch={runtime['detect_batch']} "
+        f"infer_backend={args.infer_backend} detect_isolated={args.detect_isolated} "
         f"mask_review={runtime['mask_review']} "
         f"mask_lowconf={runtime['mask_lowconf']} motion_comp={runtime['motion_compensate']} "
-        f"edge_partial={runtime['edge_partial_face']}"
+        f"edge_partial={runtime['edge_partial_face']} fast_identity={runtime['fast_identity']}"
     )
 
     print("[1/5] Detection + Tracking...")
@@ -272,6 +379,7 @@ def run_pipeline(args) -> int:
         output_dir=out_dir,
         video=video_path,
         temporal_tau=args.stitch_gap,
+        enrich_appearance=not runtime["fast_identity"],
     )
     print(
         f"      {stitch_stats['track_count']} tracks -> {stitch_stats['identity_cluster_count']} identities"
@@ -303,7 +411,7 @@ def run_pipeline(args) -> int:
     stage_started = time.perf_counter()
     events = [behavior_event_to_face_event(ev) for ev in behavior_stats["behavior_events"]]
     edge_review_ev = []
-    if runtime["edge_partial_face"]:
+    if runtime["edge_partial_face"] and runtime.get("edge_review_scan", True):
         edge_review_ev = build_edge_review_candidates(
             video_path,
             meta,
@@ -420,6 +528,10 @@ def run_pipeline(args) -> int:
         "processed_at": time.strftime("%Y-%m-%dT%H:%M:%S"),
         "mode": args.mode,
         "runtime": runtime,
+        "infer_backend": args.infer_backend,
+        "onnx_model": args.onnx_model,
+        "detect_isolated": args.detect_isolated,
+        "decode_backend": args.decode_backend,
         "stage_times": {
             **stage_times,
             "total_pipeline_sec": round(time.perf_counter() - pipeline_started, 3),
@@ -439,6 +551,7 @@ def run_pipeline(args) -> int:
             "track_count": stitch_stats["track_count"],
             "identity_cluster_count": stitch_stats["identity_cluster_count"],
             "appearance_method": stitch_stats["appearance_method"],
+            "appearance_enrich_enabled": stitch_stats.get("appearance_enrich_enabled"),
             "profile_embeddings": stitch_stats.get("profile_embeddings"),
             "stage_times": stitch_stats.get("stage_times"),
         },

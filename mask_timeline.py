@@ -22,11 +22,15 @@ MASK_TIMELINE_DEBUG_NAME = "mask_timeline_debug.json"
 SUPPRESSED_REVIEW_NAME = "suppressed_events.json"
 
 STATUS_ACCEPTED = "accepted"
+STATUS_ACCEPTED_RANGES = "accepted_ranges"
 STATUS_ACCEPTED_FIRST_HALF = "accepted_first_half"
 STATUS_ACCEPTED_SECOND_HALF = "accepted_second_half"
 STATUS_REJECTED = "rejected"
 STATUS_SKIPPED = "skipped"
-ACCEPT_STATUSES = {STATUS_ACCEPTED, STATUS_ACCEPTED_FIRST_HALF, STATUS_ACCEPTED_SECOND_HALF}
+ACCEPT_STATUSES = {
+    STATUS_ACCEPTED, STATUS_ACCEPTED_RANGES,
+    STATUS_ACCEPTED_FIRST_HALF, STATUS_ACCEPTED_SECOND_HALF,
+}
 
 MAIN_REVIEW_EDGE_MIN_DURATION = 2.0
 MAIN_REVIEW_LOW_CONF_MIN_PEAK = 0.70
@@ -89,7 +93,13 @@ def _area_ratio(a: list[float], b: list[float]) -> float:
     return max(aa, ba) / min(aa, ba)
 
 
-def parse_review_decisions(path_or_doc: str | dict) -> dict[str, str]:
+def _decision_status(decision) -> str | None:
+    if isinstance(decision, dict):
+        return str(decision.get("status") or "") or None
+    return str(decision) if decision else None
+
+
+def parse_review_decisions(path_or_doc: str | dict) -> dict[str, str | dict]:
     if isinstance(path_or_doc, str):
         if not os.path.isfile(path_or_doc):
             return {}
@@ -102,7 +112,7 @@ def parse_review_decisions(path_or_doc: str | dict) -> dict[str, str]:
         return {}
     events = doc.get("events")
     if isinstance(events, list):
-        out: dict[str, str] = {}
+        out: dict[str, str | dict] = {}
         for row in events:
             eid = row.get("event_id")
             status = row.get("status") or row.get("review_status")
@@ -112,17 +122,20 @@ def parse_review_decisions(path_or_doc: str | dict) -> dict[str, str]:
                 status = STATUS_ACCEPTED
             elif status == "rejected_fp":
                 status = STATUS_REJECTED
-            out[str(eid)] = str(status)
+            if status == STATUS_ACCEPTED_RANGES and row.get("ranges"):
+                out[str(eid)] = {"status": STATUS_ACCEPTED_RANGES, "ranges": row["ranges"]}
+            else:
+                out[str(eid)] = str(status)
         return out
 
     meta_keys = {
         "events", "summary", "video", "review_dir", "started_at", "updated_at",
-        "total_review_events", "decided_count",
+        "total_review_events", "decided_count", "schema", "decision_unit",
     }
     return {
-        str(k): str(v)
+        str(k): v if isinstance(v, dict) else str(v)
         for k, v in doc.items()
-        if str(k) not in meta_keys and isinstance(v, str)
+        if str(k) not in meta_keys and isinstance(v, (str, dict))
     }
 
 
@@ -711,12 +724,13 @@ def write_mask_confirmed_template(review_dir: str, pending_events: list[dict]) -
     """Create a v2 decisions file and keep only decisions matching current proposals."""
     path = os.path.join(review_dir, "confirmed_events.json")
     pending_ids = {str(e["event_id"]) for e in pending_events}
-    kept: dict[str, str] = {}
+    kept: dict[str, str | dict] = {}
     if os.path.isfile(path):
         kept = {
             eid: status
             for eid, status in parse_review_decisions(path).items()
-            if eid in pending_ids and status in (ACCEPT_STATUSES | {STATUS_REJECTED, STATUS_SKIPPED})
+            if eid in pending_ids
+            and _decision_status(status) in (ACCEPT_STATUSES | {STATUS_REJECTED, STATUS_SKIPPED})
         }
     payload = {
         "schema": "mask_review_decisions.v2",
@@ -733,24 +747,37 @@ def write_mask_confirmed_template(review_dir: str, pending_events: list[dict]) -
 
 def select_render_entries(
     timeline: dict,
-    decisions: dict[str, str],
+    decisions: dict[str, str | dict],
 ) -> tuple[dict[int, list[list[float]]], dict[str, Any]]:
     proposals = {p["proposal_id"]: p for p in timeline.get("proposals", [])}
     selected: set[str] = set()
     partial: dict[str, str] = {}
+    accepted_ranges: dict[str, list[list[float]]] = {}
     rejected = 0
     unreviewed = 0
     for pid, proposal in proposals.items():
         tier = proposal.get("source_tier")
         decision = decisions.get(pid)
+        status = _decision_status(decision)
         if tier == "auto":
             selected.add(pid)
-        elif decision == STATUS_ACCEPTED:
+        elif status == STATUS_ACCEPTED:
             selected.add(pid)
-        elif decision in {STATUS_ACCEPTED_FIRST_HALF, STATUS_ACCEPTED_SECOND_HALF}:
+        elif status == STATUS_ACCEPTED_RANGES and isinstance(decision, dict):
+            ranges = [
+                [float(item[0]), float(item[1])]
+                for item in decision.get("ranges") or []
+                if isinstance(item, (list, tuple)) and len(item) == 2 and float(item[1]) > float(item[0])
+            ]
+            if ranges:
+                selected.add(pid)
+                accepted_ranges[pid] = ranges
+            else:
+                unreviewed += 1
+        elif status in {STATUS_ACCEPTED_FIRST_HALF, STATUS_ACCEPTED_SECOND_HALF}:
             selected.add(pid)
-            partial[pid] = decision
-        elif decision == STATUS_REJECTED:
+            partial[pid] = status
+        elif status == STATUS_REJECTED:
             rejected += 1
         else:
             unreviewed += 1
@@ -770,6 +797,10 @@ def select_render_entries(
             continue
         if decision == STATUS_ACCEPTED_SECOND_HALF and int(entry["frame"]) < mid_by_pid[pid]:
             continue
+        if pid in accepted_ranges:
+            timestamp = float(entry.get("timestamp") or 0.0)
+            if not any(start <= timestamp <= end for start, end in accepted_ranges[pid]):
+                continue
         if pid in selected:
             render[int(entry["frame"])].append([float(v) for v in entry["bbox"]])
 
@@ -777,7 +808,8 @@ def select_render_entries(
         "selected_proposals": len(selected),
         "auto_selected": sum(1 for pid in selected if proposals[pid].get("source_tier") == "auto"),
         "review_selected": sum(1 for pid in selected if proposals[pid].get("source_tier") in {"review", "low_conf"}),
-        "review_partial_selected": len(partial),
+        "review_partial_selected": len(partial) + len(accepted_ranges),
+        "review_range_selected": len(accepted_ranges),
         "review_rejected": rejected,
         "review_unreviewed_skipped": unreviewed,
         "render_frames": len(render),
